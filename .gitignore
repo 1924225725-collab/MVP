@@ -1,0 +1,21 @@
+# Python 运行产物
+__pycache__/
+*.pyc
+
+# 虚拟环境（体积大，每台电脑自己装）
+.venv/
+
+# 媒体文件与生成结果（体积大/含个人数据，不上传）
+videos/*
+audio/*
+transcripts/*
+highlights.json
+
+# 但保留文件夹本身（否则 git 不追踪空文件夹）
+!videos/.gitkeep
+!audio/.gitkeep
+!transcripts/.gitkeep
+
+# 系统杂项
+Thumbs.db
+.DS_Store
