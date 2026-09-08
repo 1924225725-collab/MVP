@@ -11,6 +11,9 @@ audio/*
 transcripts/*
 highlights.json
 
+# API 钥匙文件（网页版保存的 DeepSeek Key，绝不能上传）
+api_key.txt
+
 # 但保留文件夹本身（否则 git 不追踪空文件夹）
 !videos/.gitkeep
 !audio/.gitkeep

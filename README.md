@@ -63,6 +63,24 @@ main.py  ──只问一句──▶  config.py（你选 local / api）
    ```
 4. 正常会依次看到：启动成功 → 找到几个视频 → 每个视频的音频提取结果
 
+## 网页版（v0.2 新增）
+
+**最简单的启动方式：双击项目文件夹里的 `start_webui.bat`**，浏览器会自动打开。
+
+等价的命令行方式（在 live_clipper 文件夹里）：
+```
+.\.venv\Scripts\streamlit run ui.py
+```
+
+页面功能：上传 MP4 → 点「开始分析」→ 查看文字稿 + 高光卡片（评分/时间/标题/理由）
+→ 下载 highlights.json。
+
+**API Key 在网页左侧边栏填**（粘贴 → 点「💾 保存」即可，存到本机 api_key.txt，
+已被 .gitignore 排除不会上传）。命令行用户也可以继续用环境变量 DEEPSEEK_API_KEY，
+两者都设了时环境变量优先。
+
+命令行版和网页版共用同一套核心代码（pipeline.py）。
+
 ## 关于 .venv（为什么运行命令变了）
 
 `.venv` 是「虚拟环境」——这个项目专属的 Python 工具箱。装在里面的库只归本项目用，
@@ -78,4 +96,5 @@ main.py  ──只问一句──▶  config.py（你选 local / api）
 - [x] 步骤 2.5：语音识别模块架构设计（可插拔：local/api，接口已定，实现为空）
 - [x] 步骤 3：实现 LocalWhisperRecognizer（faster-whisper，small 模型，CPU int8），生成带时间戳文字稿
 - [x] 步骤 4：analysis 高光分析模块（DeepSeek API + 成本控制四闸门），待设置 API Key 后实测
+- [x] v0.2：pipeline.py 核心流程抽离 + ui.py 网页版（Streamlit），命令行版行为不变
 - [ ] 以后：实现 CloudApiRecognizer（云端 API）

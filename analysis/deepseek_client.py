@@ -10,6 +10,7 @@
 """
 
 import os
+from pathlib import Path
 
 import requests
 
@@ -18,19 +19,37 @@ import config
 # DeepSeek 官方 API 地址
 API_URL = "https://api.deepseek.com/chat/completions"
 
+# 钥匙文件（网页版保存的钥匙放这里；此文件已被 .gitignore 排除，不会上传）
+KEY_FILE = Path(__file__).resolve().parent.parent / "api_key.txt"
+
+
+def get_api_key():
+    """拿钥匙：先看环境变量，再看网页版保存的 api_key.txt，都没有才报错。"""
+
+    # 途径 1：环境变量（命令行用户 / 服务器部署时用）
+    key = os.environ.get("DEEPSEEK_API_KEY", "").strip()
+    if key:
+        return key
+
+    # 途径 2：网页版保存的钥匙文件
+    if KEY_FILE.exists():
+        key = KEY_FILE.read_text(encoding="utf-8").strip()
+        if key:
+            return key
+
+    raise SystemExit(
+        "\n[缺钥匙] 没有找到 DeepSeek API Key。\n"
+        "网页版：在左侧边栏「API Key」里粘贴保存即可。\n"
+        "命令行：设置环境变量 DEEPSEEK_API_KEY，或把钥匙存进 api_key.txt。\n"
+        "拿钥匙的地址：https://platform.deepseek.com\n"
+    )
+
 
 def call_deepseek(prompt: str):
     """把需求单发给 DeepSeek，返回 (AI 的回复文本, 用量统计字典)。"""
 
-    # ---- 1. 拿钥匙：只认环境变量，绝不写死在代码里 ----
-    api_key = os.environ.get("DEEPSEEK_API_KEY", "").strip()
-    if not api_key:
-        raise SystemExit(
-            "\n[缺钥匙] 没有找到环境变量 DEEPSEEK_API_KEY。\n"
-            "设置方法（PowerShell，只对当前窗口生效）：\n"
-            '  $env:DEEPSEEK_API_KEY = "sk-你的钥匙"\n'
-            "拿到钥匙的地址：https://platform.deepseek.com\n"
-        )
+    # ---- 1. 拿钥匙：环境变量或钥匙文件，绝不写死在代码里 ----
+    api_key = get_api_key()
 
     # ---- 2. 闸门 3：出发前，先报一下这次带了多少货 ----
     print(f"[成本] 本次请求共 {len(prompt)} 字（中文约 {len(prompt) * 0.6:.0f} token）")
