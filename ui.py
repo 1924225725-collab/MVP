@@ -1,28 +1,47 @@
 # ============================================================
-# AI 直播切片助手 —— 网页版入口（v0.2 新增）
+# AI 直播切片助手 —— 网页版入口（v0.3.2 全面升级：接入 v2 分析流程 + 判断体系 v3）
 #
 # 用法（在 live_clipper 文件夹里）：
 #   .\.venv\Scripts\streamlit run ui.py
 # 然后浏览器会自动打开 http://localhost:8501
 #
-# 本文件只负责"界面"：上传按钮、进度显示、结果卡片。
-# 真正干活的是 pipeline.py，和命令行版（main.py）共用同一套代码。
+# 本文件只负责"界面"。真正干活的是：
+#   pipeline.py（视频 → 音频 → 文字稿，本地免费）
+#   analysis/（v2 流程：扫描 → 分区 → 海选 → 质检 → 复审，调 DeepSeek）
+#
+# v0.3.2 界面变化：
+#   - 文字稿和 AI 分析拆成两步：识别过的稿子可以直接重跑分析，不用重复识别
+#   - 侧边栏新增三个设置：直播类型 / 分析模式 / 数量模式
+#   - 运行前显示预算预估（预计 token 和费用，D-015）
+#   - 结果改成 S/A/B/C 分级卡片 + 五维判决书（三秒吸引力/反差/表现力/独立/完整）
+#     + 为什么值得剪 / 最大风险 + 三类高光标记 + 剪辑建议 + AI 分析报告
 # ============================================================
 
 import contextlib
 import io
 import json
+import sys
 from pathlib import Path
 
 import streamlit as st
 
+import config
 import pipeline
+
+# v2 分析流程（延迟导入的部分在函数里，这里只拿轻量的）
+from analysis import analyze_transcript_v2
+from analysis.event_scanner import AVAILABLE_TYPES
+
+# Windows 控制台默认 GBK，日志里的 ¥ 等字符会炸，强制 UTF-8 + 容错
+for _stream in (sys.stdout, sys.stderr):
+    if _stream and hasattr(_stream, "reconfigure"):
+        _stream.reconfigure(encoding="utf-8", errors="replace")
 
 # ---------- 页面基本设置 ----------
 st.set_page_config(page_title="AI 直播切片助手", page_icon="🎬", layout="wide")
 
 st.title("🎬 AI 直播切片助手")
-st.caption("上传直播录像 → 自动语音识别 → AI 挑出值得做切片的高光片段")
+st.caption("直播录像 → 语音识别 → AI 分级挑出值得剪的高光片段")
 
 # 钥匙文件位置（和 analysis/deepseek_client.py 里约定的是同一个）
 KEY_FILE = Path(__file__).parent / "api_key.txt"
@@ -35,15 +54,44 @@ def load_saved_key():
     return ""
 
 
-# ---------- 侧边栏：配置 + API Key 管理 ----------
+# ============================================================
+# 侧边栏：分析设置 + API Key 管理
+# ============================================================
 with st.sidebar:
-    st.header("当前配置")
-    st.write("识别引擎：本地 Whisper（small）")
-    st.write("高光分析：DeepSeek")
-    st.caption("想换引擎？改 config.py 后重启页面即可")
+    st.header("分析设置")
+
+    # ---- 设置 1：直播类型（决定扫描词库和 AI 评分侧重）----
+    live_type = st.selectbox(
+        "直播类型",
+        AVAILABLE_TYPES,
+        index=AVAILABLE_TYPES.index(config.LIVE_TYPE_DEFAULT)
+        if config.LIVE_TYPE_DEFAULT in AVAILABLE_TYPES else 0,
+        help="不同类型用不同的信号词库和评分侧重，选错会明显影响判断",
+    )
+
+    # ---- 设置 2：分析模式（快速/标准/精细，UI 不露 token 数字，D-005）----
+    token_mode = st.radio(
+        "分析模式",
+        list(config.TOKEN_MODES),
+        index=list(config.TOKEN_MODES).index(config.TOKEN_MODE_DEFAULT),
+        format_func=lambda m: f"{m} —— {config.TOKEN_MODES[m]['desc']}",
+        help="模式决定分析的仔细程度和成本",
+    )
+
+    # ---- 设置 3：数量模式 ----
+    quantity_mode = st.radio(
+        "输出数量",
+        config.QUANTITY_MODES,
+        index=config.QUANTITY_MODES.index(config.QUANTITY_MODE_DEFAULT),
+        help="自动精选=只看 S/A 级（AI 盖章值得剪）；候选池=S/A/B/C 全给；自定义=按分数取前 N 个",
+    )
+    custom_count = None
+    if quantity_mode == "自定义数量":
+        custom_count = st.number_input("想要几个高光", 1, 50, config.DEFAULT_CUSTOM_COUNT)
+
     st.divider()
 
-    # ---- API Key 管理（v0.2.1 新增：网页里就能填，不用碰 PowerShell）----
+    # ---- API Key 管理 ----
     st.subheader("🔑 DeepSeek API Key")
     saved_key = load_saved_key()
 
@@ -62,7 +110,7 @@ with st.sidebar:
                 st.error("钥匙应该以 sk- 开头，检查一下有没有复制完整")
             else:
                 KEY_FILE.write_text(new_key, encoding="utf-8")
-                st.success("保存成功！现在可以直接点「开始分析」了")
+                st.success("保存成功！")
                 st.rerun()
     with col_del:
         if saved_key and st.button("🗑 删除", use_container_width=True):
@@ -77,165 +125,249 @@ with st.sidebar:
         help="钥匙保存在本机的 api_key.txt 里，不会上传 GitHub。获取地址：platform.deepseek.com",
     )
     if not saved_key:
-        st.caption("还没设置钥匙：不影响语音识别，但「高光分析」这一步会跳过")
+        st.caption("还没设置钥匙：语音识别不受影响，但「AI 高光分析」跑不了")
     st.divider()
-    st.caption("命令行版依然可用：`python main.py`")
+    st.caption("命令行版依然可用：`python main.py` / `python analyze_v2.py`")
     st.caption("🎨 开发者：**夜雨声烦**")
 
 
-# ---------- 分析流程的任务清单（v0.2.2 新增） ----------
-# 四个步骤 + 每步完成时进度条走到百分之多少
-STEPS = [
-    ("提取音频", 25),
-    ("语音识别", 65),
-    ("生成文字稿", 75),
-    ("AI 高光分析", 100),
-]
+# ============================================================
+# 第一步：准备文字稿（两种来源：已有稿 / 上传新视频识别）
+# ============================================================
+st.header("① 准备文字稿")
 
+# transcripts/ 里已有的稿子，按修改时间倒序（最新的排最前）
+pipeline.TRANSCRIPT_DIR.mkdir(exist_ok=True)
+existing = sorted(
+    pipeline.TRANSCRIPT_DIR.glob("*.txt"), key=lambda p: p.stat().st_mtime, reverse=True
+)
+selected_transcript = existing[0] if existing else None
 
-def render_checklist(checklist_placeholder, bar_placeholder, done_count, running):
-    """把任务清单画到页面上（用 placeholder 原地刷新，不越叠越长）。
+tab_old, tab_new = st.tabs(["📁 用已有文字稿", "🎬 上传新视频识别"])
 
-    done_count：已完成几步（0~4）
-    running：正在进行第几步的下标（没有进行中的就传 None）
-    """
-    lines = []
-    for i, (name, percent) in enumerate(STEPS):
-        if i < done_count:
-            lines.append(f"✅ 第 {i + 1} 步：{name} —— 完成")
-        elif i == running:
-            lines.append(f"🔄 第 {i + 1} 步：{name}……")
-        else:
-            lines.append(f"⬜ 第 {i + 1} 步：{name}（等待中）")
-
-    # 按当前进度算百分比：进行中的步按它自己的百分比先垫上
-    if running is not None:
-        percent = STEPS[running][1] - 10 if STEPS[running][1] > 10 else 5
+with tab_old:
+    if not existing:
+        st.info("还没有文字稿——先切到右边「上传新视频识别」生成一份")
     else:
-        percent = STEPS[done_count - 1][1] if done_count > 0 else 0
+        names = [p.name for p in existing]
+        picked = st.selectbox("选择文字稿", names, index=0)
+        selected_transcript = existing[names.index(picked)]
+        st.caption(
+            f"已选：{selected_transcript.name}（{selected_transcript.stat().st_size / 1024:.0f} KB）"
+        )
 
-    checklist_placeholder.markdown("\n\n".join(lines))
-    bar_placeholder.progress(percent, text=f"总进度 {percent}%")
+with tab_new:
+    uploaded = st.file_uploader("上传 MP4 视频", type=["mp4"])
+    if uploaded is None:
+        st.caption("👆 建议先用几分钟的短视频试水")
+    else:
+        # 把上传的视频存进 videos/ 文件夹（pipeline 从这里读取）
+        pipeline.VIDEO_DIR.mkdir(exist_ok=True)
+        video_path = pipeline.VIDEO_DIR / uploaded.name
+        video_path.write_bytes(uploaded.getvalue())
+        st.success(f"已收到：{uploaded.name}（{uploaded.size / 1024 / 1024:.1f} MB）")
+
+        if st.button("🎙️ 开始识别（本地，不花钱）", type="primary"):
+            with st.status("正在识别……", expanded=True) as status_box:
+                console_buf = io.StringIO()
+                try:
+                    with contextlib.redirect_stdout(console_buf), \
+                            contextlib.redirect_stderr(console_buf):
+                        result = pipeline.process_video(video_path)
+                except Exception as e:
+                    status_box.update(label="❌ 识别失败", state="error")
+                    st.error(f"视频处理失败：{e}")
+                    result = None
+
+            if result is None:
+                st.error("视频处理失败，请换一个文件试试（损坏的视频或没有音轨的视频会这样）")
+            else:
+                status_box.update(label="✅ 识别完成", state="complete")
+                console_text = console_buf.getvalue().strip()
+                if console_text:
+                    with st.expander("🖥️ 处理日志"):
+                        st.code(console_text, language=None)
+                # 识别完刷新页面：新稿子会出现在「已有文字稿」列表最上面
+                st.rerun()
 
 
-# ---------- 上传 MP4 ----------
-uploaded = st.file_uploader("上传 MP4 视频", type=["mp4"])
-
-if uploaded is None:
-    st.info("👆 先上传一个 MP4 视频试试（建议先用几分钟的短视频）")
+# ============================================================
+# 第二步：预算预估 + AI 高光分析
+# ============================================================
+if selected_transcript is None:
+    st.info("先在上面准备一份文字稿（识别一个视频，或等识别完成）")
     st.stop()
 
-# 把上传的视频存进 videos/ 文件夹（pipeline 从这里读取）
-pipeline.VIDEO_DIR.mkdir(exist_ok=True)
-video_path = pipeline.VIDEO_DIR / uploaded.name
-video_path.write_bytes(uploaded.getvalue())
-st.success(f"已收到：{uploaded.name}（{uploaded.size / 1024 / 1024:.1f} MB）")
+st.header("② AI 高光分析")
+
+# ---- 预算预估（本地计算，不花钱；运行前给用户看大概花多少，D-015）----
+@st.cache_data(show_spinner=False)
+def estimate_budget(transcript_path_str, live_type, token_mode):
+    """本地算一遍：解析 → 扫描 → 分区 → 估 token。不算 AI 海选/复审的输出，只是近似。"""
+    from analysis import transcript_parser, event_scanner, chunker, budget
+
+    segments = transcript_parser.parse_transcript_file(transcript_path_str)
+    if not segments:
+        return None
+    duration = transcript_parser.total_duration(segments)
+    buckets = event_scanner.scan(segments, live_type)
+    chunks = chunker.build_chunks(buckets, segments)
+    max_cand = config.TOKEN_MODES[token_mode]["max_candidates_per_chunk"]
+    est_tokens = budget.estimate_total(chunks, max_cand)
+    return {
+        "duration": chunker.format_time(duration),
+        "chunks": len(chunks),
+        "tokens": est_tokens,
+        "cost": est_tokens * config.PRICE_INPUT_PER_MTOKEN / 1_000_000,
+        "over_budget": est_tokens > config.TOKEN_MODES[token_mode]["budget"],
+    }
 
 
-# ---------- 点击开始分析 ----------
-if st.button("🚀 开始分析", type="primary"):
+est = estimate_budget(str(selected_transcript), live_type, token_mode)
 
-    with st.status("正在分析……", expanded=True) as status_box:
-        # 任务清单 + 进度条（placeholder 可以原地刷新，清单不会越叠越长）
-        checklist_box = st.empty()
-        bar_box = st.progress(0.0, text="总进度 0%")
-        render_checklist(checklist_box, bar_box, done_count=0, running=0)
+if est:
+    col1, col2, col3 = st.columns(3)
+    col1.metric("时长 / 区块", f"{est['duration']} / {est['chunks']} 块")
+    col2.metric("预计消耗", f"约 {est['tokens']:,} token")
+    col3.metric("预计费用", f"¥{est['cost']:.2f}")
+    if est["over_budget"]:
+        st.warning("超出所选模式预算，运行时会自动降级（普通区合并粗切 / 限制每区块候选数）。长直播建议选「精细」模式。")
 
-        # 终端输出捕获：把原来打印在黑窗口里的文字（模型加载、成本报表等）
-        # 先接住，跑完显示在页面上
+st.caption(
+    f"当前设置：直播类型 **{live_type}** · 模式 **{token_mode}** · 输出 **{quantity_mode}**"
+    + (f"（{custom_count} 个）" if custom_count else "")
+    + " —— 都在左侧边栏改"
+)
+
+if not load_saved_key():
+    st.info("👆 还没设置 DeepSeek API Key：先看左侧边栏，粘贴钥匙 → 点「💾 保存」")
+    st.stop()
+
+if st.button("🚀 开始 AI 高光分析", type="primary"):
+    with st.status("AI 正在看完整场直播……（海选 → 质检 → 复审，要几分钟）", expanded=True) as status_box:
         console_buf = io.StringIO()
-
-        # 步骤名 → 清单下标的对照表（pipeline 汇报的进度只有前两步的名字）
-        stage_index = {STEPS[0][0]: 0, STEPS[1][0]: 1}
-
-        def report(stage):
-            render_checklist(checklist_box, bar_box, done_count=stage_index[stage], running=stage_index[stage])
-
-        # ---- 前半程：视频 → 音频 → 文字稿（本地完成，不花钱）----
-        with contextlib.redirect_stdout(console_buf), contextlib.redirect_stderr(console_buf):
-            result = pipeline.process_video(video_path, progress=report)
-
-        if result is None:
-            render_checklist(checklist_box, bar_box, done_count=0, running=None)
-            status_box.update(label="❌ 处理失败", state="error")
-            st.error("视频处理失败，请换一个文件试试（损坏的视频或没有音轨的视频会这样）")
+        try:
+            with contextlib.redirect_stdout(console_buf), \
+                    contextlib.redirect_stderr(console_buf):
+                result_v2 = analyze_transcript_v2(
+                    selected_transcript,
+                    live_type=live_type,
+                    token_mode=token_mode,
+                    quantity_mode=quantity_mode,
+                    custom_count=custom_count,
+                )
+        except SystemExit as e:
+            status_box.update(label="❌ 分析失败", state="error")
+            st.error(f"分析没跑成：{e}")
+            st.stop()
+        except Exception as e:
+            status_box.update(label="❌ 分析出错", state="error")
+            st.error(f"分析出错：{e}")
             st.stop()
 
-        # 前三步完成
-        render_checklist(checklist_box, bar_box, done_count=3, running=3)
-
-        # ---- 第 4 步：AI 高光分析 ----
-        highlights = None
-        try:
-            with contextlib.redirect_stdout(console_buf), contextlib.redirect_stderr(console_buf):
-                highlights = pipeline.analyze_highlights(result["transcript"])
-        except SystemExit:
-            # analysis 模块在缺 API Key 时会想直接退出程序，网页里拦下来好好说
-            status_box.update(label="⚠️ 文字稿已生成，但高光分析没跑成", state="error")
-            st.error(
-                "还没有设置 DeepSeek API Key。\n\n"
-                "👉 看**左侧边栏**：粘贴钥匙 → 点「💾 保存」→ 再点一次「开始分析」即可。\n\n"
-                "钥匙获取地址：https://platform.deepseek.com（API Keys 页面创建）"
-            )
-        except Exception as e:
-            status_box.update(label="⚠️ 文字稿已生成，但高光分析出错", state="error")
-            st.error(f"高光分析出错：{e}")
-
-        if highlights is not None:
-            render_checklist(checklist_box, bar_box, done_count=4, running=None)
-            status_box.update(label="✅ 分析完成", state="complete")
-        else:
-            # 高光分析没跑成时，前三步的成果照样算完成
-            render_checklist(checklist_box, bar_box, done_count=3, running=None)
-
-        # 把黑窗口里的文字亮出来：模型加载提示、识别方式、成本报表都在这
+        status_box.update(label="✅ 分析完成", state="complete")
         console_text = console_buf.getvalue().strip()
         if console_text:
-            with st.expander("🖥️ 处理日志（黑窗口里原本打印的内容）"):
+            with st.expander("🖥️ 分析日志（每区块海选、质检、成本都在这）"):
                 st.code(console_text, language=None)
 
-    # 把结果存进 session_state：页面上点别的东西时不会丢
-    st.session_state["last_result"] = result
-    st.session_state["last_highlights"] = highlights
+    st.session_state["v2_result"] = result_v2
+    st.session_state["v2_transcript"] = selected_transcript.name
 
 
-# ---------- 展示结果（只要跑过一次就显示，刷新页面才消失） ----------
-if "last_result" in st.session_state:
-    result = st.session_state["last_result"]
-    highlights = st.session_state.get("last_highlights")
+# ============================================================
+# 第三步：结果展示（S/A/B/C 分级卡片 + AI 分析报告 + 被拒候选）
+# ============================================================
+if "v2_result" not in st.session_state:
+    st.stop()
 
-    st.divider()
+v2 = st.session_state["v2_result"]
+meta = v2["meta"]
+cost = v2["cost"]
 
-    # 文字稿（折叠起来，想看再点开）
-    with st.expander(f"📜 文字稿：{len(result['segments'])} 句（点击展开）"):
-        for seg in result["segments"]:
-            st.write(
-                f"`[{pipeline.format_time(seg.start)} - "
-                f"{pipeline.format_time(seg.end)}]` {seg.text}"
+st.header("③ 结果")
+st.success(
+    f"《{st.session_state['v2_transcript']}》：候选 {meta['candidate_count']} 个 → "
+    f"最终高光 {len(v2['highlights'])} 个，被拒 {len(v2['rejected'])} 个 · "
+    f"API 调用 {cost['calls']} 次，实际花费约 ¥{cost['cost_yuan']:.4f}"
+)
+
+# ---- AI 分析报告（本场总结等四字段）----
+report = v2.get("report", {})
+report_bits = [
+    ("本场总结", report.get("summary", "")),
+    ("最强传播点", report.get("best_spread_point", "")),
+    ("整体评价", report.get("overall", "")),
+    ("为什么不推荐更多", report.get("why_not_more", "")),
+]
+if any(text for _, text in report_bits):
+    with st.expander("📋 AI 分析报告", expanded=True):
+        for label, text in report_bits:
+            if text:
+                st.markdown(f"**{label}**：{text}")
+
+# ---- 分级卡片（v0.3.2：S/A/B/C 四级 + 五维判决书） ----
+GRADE_BADGE = {
+    "S": "🚀 S 级 · 爆款候选",
+    "A": "🌟 A 级 · 强推荐",
+    "B": "✅ B 级 · 测试素材",
+    "C": "📦 C 级 · 备用素材",
+}
+GRADE_SORT = {"S": 0, "A": 1, "B": 2, "C": 3, "D": 4}
+
+highlights_sorted = sorted(
+    v2["highlights"],
+    key=lambda h: (GRADE_SORT.get(h.get("grade"), 9), -h.get("score", 0)),
+)
+
+st.subheader(f"🏆 高光片段（{len(highlights_sorted)} 个）")
+
+for h in highlights_sorted:
+    grade = h.get("grade", "?")
+    with st.container(border=True):
+        col1, col2, col3 = st.columns([1.5, 1.1, 4])
+        col1.markdown(f"### {GRADE_BADGE.get(grade, grade)}")
+        col2.metric("评分", f"{h.get('score', '?')}/10")
+        col3.subheader(h.get("title", "无标题"))
+        col3.write(f"⏱ `{h['start_time']} - {h['end_time']}` · "
+                   f"类型：{h.get('highlight_type', '?')} · "
+                   f"爆款概率：{h.get('viral_probability', '?')} · "
+                   f"置信度 {int((h.get('confidence') or 0) * 100)}%")
+        # 五维判决书（v0.3.2 核心：这个分数是怎么来的，全摊开给你看）
+        dims = h.get("dims") or {}
+        if dims:
+            # 键形如「三秒吸引力（权重30%）」，只取括号前的维度名
+            dims_text = "  ".join(f"{k.split('（')[0]} {v}分" for k, v in dims.items())
+            st.progress(min(1.0, (h.get("score") or 0) / 10), text=dims_text)
+        st.markdown(f"**为什么值得剪**：{h.get('why_cut') or h.get('reason', '')}")
+        if h.get("risk"):
+            st.caption(f"⚠️ 最大风险：{h['risk']}")
+        if h.get("negative_flags"):
+            st.warning(f"命中「不值得剪」规则：{'、'.join(h['negative_flags'])}"
+                       f" → 已封顶 B 级，仅作测试素材")
+        if h.get("editing_advice"):
+            st.caption(f"✂️ 剪辑建议：{h['editing_advice']}")
+        if h.get("forced_keep"):
+            st.warning("召回优先保留的候选（全场无高分时的兜底），请人工复核")
+        st.caption(f"编号：`{h.get('clip_id', '?')}` · 海选初分 {h.get('first_round_score', '?')}"
+                   f"（反馈功能即将上线，记这个号）")
+
+# ---- 被拒候选（供用户翻案）----
+if v2["rejected"]:
+    with st.expander(f"🗑 被拒候选（{len(v2['rejected'])} 个，点击展开）"):
+        st.caption("这些片段 AI 认为不值得剪，理由列在下面——不认同的话可以翻案，以后反馈按钮会记录")
+        for r in sorted(v2["rejected"], key=lambda x: -x.get("score", 0)):
+            reasons = "；".join(r.get("reject_reason", [])) or "未进入展示范围"
+            st.markdown(
+                f"- `{r['start_time']} - {r['end_time']}` {r.get('grade', '?')}级 "
+                f"{r.get('score', '?')}分 **{r.get('title', '')}**"
+                f"（{r.get('clip_id', '?')}）\n  - 拒绝理由：{reasons}"
             )
 
-    # 高光结果
-    if highlights:
-        st.header(f"🏆 高光片段（AI 挑出 {len(highlights)} 个）")
-
-        # 按评分从高到低排
-        highlights_sorted = sorted(highlights, key=lambda h: h["score"], reverse=True)
-
-        for h in highlights_sorted:
-            with st.container(border=True):
-                col1, col2, col3 = st.columns([1, 2, 4])
-                col1.metric("评分", f"{h['score']}/10")
-                col2.write(f"⏱ {h['start_time']} - {h['end_time']}")
-                col3.subheader(h["suggested_title"])
-                st.caption(f"推荐理由：{h['reason']}")
-
-        # 提供下载：把结果存成 highlights.json
-        st.download_button(
-            "⬇️ 下载 highlights.json",
-            data=json.dumps(highlights, ensure_ascii=False, indent=2),
-            file_name="highlights.json",
-            mime="application/json",
-        )
-    elif highlights is not None:
-        st.warning("AI 没有从这段直播里挑出高光片段（也许这期内容比较平淡？）")
-    # highlights 为 None 时，前面已经显示过报错，这里不用再说话
+# ---- 下载完整结果 ----
+st.download_button(
+    "⬇️ 下载完整结果（highlights_v2.json）",
+    data=json.dumps(v2, ensure_ascii=False, indent=2),
+    file_name="highlights_v2.json",
+    mime="application/json",
+)

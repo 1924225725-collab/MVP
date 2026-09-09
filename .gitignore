@@ -11,6 +11,13 @@ audio/*
 transcripts/*
 highlights.json
 
+# v0.3 运行产物：分析结果与自测报告（本地生成，每次跑都不一样）
+highlights_v2.json
+phase1_report.txt
+phase2_report.txt
+v031_report.txt
+v032_report.txt
+
 # API 钥匙文件（网页版保存的 DeepSeek Key，绝不能上传）
 api_key.txt
 

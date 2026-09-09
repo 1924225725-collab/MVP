@@ -45,8 +45,12 @@ def get_api_key():
     )
 
 
-def call_deepseek(prompt: str):
-    """把需求单发给 DeepSeek，返回 (AI 的回复文本, 用量统计字典)。"""
+def call_deepseek(prompt: str, system: str = None, max_tokens: int = None):
+    """把需求单发给 DeepSeek，返回 (AI 的回复文本, 用量统计字典)。
+
+    system / max_tokens 不传就用默认值（v0.2 老代码的调用方式完全不受影响）；
+    v0.3 海选/复审会用不同的 system 身份和输出上限。
+    """
 
     # ---- 1. 拿钥匙：环境变量或钥匙文件，绝不写死在代码里 ----
     api_key = get_api_key()
@@ -64,14 +68,15 @@ def call_deepseek(prompt: str):
         "messages": [
             {
                 "role": "system",
-                "content": "你是直播内容运营专家。必须严格输出合法 JSON，禁止输出任何解释性文字。",
+                "content": system
+                or "你是直播内容运营专家。必须严格输出合法 JSON，禁止输出任何解释性文字。",
             },
             {"role": "user", "content": prompt},
         ],
         # 强制 JSON 模式：DeepSeek 会保证回复能被 json.loads 解析
         "response_format": {"type": "json_object"},
         # 闸门 2：输出上限，防止 AI 话痨把 token 烧光
-        "max_tokens": config.MAX_OUTPUT_TOKENS,
+        "max_tokens": max_tokens or config.MAX_OUTPUT_TOKENS,
     }
 
     # ---- 4. 发请求（120 秒超时，网络卡死也不会永久挂起） ----
@@ -109,3 +114,50 @@ def print_cost_report(prompt_chars: int, usage: dict):
     print(f"[成本] 实际用量：输入 {in_tokens} token + 输出 {out_tokens} token")
     print(f"[成本] 输出上限：{config.MAX_OUTPUT_TOKENS} token（闸门已生效）")
     print(f"[成本] 本次预估花费：约 ¥{cost:.4f}（按 config.py 里的价格估算，以官网账单为准）")
+
+
+# ============================================================
+# v0.3 阶段 2：成本累加器
+#
+# 一场分析要调好多次 AI（每个区块海选一次 + 复审一次），
+# 只看单次账单没意义，用户要的是「这一场总共花了多少钱」。
+# ============================================================
+
+class CostTracker:
+    """把一场分析里所有 API 调用的用量累加起来，最后一次性报总账。"""
+
+    def __init__(self):
+        self.calls = 0            # 调了几次 API
+        self.input_tokens = 0     # 累计输入 token
+        self.output_tokens = 0    # 累计输出 token
+
+    def add(self, usage: dict):
+        """收一次调用的用量（usage 就是 API 返回里的那个字典）。"""
+        self.calls += 1
+        self.input_tokens += usage.get("prompt_tokens", 0)
+        self.output_tokens += usage.get("completion_tokens", 0)
+
+    @property
+    def cost_yuan(self) -> float:
+        """这一场分析的总花费（元，按 config.py 价格表估算）。"""
+        return (
+            self.input_tokens * config.PRICE_INPUT_PER_MTOKEN
+            + self.output_tokens * config.PRICE_OUTPUT_PER_MTOKEN
+        ) / 1_000_000
+
+    def to_dict(self) -> dict:
+        """变成能直接塞进 highlights_v2.json 的字典。"""
+        return {
+            "calls": self.calls,
+            "input_tokens": self.input_tokens,
+            "output_tokens": self.output_tokens,
+            "cost_yuan": round(self.cost_yuan, 4),
+        }
+
+    def report(self) -> str:
+        """报总账（返回文本，编排器决定打印还是塞进网页日志）。"""
+        return (
+            f"[成本] 本场共调用 API {self.calls} 次："
+            f"输入 {self.input_tokens} token + 输出 {self.output_tokens} token，"
+            f"预估总花费 ¥{self.cost_yuan:.4f}（以官网账单为准）"
+        )
