@@ -77,21 +77,31 @@ def main():
 
     # ---- 摘要打印（控制台只打安全字符，不整花活） ----
     print("-" * 50)
+    recs = [h for h in result["highlights"] if h.get("recommended")]
     print(f"候选 {result['meta']['candidate_count']} 个，"
-          f"最终高光 {len(result['highlights'])} 个，"
+          f"最终高光 {len(result['highlights'])} 个（其中推荐剪辑 {len(recs)} 条），"
           f"被拒 {len(result['rejected'])} 个")
+    struct_stats = (result.get("structure") or {}).get("stats") or {}
+    if struct_stats:
+        print(f"内容结构：{struct_stats.get('chapter_count', 0)} 章 / "
+              f"{struct_stats.get('story_count', 0)} 个 Story"
+              f"（{struct_stats.get('stories_with_events', 0)} 个含高光）")
     if result["meta"].get("miss_check_chunks"):
         print(f"质检重扫区块：{result['meta']['miss_check_chunks']}")
     if result["report"].get("why_not_more"):
         print(f"AI 解释：{result['report']['why_not_more']}")
     print()
+    rec_ids = {h.get("clip_id") for h in recs}
     for h in result["highlights"]:
         tag = h.get("quality", "")
+        star = "*推荐* " if h.get("clip_id") in rec_ids else "      "
         forced = "（召回保留，请人工复核）" if h.get("forced_keep") else ""
-        print(f"  [{h['start_time']} - {h['end_time']}] {h['grade']}级 "
-              f"{h['score']}分 {h['title']} {tag}{forced}")
+        # V0.4.3：控制台也不露 S/A/B/C/D 字母（与 UI 一致，D-044）
+        badge = config.GRADE_UI.get(h.get("grade", ""), "")
+        print(f"  {star}[{h['start_time']} - {h['end_time']}] "
+              f"{h['score']}分 {badge} {h['title']} {tag}{forced}")
     print()
-    print(f"完整结果（含被拒候选和分析报告）已保存：{OUTPUT_FILE}")
+    print(f"完整结果（含推荐剪辑/内容结构/被拒候选/AI 报告）已保存：{OUTPUT_FILE}")
     print(f"总成本：约 ¥{result['cost']['cost_yuan']:.4f}")
 
 

@@ -17,6 +17,7 @@ except ImportError:
     print("    .\\.venv\\Scripts\\python main.py")
     raise SystemExit(1)
 
+from errors import ProcessError
 from pipeline import (
     AUDIO_DIR, TRANSCRIPT_DIR, VIDEO_DIR,
     extract_audio, format_time, get_recognizer,
@@ -48,9 +49,14 @@ def run():
     for name in video_list:
         video_path = VIDEO_DIR / name
         print(f"正在处理：{name}")
-        audio_path = extract_audio(video_path)
-        if audio_path is None:
-            print(f"  ❌ 提取失败：{name}")
+        try:
+            audio_path = extract_audio(video_path)
+        except ProcessError as e:
+            # V0.4.5：错误带分类，命令行也能看出是哪一层坏了
+            print(f"  ❌ 提取失败（{e.stage}）：{e}")
+            if e.detail:
+                for line in str(e.detail).splitlines()[:3]:
+                    print(f"      {line}")
             continue
         size_kb = audio_path.stat().st_size / 1024
         print(f"  ✅ 音频已保存：audio/{audio_path.name}（{size_kb:.0f} KB）")
@@ -62,13 +68,26 @@ def run():
     if audio_list:  # 只有成功拿到音频才继续
         print()
         # 按配置造识别器：config.py 里写 "local" 就用本地模型，写 "api" 就用云端
-        recognizer = get_recognizer()
+        try:
+            recognizer = get_recognizer()
+        except ProcessError as e:
+            print(f"❌ 识别引擎初始化失败（{e.stage}）：{e}")
+            if e.detail:
+                print(e.detail)
+            return
         print(f"当前识别引擎：{recognizer.name}")
         print()
 
         for name, audio_path in audio_list:
             print(f"正在识别：{audio_path.name}（视频越长等得越久）……")
-            segments = transcribe_audio(audio_path, recognizer)
+            try:
+                segments = transcribe_audio(audio_path, recognizer)
+            except ProcessError as e:
+                print(f"  ❌ 识别失败（{e.stage}）：{e}")
+                if e.detail:
+                    for line in str(e.detail).splitlines()[:5]:
+                        print(f"      {line}")
+                continue
 
             if not segments:
                 print(f"  ⚠️ 没识别出任何内容：{name}")

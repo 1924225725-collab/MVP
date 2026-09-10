@@ -4,6 +4,94 @@
 
 ---
 
+## 2026-09-09  v0.4 第三步：分批复审 + 上下文时间窗 + 动态时长 + 100 分制
+
+**背景**：第二步把候选还原成完整事件，第三步解决「AI 如何理解一个完整事件 + 这个事件该剪多长值多少分」——把复审从「一次审完所有事件」改成分批（事件原文变长装不下、前半段偏置、预算难控），评分升级 100 分制，并加入真正动态的剪辑时长。
+
+**完成内容**：
+
+1. **分批复审 `_review_in_batches`**：按 `REVIEW_BATCH.max_events_per_batch`（默认 3）把事件切成若干 batch，每个 batch 一次独立复审调用；结果按 event_id 对号入座（禁依赖返回顺序）；AI 报 context_incomplete → 该事件单独用更大窗口重审（最多 1 层深扩）。各 batch 用同一评分标准，复审后 `Global Ranking` 全量按 final_score 降序排（消除前半段偏置）。
+
+2. **上下文时间窗口 `_event_review_context`**：复审上下文从「600 字符截断」改为「事件边界 ± 时间缓冲」——默认 ±60s，可扩 ±180s/±300s（config.REVIEW_CONTEXT.expand_levels）。**以事件边界为锚整段捞取**，长事件天然完整进入，不会被窗口切掉本体。Context Window 与 Clip Duration 完全分离。
+
+3. **动态剪辑时长**：复审 AI 输出 recommended_start/end/duration + duration_reason，取消固定 20/30/60s；长度不设硬上限（一句话梗可短到 8s，完整事件按需几十秒到几分钟）。merge 时经 `_norm_rec_ts` 规范化时间格式 + drift 合理性校验（偏离事件边界 >120s 兜底回事件边界）。
+
+4. **100 分制四档**：复审仍只打五维子分（1-10），本地 `_weighted_final` 加权后 ×10 得 0-100；对外 S≥90/A≥80/B≥60/C≥50，D<50 仅内部淘汰。语义与原 1-10 制 ×10 同构，step1/step2 不回退。
+
+5. **schema 校验不静默兜底**：`_parse_review_reply` 缺 event_id 跳过并 warning、缺五维子分/recommended_* → 记 warning + 明确 fallback；兼容嵌套 scores / 平铺 hook / hook_score，personality→persona 别名。整场报告拆到独立 `_build_ai_report`（REPORT_SYSTEM）。
+
+**遇到问题**：
+- 一次审完所有事件 → 单次 prompt 过大、后半段被忽略、前半段偏置 → 分批解决
+- 固定时长 → 剪坏完整故事 → 动态 recommended_* 解决
+- 真实 API 实测 AI 混用 HH:MM:SS / MM:SS 回 recommended 时间、偶发把推荐点写成全场末尾 → `_norm_rec_ts` 规范化 + drift 兜底
+- 真实 API 第一次跑把「2014 罐头事件」拆成 3 碎片全 D（degrade3 候选稀疏）→ 第二次跑（候选稍多）正确聚合为 99s 完整事件 B 级 78 分；归因为步骤 2 聚合在稀疏候选下的不稳定性（D-040），列后续候选
+
+**测试结果**：step3 离线 24/24；step1 23/23、step2 21/21 回归过；真实 API 51 分钟稿标准模式两次跑通（¥0.31/¥0.34），罐头事件正确聚合、动态时长跨 8s~99s、recommended 格式统一
+
+---
+
+## 2026-09-09  v0.4 第二步：事件聚合层（从「评价一句话」到「评价一件事」）
+
+**背景**：第一步把地基（词库纠错 + 反馈记录）打好了，这一步做 v0.4 最核心的一块——事件聚合层，解决需求五条问题里最痛的「AI 把完整事件拆成碎片」。
+
+**完成内容**：
+
+1. **本地粗聚类 `analysis/event_cluster.py`**：四个 soft signal（时间距离 / 时间重叠 / 主题相似二元组 / 相邻加分）给候选两两打关联分，连通分量成簇。设计红线（需求原文）：本地只提分组不删候选、无「超过 X 秒就断开」硬规则、孤立候选自成一簇。
+
+2. **AI 事件判断（Event Judge）**：`prompt_builder.build_event_judge_prompt` + `EVENT_JUDGE_SYSTEM`。给一簇候选 + 上下文原文，让 AI 判断是否同一件事，输出事件摘要/类型/边界/结构（setup/development/payoff）/最强爆点/置信度，支持 `need_more_context` 自适应扩大上下文。
+
+3. **聚合主编排 `_run_event_aggregation`**：粗聚类 → 逐簇 AI 判断 → 自适应扩大（最多 1 轮）→ 事件级去重（`_dedupe_events`）。跑完候选池从「爆点句子」变成「完整事件」，复审评分全部作用在事件上。
+
+**遇到的问题与修复（3 个真 bug，自测 + 真实 API 一起逼出来的）**：
+
+| 问题 | 怎么发现的 | 修复 |
+|---|---|---|
+| 复审提示词缺 event_id 字段，主流程却靠它按 id 对号入座 | 通读合并逻辑时发现 AI 漏条/乱序会错位 | 提示词 results 补 event_id，要求 AI 原样复制 |
+| 五维子分键名不一致：提示词 `hook_score` vs 解析器 `hook`，真实 API 下全会回落 5 分 | 真实 API 测试前通读 `_parse_review_reply` 时发现（v0.3.2 假客户端恰好回 `hook`，离线一直没暴露） | 解析器双键名都认 |
+| 事件拆分时共用 judge 边界 → 去重层把拆开的事件误合并 | 离线自测 E 场景「时间接近主题不同 → AI 拆开」失败 | `_make_event` 拆分分支改用候选自己的边界 |
+
+**测试结果**：
+- 离线自测 `test_v040_step2.py` **21/21 全过**（本地聚类 6 / 解析 3 / 事件生成 3 / 去重 2 / 聚合编排 5 / 事件级完整流程 3）
+- 真实 API 跑 51 分钟稿（标准模式，¥0.3078）：**19 候选 → 16 事件**，AI 合并 3 次、拆分 2 次、上下文扩大 2 次、judge 0 次失败、去重 0
+- 关键爆点「2014 罐头异物」从 2 个碎片正确聚合为 2.6 分钟完整事件（ev-012，B 级 7.8 分全场最高）
+- 动态时长生效：高光从 11 秒（一句话自嘲）到 162 秒（完整事件），不再固定 20/30 秒
+
+---
+
+## 2026-09-09  v0.4 第一步：词库纠错 + 人工反馈（先把输入弄干净、把判断攒下来）
+
+**背景**：用户下发《v0.4 版本开发需求》。v0.3 已完成全时间轴覆盖 / 候选召回 / AI 复审 / 评分体系 / 类型适配 / 成本控制，人工测试发现最大问题已经不是「找不到爆点」，而是五条：①排序和推荐不符合人工判断；②AI 把完整事件拆成多个碎片；③上下文不足导致「单看普通、放在故事里很有价值」的片段被埋；④S/A/B/C 等级表达不了剪辑价值；⑤固定时长限制不符合真实剪辑逻辑。
+v0.4 核心目标一句话：**让 AI 从寻找片段，升级为理解完整事件并判断传播价值**（D-025）。不增加大量新功能，优先提升 AI 判断质量。
+
+**需求共 7 项**：事件聚合层 / 上下文窗口（±60 秒，连续事件可扩到 ±3 分钟）/ 取消固定切片长度（AI 输出 recommended_duration 10 秒~5 分钟 + duration_reason）/ 100 分制评分 + 四档（开头 25 / 故事 25 / 人物 20 / 反差 20 / 独立 10；强推荐 85+）/ 事件重复合并（重叠 >50% 且主题相同）/ 人工反馈接口（本地 feedback.json）/ 词库与 ASR 纠错（custom_dictionary.json 基础版）。
+
+**完成内容（第一步，用户拍板先做本地基础）**：
+
+1. **现状摸底（先读代码再动手）**：确认 5 个关键约束——时长限制写死在提示词第 37 行（「成片时长建议在 30 秒 ~ 3 分钟」）；上下文是**字符数** 600 上限而非时间窗口，所以 AI 确实看不到前后文；复审是**一次调用审完所有候选**，事件级评价后原文变长必然装不下，架构要改分批；clip_id 只在最后 `_select_quantity` 才发，反馈接口需要它提前生成；现有五维权重里「故事完整度」只占 10，与事件级评价不匹配（v0.4 提到 25）
+
+2. **词库纠错**：新建 `analysis/dictionary.py` + `custom_dictionary.json`（分类：主播名字/游戏名称/品牌/网络热词/其他），纯字符串替换；接入 `pipeline.apply_dictionary`（识别完、存稿前），另给 `correct_existing_transcript` 处理历史稿
+
+3. **人工反馈**：新建 `analysis/feedback.py`，本地 `feedback.json`（JSON 数组），字段 clip_id / user_choice / reason / timestamp + snapshot
+
+**遇到问题**：
+
+1. **自测第 20 项失败**——「同一 clip_id 覆盖后 snapshot 丢失」。这不是测试写错了，是真问题：用户第二次反馈通常只改态度（不喜欢/缺上下文）、不会重新传片段信息，而 snapshot 存的是片段的客观特征，丢了将来就没法分析「用户喜欢什么样的片段」
+2. **快照继承的边界**：快照该不该跟着新反馈更新？如果片段被重新分析过（分数变了），旧快照就是过期的
+
+**解决方案**：
+
+1. 覆盖时**继承旧 snapshot**（新反馈没带就沿用旧的）——片段客观信息不随用户态度改变，见 D-027
+2. 边界保持简单：新反馈**带了** snapshot 就以新的为准（重新分析后自然更新），没带就继承。v0.4 不做更复杂的合并策略
+
+**测试结果**：
+- 离线自测 `test_v040_step1.py` **23/23 全过**（5 场景）：词库加载 6 项（含分类摊平/_注释跳过/缺文件/坏 JSON/扁平兼容/真实词库可读）、文本替换 4 项（含**长词优先**——「伏特加酒」不会被「伏特加」咬一半）、识别结果纠正 2 项（dict 与 Segment 对象都支持）、文字稿纠正 4 项（含**时间戳一个字没变**的关键验收、缺文件返回 0）、反馈记录 7 项（建文件/追加/同 id 覆盖/snapshot 继承/坏文件自愈/按 id 查询/统计文案）
+- 真实链路验证：`pipeline.apply_dictionary` 实测「福岛→伏特加」「和平经营→和平精英」替换成功，命中 2 处
+- `py_compile` 全过（dictionary / feedback / pipeline / config / analysis / ui）
+
+**未完成 / 下一步**：UI 的 👍/👎 按钮与词库管理页留到步骤 4；**步骤 2 事件聚合层**（本地按时间粗合并 + AI 校正，混合方案 D-026）已在 VERSION_PLAN 排好
+
+---
+
 ## 2026-09-09  v0.3.2 第二步：评分体系 v3（运营视角五维 + 五级分级 + 负面过滤）
 
 **背景**：v0.3.1 真实复测虽已「召回优先」出 7A/19B/10C，但用户人工复盘发现两个判断错误：
@@ -188,3 +276,108 @@
 - 提交 bd5dc20，标签 MVP-v0.1
 
 **测试结果**：6.5 分钟测试视频识别 41 句，时间戳准确；small 模型对嘈杂人声有错字（人名差），整体可用
+
+---
+
+## 2026-09-11  V0.4.2（评分/推荐解耦 + 内容结构层 + 新版 UI）
+
+**背景**：用户实测 51 分钟稿 → 13 条 B/C（最高 79.5 分）→ 「自动精选」输出 **0 条高光**。用户要求：先审查（不重构）、区分「内容评分」与「产品推荐」、再按 Chapter→Story→推荐剪辑 做新版 UI。
+
+**审查结论**
+- 根因：`_select_quantity` 自动精选 = `grade in ("S","A")`，把内容分级直接当推荐名单；`ai_recommend` 同一处绑定。**产品逻辑问题为主，非代码 bug**。
+- 结构缺口：Chapter/Story 只存在于 PoC 脚本并入的 meta，主流程结果 `structure` 缺失，UI 无法按结构展示。
+
+**改动**
+1. `_pick_recommendations()` 新增（A 优先 → B 补位 → C 兜底，D 永不推荐）；`_select_quantity` 三模式分支重写，推荐标记与 grade 解耦；新增 `recommended`/`recommend_tier`
+2. `story_context.load_structure()` / `build_content_structure()` 新增；`analyze_transcript_v2` 返回新增 `structure` 段（静默降级）
+3. ui.py 结果展示层重写：视频信息 → ⭐推荐剪辑 → 🧭直播内容结构 → 🔧开发者视图
+4. 新增 test_v040_step6.py / test_ui_selftest.py
+
+**测试结果**：step6 24/24；UI 自测 13/13；回归 step1~5 全过（23/21/24/17/11）；真实结果回放自动精选 0→8 条
+
+**未做（明确留给后续）**：Story 分割精度（ch-03 过渡段，O-001）、跨区块稀疏候选再合并（D-040）、S 级上限、D≥3 自动重审、词库管理页
+
+---
+
+## 2026-09-11  V0.4.3（界面去等级字母：展示层模糊化）
+
+**起因**：用户反馈界面上写「B 级 / C 级」，用户会以为 B/C 不值得剪，错过有观看价值的内容。
+
+**改动**
+1. `config.GRADE_UI`：S/A → 🌟 高光内容；B/C → ✨ 有看点（合并）；D → 不显示。新增 `GRADE_RANK`（仅内部排序）
+2. `config.RECOMMEND_TIER_LABEL`：重点推荐 / 推荐 / 值得一看 / 备选参考（去字母）
+3. `prompt_builder._NO_GRADE_RULE`：禁止 AI 写等级字母，追加到海选/复审/事件判断/报告四个 system
+4. `ui.py._soften()` 正则兜底 + 全部展示点接入；开发者视图保留 `grade=X` 并标注内部数据
+5. `analysis/__init__.py` 落选理由去字母；`analyze_v2.py` 控制台同步去字母
+6. `test_ui_selftest.py` 新增「界面不露分级字母」检查
+
+**未动**：五维权重、S/A/B/C/D 阈值、负面清单封顶、推荐筛选算法、内容结构层。内部 grade 仍是 S/A/B/C/D，JSON 数据不变。
+
+**测试结果**：UI 自测 15/15；step1~6 全量回归 23/21/24/17/11/24 零 FAIL
+
+---
+
+## 2026-09-11  V0.4.4（修复严重数据绑定 bug：Chapter/Story 与当前视频绑定）
+
+**起因（用户实测报告）**：用新视频分析时，「推荐剪辑」内容是正确的（来自本次分析），但「直播内容结构」**始终显示开发阶段那次 51 分钟测试视频的固定 Chapter 01/02/03/04**——换视频、重跑都不变。用户要求先定位根因再做最小修复，并给出两条硬要求：**每分析新视频必须得到该视频自己的 Video→Chapter→Story**；**绝不能固定读取 51 分钟结果、不能用开发样例当默认、不能静默 fallback 到另一场视频结构**。
+
+**根因定位**
+- Chapter/Story 分层**从未接进主流程**。它只在 PoC 阶段（`poc/v04_pipeline.py`）对一场 51 分钟测试视频跑过一次，产物写死为 `poc/story_segmentation_result.json`。
+- 主流程第 8 层 `analysis/story_context.load_structure()` **无条件读这个固定文件**；`load_story_groups()` 在 `source=None` 时也回落到它。
+- 结果：**结构恒定 = 那场 51 分钟视频的；推荐剪辑 = 本次视频的；两者不同源**。这不是评分/聚合层的问题，是「结构数据来源」问题。
+
+**改动（最小修复，不动已验证算法）**
+1. 新增 `analysis/chapter_story.py`：`cache_path_for` / `load_cached_structure`（只认同名 + 同时长）/ `save_cached_structure` / `segment_chapters` / `segment_stories` / `get_or_build_structure`（返回 `(data, source)`，source ∈ fresh/cache/empty）
+2. `analysis/story_context.py`：`source=None` 时 `load_structure()` 返回空结构、`load_story_groups()` 返回 `{}`；统一 `_read_structure_source()` / `_stories_of()` 入口，**绝不隐式加载固定文件**；兼容 `name`/`summary`（主流程 AI 输出）与 `story_title`/`story_summary`（PoC 夹具）
+3. `analysis/prompt_builder.py`：新增 `CHAPTER_SYSTEM` / `STORY_SYSTEM` + `build_chapter_prompt()` / `build_story_prompt()`（沿用已验证的切分方法论 + `_NO_GRADE_RULE`）
+4. `analysis/__init__.py`：第 8 层改为 `chapter_story.get_or_build_structure(client, tracker, transcript_path, events, duration, say)` **现算当前视频结构**；返回值新增 `structure_source`；`_run_event_aggregation()` 加 `transcript_path` 参数，Story 先验改读**本视频缓存**而非全局固定文件
+5. `config.py`：`STORY_CONTEXT` **删除** `"story_file"`（bug 源），新增 `"cache_dir": "structures"`；新增 `CHAPTER_STORY`（enabled / max_chapters / 输出 token 上限）
+6. `ui.py`：无结构降级文案去掉 `poc/story_segmentation_result.json` 引用
+7. 夹具隔离：`poc/story_segmentation_result.json` + `poc/ai_chapter_result.json` → `poc/fixtures/`；`poc/*.py` 与 `test_*.py` 路径同步并显式传夹具路径
+8. 新增 `test_v040_step7.py`（20 项验收）、`verify_v044_two_videos.py`（真实双视频验证）
+
+**当前 Chapter/Story 数据流（唯一正确路径）**
+```
+文字稿 → 事件发现/聚类/判断 → 事件列表
+  → chapter_story.get_or_build_structure(client, transcript_path, events, duration)
+      ├─ 先查 structures/<本稿名>.json（同名同时长 → source=cache）
+      └─ 否则用本稿事件现算 Chapter → Story（source=fresh）并写入本视频缓存
+  → 挂事件 + 派生 Story 评分 → 结果 structure → UI「直播内容结构」
+（与本次 highlights 出自同一次分析、同一批 event_id）
+```
+
+**测试结果**：test_v040_step7.py **20/20**（视频A/B 结构各自对应；连续运行不互相继承；推荐剪辑与结构同源；缓存按视频隔离、时长不匹配拒绝复用、无缓存返回 None；`load_structure()`/`load_story_groups()` 默认返回空、config 无 `story_file`、夹具已移走；step1~6 全量回归 OK）；test_ui_selftest.py **15/15**；真实双视频验证见 `v044_two_videos_report.txt`。
+
+**未动**：Event 层、本地聚类、AI 事件判断、评分体系（S/A/B/C/D）、推荐筛选算法（D-041）、Chapter/Story 软边界原则（D-025/D-026）。
+
+---
+
+## 2026-09-11  V0.4.5（修复本地 ASR 错误处理链路：分层提示 + 模型离线加载）
+
+**起因（用户实测）**：网页版「上传新视频识别」对**任何**视频都统一提示「视频处理失败，请换一个文件试试」——正常视频、损坏视频、无音轨视频完全一样，无法定位。
+
+**定位过程（实测复现，非猜测）**
+1. 照抄 ui.py 的调用方式跑 `pipeline.process_video(videos/测试视频.mp4)` → 抛 `httpx.ProxyError: 502 Bad Gateway`，`result=None`。
+2. 栈顶是 `huggingface_hub.hf_api.model_info` —— **加载模型时会联网做远程校验**，即使模型已在本地缓存。
+3. 查环境：`http_proxy=http://127.0.0.1:4492` → 访问 HuggingFace 被代理拦成 502。
+4. 验证修复可行性：`WhisperModel('small', device='cpu', compute_type='int8', local_files_only=True)` → **1.7s 加载成功**（完全离线）。
+5. 第二层根因：`extract_audio`/`process_video` 失败只 `return None`，ui.py 拿到 None 只能给一句通用提示；`except Exception` 还把 traceback 吞了（`SystemExit` 甚至抓不到）。
+
+**改动**
+1. 新增 `errors.py`：`ProcessError(stage, message, detail)` + 10 个 stage 常量（供 UI 映射）
+2. `pipeline.py`：新增 `check_video_readable()` 与 `probe_media()`（`ffmpeg -i` 解析 `Input #0` / `Audio:` / `Duration:`，关键字表判损坏）；`extract_audio()`/`process_video()` 改为**抛 ProcessError 而非返回 None**；`get_recognizer()` 只缓存成功结果
+3. `asr/local_whisper.py`：**离线优先加载**（`local_files_only=True`）→ 缓存缺该模型才联网下载；`ImportError`/`SystemExit(1)` 改抛 `ProcessError`；`transcribe()` 的 try 包住整个惰性生成器循环
+4. `asr/__init__.py`：`ASR_BACKEND` 写错抛 `ProcessError`
+5. `ui.py`：`_ASR_ERROR_UI` 十条分层文案；失败时展示 stage + 原始错误；**完整 traceback / 原始 detail / 控制台输出**进「🔧 开发者」折叠区
+6. `main.py`：try/except ProcessError，命令行也能看到出错层级
+7. 新增 `test_v045_asr_errors.py`（18 项）；`.gitignore` 加 `_test_media/` 等
+
+**测试用的媒体（`_test_media/`，均已 gitignore）**
+正常（真实片段，有音轨）/ 无音轨（`-an` 生成）/ 损坏（随机字节）/ 静音（有音轨无内容）/ 完整 6 分钟真实视频
+
+**测试结果**
+- test_v045_asr_errors.py **18/18**：7 种情况 stage 互不相同（正常=OK / no_audio_track / media_unreadable / model_missing / asr_empty / model_load / asr_inference）
+- 真实完整视频：`测试视频.mp4`（6:28）→ **41 句 / 85s**，模型「离线加载」成功
+- UI 自测 15/15；step1~6 回归全过
+
+**未动**：ASR 架构与阶段划分、Chapter/Story/Event/Highlight/Recommendation、评分体系。

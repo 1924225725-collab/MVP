@@ -1,0 +1,526 @@
+{
+  "transcript_segments": 2268,
+  "total_candidates": 18,
+  "chapters": [
+    {
+      "id": "ch-01",
+      "start": 0,
+      "end": 900,
+      "theme": "咖啡测评",
+      "candidates": [
+        {
+          "event_id": "ev-001",
+          "grade": "C",
+          "score": 51.0,
+          "start": 115,
+          "end": 209,
+          "duration": 94,
+          "title": "帮一个有病的，评论区全是帮忙的，你说你帮不帮？02:48 - 02:55",
+          "summary": "主播回应抽奖质疑后，解释无法帮助生病的粉丝，担心起头后患无穷。",
+          "source_count": 3,
+          "split": false
+        },
+        {
+          "event_id": "ev-002",
+          "grade": "B",
+          "score": 77.5,
+          "start": 275,
+          "end": 544,
+          "duration": 269,
+          "title": "主播拆开包装惊呼“我的妈呀，这么点啊，就一餐”，时间约06:50。",
+          "summary": "主播开美军单兵口粮，因分量小且陌生而惊讶，过程充满好奇与笑点。",
+          "source_count": 6,
+          "split": false
+        },
+        {
+          "event_id": "ev-003",
+          "grade": "C",
+          "score": 52.0,
+          "start": 626,
+          "end": 672,
+          "duration": 46,
+          "title": "主播连问多次'奶精是啥'的无知表现（约10:26-10:29）",
+          "summary": "主播在开袋测评时不知奶精为何物，经查与观众互动后确认，笑料百出。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-004",
+          "grade": "B",
+          "score": 72.0,
+          "start": 733,
+          "end": 811,
+          "duration": 78,
+          "title": "尝后说“挺好吃”的反差瞬间，约13:23。",
+          "summary": "主播试吃美军口粮饼干，从嫌弃像纸壳到觉得挺好吃，形成反差。",
+          "source_count": 3,
+          "split": false
+        }
+      ]
+    },
+    {
+      "id": "ch-02",
+      "start": 900,
+      "end": 1800,
+      "theme": "咖啡测评",
+      "candidates": [
+        {
+          "event_id": "ev-005",
+          "grade": "A",
+          "score": 80.0,
+          "start": 1013,
+          "end": 1026,
+          "duration": 13,
+          "title": "主播说‘好辣呀’及后续‘好咸的’的表情反应，约在16:55-17:03。",
+          "summary": "主播试吃美军口粮中的切达芝士抹酱，原以为是普通奶酪，结果超辣超咸，反差强烈。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-006",
+          "grade": "B",
+          "score": 62.0,
+          "start": 1309,
+          "end": 1330,
+          "duration": 21,
+          "title": "主播打开美军咖啡包装时咖啡粒撒漏的狼狈场景（约22:08-22:10）",
+          "summary": "主播对比美军咖啡与花小龙咖啡，美军咖啡撒漏麻烦，花小龙更胜一筹。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-007",
+          "grade": "B",
+          "score": 73.0,
+          "start": 1411,
+          "end": 1443,
+          "duration": 32,
+          "title": "吐槽“这怎么还是咖啡粒呢” 和“像感冒颗粒”，时间约23:42",
+          "summary": "主播吐槽美军咖啡是颗粒状像感冒颗粒，吐槽犀利有梗。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-008",
+          "grade": "D",
+          "score": 37.5,
+          "start": 1500,
+          "end": 1530,
+          "duration": 30,
+          "title": "咖啡没融完直接喝？主播慌了",
+          "summary": "主播反复说'输容了'但实际没融，反差尴尬，观众想看后续",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-009",
+          "grade": "B",
+          "score": 76.5,
+          "start": 1535,
+          "end": 1575,
+          "duration": 40,
+          "title": "差点把防腐剂当咖啡配料？",
+          "summary": "主播误把防腐剂当咖啡配料，弹幕提醒后反转，有悬念和笑点",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-010",
+          "grade": "B",
+          "score": 70.5,
+          "start": 1632,
+          "end": 1767,
+          "duration": 135,
+          "title": "'便宜过就得了'配合一口闷两杯咖啡的豪爽举动，约29:00-29:27",
+          "summary": "主播测评咖啡，被指出没搅开，后硬喝两杯强调不浪费，金句频出。",
+          "source_count": 3,
+          "split": false
+        }
+      ]
+    },
+    {
+      "id": "ch-03",
+      "start": 1800,
+      "end": 2700,
+      "theme": "罐头测评",
+      "candidates": [
+        {
+          "event_id": "ev-011",
+          "grade": "B",
+          "score": 68.5,
+          "start": 1857,
+          "end": 1932,
+          "duration": 75,
+          "title": "主播说'微波炉白买了'被纠正'吃外奈'时的冲突感，约31:13-31:17。",
+          "summary": "主播试吃单兵口粮，赞叹好吃，因吃法引误会，被吐槽忘本，最终接受。",
+          "source_count": 3,
+          "split": false
+        },
+        {
+          "event_id": "ev-017",
+          "grade": "D",
+          "score": 29.5,
+          "start": 1993,
+          "end": 2013,
+          "duration": 20,
+          "title": "国产的牛逼罐头？",
+          "summary": "从误认到确认国产罐头，有认知反差，简短有梗。",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-018",
+          "grade": "C",
+          "score": 32.5,
+          "start": 2018,
+          "end": 2069,
+          "duration": 51,
+          "title": "俄罗斯口粮疑似有窝的搞？",
+          "summary": "主播发现疑似不对物品，反应强烈，连续'不是'制造悬念，引发好奇。",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-013",
+          "grade": "D",
+          "score": 45.0,
+          "start": 2148,
+          "end": 2169,
+          "duration": 21,
+          "title": "主播承认“不认识俄语”的瞬间，约35:53。",
+          "summary": "主播不识俄语罐头标签，慌乱装懂搞笑猜测，观众乐见其翻车。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-012",
+          "grade": "B",
+          "score": 77.5,
+          "start": 2239,
+          "end": 2381,
+          "duration": 142,
+          "title": "37:32 主播直呼一四年罐头能干，奠定荒诞基调，或39:36嫌弃牛肉像猫罐头成",
+          "summary": "主播发现超长保质期罐头，开罐翻车后狂玩梗吐槽，最终嫌弃牛肉像猫罐头。",
+          "source_count": 3,
+          "split": false
+        },
+        {
+          "event_id": "ev-014",
+          "grade": "B",
+          "score": 73.5,
+          "start": 2510,
+          "end": 2610,
+          "duration": 100,
+          "title": "主播尝后嫌弃说'墙皮'，约43:13。",
+          "summary": "主播试吃压缩饼干，吐槽难吃到像墙皮，嫌弃变形。",
+          "source_count": 2,
+          "split": false
+        }
+      ]
+    },
+    {
+      "id": "ch-04",
+      "start": 2700,
+      "end": 3065,
+      "theme": "晚餐/微波炉",
+      "candidates": [
+        {
+          "event_id": "ev-015",
+          "grade": "B",
+          "score": 67.5,
+          "start": 2886,
+          "end": 2932,
+          "duration": 46,
+          "title": "主播说“这不像饭，这像蛋白质”并反复强调，时间约在48:30-48:34。",
+          "summary": "主播评价罐头配的大米饭硬得像蛋白质，夸张反应引发反差笑点。",
+          "source_count": 2,
+          "split": false
+        },
+        {
+          "event_id": "ev-016",
+          "grade": "B",
+          "score": 78.5,
+          "start": 2978,
+          "end": 3065,
+          "duration": 87,
+          "title": "主播自曝高血脂脂肪肝后继续大口吃油，形成幽默反差（约50:12）。",
+          "summary": "主播加热米饭引发微波炉炸裂，随后试吃高油脂‘蛋糕’和牛腩，自嘲高血脂仍狂吃，三勺饭配大块肉称绝对够用。",
+          "source_count": 4,
+          "split": false
+        }
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "chapter_id": "ch-01",
+      "candidates": [
+        {
+          "event_id": "ev-001",
+          "grade": "C",
+          "score": 51.0,
+          "start": 115,
+          "end": 209,
+          "duration": 94,
+          "title": "帮一个有病的，评论区全是帮忙的，你说你帮不帮？02:48 - 02:55",
+          "summary": "主播回应抽奖质疑后，解释无法帮助生病的粉丝，担心起头后患无穷。",
+          "source_count": 3,
+          "split": false
+        },
+        {
+          "event_id": "ev-002",
+          "grade": "B",
+          "score": 77.5,
+          "start": 275,
+          "end": 544,
+          "duration": 269,
+          "title": "主播拆开包装惊呼“我的妈呀，这么点啊，就一餐”，时间约06:50。",
+          "summary": "主播开美军单兵口粮，因分量小且陌生而惊讶，过程充满好奇与笑点。",
+          "source_count": 6,
+          "split": false
+        },
+        {
+          "event_id": "ev-003",
+          "grade": "C",
+          "score": 52.0,
+          "start": 626,
+          "end": 672,
+          "duration": 46,
+          "title": "主播连问多次'奶精是啥'的无知表现（约10:26-10:29）",
+          "summary": "主播在开袋测评时不知奶精为何物，经查与观众互动后确认，笑料百出。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-004",
+          "grade": "B",
+          "score": 72.0,
+          "start": 733,
+          "end": 811,
+          "duration": 78,
+          "title": "尝后说“挺好吃”的反差瞬间，约13:23。",
+          "summary": "主播试吃美军口粮饼干，从嫌弃像纸壳到觉得挺好吃，形成反差。",
+          "source_count": 3,
+          "split": false
+        }
+      ],
+      "start": 115,
+      "end": 811,
+      "duration": 696
+    },
+    {
+      "chapter_id": "ch-02",
+      "candidates": [
+        {
+          "event_id": "ev-005",
+          "grade": "A",
+          "score": 80.0,
+          "start": 1013,
+          "end": 1026,
+          "duration": 13,
+          "title": "主播说‘好辣呀’及后续‘好咸的’的表情反应，约在16:55-17:03。",
+          "summary": "主播试吃美军口粮中的切达芝士抹酱，原以为是普通奶酪，结果超辣超咸，反差强烈。",
+          "source_count": 1,
+          "split": false
+        }
+      ],
+      "start": 1013,
+      "end": 1026,
+      "duration": 13
+    },
+    {
+      "chapter_id": "ch-02",
+      "candidates": [
+        {
+          "event_id": "ev-006",
+          "grade": "B",
+          "score": 62.0,
+          "start": 1309,
+          "end": 1330,
+          "duration": 21,
+          "title": "主播打开美军咖啡包装时咖啡粒撒漏的狼狈场景（约22:08-22:10）",
+          "summary": "主播对比美军咖啡与花小龙咖啡，美军咖啡撒漏麻烦，花小龙更胜一筹。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-007",
+          "grade": "B",
+          "score": 73.0,
+          "start": 1411,
+          "end": 1443,
+          "duration": 32,
+          "title": "吐槽“这怎么还是咖啡粒呢” 和“像感冒颗粒”，时间约23:42",
+          "summary": "主播吐槽美军咖啡是颗粒状像感冒颗粒，吐槽犀利有梗。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-008",
+          "grade": "D",
+          "score": 37.5,
+          "start": 1500,
+          "end": 1530,
+          "duration": 30,
+          "title": "咖啡没融完直接喝？主播慌了",
+          "summary": "主播反复说'输容了'但实际没融，反差尴尬，观众想看后续",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-009",
+          "grade": "B",
+          "score": 76.5,
+          "start": 1535,
+          "end": 1575,
+          "duration": 40,
+          "title": "差点把防腐剂当咖啡配料？",
+          "summary": "主播误把防腐剂当咖啡配料，弹幕提醒后反转，有悬念和笑点",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-010",
+          "grade": "B",
+          "score": 70.5,
+          "start": 1632,
+          "end": 1767,
+          "duration": 135,
+          "title": "'便宜过就得了'配合一口闷两杯咖啡的豪爽举动，约29:00-29:27",
+          "summary": "主播测评咖啡，被指出没搅开，后硬喝两杯强调不浪费，金句频出。",
+          "source_count": 3,
+          "split": false
+        }
+      ],
+      "start": 1309,
+      "end": 1767,
+      "duration": 458
+    },
+    {
+      "chapter_id": "ch-03",
+      "candidates": [
+        {
+          "event_id": "ev-011",
+          "grade": "B",
+          "score": 68.5,
+          "start": 1857,
+          "end": 1932,
+          "duration": 75,
+          "title": "主播说'微波炉白买了'被纠正'吃外奈'时的冲突感，约31:13-31:17。",
+          "summary": "主播试吃单兵口粮，赞叹好吃，因吃法引误会，被吐槽忘本，最终接受。",
+          "source_count": 3,
+          "split": false
+        },
+        {
+          "event_id": "ev-017",
+          "grade": "D",
+          "score": 29.5,
+          "start": 1993,
+          "end": 2013,
+          "duration": 20,
+          "title": "国产的牛逼罐头？",
+          "summary": "从误认到确认国产罐头，有认知反差，简短有梗。",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-018",
+          "grade": "C",
+          "score": 32.5,
+          "start": 2018,
+          "end": 2069,
+          "duration": 51,
+          "title": "俄罗斯口粮疑似有窝的搞？",
+          "summary": "主播发现疑似不对物品，反应强烈，连续'不是'制造悬念，引发好奇。",
+          "source_count": 1,
+          "split": true
+        },
+        {
+          "event_id": "ev-013",
+          "grade": "D",
+          "score": 45.0,
+          "start": 2148,
+          "end": 2169,
+          "duration": 21,
+          "title": "主播承认“不认识俄语”的瞬间，约35:53。",
+          "summary": "主播不识俄语罐头标签，慌乱装懂搞笑猜测，观众乐见其翻车。",
+          "source_count": 1,
+          "split": false
+        },
+        {
+          "event_id": "ev-012",
+          "grade": "B",
+          "score": 77.5,
+          "start": 2239,
+          "end": 2381,
+          "duration": 142,
+          "title": "37:32 主播直呼一四年罐头能干，奠定荒诞基调，或39:36嫌弃牛肉像猫罐头成",
+          "summary": "主播发现超长保质期罐头，开罐翻车后狂玩梗吐槽，最终嫌弃牛肉像猫罐头。",
+          "source_count": 3,
+          "split": false
+        }
+      ],
+      "start": 1857,
+      "end": 2381,
+      "duration": 524
+    },
+    {
+      "chapter_id": "ch-03",
+      "candidates": [
+        {
+          "event_id": "ev-014",
+          "grade": "B",
+          "score": 73.5,
+          "start": 2510,
+          "end": 2610,
+          "duration": 100,
+          "title": "主播尝后嫌弃说'墙皮'，约43:13。",
+          "summary": "主播试吃压缩饼干，吐槽难吃到像墙皮，嫌弃变形。",
+          "source_count": 2,
+          "split": false
+        }
+      ],
+      "start": 2510,
+      "end": 2610,
+      "duration": 100
+    },
+    {
+      "chapter_id": "ch-04",
+      "candidates": [
+        {
+          "event_id": "ev-015",
+          "grade": "B",
+          "score": 67.5,
+          "start": 2886,
+          "end": 2932,
+          "duration": 46,
+          "title": "主播说“这不像饭，这像蛋白质”并反复强调，时间约在48:30-48:34。",
+          "summary": "主播评价罐头配的大米饭硬得像蛋白质，夸张反应引发反差笑点。",
+          "source_count": 2,
+          "split": false
+        },
+        {
+          "event_id": "ev-016",
+          "grade": "B",
+          "score": 78.5,
+          "start": 2978,
+          "end": 3065,
+          "duration": 87,
+          "title": "主播自曝高血脂脂肪肝后继续大口吃油，形成幽默反差（约50:12）。",
+          "summary": "主播加热米饭引发微波炉炸裂，随后试吃高油脂‘蛋糕’和牛腩，自嘲高血脂仍狂吃，三勺饭配大块肉称绝对够用。",
+          "source_count": 4,
+          "split": false
+        }
+      ],
+      "start": 2886,
+      "end": 3065,
+      "duration": 179
+    }
+  ],
+  "current_b1_stats": {
+    "total_events": 18,
+    "single_candidate": 9,
+    "small_frags_le28": 4,
+    "gt60_events": 8
+  }
+}

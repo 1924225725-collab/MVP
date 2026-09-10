@@ -1,0 +1,875 @@
+{
+  "meta": {
+    "transcript": "C:\\Users\\admin\\WorkBuddy\\20260908235421\\live_clipper\\transcripts\\测试视频2.txt",
+    "live_type": "娱乐聊天",
+    "token_mode": "标准",
+    "quantity_mode": "候选池",
+    "custom_count": null,
+    "duration": "51:39",
+    "chunk_count": 13,
+    "candidate_count": 22,
+    "degrade_level": 3,
+    "miss_check_chunks": [],
+    "event_stats": {
+      "clusters": 11,
+      "merged": 8,
+      "split": 3,
+      "expanded": 1,
+      "judge_calls": 12,
+      "judge_failed": 0,
+      "deduped": 0,
+      "events": 14
+    },
+    "v04_story_layer": true,
+    "v04_chapters": [
+      {
+        "chapter_id": "ch-01",
+        "start_time": "01:55",
+        "end_time": "03:29",
+        "chapter_title": "情感互动与回应质疑",
+        "chapter_summary": "主播回应抽奖质疑，并解释无法帮助生病的粉丝，担心起头后患无穷。",
+        "boundary_reason": "内容从互动答疑转向开箱食物",
+        "event_ids": [
+          "ev-001"
+        ]
+      },
+      {
+        "chapter_id": "ch-02",
+        "start_time": "04:35",
+        "end_time": "29:27",
+        "chapter_title": "美军单兵口粮测评",
+        "chapter_summary": "主播开箱试吃美军口粮，包含饼干、芝士酱、咖啡等，充满搞笑反差与吐槽。",
+        "boundary_reason": "转入口粮主要测评环节",
+        "event_ids": [
+          "ev-002",
+          "ev-003",
+          "ev-004",
+          "ev-005",
+          "ev-006",
+          "ev-007",
+          "ev-008",
+          "ev-009",
+          "ev-010"
+        ]
+      },
+      {
+        "chapter_id": "ch-03",
+        "start_time": "30:57",
+        "end_time": "36:09",
+        "chapter_title": "美军单兵口粮后续与俄罗斯口粮预告",
+        "chapter_summary": "主播继续试吃，赞叹好吃但遭吐槽，随后过渡到俄罗斯口粮的悬念调侃。",
+        "boundary_reason": "从美军口粮转向俄罗斯口粮",
+        "event_ids": [
+          "ev-011",
+          "ev-017",
+          "ev-018",
+          "ev-013"
+        ]
+      },
+      {
+        "chapter_id": "ch-04",
+        "start_time": "37:19",
+        "end_time": "51:05",
+        "chapter_title": "俄罗斯口粮深度测评与健康自嘲",
+        "chapter_summary": "主播测评俄罗斯口粮，从罐头到压缩饼干到米饭，高能吐槽连连，并以自嘲方式结束直播。",
+        "boundary_reason": "主题为俄罗斯口粮测评",
+        "event_ids": [
+          "ev-012",
+          "ev-014",
+          "ev-015",
+          "ev-016"
+        ]
+      }
+    ],
+    "v04_story_mapping": {
+      "ch-01-st-01": {
+        "title": "回应抽奖质疑与生病粉丝求助",
+        "events": [
+          "ev-002",
+          "ev-001"
+        ]
+      },
+      "ch-02-st-01": {
+        "title": "开箱初体验：惊讶与好奇",
+        "events": [
+          "ev-003"
+        ]
+      },
+      "ch-02-st-02": {
+        "title": "饼干试吃：从嫌弃到好评",
+        "events": [
+          "ev-004"
+        ]
+      },
+      "ch-02-st-03": {
+        "title": "切达芝士抹酱的辣咸反差",
+        "events": []
+      },
+      "ch-02-st-04": {
+        "title": "咖啡测评：吐槽与豪饮",
+        "events": [
+          "ev-005",
+          "ev-006"
+        ]
+      },
+      "ch-03-st-01": {
+        "title": "主播试吃单兵口粮引发误会并发现可疑物品",
+        "events": [
+          "ev-007"
+        ]
+      },
+      "ch-03-st-02": {
+        "title": "主播不识俄语标签翻车",
+        "events": []
+      },
+      "ch-04-st-01": {
+        "title": "超长保质期罐头试吃",
+        "events": [
+          "ev-008"
+        ]
+      },
+      "ch-04-st-02": {
+        "title": "压缩饼干试吃吐槽",
+        "events": [
+          "ev-009"
+        ]
+      },
+      "ch-04-st-03": {
+        "title": "罐头米饭与高油脂食品试吃",
+        "events": [
+          "ev-011",
+          "ev-012",
+          "ev-013"
+        ]
+      }
+    },
+    "elapsed_seconds": 76.1
+  },
+  "highlights": [
+    {
+      "clip_id": "ev-005",
+      "start_time": "21:11",
+      "end_time": "22:09",
+      "title": "对品牌方鞠躬道歉（约21:55）",
+      "highlight_type": "梗型",
+      "score": 79.5,
+      "first_round_score": 7,
+      "grade": "B",
+      "reason": "主播一本正经对比军粮咖啡和品牌咖啡，还对品牌方鞠躬道歉，反差喜感强。",
+      "why_cut": "陌生观众会被'测评军粮咖啡突然向品牌方鞠躬道歉'的意外举动吸引，核心传播点是反差道歉的喜剧效果。",
+      "risk": "需要知道花小龙是知名咖啡品牌才懂梗，但主播表演足以独立逗笑。",
+      "negative_flags": [],
+      "dims": {
+        "三秒吸引力（权重30%）": 8,
+        "反差/意外（权重25%）": 8,
+        "人物表现力（权重20%）": 9,
+        "独立成片（权重15%）": 7,
+        "事件完整度（权重10%）": 7
+      },
+      "category": "金句",
+      "viral_probability": "中",
+      "editing_advice": "开头直接放『对不起了花小龙』和咖啡对比特写，抓住荒诞感。",
+      "confidence": 0.8,
+      "ai_recommend": false,
+      "event_id": "ev-005",
+      "cluster_id": "cluster-005",
+      "story_id": "ch-02-st-04",
+      "summary": "主播试喝美军单兵口粮咖啡，一本正经对比并鞠躬道歉，反差搞笑。",
+      "structure": {
+        "setup": "主播从口粮包里发现咖啡，准备试喝。",
+        "development": "冲泡后一本正经对比军粮咖啡与品牌咖啡，突然对品牌方鞠躬道歉。",
+        "payoff": "反差道歉与自嘲引发笑点。"
+      },
+      "strongest_moment": "对品牌方鞠躬道歉（约21:55）",
+      "source_candidates": [
+        "clip-007"
+      ],
+      "source_count": 1,
+      "duration": 58,
+      "event_type": "试吃翻车",
+      "judge_reason": "片段围绕试喝单兵口粮咖啡这一个对象，前后连贯，属于同一事件。",
+      "judge_confidence": 0.9,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "21:47",
+      "recommended_end": "22:09",
+      "recommended_duration": 22,
+      "duration_reason": "从发现咖啡到对比道歉的完整搞笑桥段，短小精悍，保留鞠躬道歉的爆点。"
+    },
+    {
+      "clip_id": "ev-004",
+      "start_time": "12:35",
+      "end_time": "13:30",
+      "title": "咬了一口后吐槽'老店们存存的纸壳'（13:03-13:10）",
+      "highlight_type": "情绪型",
+      "score": 72.5,
+      "first_round_score": 7,
+      "grade": "B",
+      "reason": "开头即见主播吐槽饼干像纸壳、劣质感，反差强烈引发好奇围观",
+      "why_cut": "陌生观众会被'美军口粮饼干像纸壳'的夸张吐槽吸引，核心传播点是品尝后态度反转的搞笑效果。",
+      "risk": "开头背景提及美军口粮，但内容低门槛易懂；主播口音可能影响理解，但字幕可解决。",
+      "negative_flags": [],
+      "dims": {
+        "三秒吸引力（权重30%）": 7,
+        "反差/意外（权重25%）": 7,
+        "人物表现力（权重20%）": 7,
+        "独立成片（权重15%）": 8,
+        "事件完整度（权重10%）": 8
+      },
+      "category": "情绪",
+      "viral_probability": "中",
+      "editing_advice": "开头3秒用『我的天』惊讶表情+『这么劣质』字幕，快速剪辑试吃反应",
+      "confidence": 0.8,
+      "ai_recommend": false,
+      "event_id": "ev-004",
+      "cluster_id": "cluster-004",
+      "story_id": "ch-02-st-02",
+      "summary": "主播开箱美军单兵口粮，吐槽饼干像纸壳太劣质，尝后又说味道还行。",
+      "structure": {
+        "setup": "主播拆开美军单兵口粮，拿出一块饼干，先怀疑'这肯定不是压缩饼干'",
+        "development": "辨认出是饼干后惊呼'我的天，这么劣质的感觉'，嘉宾调侃'你现在优秀太高了'，随后主播咬了一口",
+        "payoff": "尝后吐槽'打头像纸壳子''就存纸壳''啥味没有就饼干味'，最后反转说'挺好吃，还有吗'"
+      },
+      "strongest_moment": "咬了一口后吐槽'老店们存存的纸壳'（13:03-13:10）",
+      "source_candidates": [
+        "clip-006"
+      ],
+      "source_count": 1,
+      "duration": 55,
+      "event_type": "试吃翻车",
+      "judge_reason": "单候选，围绕同一包美军口粮饼干的辨认→吐槽劣质→试吃→评价，构成完整试吃事件。",
+      "judge_confidence": 0.85,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "12:35",
+      "recommended_end": "13:24",
+      "recommended_duration": 49,
+      "duration_reason": "需要保留从发现饼干到品尝吐槽的完整过程，以及最后反转说好吃，才能形成完整故事。"
+    },
+    {
+      "clip_id": "ev-008",
+      "start_time": "36:12",
+      "end_time": "39:50",
+      "title": "嘉宾吐槽把牛肉罐头说成猫罐头（39:39-39:50）",
+      "highlight_type": "事件型",
+      "score": 70.0,
+      "first_round_score": 8,
+      "grade": "B",
+      "reason": "罐头过期四年，主播硬核试吃，新用户好奇能不能吃、会不会翻车。",
+      "why_cut": "过期五年罐头挑战+猫罐头吐槽，风险感和荒诞感让陌生人想看完。",
+      "risk": "长度较长，画面依赖开罐过程，剪辑需紧凑。",
+      "negative_flags": [],
+      "dims": {
+        "三秒吸引力（权重30%）": 7,
+        "反差/意外（权重25%）": 7,
+        "人物表现力（权重20%）": 7,
+        "独立成片（权重15%）": 7,
+        "事件完整度（权重10%）": 7
+      },
+      "category": "其他",
+      "viral_probability": "高",
+      "editing_advice": "开头直接黑屏字幕『二二年产的罐头，主播当场试吃』，3秒后进画面。",
+      "confidence": 0.8,
+      "ai_recommend": false,
+      "event_id": "ev-008",
+      "cluster_id": "cluster-008",
+      "story_id": "ch-04-st-01",
+      "summary": "主播发现过期多年的罐头，坚持试吃，和嘉宾一起开罐调侃像猫罐头。",
+      "structure": {
+        "setup": "主播检查一堆俄语罐头，发现一个保质期到2022年的牛肉罐头，已经过期近五年。",
+        "development": "主播坚称罐头密封杀菌没事能吃，决定开罐，但找不到工具，手忙脚乱。",
+        "payoff": "打开后，主播和嘉宾把高档牛肉罐头比喻成猫罐头，制造荒诞笑点。"
+      },
+      "strongest_moment": "嘉宾吐槽把牛肉罐头说成猫罐头（39:39-39:50）",
+      "source_candidates": [
+        "clip-014",
+        "clip-015",
+        "clip-016"
+      ],
+      "source_count": 3,
+      "duration": 218,
+      "event_type": "试吃翻车",
+      "judge_reason": "候选都围绕同一个过期牛肉罐头的试吃过程，从发现过期到开罐再到调侃，环环相扣，属于同一事件。",
+      "judge_confidence": 0.9,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "37:18",
+      "recommended_end": "39:50",
+      "recommended_duration": 152,
+      "duration_reason": "需要保留发现过期、坚持开罐、找不到工具到用猫罐头比喻的完整戏剧过程。"
+    },
+    {
+      "clip_id": "ev-009",
+      "start_time": "42:33",
+      "end_time": "43:30",
+      "title": "43:13 主播尝后直接喊出'墙皮'，并描述像学校墙皮掉落的质感",
+      "highlight_type": "梗型",
+      "score": 69.5,
+      "first_round_score": 8,
+      "grade": "B",
+      "reason": "『墙皮』比喻压缩饼干，反复强调+夸张吐槽，荒诞感强，是新用户能秒懂的梗。",
+      "why_cut": "压缩饼干难吃到像墙皮，夸张个人标签式吐槽让人想看完。",
+      "risk": "画面冲击依赖剪辑放大表情，开头稍平。",
+      "negative_flags": [],
+      "dims": {
+        "三秒吸引力（权重30%）": 7,
+        "反差/意外（权重25%）": 6,
+        "人物表现力（权重20%）": 8,
+        "独立成片（权重15%）": 7,
+        "事件完整度（权重10%）": 7
+      },
+      "category": "金句",
+      "viral_probability": "中",
+      "editing_advice": "开头直接上『墙皮』二字配咬饼干画面，再叠主播难受表情。",
+      "confidence": 0.8,
+      "ai_recommend": false,
+      "event_id": "ev-009",
+      "cluster_id": "cluster-009",
+      "story_id": "ch-04-st-02",
+      "summary": "主播打开压缩饼干试吃，发现难吃到极致，用啃墙皮比喻反复吐槽夸张吐槽。",
+      "structure": {
+        "setup": "主播准备打开压缩饼干品尝，前面铺垫了很多其他食物",
+        "development": "打开饼干尝了一口，发现味道极其难吃，用啃学校墙皮脱落来比喻",
+        "payoff": "反复强调像墙皮，引发荒诞感强烈的吐槽"
+      },
+      "strongest_moment": "43:13 主播尝后直接喊出'墙皮'，并描述像学校墙皮掉落的质感",
+      "source_candidates": [
+        "clip-017"
+      ],
+      "source_count": 1,
+      "duration": 57,
+      "event_type": "试吃翻车",
+      "judge_reason": "全程围绕同一包压缩饼干，从打开到试吃再到吐槽，环环相扣，是完整事件。",
+      "judge_confidence": 0.95,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "42:48",
+      "recommended_end": "43:30",
+      "recommended_duration": 42,
+      "duration_reason": "从开包装到尝后'墙皮'吐槽和反复强调，完整体现反差和笑点。"
+    },
+    {
+      "clip_id": "ev-011",
+      "start_time": "47:49",
+      "end_time": "49:53",
+      "title": "微波炉加热米饭炸了！主播当场崩溃",
+      "highlight_type": "事件型",
+      "score": 69.5,
+      "first_round_score": 7,
+      "grade": "B",
+      "reason": "离奇翻车：米饭进微波炉炸开，强意外+主播夸张反应，陌生观众会想看结果",
+      "why_cut": "微波炉炸开米饭是强意外事件，主播夸张喊叫形成传播点，陌生人会好奇结果而停留",
+      "risk": "事件发生在直播中段，前面加热过程较长，剪太短可能没头没尾，依赖剪辑节奏",
+      "negative_flags": [],
+      "dims": {
+        "三秒吸引力（权重30%）": 8,
+        "反差/意外（权重25%）": 7,
+        "人物表现力（权重20%）": 7,
+        "独立成片（权重15%）": 6,
+        "事件完整度（权重10%）": 5
+      },
+      "category": "操作",
+      "viral_probability": "中",
+      "editing_advice": "开头3秒直接放爆炸瞬间+主播惊呼，再倒叙前因，结尾保留崩溃表情",
+      "confidence": 0.7,
+      "ai_recommend": false,
+      "event_id": "ev-011",
+      "cluster_id": "cluster-011",
+      "story_id": "ch-04-st-03",
+      "summary": "离奇翻车：米饭进微波炉炸开，强意外+主播夸张反应，陌生观众会想看结果",
+      "structure": {},
+      "strongest_moment": "",
+      "source_candidates": [
+        "clip-019"
+      ],
+      "source_count": 1,
+      "duration": 124,
+      "event_type": "事件型",
+      "judge_reason": "候选片段主题不同：clip-019是微波炉炸米饭的突发状况；clip-020-022是吃额干的连续互动，但彼此主题一致。两者不属于同一事件。",
+      "judge_confidence": 0.95,
+      "split_by_ai": true,
+      "reject_reason_kind": "",
+      "recommended_start": "49:38",
+      "recommended_end": "49:53",
+      "recommended_duration": 15,
+      "duration_reason": "需要保留从有人说「炸了」到主播夸张喊「微波炸了」的完整反应链条，太短会失去冲击力，太长会引入无关内容"
+    },
+    {
+      "clip_id": "ev-002",
+      "start_time": "02:10",
+      "end_time": "03:28",
+      "title": "03:00 对开这个头，对没法开的——主播明确拒绝帮有病的人，因为一开头就收不住",
+      "highlight_type": "观点型",
+      "score": 65.0,
+      "first_round_score": 8,
+      "grade": "B",
+      "reason": "主播直言抽奖只帮正常生活的人，不帮有病或没工作的，真实敢说引发争议。",
+      "why_cut": "陌生观众被主播直白拒绝帮助病人的强硬态度吸引，核心传播点是‘帮不了’的真实人性冲突和‘怕开先例’的争议性观点。",
+      "risk": "依赖具体直播背景（抽奖争议），陌生观众可能缺乏前因后果的理解。",
+      "negative_flags": [
+        "依赖上下文"
+      ],
+      "dims": {
+        "三秒吸引力（权重30%）": 6,
+        "反差/意外（权重25%）": 7,
+        "人物表现力（权重20%）": 7,
+        "独立成片（权重15%）": 5,
+        "事件完整度（权重10%）": 8
+      },
+      "category": "观点",
+      "viral_probability": "高",
+      "editing_advice": "开头3秒用主播认真脸+字幕『有病我真帮不了』，制造冲突感。",
+      "confidence": 0.7,
+      "ai_recommend": false,
+      "event_id": "ev-002",
+      "cluster_id": "cluster-002",
+      "story_id": "ch-01-st-01",
+      "summary": "主播回应抽奖争议，直言抽奖只帮生活正常的人，有病或没工作的帮不了，怕开先例。",
+      "structure": {
+        "setup": "弹幕质疑主播抽奖欺骗，有人诉苦生病求帮忙。",
+        "development": "主播解释抽奖初衷是给生活正常的人添点吃喝，但真有病或没工作的帮不了，因为怕一开先例评论区全是有病求助的，不帮心里过不去，帮了又没完。",
+        "payoff": "主播坚定表态：一个那种有病的都帮不了，这个头不能开，否则就变味了。"
+      },
+      "strongest_moment": "03:00 对开这个头，对没法开的——主播明确拒绝帮有病的人，因为一开头就收不住。",
+      "source_candidates": [
+        "clip-002"
+      ],
+      "source_count": 1,
+      "duration": 78,
+      "event_type": "金句吐槽",
+      "judge_reason": "整个片段围绕抽奖该不该帮有病的人这一主题，从弹幕质疑到主播解释拒绝理由，上下文连贯，属同一事件。",
+      "judge_confidence": 0.95,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "02:17",
+      "recommended_end": "03:28",
+      "recommended_duration": 71,
+      "duration_reason": "需要保留从‘生病真帮不了’到‘怕开先例’的完整论述，形成主播坚定表态的逻辑闭环，共71秒完整展现其观点和情绪。"
+    },
+    {
+      "clip_id": "ev-001",
+      "start_time": "00:45",
+      "end_time": "02:35",
+      "title": "主播崩溃连续重复‘许愿’（00:52-01:09）",
+      "highlight_type": "情绪型",
+      "score": 63.5,
+      "first_round_score": 7,
+      "grade": "B",
+      "reason": "满屏许愿弹幕逼疯主播，真实崩溃反应有代入感，观众想看主播如何应对。",
+      "why_cut": "陌生观众会被主播崩溃重复‘许愿’的魔性反应吸引，核心传播点是这种情绪失控的魔性表达，容易引发共鸣和模仿。",
+      "risk": "需要前因后果才能理解为什么崩溃，且后续解释部分节奏拖沓，可能削弱冲击力。",
+      "negative_flags": [
+        "依赖上下文"
+      ],
+      "dims": {
+        "三秒吸引力（权重30%）": 7,
+        "反差/意外（权重25%）": 5,
+        "人物表现力（权重20%）": 8,
+        "独立成片（权重15%）": 6,
+        "事件完整度（权重10%）": 5
+      },
+      "category": "情绪",
+      "viral_probability": "中",
+      "editing_advice": "开头3秒用满屏许愿弹幕+主播崩溃表情特写，快节奏剪出烦躁情绪。",
+      "confidence": 0.6,
+      "ai_recommend": false,
+      "event_id": "ev-001",
+      "cluster_id": "cluster-001",
+      "story_id": "__unknown__",
+      "summary": "弹幕刷屏许愿逼疯主播，主播崩溃重复‘许愿’并喊话引导理性抽奖",
+      "structure": {
+        "setup": "主播持续感谢弹幕，但弹幕开始刷屏许愿",
+        "development": "许愿弹幕刷屏，主播崩溃从00:52开始重复‘许愿’到01:09",
+        "payoff": "主播情绪爆发后解释自己无法满足所有要求，只能给生活正常的人抽奖，强调帮不了生病或没工作的人"
+      },
+      "strongest_moment": "主播崩溃连续重复‘许愿’（00:52-01:09）",
+      "source_candidates": [
+        "clip-001"
+      ],
+      "source_count": 1,
+      "duration": 110,
+      "event_type": "弹幕逼疯",
+      "judge_reason": "候选片段是后续主播崩溃解释的直接起因和组成部分，围绕弹幕许愿同一主题，形成完整事件",
+      "judge_confidence": 0.95,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "00:52",
+      "recommended_end": "01:09",
+      "recommended_duration": 17,
+      "duration_reason": "主播连续重复‘许愿’的崩溃片段本身具有魔性记忆点，但缺乏完整故事铺垫，缩短到核心反应即可作为短视频爆点"
+    },
+    {
+      "clip_id": "ev-003",
+      "start_time": "04:35",
+      "end_time": "06:54",
+      "title": "发现美军口粮只有一餐，震惊地说'这么点啊，这能吃饱吗？'（06:49-06:54",
+      "highlight_type": "事件型",
+      "score": 60.0,
+      "first_round_score": 7,
+      "grade": "B",
+      "reason": "军事应急口粮开箱试吃，'吃爆饭'等新鲜词汇引发好奇，中间问豆包识别食物来源，过程完整有信息量。",
+      "why_cut": "陌生观众被美军口粮开箱吸引，核心传播点是‘这么点能吃饱吗’的惊讶质疑，满足对军粮的好奇和认知反差。",
+      "risk": "开箱过程较长，中间对话节奏可能拖沓，依赖剪辑提炼出惊讶峰值。",
+      "negative_flags": [
+        "普通展示"
+      ],
+      "dims": {
+        "三秒吸引力（权重30%）": 6,
+        "反差/意外（权重25%）": 5,
+        "人物表现力（权重20%）": 6,
+        "独立成片（权重15%）": 7,
+        "事件完整度（权重10%）": 7
+      },
+      "category": "其他",
+      "viral_probability": "中",
+      "editing_advice": "开头3秒用'美军单兵野战口粮'特写+主播夸张咬一口表情，快速切入测评。",
+      "confidence": 0.7,
+      "ai_recommend": false,
+      "event_id": "ev-003",
+      "cluster_id": "cluster-003",
+      "story_id": "ch-02-st-01",
+      "summary": "主播开箱多国单兵口粮，拆美军口粮发现量少、问豆包遇困惑。",
+      "structure": {
+        "setup": "主播收到多包单兵口粮，准备开箱测评，介绍背景。",
+        "development": "拆开美军口粮，发现量少并吃惊；询问豆包确认来源。",
+        "payoff": "确认是美军口粮后，惊讶量少，质疑能否吃饱。"
+      },
+      "strongest_moment": "发现美军口粮只有一餐，震惊地说'这么点啊，这能吃饱吗？'（06:49-06:54）",
+      "source_candidates": [
+        "clip-003",
+        "clip-004",
+        "clip-005"
+      ],
+      "source_count": 3,
+      "duration": 139,
+      "event_type": "开箱测评",
+      "judge_reason": "三个候选均围绕单兵口粮开箱，时间连续，属同一测评事件。",
+      "judge_confidence": 0.9,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "05:05",
+      "recommended_end": "06:54",
+      "recommended_duration": 109,
+      "duration_reason": "需要保留从质疑重量到问豆包确认、最终震惊量少的完整过程，共109秒展现开箱测评的意外发现，形成从疑惑到惊讶的完整链条。"
+    },
+    {
+      "clip_id": "ev-014",
+      "start_time": "51:29",
+      "end_time": "51:39",
+      "title": "有钱没这么迟的额干",
+      "highlight_type": "梗型",
+      "score": 56.0,
+      "first_round_score": 7,
+      "grade": "C",
+      "reason": "金句式吐槽，主播夸张表情，适合传播。",
+      "why_cut": "夸张吐槽金句，主播个人风格突出，适合作为独立梗传播。",
+      "risk": "依赖吃额干的上下文，若观众不了解前因，笑点可能减弱。",
+      "negative_flags": [],
+      "dims": {
+        "三秒吸引力（权重30%）": 6,
+        "反差/意外（权重25%）": 4,
+        "人物表现力（权重20%）": 7,
+        "独立成片（权重15%）": 6,
+        "事件完整度（权重10%）": 5
+      },
+      "category": "金句",
+      "viral_probability": "中",
+      "editing_advice": "开头放大‘我有钱没这么迟的’，配合主播惊讶表情。",
+      "confidence": 0.7,
+      "ai_recommend": false,
+      "event_id": "ev-014",
+      "cluster_id": "cluster-011",
+      "story_id": "__unknown__",
+      "summary": "金句式吐槽，主播夸张表情，适合传播。",
+      "structure": {},
+      "strongest_moment": "",
+      "source_candidates": [
+        "clip-022"
+      ],
+      "source_count": 1,
+      "duration": 10,
+      "event_type": "梗型",
+      "judge_reason": "候选片段主题不同：clip-019是微波炉炸米饭的突发状况；clip-020-022是吃额干的连续互动，但彼此主题一致。两者不属于同一事件。",
+      "judge_confidence": 0.95,
+      "split_by_ai": true,
+      "reject_reason_kind": "",
+      "recommended_start": "51:29",
+      "recommended_end": "51:39",
+      "recommended_duration": 10,
+      "duration_reason": "短句吐槽带表情，依赖上下文的展示环节，但核心句作为梗可独立传播。"
+    },
+    {
+      "clip_id": "ev-012",
+      "start_time": "50:12",
+      "end_time": "50:19",
+      "title": "大哥高血脂还狂炫额干？",
+      "highlight_type": "梗型",
+      "score": 55.0,
+      "first_round_score": 8,
+      "grade": "C",
+      "reason": "健康人设与暴食额干的反差，陌生人会好奇点进来。",
+      "why_cut": "瘦子自称高血脂脂肪肝却狂吃额干，身份反差有记忆点，陌生人可能因好奇停留",
+      "risk": "对话片段较短，反差依赖字幕和观众对额干的认知，单靠对话不够炸",
+      "negative_flags": [],
+      "dims": {
+        "三秒吸引力（权重30%）": 5,
+        "反差/意外（权重25%）": 6,
+        "人物表现力（权重20%）": 6,
+        "独立成片（权重15%）": 6,
+        "事件完整度（权重10%）": 4
+      },
+      "category": "反转",
+      "viral_probability": "中",
+      "editing_advice": "开头用‘我高血脂脂肪肝中度’+狂吃额干画面并置，制造冲突感。",
+      "confidence": 0.6,
+      "ai_recommend": false,
+      "event_id": "ev-012",
+      "cluster_id": "cluster-011",
+      "story_id": "ch-04-st-03",
+      "summary": "健康人设与暴食额干的反差，陌生人会好奇点进来。",
+      "structure": {},
+      "strongest_moment": "",
+      "source_candidates": [
+        "clip-020"
+      ],
+      "source_count": 1,
+      "duration": 7,
+      "event_type": "梗型",
+      "judge_reason": "候选片段主题不同：clip-019是微波炉炸米饭的突发状况；clip-020-022是吃额干的连续互动，但彼此主题一致。两者不属于同一事件。",
+      "judge_confidence": 0.95,
+      "split_by_ai": true,
+      "reject_reason_kind": "",
+      "recommended_start": "50:12",
+      "recommended_end": "50:19",
+      "recommended_duration": 7,
+      "duration_reason": "只需保留主播说「高血脂脂肪肝中度」到对方回「就你一个瘦子」的对话，前后无强关联内容，太长会稀释反差"
+    },
+    {
+      "clip_id": "ev-010",
+      "start_time": "45:08",
+      "end_time": "45:14",
+      "title": "「两泡尿就没了」45:13，夸张生理吐槽爆点",
+      "highlight_type": "梗型",
+      "score": 52.5,
+      "first_round_score": 7,
+      "grade": "C",
+      "reason": "主播用夸张生理吐槽自嘲，语言离谱、节奏快，陌生人会因猎奇停留。",
+      "why_cut": "夸张生理吐槽「两泡尿就没了」有记忆点，陌生人可能因这句搞笑金句停留，但缺乏铺垫和反差，传播力有限",
+      "risk": "只有一句吐槽，无反差和事件发展，需靠字幕和剪辑放大笑点，否则容易平淡",
+      "negative_flags": [
+        "普通评价"
+      ],
+      "dims": {
+        "三秒吸引力（权重30%）": 5,
+        "反差/意外（权重25%）": 4,
+        "人物表现力（权重20%）": 6,
+        "独立成片（权重15%）": 7,
+        "事件完整度（权重10%）": 5
+      },
+      "category": "情绪",
+      "viral_probability": "中",
+      "editing_advice": "开头3秒直接切『两颗尿就没了』这句，配主播轻蔑表情。",
+      "confidence": 0.6,
+      "ai_recommend": false,
+      "event_id": "ev-010",
+      "cluster_id": "cluster-010",
+      "story_id": "__unknown__",
+      "summary": "主播吐槽饮料喝三杯两泡尿就没了，夸张自嘲解油腻",
+      "structure": {
+        "setup": "前面吃东西嫌油腻，44:47开始几人在弄吃的、嫌油",
+        "development": "45:08 主播说喝三杯饮料",
+        "payoff": "45:12-45:13 吐槽饮料不顶事，两个尿就尿出去了，白喝"
+      },
+      "strongest_moment": "「两泡尿就没了」45:13，夸张生理吐槽爆点",
+      "source_candidates": [
+        "clip-018"
+      ],
+      "source_count": 1,
+      "duration": 6,
+      "event_type": "金句吐槽",
+      "judge_reason": "单候选独立成事，围绕饮料白喝自嘲，前后为吃喝话题但此句自成完整吐槽",
+      "judge_confidence": 0.75,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "45:08",
+      "recommended_end": "45:14",
+      "recommended_duration": 6,
+      "duration_reason": "事件本身极短，从说喝三杯到吐槽尿出去刚好构成一句完整吐槽，掐头去尾保留最核心的金句"
+    },
+    {
+      "clip_id": "ev-007",
+      "start_time": "31:08",
+      "end_time": "34:31",
+      "title": "“国产的牛逼”逆天发言，时间约33:31-33:33。",
+      "highlight_type": "情绪型",
+      "score": 50.5,
+      "first_round_score": 7,
+      "grade": "C",
+      "reason": "突然的崩溃式吐槽'微波炉白买了'，反差强烈，观众想知道为什么白买",
+      "why_cut": "'国产的牛逼'逆天发言制造强烈反差，陌生观众因爱国口嗨和荒诞感停留。",
+      "risk": "事件较散，核心爆点依赖上下文，开头不够抓人。",
+      "negative_flags": [
+        "依赖上下文",
+        "普通展示"
+      ],
+      "dims": {
+        "三秒吸引力（权重30%）": 5,
+        "反差/意外（权重25%）": 5,
+        "人物表现力（权重20%）": 6,
+        "独立成片（权重15%）": 4,
+        "事件完整度（权重10%）": 5
+      },
+      "category": "情绪",
+      "viral_probability": "中",
+      "editing_advice": "开头3秒用'妈呀'一声惊呼切入，字幕打'微波炉白买了'制造悬念",
+      "confidence": 0.6,
+      "ai_recommend": false,
+      "event_id": "ev-007",
+      "cluster_id": "cluster-007",
+      "story_id": "ch-03-st-01",
+      "summary": "主播在试吃口粮过程中从吃太饱到拒绝、辨认罐头来源，中间穿插忘本吐槽，整段围绕同一轮试吃互动。",
+      "structure": {
+        "setup": "主播们正在试吃各种口粮，前面已经吃了不少，气氛轻松。",
+        "development": "从吐槽微波炉白买，到指责对方忘本，再到承认吃太饱拒绝继续，最后众人辨认神秘罐头来源。",
+        "payoff": "确认是国产罐头，喊出“国产的牛逼”，众人继续查看。"
+      },
+      "strongest_moment": "“国产的牛逼”逆天发言，时间约33:31-33:33。",
+      "source_candidates": [
+        "clip-009",
+        "clip-010",
+        "clip-011",
+        "clip-012",
+        "clip-013"
+      ],
+      "source_count": 5,
+      "duration": 203,
+      "event_type": "试吃互动翻车",
+      "judge_reason": "五个候选均围绕同一轮试吃口粮事件，主题一致，时间连续，没有明显主题切换，属于同一件事。",
+      "judge_confidence": 0.85,
+      "split_by_ai": false,
+      "reject_reason_kind": "",
+      "recommended_start": "32:52",
+      "recommended_end": "33:35",
+      "recommended_duration": 43,
+      "duration_reason": "保留从品评罐头到喊出'国产的牛逼'的完整反差，剪掉无关闲聊和拖沓吃播。"
+    },
+    {
+      "clip_id": "ev-006",
+      "start_time": "29:14",
+      "end_time": "29:28",
+      "title": "29:23 主播放话'我们测评从来不浪费两手，你记住了一点不浪费'",
+      "highlight_type": "梗型",
+      "score": 41.5,
+      "first_round_score": 7,
+      "grade": "C",
+      "reason": "主播放狠话式表达'一点不浪费'瞬间形成人设记忆点，陌生观众会好奇这测评到底多能吃",
+      "why_cut": "主播有个人风格，但片段只是半截情绪爆发，缺乏完整事件和反差，陌生观众难以停留。",
+      "risk": "依赖直播上下文，没有明确结果和传播点，单独剪出显得突兀。",
+      "negative_flags": [
+        "依赖上下文"
+      ],
+      "dims": {
+        "三秒吸引力（权重30%）": 4,
+        "反差/意外（权重25%）": 3,
+        "人物表现力（权重20%）": 6,
+        "独立成片（权重15%）": 4,
+        "事件完整度（权重10%）": 4
+      },
+      "category": "金句",
+      "viral_probability": "中",
+      "editing_advice": "开头3秒直接切'我们测评从来不浪费两手'怼脸说，配字幕放大关键词",
+      "confidence": 0.7,
+      "ai_recommend": false,
+      "event_id": "ev-006",
+      "cluster_id": "cluster-006",
+      "story_id": "ch-02-st-04",
+      "summary": "主播测评咖啡后放狠话，称测评从不浪费两手、一点不浪费，大胃王都比不过。",
+      "structure": {
+        "setup": "主播连续试喝多款咖啡，已经喝到第二杯咖啡下肚，情绪逐渐高涨。",
+        "development": "吐槽咖啥老铁，喊出'我还是这句话'，准备输出金句。",
+        "payoff": "放狠话：'我们测评从来不浪费两手，你记住了一点不浪费，我们从没有大胃蛋能吃'，结尾让人拿一边去，形成人设记忆点。"
+      },
+      "strongest_moment": "29:23 主播放话'我们测评从来不浪费两手，你记住了一点不浪费'",
+      "source_candidates": [
+        "clip-008"
+      ],
+      "source_count": 1,
+      "duration": 14,
+      "event_type": "金句吐槽",
+      "judge_reason": "同一段连续口语表达，围绕测评不浪费主题，前后语气连贯，无主题切换。",
+      "judge_confidence": 0.9,
+      "split_by_ai": false,
+      "reject_reason_kind": "event_incomplete",
+      "recommended_start": "29:14",
+      "recommended_end": "29:28",
+      "recommended_duration": 0,
+      "d_guarded": true
+    }
+  ],
+  "rejected": [
+    {
+      "clip_id": "ev-013",
+      "start_time": "51:04",
+      "end_time": "51:19",
+      "title": "这一口日料店三百块？",
+      "highlight_type": "事件型",
+      "score": 36.0,
+      "first_round_score": 7,
+      "grade": "D",
+      "reason": "夸张价格对比加豪华额干展示，引发好奇和吐槽。",
+      "why_cut": "无核心传播点，只是普通展示与价格对比，陌生观众无法获得持续观看动力。",
+      "risk": "无故事结构，只有零散展示和对话，缺乏反差和结果。",
+      "negative_flags": [
+        "普通展示",
+        "普通评价"
+      ],
+      "dims": {
+        "三秒吸引力（权重30%）": 4,
+        "反差/意外（权重25%）": 3,
+        "人物表现力（权重20%）": 5,
+        "独立成片（权重15%）": 3,
+        "事件完整度（权重10%）": 2
+      },
+      "category": "观点",
+      "viral_probability": "中",
+      "editing_advice": "开头直接喊‘日料店最小三百’，再切额干特写，突出昂贵感。",
+      "confidence": 0.6,
+      "ai_recommend": false,
+      "event_id": "ev-013",
+      "cluster_id": "cluster-011",
+      "story_id": "ch-04-st-03",
+      "summary": "夸张价格对比加豪华额干展示，引发好奇和吐槽。",
+      "structure": {},
+      "strongest_moment": "",
+      "source_candidates": [
+        "clip-021"
+      ],
+      "source_count": 1,
+      "duration": 15,
+      "event_type": "事件型",
+      "judge_reason": "候选片段主题不同：clip-019是微波炉炸米饭的突发状况；clip-020-022是吃额干的连续互动，但彼此主题一致。两者不属于同一事件。",
+      "judge_confidence": 0.95,
+      "split_by_ai": true,
+      "reject_reason_kind": "truly_low_value",
+      "recommended_start": "51:04",
+      "recommended_end": "51:19",
+      "recommended_duration": 15,
+      "duration_reason": "事件本身无故事结构，难以确定有效剪辑边界，当前时长仅为原始时间段。",
+      "reject_reason": [
+        "无故事结构，只有零散展示和对话，缺乏反差和结果。"
+      ]
+    }
+  ],
+  "report": {
+    "summary": "主播测评美军过期军粮与压缩饼干，全程夸张吐槽、崩溃反应不断，夹杂拒绝求助等争议互动。",
+    "best_spread_point": "测评军粮突然向品牌方鞠躬道歉，反差喜剧效果最强，意外感突出。",
+    "overall": "整体属B级中上水平，情绪真实有记忆点，但缺高光爆点，未达破圈级别。",
+    "why_not_more": "多数片段为半截情绪或重复吐槽，缺少完整事件与反差铺垫，传播力有限，故未推荐更多。"
+  },
+  "cost": {
+    "calls": 32,
+    "input_tokens": 118432,
+    "output_tokens": 10970,
+    "cost_yuan": 0.3246
+  }
+}

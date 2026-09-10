@@ -18,6 +18,28 @@ phase2_report.txt
 v031_report.txt
 v032_report.txt
 
+# v0.4 运行产物：结构缓存（按文字稿生成，删掉会重新现算）、验收报告、网页版日志
+structures/
+v040_step*_report.txt
+v044_two_videos*
+ui_selftest_report.txt
+streamlit.log
+
+# 本地反馈数据（👍/👎 累积，按需另存）
+feedback.json
+feedback.jsonl
+
+# V0.4.5 本地 ASR 错误处理验收产物（测试用媒体 + 报告 + 运行日志）
+_test_media/
+v045_asr_report.txt
+_*.log
+
+# poc/ 音频实验产物（体积大，脚本与 JSON 结果仍提交）
+poc/*.wav
+poc/*.mp3
+poc/*.npy
+poc/audio_clips/
+
 # API 钥匙文件（网页版保存的 DeepSeek Key，绝不能上传）
 api_key.txt
 

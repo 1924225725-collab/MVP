@@ -1,0 +1,52 @@
+[
+ {
+  "start": 24.2,
+  "end": 24.5,
+  "dur": 0.3,
+  "peak_energy": 0.3754,
+  "peak_zcr": 0.2051,
+  "above_env": 2.84,
+  "speech": 1,
+  "kind_guess": "short_pulse"
+ },
+ {
+  "start": 905.5,
+  "end": 905.8,
+  "dur": 0.3,
+  "peak_energy": 0.2147,
+  "peak_zcr": 0.127,
+  "above_env": 2.46,
+  "speech": 1,
+  "kind_guess": "short_pulse"
+ },
+ {
+  "start": 1632.9,
+  "end": 1633.2,
+  "dur": 0.3,
+  "peak_energy": 0.3418,
+  "peak_zcr": 0.1326,
+  "above_env": 2.73,
+  "speech": 1,
+  "kind_guess": "short_pulse"
+ },
+ {
+  "start": 1712.4,
+  "end": 1712.7,
+  "dur": 0.3,
+  "peak_energy": 0.3297,
+  "peak_zcr": 0.2176,
+  "above_env": 2.36,
+  "speech": 1,
+  "kind_guess": "short_pulse"
+ },
+ {
+  "start": 2997.4,
+  "end": 2997.7,
+  "dur": 0.3,
+  "peak_energy": 0.4011,
+  "peak_zcr": 0.1664,
+  "above_env": 2.1,
+  "speech": 0,
+  "kind_guess": "short_pulse"
+ }
+]

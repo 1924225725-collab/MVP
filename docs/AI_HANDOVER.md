@@ -20,9 +20,9 @@
 
 ## 当前版本
 
-- 版本：v0.3.2 第二步（评分体系 v3：运营视角五维 + 本地定级 + 负面封顶 + S/A/B/C/D 五级；离线 18/18 过，待真实视频验收）｜开发规范 v1.0
-- 仓库：https://github.com/1924225725-collab/ai-.git（私有）
-- 标签：MVP-v0.1（bd5dc20）、v0.2.2（e269f8f）（v0.3.x 尚未打标签）
+- 版本：**v0.4 第三步**（复审改分批 + 上下文时间窗 + 动态时长 + 100 分制；离线 24/24，真实 API 51 分钟稿跑通）｜上一版 v0.3.2 已定稿，v0.3 标签已上架 GitHub
+- 仓库：https://github.com/1924225725-collab/MVP.git（私有；原 ai-.git 会重定向到新地址）
+- 标签：MVP-v0.1（bd5dc20）、v0.2.2（e269f8f）、**v0.3（eeb3ffc，已上架）**
 - 运行环境：Windows + Python 3.14.7，依赖装在 `.venv`（用 `.\.venv\Scripts\python xxx.py` 运行）
 
 ## 技术栈
@@ -45,10 +45,14 @@
   → AI 海选（每区块独立，召回优先宁多勿少，三类高光：事件/情绪/梗；
       判断视角「陌生用户刷到开头 3 秒为什么会停下来」）
   → 漏检质检（本地区块摘要 → 质检 AI 查漏 → 可疑区块重扫并入）
-  → 候选池 → AI 复审（只打五维子分 → 本地加权定级 S/A/B/C/D + 负面清单封顶 B
-      + why_cut/risk 双理由 + 分析报告）
+  → 事件聚合（v0.4 步骤 2：本地 soft-signal 粗聚类 → AI 事件判断是否同一件事
+      + 边界/结构/最强爆点 → 事件级去重；先聚合再评分）
+  → 事件池 → AI 分批复审（v0.4 步骤 3：按批独立审「事件」，上下文=事件边界±时间缓冲
+      （默认 ±60s 可扩 ±180/±300），只打五维子分 → 本地加权 ×10 得 100 分制 → S/A/B/C 四档
+      + 负面清单封顶 B + why_cut/risk + 动态 recommended_start/end/duration + duration_reason）
+  → Global Ranking（跨 batch 按 final_score 全局排）→ 独立整场报告 _build_ai_report
   → 数量模式选择（自动精选=S/A / 候选池=S/A/B/C / 自定义=前N分层）
-  → highlights 输出（含 clip_id + 五维判决书 dims，为未来 👍/👎 反馈记账）
+  → highlights 输出（含 event_id/clip_id + 100 分制 score + recommended_*，为未来 👍/👎 反馈记账）
 ```
 
 ## 核心设计原则
@@ -77,15 +81,21 @@
 | 智能分区 | analysis/chunker.py | ✅ v0.3 P1 |
 | AI 海选 + 复审 + 定级引擎 | analysis/__init__.py（analyze_transcript_v2；五维子分复审 + 本地加权定级 S/A/B/C/D + 负面封顶 B） | ✅ v0.3.2（待真实视频验收） |
 | 网页版 v2 界面 | ui.py（v2 流程 + 三设置 + 预算预估 + S/A/B/C 徽章 + 五维判决书） | ✅ v0.3.2 第二步（反馈按钮待做） |
+| ASR 词库纠错 | analysis/dictionary.py + custom_dictionary.json | ✅ v0.4 第一步（基础版纯替换，已接入 pipeline） |
+| 人工反馈记录 | analysis/feedback.py + feedback.json | ✅ v0.4 第一步（本地记录，UI 按钮待接） |
+| 事件聚合层 | analysis/event_cluster.py + __init__.py（_run_event_aggregation / _make_event / _dedupe_events）+ prompt_builder.build_event_judge_prompt | ✅ v0.4 第二步（本地粗聚类 + AI 事件判断 + 事件级去重；真实 API 跑通 19 候选→16 事件） |
+| 分批复审 + 100 分制 + 动态时长 | __init__.py（_review_in_batches / _event_review_context / _build_ai_report / _norm_rec_ts / _parse_review_reply schema 校验）+ prompt_builder（_REVIEW_TEMPLATE 分批复审 / build_report_prompt）+ config（REVIEW_CONTEXT / REVIEW_BATCH / 100 分制阈值） | ✅ v0.4 第三步（24/24 离线；真实 API 51 分钟稿：分 4 批复审 + 3 次扩窗、100 分制 B 级为主、动态时长 8s~99s） |
 
 ## 未完成任务
 
-- **P0（最优先）**：真实视频人工命中率验收（娱乐/游戏/知识各标 10 个值得剪的片段，判断标准：**AI 推荐 ≈ 人工剪辑师的选择**；重点看事故型片段是否不再进 A、B 级里能否翻出真爆点）——用户正在准备视频素材
-- **P2**：👍/👎 反馈按钮写 feedback.jsonl（clip_id 已就绪）、词库管理页面
-- **P1**：文本纠错第一阶段——用户词库管理页面（添加/删除/修改/导入/导出），新建 analysis/correction.py（见 D-014）
+- **v0.4 步骤 4（下一步）**：UI 接入（事件卡片 + 100 分制显示 + recommended 动态时长展示 + 👍/👎 反馈按钮 + 词库管理页）+ 5 项验收（见 VERSION_PLAN）
+- **D-040 已知风险（步骤 4 候选）**：degrade_level 2/3（候选稀疏）时，步骤 2 事件聚合可能把同一长事件拆碎（真实 API 第一次跑把罐头事件拆成 3 碎片全 D，第二次候选稍多则正确聚合）——跨区块稀疏候选的再合并/更宽容聚类，列步骤 4 或聚合专项优化
+- **P0（并行）**：真实视频人工命中率验收——用户准备素材中。v0.4 验收标准第 5 条：「人工选择 TOP10，AI 命中率明显提高」
 - **P3**：云端 AI 接口（本地 ASR + 云端分析，见 D-013，v0.5）
-- 后续小版本候选：时间重叠候选合并、D 级≥3 自动重审、S 级数量上限等附加保险丝（v0.3.2 刻意未叠，防规则无法归因）
-- 明确推迟：AI 自动发现词库、反馈数据分析
+- 后续小版本候选：D 级≥3 自动重审、S 级数量上限等附加保险丝（刻意未叠，防规则无法归因）
+- 明确推迟：AI 自动发现词库、上下文感知纠错（高级版）、反馈数据分析与训练（v0.5/v1.0）
+
+> 已完成的原 P1/P2 项：词库纠错基础版（v0.4 第一步 ✅）、反馈记录模块（v0.4 第一步 ✅，UI 按钮随步骤 4 做）。
 
 ## 禁止破坏的接口
 

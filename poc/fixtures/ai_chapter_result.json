@@ -1,0 +1,62 @@
+{
+  "chapters": [
+    {
+      "chapter_id": "ch-01",
+      "start_time": "01:55",
+      "end_time": "03:29",
+      "chapter_title": "情感互动与回应质疑",
+      "chapter_summary": "主播回应抽奖质疑，并解释无法帮助生病的粉丝，担心起头后患无穷。",
+      "boundary_reason": "内容从互动答疑转向开箱食物",
+      "event_ids": [
+        "ev-001"
+      ]
+    },
+    {
+      "chapter_id": "ch-02",
+      "start_time": "04:35",
+      "end_time": "29:27",
+      "chapter_title": "美军单兵口粮测评",
+      "chapter_summary": "主播开箱试吃美军口粮，包含饼干、芝士酱、咖啡等，充满搞笑反差与吐槽。",
+      "boundary_reason": "转入口粮主要测评环节",
+      "event_ids": [
+        "ev-002",
+        "ev-003",
+        "ev-004",
+        "ev-005",
+        "ev-006",
+        "ev-007",
+        "ev-008",
+        "ev-009",
+        "ev-010"
+      ]
+    },
+    {
+      "chapter_id": "ch-03",
+      "start_time": "30:57",
+      "end_time": "36:09",
+      "chapter_title": "美军单兵口粮后续与俄罗斯口粮预告",
+      "chapter_summary": "主播继续试吃，赞叹好吃但遭吐槽，随后过渡到俄罗斯口粮的悬念调侃。",
+      "boundary_reason": "从美军口粮转向俄罗斯口粮",
+      "event_ids": [
+        "ev-011",
+        "ev-017",
+        "ev-018",
+        "ev-013"
+      ]
+    },
+    {
+      "chapter_id": "ch-04",
+      "start_time": "37:19",
+      "end_time": "51:05",
+      "chapter_title": "俄罗斯口粮深度测评与健康自嘲",
+      "chapter_summary": "主播测评俄罗斯口粮，从罐头到压缩饼干到米饭，高能吐槽连连，并以自嘲方式结束直播。",
+      "boundary_reason": "主题为俄罗斯口粮测评",
+      "event_ids": [
+        "ev-012",
+        "ev-014",
+        "ev-015",
+        "ev-016"
+      ]
+    }
+  ]
+}

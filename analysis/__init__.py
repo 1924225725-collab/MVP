@@ -95,6 +95,7 @@ import config
 
 from . import transcript_parser, event_scanner, chunker, budget, event_cluster
 from . import story_context as _sc
+from . import chapter_story
 from .prompt_builder import (
     build_screening_prompt,
     build_review_prompt,
@@ -137,7 +138,10 @@ def analyze_transcript_v2(
 
     返回 dict：
         {"meta": 元信息, "highlights": [...], "rejected": [...],
-         "report": {...}, "cost": {...}}
+         "report": {...}, "structure": {...}, "cost": {...}}
+
+    structure（V0.4.2 新增）：Chapter → Story → Event 内容结构，
+    供 UI 按「整场 → Chapter → Story → 推荐剪辑」展示；Chapter/Story 缺失时为空结构。
     """
     live_type = live_type or config.LIVE_TYPE_DEFAULT
     token_mode = token_mode or config.TOKEN_MODE_DEFAULT
@@ -296,7 +300,8 @@ def analyze_transcript_v2(
     # 先把碎片还原成完整事件，再交给复审评分——**先聚合，再评分**（需求第七条）。
     # 这一层不做任何取舍：本地只提分组，AI 才判断是不是同一件事。
     events, event_stats = _run_event_aggregation(
-        client, tracker, segments, candidates, duration, say
+        client, tracker, segments, candidates, duration, say,
+        transcript_path=transcript_path,
     )
 
     # ---------- 第 6 层：AI 复审（分批 + 事件级评分 + 动态时长 + 全局排序） ----------
@@ -411,6 +416,24 @@ def analyze_transcript_v2(
         events, quantity_mode, custom_count
     )
 
+    # ---------- 第 8 层：内容结构（Chapter → Story → Event）----------
+    # V0.4.4 修复（严重数据绑定 bug）：
+    #   以前这一步是 _sc.load_structure(<固定路径>)，读的是开发阶段对一场 51 分钟
+    #   测试视频跑 PoC 的产物 —— 于是换任何视频，UI 的「直播内容结构」都是同一套
+    #   ch-01~ch-04。现在改为：**用本场事件现算本视频自己的 Chapter/Story**
+    #   （算法沿用已验证的 PoC，见 analysis/chapter_story.py），并按视频缓存。
+    # 结构层是展示增强：任何失败都降级为空结构，不影响 highlights/report/cost。
+    structure_source = "empty"
+    try:
+        structure_raw, structure_source = chapter_story.get_or_build_structure(
+            client, tracker, transcript_path, events, duration, say
+        )
+        structure = _sc.build_content_structure(_sc.load_structure(structure_raw), events)
+        structure["source"] = structure_source
+    except Exception as e:      # 结构层坏了不能连累主结果
+        say(f"[结构层] 构建内容结构失败（已降级为空）：{e}")
+        structure = {"chapters": [], "stats": {}, "source": "empty"}
+
     return {
         "meta": _build_meta(transcript_path, live_type, token_mode, quantity_mode,
                             custom_count, duration, len(chunks), len(candidates),
@@ -418,6 +441,8 @@ def analyze_transcript_v2(
         "highlights": highlights,
         "rejected": rejected,
         "report": report,
+        "structure": structure,
+        "structure_source": structure_source,
         "cost": tracker.to_dict(),
     }
 
@@ -1032,18 +1057,76 @@ def _apply_negative_cap(candidate: dict):
         candidate["grade"] = cap
 
 
+def _tier_of(candidate: dict) -> str:
+    """由内容评级推出「推荐层级」标签（仅用于解释它为什么进推荐名单）。"""
+    grade = candidate.get("grade", "")
+    if grade in ("S", "A"):
+        return grade
+    if grade == "B":
+        return "B_fill"
+    if grade == "C":
+        return "C_fallback"
+    return ""
+
+
+def _pick_recommendations(candidates: list) -> list:
+    """产品层推荐筛选——与「内容评分/评级」完全解耦（V0.4.2，D-041）。
+
+    为什么需要它：grade/score 只回答「这段内容好不好」；而「这场最值得先看/先剪哪几条」
+    是产品决策，还受数量策略约束。二者绑死（旧逻辑自动精选 = 只取 S/A）会在
+    全场无 A 时输出空列表——内容深度评价与产品展示必须分开。
+
+    策略（A 优先 → B 补位 → C 兜底）：
+      1. 先取全部 S/A（按分数降序），最多 AUTO_SELECT_TARGET 条；
+      2. 不满目标数时，用 B 级里 score >= AUTO_B_FILL_MIN_SCORE 的按分补位；
+      3. 连一个 S/A/B 都没有时，兜底最多 AUTO_C_FALLBACK_MAX 个最佳 C（避免 0 输出）。
+    D 级永不进入推荐。
+    目标数量是**上限而非配额**：宁缺毋滥，不硬凑。
+
+    原地标记 recommended / recommend_tier，返回选中的候选（已按分数降序）。
+    """
+    ordered = sorted(candidates, key=lambda c: c.get("final_score", 0), reverse=True)
+    try:
+        target = max(1, int(config.AUTO_SELECT_TARGET))
+    except (TypeError, ValueError):
+        target = 8
+
+    # 1) A 优先（S/A 同级对待，按分数高到低，数量上限 = target）
+    picked = [c for c in ordered if c.get("grade") in ("S", "A")][:target]
+
+    # 2) A 不足 → 从高质量 B 补位
+    if len(picked) < target:
+        picked_ids = set(id(c) for c in picked)
+        fill = [c for c in ordered
+                if c.get("grade") == "B"
+                and c.get("final_score", 0) >= config.AUTO_B_FILL_MIN_SCORE
+                and id(c) not in picked_ids]
+        picked.extend(fill[: target - len(picked)])
+
+    # 3) 连 B 都没有 → 兜底少量 C
+    if not picked:
+        picked = [c for c in ordered if c.get("grade") == "C"][: max(1, int(config.AUTO_C_FALLBACK_MAX))]
+
+    picked.sort(key=lambda c: c.get("final_score", 0), reverse=True)
+    for c in picked:
+        c["recommended"] = True
+        c["recommend_tier"] = _tier_of(c)
+    return picked
+
+
 def _select_quantity(candidates: list, quantity_mode: str, custom_count: int):
     """按数量模式挑出最终展示的高光，剩下的进 rejected。
 
-    v0.3.2 分级规则（S/A/B/C + D 淘汰）：
-        S 爆款候选：三秒吸引力高 + 有传播结构 + 有明显记忆点
-        A 强推荐：适合制作正式切片
-        B 测试素材：有潜力，需人工判断（命中负面清单的最高档）
-        C 备用素材：有内容，传播能力弱
-        D 淘汰（进 rejected，带理由）
-        自动精选 —— 只展示 S/A（AI 盖章值得剪的）
-        候选池   —— 展示 S/A/B/C 全部（B/C 供用户自己权衡）
-        自定义数量 —— 按终审分数取前 N 个，标注等级名
+    V0.4.2 核心变化（D-041）：**「评分/评级」与「推荐剪辑」解耦**
+        - grade / score 只描述内容质量（复审五维本地加权定级，见 _weighted_final）；
+        - recommended / recommend_tier 是产品层筛选结果，由 _pick_recommendations 统一决定，
+          不再等于「grade in (S, A)」——A 不足时高质量 B 可以进推荐，A 也可能因数量上限落选。
+    旧字段 ai_recommend 保留原义（= S/A 内容级背书），供旧读者兼容。
+
+    数量模式：
+        自动精选   —— 展示推荐名单（A 优先 → B 补位 → C 兜底，不再出现 0 输出）
+        候选池     —— 展示 S/A/B/C 全部（供用户自己权衡）；推荐名单另行标记
+        自定义数量 —— 按终审分数取前 N 个，入选即视为推荐
 
     返回 (highlights, rejected)：
         highlights —— 最终展示列表（按分数降序）
@@ -1055,10 +1138,16 @@ def _select_quantity(candidates: list, quantity_mode: str, custom_count: int):
         if not c.get("clip_id"):
             c["clip_id"] = f"clip-{n:03d}"
 
+    # 产品层推荐名单（所有模式共用同一套策略；D-041）
+    recommended = _pick_recommendations(candidates)
+    recommended_ids = set(id(c) for c in recommended)
+
     if quantity_mode == "自动精选":
-        picked = [c for c in candidates if c["grade"] in ("S", "A")]
+        # 自动精选 = 只展示推荐名单（A 不足时含高质量 B 补位 / 极端时 C 兜底）
+        picked = list(recommended)
 
     elif quantity_mode == "候选池":
+        # 候选池 = S/A/B/C 全给；推荐标记仍按产品策略单独保留
         picked = [c for c in candidates if c["grade"] in ("S", "A", "B", "C")]
 
     else:  # 自定义数量：按分数取前 N 个，标注质量分层
@@ -1068,8 +1157,20 @@ def _select_quantity(candidates: list, quantity_mode: str, custom_count: int):
         for c in picked:
             c["quality"] = quality_map.get(c["grade"], "备用素材")
 
-    picked_set = set(id(c) for c in picked)
+    picked_ids = set(id(c) for c in picked)
+
+    # ---- 统一标记「是否进入推荐名单」：这是产品层结论，与 grade 解耦 ----
+    for c in candidates:
+        in_pick = id(c) in picked_ids
+        if quantity_mode == "自定义数量":
+            # 用户点名要 N 个 → 选中的都算推荐
+            c["recommended"] = in_pick
+        else:
+            c["recommended"] = in_pick and id(c) in recommended_ids
+        c["recommend_tier"] = _tier_of(c) if c["recommended"] else ""
+
     picked = sorted(picked, key=lambda c: c["final_score"], reverse=True)
+    target_reached = len(recommended) >= int(getattr(config, "AUTO_SELECT_TARGET", 8))
 
     highlights, rejected = [], []
     for c in candidates:
@@ -1091,7 +1192,10 @@ def _select_quantity(candidates: list, quantity_mode: str, custom_count: int):
             "viral_probability": c["viral_probability"],
             "editing_advice": c["editing_advice"],
             "confidence": c["confidence"],
-            "ai_recommend": c["grade"] in ("S", "A"),   # 兼容旧字段：S/A 级 = AI 推荐
+            "ai_recommend": c["grade"] in ("S", "A"),   # 内容级 AI 背书（兼容旧字段）
+            # V0.4.2：产品层推荐（与 grade 解耦，D-041）
+            "recommended": c.get("recommended", False),
+            "recommend_tier": c.get("recommend_tier", ""),
         }
         # v0.4：事件级字段——高光现在以「完整事件」为单位，不再是爆点句子。
         # 带上这些，界面才能显示「由几个候选聚合而成」「AI 为什么认为是一件事」
@@ -1112,7 +1216,7 @@ def _select_quantity(candidates: list, quantity_mode: str, custom_count: int):
             entry["forced_keep"] = True
         if c.get("d_guarded"):
             entry["d_guarded"] = True   # v0.4 A3：本会判 D，因「AI 不确定/不完整/上下文不够」降 C
-        if id(c) in picked_set:
+        if id(c) in picked_ids:
             if "quality" in c:
                 entry["quality"] = c["quality"]
             highlights.append(entry)
@@ -1122,9 +1226,18 @@ def _select_quantity(candidates: list, quantity_mode: str, custom_count: int):
                 entry["reject_reason"] = c["reject_reason"]
             elif c.get("forced_keep"):
                 entry["reject_reason"] = ["召回优先保留的候选，未进入本模式展示范围"]
+            elif c["grade"] in ("S", "A") and target_reached:
+                # 解耦的直观体现：内容很好，但推荐数量已达上限
+                # V0.4.3：对外文案不露 grade 字母（D-044）
+                entry["reject_reason"] = [
+                    f"内容质量很高，但推荐数量已达目标"
+                    f"（{getattr(config, 'AUTO_SELECT_TARGET', 8)} 条），"
+                    f"未进入「{quantity_mode}」展示范围（切「候选池」可看到它）"
+                ]
             else:
                 entry["reject_reason"] = [
-                    f"复审评级 {c['grade']}，未进入「{quantity_mode}」模式的展示范围"
+                    f"未进入「{quantity_mode}」模式的展示范围"
+                    f"（切「候选池」可以查看全部候选）"
                 ]
             rejected.append(entry)
 
@@ -1505,12 +1618,16 @@ def _dedupe_events(events: list) -> list:
     return result
 
 
-def _run_event_aggregation(client, tracker, segments, candidates, duration, say):
+def _run_event_aggregation(client, tracker, segments, candidates, duration, say,
+                           transcript_path=None):
     """事件聚合主流程：本地粗聚类 → AI 事件判断（自适应上下文）→ 事件级去重。
 
     返回 (events, stats)。
     stats 记录聚类数、AI 合并次数、拆分次数、上下文扩展次数、去重掉几个——
     全部写进结果的 meta，方便开发者模式审计「AI 有没有错合并」。
+
+    transcript_path：当前分析的稿子路径，用来定位**本视频自己**的 Story 结构缓存
+    （V0.4.4 起，绝不再读固定样例文件）。
     """
     cfg = config.EVENT_JUDGE_CONTEXT
 
@@ -1519,18 +1636,23 @@ def _run_event_aggregation(client, tracker, segments, candidates, duration, say)
         c.setdefault("clip_id", f"clip-{n:03d}")
 
     # v0.4 步骤 4：Story 前置层 — 给候选打故事标注，构建 story_groups
-    # 软边界：找不到 Story 文件或失败时静默降级，不影响主流程
-    story_groups_cfg = getattr(config, "STORY_CONTEXT", None) or {}
-    story_file = story_groups_cfg.get("story_file") if story_groups_cfg else None
-    story_groups = _sc.load_story_groups(story_file)
+    # V0.4.4 修复：只读**本视频自己**的结构缓存（structures/<稿子名>.json）。
+    #   以前这里读的是固定的 poc/story_segmentation_result.json（那是一场 51 分钟
+    #   测试视频的 PoC 产物），导致所有视频共用同一套 Story —— 这是数据串场 bug。
+    #   现在：本视频没有缓存（首次分析）就跳过这一步，Story 先验是软加分，跳过不影响主流程；
+    #   分析完成后本函数会为当前视频生成结构并写入缓存，下次同一视频再分析就能用上先验。
+    story_groups = {}
+    cached_structure = chapter_story.load_cached_structure(transcript_path, duration)
+    if cached_structure:
+        story_groups = _sc.load_story_groups(cached_structure)
     if story_groups:
         _sc.annotate_candidates(candidates, story_groups)
         story_groups = _sc.build_story_groups(candidates, story_groups)
-        say(f"[Story层] 加载 {len(story_groups)} 个 Story，已给候选打标注")
+        say(f"[Story层] 复用本视频上次的结构（{len(story_groups)} 个 Story），已给候选打标注")
         unknown = sum(1 for c in candidates if c.get("story_id") == "__unknown__")
         say(f"[Story层] 未匹配 Story 的候选：{unknown}/{len(candidates)}")
     else:
-        say("[Story层] 未找到 Story 文件（poc/story_segmentation_result.json），跳过")
+        say("[Story层] 本视频暂无结构缓存，跳过 Story 先验（分析结束后会生成）")
 
     clusters = event_cluster.build_clusters(candidates, story_groups=story_groups)
     say(f"[事件聚合] 本地粗聚类：{event_cluster.cluster_stats(clusters)}")

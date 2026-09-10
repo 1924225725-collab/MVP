@@ -1,0 +1,6535 @@
+[
+ {
+  "start": 3.8,
+  "end": 4.3,
+  "peak": 0.1333734691143036,
+  "type": "energy_burst"
+ },
+ {
+  "start": 5.3,
+  "end": 6.3,
+  "peak": 0.29942572116851807,
+  "type": "energy_burst"
+ },
+ {
+  "start": 10.3,
+  "end": 11.200000000000001,
+  "peak": 0.224302276968956,
+  "type": "energy_burst"
+ },
+ {
+  "start": 13.1,
+  "end": 13.2,
+  "peak": 0.12675336003303528,
+  "type": "energy_burst"
+ },
+ {
+  "start": 16.9,
+  "end": 17.3,
+  "peak": 0.14155709743499756,
+  "type": "energy_burst"
+ },
+ {
+  "start": 21.6,
+  "end": 21.900000000000002,
+  "peak": 0.18913070857524872,
+  "type": "energy_burst"
+ },
+ {
+  "start": 23.9,
+  "end": 24.500000000000004,
+  "peak": 0.3754425346851349,
+  "type": "energy_burst"
+ },
+ {
+  "start": 26.5,
+  "end": 26.6,
+  "peak": 0.1088426411151886,
+  "type": "energy_burst"
+ },
+ {
+  "start": 28.6,
+  "end": 29.400000000000002,
+  "peak": 0.37232187390327454,
+  "type": "energy_burst"
+ },
+ {
+  "start": 31.2,
+  "end": 32.1,
+  "peak": 0.33950772881507874,
+  "type": "energy_burst"
+ },
+ {
+  "start": 36.5,
+  "end": 36.6,
+  "peak": 0.24732771515846252,
+  "type": "energy_burst"
+ },
+ {
+  "start": 37.8,
+  "end": 37.9,
+  "peak": 0.27675899863243103,
+  "type": "energy_burst"
+ },
+ {
+  "start": 40.4,
+  "end": 40.5,
+  "peak": 0.18010784685611725,
+  "type": "energy_burst"
+ },
+ {
+  "start": 43.2,
+  "end": 43.3,
+  "peak": 0.14306658506393433,
+  "type": "energy_burst"
+ },
+ {
+  "start": 52.3,
+  "end": 53.300000000000004,
+  "peak": 0.2251320332288742,
+  "type": "energy_burst"
+ },
+ {
+  "start": 56.4,
+  "end": 56.5,
+  "peak": 0.20521360635757446,
+  "type": "energy_burst"
+ },
+ {
+  "start": 74.2,
+  "end": 74.3,
+  "peak": 0.301444947719574,
+  "type": "energy_burst"
+ },
+ {
+  "start": 87.4,
+  "end": 87.8,
+  "peak": 0.20717588067054749,
+  "type": "energy_burst"
+ },
+ {
+  "start": 88.5,
+  "end": 88.7,
+  "peak": 0.13588808476924896,
+  "type": "energy_burst"
+ },
+ {
+  "start": 106.3,
+  "end": 106.7,
+  "peak": 0.1376366764307022,
+  "type": "energy_burst"
+ },
+ {
+  "start": 115.1,
+  "end": 116.0,
+  "peak": 0.3199315369129181,
+  "type": "energy_burst"
+ },
+ {
+  "start": 129.1,
+  "end": 129.5,
+  "peak": 0.179926797747612,
+  "type": "energy_burst"
+ },
+ {
+  "start": 137.2,
+  "end": 137.3,
+  "peak": 0.15328510105609894,
+  "type": "energy_burst"
+ },
+ {
+  "start": 165.2,
+  "end": 165.3,
+  "peak": 0.20452523231506348,
+  "type": "energy_burst"
+ },
+ {
+  "start": 197.0,
+  "end": 197.1,
+  "peak": 0.2966994047164917,
+  "type": "energy_burst"
+ },
+ {
+  "start": 210.9,
+  "end": 211.0,
+  "peak": 0.09930317103862762,
+  "type": "energy_burst"
+ },
+ {
+  "start": 212.3,
+  "end": 212.70000000000002,
+  "peak": 0.1638307273387909,
+  "type": "energy_burst"
+ },
+ {
+  "start": 217.7,
+  "end": 218.70000000000002,
+  "peak": 0.17577999830245972,
+  "type": "energy_burst"
+ },
+ {
+  "start": 224.7,
+  "end": 226.20000000000002,
+  "peak": 0.18901342153549194,
+  "type": "energy_burst"
+ },
+ {
+  "start": 229.1,
+  "end": 229.4,
+  "peak": 0.16329999268054962,
+  "type": "energy_burst"
+ },
+ {
+  "start": 236.9,
+  "end": 237.5,
+  "peak": 0.15212522447109222,
+  "type": "energy_burst"
+ },
+ {
+  "start": 239.6,
+  "end": 240.70000000000002,
+  "peak": 0.14398401975631714,
+  "type": "energy_burst"
+ },
+ {
+  "start": 242.7,
+  "end": 242.9,
+  "peak": 0.09169923514127731,
+  "type": "energy_burst"
+ },
+ {
+  "start": 244.9,
+  "end": 245.9,
+  "peak": 0.19689688086509705,
+  "type": "energy_burst"
+ },
+ {
+  "start": 245.4,
+  "end": 245.5,
+  "peak": 0.19689688086509705,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 252.0,
+  "end": 252.1,
+  "peak": 0.19906297326087952,
+  "type": "energy_burst"
+ },
+ {
+  "start": 252.8,
+  "end": 253.1,
+  "peak": 0.1771535575389862,
+  "type": "energy_burst"
+ },
+ {
+  "start": 254.9,
+  "end": 255.3,
+  "peak": 0.19706876575946808,
+  "type": "energy_burst"
+ },
+ {
+  "start": 255.8,
+  "end": 256.40000000000003,
+  "peak": 0.0939657986164093,
+  "type": "energy_burst"
+ },
+ {
+  "start": 257.4,
+  "end": 258.70000000000005,
+  "peak": 0.26228344440460205,
+  "type": "energy_burst"
+ },
+ {
+  "start": 264.2,
+  "end": 264.8,
+  "peak": 0.19748736917972565,
+  "type": "energy_burst"
+ },
+ {
+  "start": 265.3,
+  "end": 265.70000000000005,
+  "peak": 0.1626761555671692,
+  "type": "energy_burst"
+ },
+ {
+  "start": 268.2,
+  "end": 268.40000000000003,
+  "peak": 0.16033443808555603,
+  "type": "energy_burst"
+ },
+ {
+  "start": 269.0,
+  "end": 269.1,
+  "peak": 0.12446197867393494,
+  "type": "energy_burst"
+ },
+ {
+  "start": 269.6,
+  "end": 269.8,
+  "peak": 0.20900408923625946,
+  "type": "energy_burst"
+ },
+ {
+  "start": 271.4,
+  "end": 272.1,
+  "peak": 0.14160189032554626,
+  "type": "energy_burst"
+ },
+ {
+  "start": 272.6,
+  "end": 273.00000000000006,
+  "peak": 0.08061536401510239,
+  "type": "energy_burst"
+ },
+ {
+  "start": 274.2,
+  "end": 275.50000000000006,
+  "peak": 0.18296441435813904,
+  "type": "energy_burst"
+ },
+ {
+  "start": 280.7,
+  "end": 280.8,
+  "peak": 0.2711418867111206,
+  "type": "energy_burst"
+ },
+ {
+  "start": 290.0,
+  "end": 290.1,
+  "peak": 0.2843811810016632,
+  "type": "energy_burst"
+ },
+ {
+  "start": 290.7,
+  "end": 290.8,
+  "peak": 0.18064285814762115,
+  "type": "energy_burst"
+ },
+ {
+  "start": 291.3,
+  "end": 291.4,
+  "peak": 0.14183126389980316,
+  "type": "energy_burst"
+ },
+ {
+  "start": 292.0,
+  "end": 292.1,
+  "peak": 0.11946611851453781,
+  "type": "energy_burst"
+ },
+ {
+  "start": 292.8,
+  "end": 293.50000000000006,
+  "peak": 0.29418689012527466,
+  "type": "energy_burst"
+ },
+ {
+  "start": 302.7,
+  "end": 302.8,
+  "peak": 0.11148280650377274,
+  "type": "energy_burst"
+ },
+ {
+  "start": 304.3,
+  "end": 305.3,
+  "peak": 0.2007560133934021,
+  "type": "energy_burst"
+ },
+ {
+  "start": 305.8,
+  "end": 305.9,
+  "peak": 0.30631616711616516,
+  "type": "energy_burst"
+ },
+ {
+  "start": 313.3,
+  "end": 313.80000000000007,
+  "peak": 0.344851016998291,
+  "type": "energy_burst"
+ },
+ {
+  "start": 325.2,
+  "end": 326.00000000000006,
+  "peak": 0.20730812847614288,
+  "type": "energy_burst"
+ },
+ {
+  "start": 327.5,
+  "end": 328.40000000000003,
+  "peak": 0.25346842408180237,
+  "type": "energy_burst"
+ },
+ {
+  "start": 333.7,
+  "end": 334.70000000000005,
+  "peak": 0.21039578318595886,
+  "type": "energy_burst"
+ },
+ {
+  "start": 334.2,
+  "end": 334.3,
+  "peak": 0.21039578318595886,
+  "pause_len": 4.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 337.9,
+  "end": 338.0,
+  "peak": 0.21030211448669434,
+  "type": "energy_burst"
+ },
+ {
+  "start": 340.8,
+  "end": 341.90000000000003,
+  "peak": 0.18521669507026672,
+  "type": "energy_burst"
+ },
+ {
+  "start": 341.8,
+  "end": 341.9,
+  "peak": 0.18521669507026672,
+  "pause_len": 2.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 343.4,
+  "end": 344.70000000000005,
+  "peak": 0.23104152083396912,
+  "type": "energy_burst"
+ },
+ {
+  "start": 348.2,
+  "end": 349.50000000000006,
+  "peak": 0.1902024745941162,
+  "type": "energy_burst"
+ },
+ {
+  "start": 352.7,
+  "end": 352.8,
+  "peak": 0.2307140976190567,
+  "type": "energy_burst"
+ },
+ {
+  "start": 356.9,
+  "end": 357.0,
+  "peak": 0.22500568628311157,
+  "type": "energy_burst"
+ },
+ {
+  "start": 360.7,
+  "end": 361.50000000000006,
+  "peak": 0.0467468723654747,
+  "type": "energy_burst"
+ },
+ {
+  "start": 362.2,
+  "end": 362.3,
+  "peak": 0.055702093988657,
+  "type": "energy_burst"
+ },
+ {
+  "start": 363.6,
+  "end": 364.50000000000006,
+  "peak": 0.1539182960987091,
+  "type": "energy_burst"
+ },
+ {
+  "start": 376.6,
+  "end": 377.70000000000005,
+  "peak": 0.12150377780199051,
+  "type": "energy_burst"
+ },
+ {
+  "start": 377.1,
+  "end": 377.2,
+  "peak": 0.12150377780199051,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 379.9,
+  "end": 380.50000000000006,
+  "peak": 0.1996963918209076,
+  "type": "energy_burst"
+ },
+ {
+  "start": 385.0,
+  "end": 385.1,
+  "peak": 0.20157623291015625,
+  "type": "energy_burst"
+ },
+ {
+  "start": 390.2,
+  "end": 390.3,
+  "peak": 0.1400109976530075,
+  "type": "energy_burst"
+ },
+ {
+  "start": 390.8,
+  "end": 391.50000000000006,
+  "peak": 0.16293762624263763,
+  "type": "energy_burst"
+ },
+ {
+  "start": 395.5,
+  "end": 396.40000000000003,
+  "peak": 0.17801734805107117,
+  "type": "energy_burst"
+ },
+ {
+  "start": 399.2,
+  "end": 400.20000000000005,
+  "peak": 0.08363284915685654,
+  "type": "energy_burst"
+ },
+ {
+  "start": 401.5,
+  "end": 402.30000000000007,
+  "peak": 0.10153287649154663,
+  "type": "energy_burst"
+ },
+ {
+  "start": 403.8,
+  "end": 403.9,
+  "peak": 0.04566807299852371,
+  "type": "energy_burst"
+ },
+ {
+  "start": 406.3,
+  "end": 406.80000000000007,
+  "peak": 0.13168321549892426,
+  "type": "energy_burst"
+ },
+ {
+  "start": 409.3,
+  "end": 409.4,
+  "peak": 0.040502991527318954,
+  "type": "energy_burst"
+ },
+ {
+  "start": 410.2,
+  "end": 411.20000000000005,
+  "peak": 0.21245454251766205,
+  "type": "energy_burst"
+ },
+ {
+  "start": 413.3,
+  "end": 413.90000000000003,
+  "peak": 0.30265405774116516,
+  "type": "energy_burst"
+ },
+ {
+  "start": 417.0,
+  "end": 417.1,
+  "peak": 0.15861035883426666,
+  "type": "energy_burst"
+ },
+ {
+  "start": 421.9,
+  "end": 423.1,
+  "peak": 0.13160906732082367,
+  "type": "energy_burst"
+ },
+ {
+  "start": 423.7,
+  "end": 424.30000000000007,
+  "peak": 0.22035829722881317,
+  "type": "energy_burst"
+ },
+ {
+  "start": 427.7,
+  "end": 427.8,
+  "peak": 0.2831884026527405,
+  "type": "energy_burst"
+ },
+ {
+  "start": 428.5,
+  "end": 429.00000000000006,
+  "peak": 0.26583239436149597,
+  "type": "energy_burst"
+ },
+ {
+  "start": 436.4,
+  "end": 436.80000000000007,
+  "peak": 0.22857069969177246,
+  "type": "energy_burst"
+ },
+ {
+  "start": 437.4,
+  "end": 437.90000000000003,
+  "peak": 0.1984671652317047,
+  "type": "energy_burst"
+ },
+ {
+  "start": 439.9,
+  "end": 441.70000000000005,
+  "peak": 0.2532910406589508,
+  "type": "energy_burst"
+ },
+ {
+  "start": 449.1,
+  "end": 450.30000000000007,
+  "peak": 0.18072277307510376,
+  "type": "energy_burst"
+ },
+ {
+  "start": 451.5,
+  "end": 452.6,
+  "peak": 0.18046806752681732,
+  "type": "energy_burst"
+ },
+ {
+  "start": 460.0,
+  "end": 460.40000000000003,
+  "peak": 0.09117536246776581,
+  "type": "energy_burst"
+ },
+ {
+  "start": 460.9,
+  "end": 461.80000000000007,
+  "peak": 0.2101561576128006,
+  "type": "energy_burst"
+ },
+ {
+  "start": 462.6,
+  "end": 462.7,
+  "peak": 0.29845061898231506,
+  "type": "energy_burst"
+ },
+ {
+  "start": 464.4,
+  "end": 464.90000000000003,
+  "peak": 0.27240264415740967,
+  "type": "energy_burst"
+ },
+ {
+  "start": 466.1,
+  "end": 466.2,
+  "peak": 0.11444644629955292,
+  "type": "energy_burst"
+ },
+ {
+  "start": 467.0,
+  "end": 467.1,
+  "peak": 0.04169774800539017,
+  "type": "energy_burst"
+ },
+ {
+  "start": 469.1,
+  "end": 471.50000000000006,
+  "peak": 0.25581037998199463,
+  "type": "energy_burst"
+ },
+ {
+  "start": 473.9,
+  "end": 475.30000000000007,
+  "peak": 0.2885046601295471,
+  "type": "energy_burst"
+ },
+ {
+  "start": 477.6,
+  "end": 478.20000000000005,
+  "peak": 0.2625134587287903,
+  "type": "energy_burst"
+ },
+ {
+  "start": 482.9,
+  "end": 483.0,
+  "peak": 0.05725519731640816,
+  "type": "energy_burst"
+ },
+ {
+  "start": 483.6,
+  "end": 483.7,
+  "peak": 0.034230370074510574,
+  "type": "energy_burst"
+ },
+ {
+  "start": 484.3,
+  "end": 485.40000000000003,
+  "peak": 0.16518433392047882,
+  "type": "energy_burst"
+ },
+ {
+  "start": 487.7,
+  "end": 487.8,
+  "peak": 0.15546546876430511,
+  "type": "energy_burst"
+ },
+ {
+  "start": 489.2,
+  "end": 490.50000000000006,
+  "peak": 0.10571853071451187,
+  "type": "energy_burst"
+ },
+ {
+  "start": 491.1,
+  "end": 492.70000000000005,
+  "peak": 0.17470580339431763,
+  "type": "energy_burst"
+ },
+ {
+  "start": 494.5,
+  "end": 495.40000000000003,
+  "peak": 0.3434526324272156,
+  "type": "energy_burst"
+ },
+ {
+  "start": 506.4,
+  "end": 506.80000000000007,
+  "peak": 0.22706656157970428,
+  "type": "energy_burst"
+ },
+ {
+  "start": 510.8,
+  "end": 511.70000000000005,
+  "peak": 0.2897198796272278,
+  "type": "energy_burst"
+ },
+ {
+  "start": 512.9,
+  "end": 513.9000000000001,
+  "peak": 0.29795244336128235,
+  "type": "energy_burst"
+ },
+ {
+  "start": 516.5,
+  "end": 516.6,
+  "peak": 0.10458160191774368,
+  "type": "energy_burst"
+ },
+ {
+  "start": 518.5,
+  "end": 519.4000000000001,
+  "peak": 0.15289992094039917,
+  "type": "energy_burst"
+ },
+ {
+  "start": 520.6,
+  "end": 521.2,
+  "peak": 0.2704234719276428,
+  "type": "energy_burst"
+ },
+ {
+  "start": 524.3,
+  "end": 524.7,
+  "peak": 0.190286785364151,
+  "type": "energy_burst"
+ },
+ {
+  "start": 527.7,
+  "end": 529.3000000000001,
+  "peak": 0.28659385442733765,
+  "type": "energy_burst"
+ },
+ {
+  "start": 532.3,
+  "end": 532.8000000000001,
+  "peak": 0.11235552281141281,
+  "type": "energy_burst"
+ },
+ {
+  "start": 534.9,
+  "end": 536.0,
+  "peak": 0.21858210861682892,
+  "type": "energy_burst"
+ },
+ {
+  "start": 540.2,
+  "end": 540.4000000000001,
+  "peak": 0.1752915233373642,
+  "type": "energy_burst"
+ },
+ {
+  "start": 541.7,
+  "end": 543.2,
+  "peak": 0.2211027592420578,
+  "type": "energy_burst"
+ },
+ {
+  "start": 544.3,
+  "end": 544.9000000000001,
+  "peak": 0.24976356327533722,
+  "type": "energy_burst"
+ },
+ {
+  "start": 548.3,
+  "end": 550.9000000000001,
+  "peak": 0.17162400484085083,
+  "type": "energy_burst"
+ },
+ {
+  "start": 553.7,
+  "end": 553.8,
+  "peak": 0.07286518067121506,
+  "type": "energy_burst"
+ },
+ {
+  "start": 555.1,
+  "end": 556.5,
+  "peak": 0.19419966638088226,
+  "type": "energy_burst"
+ },
+ {
+  "start": 557.7,
+  "end": 558.7,
+  "peak": 0.21921710669994354,
+  "type": "energy_burst"
+ },
+ {
+  "start": 567.0,
+  "end": 567.2,
+  "peak": 0.2284270077943802,
+  "type": "energy_burst"
+ },
+ {
+  "start": 570.6,
+  "end": 571.4000000000001,
+  "peak": 0.23418420553207397,
+  "type": "energy_burst"
+ },
+ {
+  "start": 578.1,
+  "end": 578.4000000000001,
+  "peak": 0.20869839191436768,
+  "type": "energy_burst"
+ },
+ {
+  "start": 581.2,
+  "end": 581.4000000000001,
+  "peak": 0.22285012900829315,
+  "type": "energy_burst"
+ },
+ {
+  "start": 585.1,
+  "end": 585.7,
+  "peak": 0.25213634967803955,
+  "type": "energy_burst"
+ },
+ {
+  "start": 589.9,
+  "end": 590.1,
+  "peak": 0.050310373306274414,
+  "type": "energy_burst"
+ },
+ {
+  "start": 591.3,
+  "end": 592.5,
+  "peak": 0.298692524433136,
+  "type": "energy_burst"
+ },
+ {
+  "start": 595.6,
+  "end": 596.6,
+  "peak": 0.09633740037679672,
+  "type": "energy_burst"
+ },
+ {
+  "start": 597.2,
+  "end": 597.3,
+  "peak": 0.049009308218955994,
+  "type": "energy_burst"
+ },
+ {
+  "start": 598.3,
+  "end": 599.4000000000001,
+  "peak": 0.2648654282093048,
+  "type": "energy_burst"
+ },
+ {
+  "start": 606.1,
+  "end": 606.8000000000001,
+  "peak": 0.0930379331111908,
+  "type": "energy_burst"
+ },
+ {
+  "start": 608.4,
+  "end": 608.6,
+  "peak": 0.1899515688419342,
+  "type": "energy_burst"
+ },
+ {
+  "start": 612.6,
+  "end": 613.8000000000001,
+  "peak": 0.29814884066581726,
+  "type": "energy_burst"
+ },
+ {
+  "start": 613.1,
+  "end": 613.2,
+  "peak": 0.29814884066581726,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 615.0,
+  "end": 616.4000000000001,
+  "peak": 0.24011163413524628,
+  "type": "energy_burst"
+ },
+ {
+  "start": 620.3,
+  "end": 620.4,
+  "peak": 0.33345144987106323,
+  "type": "energy_burst"
+ },
+ {
+  "start": 621.4,
+  "end": 623.2,
+  "peak": 0.2179396003484726,
+  "type": "energy_burst"
+ },
+ {
+  "start": 626.2,
+  "end": 626.5000000000001,
+  "peak": 0.2596520483493805,
+  "type": "energy_burst"
+ },
+ {
+  "start": 633.2,
+  "end": 633.8000000000001,
+  "peak": 0.24917982518672943,
+  "type": "energy_burst"
+ },
+ {
+  "start": 634.5,
+  "end": 634.9000000000001,
+  "peak": 0.24656593799591064,
+  "type": "energy_burst"
+ },
+ {
+  "start": 637.6,
+  "end": 639.1,
+  "peak": 0.22597265243530273,
+  "type": "energy_burst"
+ },
+ {
+  "start": 639.7,
+  "end": 639.8,
+  "peak": 0.2065916210412979,
+  "type": "energy_burst"
+ },
+ {
+  "start": 643.0,
+  "end": 643.1,
+  "peak": 0.2525668442249298,
+  "type": "energy_burst"
+ },
+ {
+  "start": 646.7,
+  "end": 647.9000000000001,
+  "peak": 0.20980481803417206,
+  "type": "energy_burst"
+ },
+ {
+  "start": 650.3,
+  "end": 650.5000000000001,
+  "peak": 0.07855074107646942,
+  "type": "energy_burst"
+ },
+ {
+  "start": 651.6,
+  "end": 652.4000000000001,
+  "peak": 0.08493462204933167,
+  "type": "energy_burst"
+ },
+ {
+  "start": 655.2,
+  "end": 655.8000000000001,
+  "peak": 0.036376576870679855,
+  "type": "energy_burst"
+ },
+ {
+  "start": 655.5,
+  "end": 655.6,
+  "peak": 0.036376576870679855,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 657.0,
+  "end": 658.3000000000001,
+  "peak": 0.1295495182275772,
+  "type": "energy_burst"
+ },
+ {
+  "start": 658.8,
+  "end": 660.3000000000001,
+  "peak": 0.19403451681137085,
+  "type": "energy_burst"
+ },
+ {
+  "start": 662.6,
+  "end": 663.1,
+  "peak": 0.06707108020782471,
+  "type": "energy_burst"
+ },
+ {
+  "start": 663.6,
+  "end": 664.3000000000001,
+  "peak": 0.175294890999794,
+  "type": "energy_burst"
+ },
+ {
+  "start": 664.8,
+  "end": 665.0000000000001,
+  "peak": 0.17973820865154266,
+  "type": "energy_burst"
+ },
+ {
+  "start": 668.3,
+  "end": 669.5000000000001,
+  "peak": 0.2710062563419342,
+  "type": "energy_burst"
+ },
+ {
+  "start": 672.3,
+  "end": 672.4,
+  "peak": 0.24613432586193085,
+  "type": "energy_burst"
+ },
+ {
+  "start": 674.5,
+  "end": 675.5000000000001,
+  "peak": 0.3247556984424591,
+  "type": "energy_burst"
+ },
+ {
+  "start": 678.9,
+  "end": 679.4000000000001,
+  "peak": 0.17666932940483093,
+  "type": "energy_burst"
+ },
+ {
+  "start": 680.1,
+  "end": 680.2,
+  "peak": 0.24382615089416504,
+  "type": "energy_burst"
+ },
+ {
+  "start": 682.8,
+  "end": 683.0000000000001,
+  "peak": 0.19359327852725983,
+  "type": "energy_burst"
+ },
+ {
+  "start": 684.0,
+  "end": 684.2,
+  "peak": 0.15062463283538818,
+  "type": "energy_burst"
+ },
+ {
+  "start": 685.5,
+  "end": 685.9000000000001,
+  "peak": 0.23088963329792023,
+  "type": "energy_burst"
+ },
+ {
+  "start": 690.6,
+  "end": 690.9000000000001,
+  "peak": 0.08092957735061646,
+  "type": "energy_burst"
+ },
+ {
+  "start": 694.4,
+  "end": 695.3000000000001,
+  "peak": 0.2979331910610199,
+  "type": "energy_burst"
+ },
+ {
+  "start": 695.8,
+  "end": 695.9,
+  "peak": 0.09880562871694565,
+  "type": "energy_burst"
+ },
+ {
+  "start": 696.8,
+  "end": 697.1,
+  "peak": 0.28403541445732117,
+  "type": "energy_burst"
+ },
+ {
+  "start": 698.9,
+  "end": 699.7,
+  "peak": 0.24343466758728027,
+  "type": "energy_burst"
+ },
+ {
+  "start": 705.7,
+  "end": 705.9000000000001,
+  "peak": 0.1544487029314041,
+  "type": "energy_burst"
+ },
+ {
+  "start": 712.9,
+  "end": 713.9000000000001,
+  "peak": 0.09921617805957794,
+  "type": "energy_burst"
+ },
+ {
+  "start": 714.8,
+  "end": 715.9000000000001,
+  "peak": 0.26631394028663635,
+  "type": "energy_burst"
+ },
+ {
+  "start": 718.9,
+  "end": 720.1,
+  "peak": 0.31425124406814575,
+  "type": "energy_burst"
+ },
+ {
+  "start": 722.0,
+  "end": 722.3000000000001,
+  "peak": 0.06182243302464485,
+  "type": "energy_burst"
+ },
+ {
+  "start": 722.8,
+  "end": 723.4000000000001,
+  "peak": 0.10102086514234543,
+  "type": "energy_burst"
+ },
+ {
+  "start": 724.5,
+  "end": 725.6,
+  "peak": 0.22852814197540283,
+  "type": "energy_burst"
+ },
+ {
+  "start": 728.4,
+  "end": 730.1,
+  "peak": 0.18294578790664673,
+  "type": "energy_burst"
+ },
+ {
+  "start": 731.1,
+  "end": 731.3000000000001,
+  "peak": 0.06061379611492157,
+  "type": "energy_burst"
+ },
+ {
+  "start": 731.9,
+  "end": 733.1,
+  "peak": 0.16726011037826538,
+  "type": "energy_burst"
+ },
+ {
+  "start": 734.3,
+  "end": 735.2,
+  "peak": 0.2434816062450409,
+  "type": "energy_burst"
+ },
+ {
+  "start": 737.7,
+  "end": 738.9000000000001,
+  "peak": 0.2862609326839447,
+  "type": "energy_burst"
+ },
+ {
+  "start": 740.8,
+  "end": 741.7,
+  "peak": 0.2265855222940445,
+  "type": "energy_burst"
+ },
+ {
+  "start": 741.4,
+  "end": 741.5,
+  "peak": 0.2265855222940445,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 743.8,
+  "end": 744.8000000000001,
+  "peak": 0.29795578122138977,
+  "type": "energy_burst"
+ },
+ {
+  "start": 743.9,
+  "end": 744.0,
+  "peak": 0.29795578122138977,
+  "pause_len": 1.9,
+  "type": "pause_burst"
+ },
+ {
+  "start": 746.8,
+  "end": 747.9000000000001,
+  "peak": 0.15547038614749908,
+  "type": "energy_burst"
+ },
+ {
+  "start": 749.3,
+  "end": 750.3000000000001,
+  "peak": 0.12573356926441193,
+  "type": "energy_burst"
+ },
+ {
+  "start": 753.2,
+  "end": 754.3000000000001,
+  "peak": 0.28187108039855957,
+  "type": "energy_burst"
+ },
+ {
+  "start": 757.3,
+  "end": 757.8000000000001,
+  "peak": 0.1991555392742157,
+  "type": "energy_burst"
+ },
+ {
+  "start": 758.6,
+  "end": 758.7,
+  "peak": 0.16451287269592285,
+  "type": "energy_burst"
+ },
+ {
+  "start": 759.4,
+  "end": 759.5,
+  "peak": 0.21464616060256958,
+  "type": "energy_burst"
+ },
+ {
+  "start": 766.0,
+  "end": 766.7,
+  "peak": 0.1295694261789322,
+  "type": "energy_burst"
+ },
+ {
+  "start": 768.5,
+  "end": 768.7,
+  "peak": 0.049841560423374176,
+  "type": "energy_burst"
+ },
+ {
+  "start": 768.6,
+  "end": 768.7,
+  "peak": 0.049841560423374176,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 770.5,
+  "end": 772.3000000000001,
+  "peak": 0.19176217913627625,
+  "type": "energy_burst"
+ },
+ {
+  "start": 770.6,
+  "end": 770.7,
+  "peak": 0.19176217913627625,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 773.8,
+  "end": 775.0000000000001,
+  "peak": 0.27717044949531555,
+  "type": "energy_burst"
+ },
+ {
+  "start": 776.6,
+  "end": 776.9000000000001,
+  "peak": 0.2426600158214569,
+  "type": "energy_burst"
+ },
+ {
+  "start": 780.2,
+  "end": 780.3,
+  "peak": 0.15750916302204132,
+  "type": "energy_burst"
+ },
+ {
+  "start": 783.2,
+  "end": 783.3,
+  "peak": 0.02095843479037285,
+  "type": "energy_burst"
+ },
+ {
+  "start": 784.4,
+  "end": 785.7,
+  "peak": 0.27548566460609436,
+  "type": "energy_burst"
+ },
+ {
+  "start": 788.1,
+  "end": 788.2,
+  "peak": 0.08415491878986359,
+  "type": "energy_burst"
+ },
+ {
+  "start": 789.0,
+  "end": 789.9000000000001,
+  "peak": 0.21200531721115112,
+  "type": "energy_burst"
+ },
+ {
+  "start": 795.6,
+  "end": 796.1,
+  "peak": 0.15121430158615112,
+  "type": "energy_burst"
+ },
+ {
+  "start": 796.6,
+  "end": 797.0000000000001,
+  "peak": 0.14400120079517365,
+  "type": "energy_burst"
+ },
+ {
+  "start": 798.2,
+  "end": 798.6,
+  "peak": 0.08462654799222946,
+  "type": "energy_burst"
+ },
+ {
+  "start": 799.5,
+  "end": 801.3000000000001,
+  "peak": 0.2188270092010498,
+  "type": "energy_burst"
+ },
+ {
+  "start": 803.5,
+  "end": 803.9000000000001,
+  "peak": 0.19980233907699585,
+  "type": "energy_burst"
+ },
+ {
+  "start": 804.4,
+  "end": 805.3000000000001,
+  "peak": 0.25412315130233765,
+  "type": "energy_burst"
+ },
+ {
+  "start": 805.8,
+  "end": 806.0000000000001,
+  "peak": 0.11596578359603882,
+  "type": "energy_burst"
+ },
+ {
+  "start": 807.3,
+  "end": 808.5000000000001,
+  "peak": 0.22163352370262146,
+  "type": "energy_burst"
+ },
+ {
+  "start": 810.5,
+  "end": 811.0000000000001,
+  "peak": 0.24705645442008972,
+  "type": "energy_burst"
+ },
+ {
+  "start": 811.7,
+  "end": 812.0000000000001,
+  "peak": 0.0534072145819664,
+  "type": "energy_burst"
+ },
+ {
+  "start": 813.4,
+  "end": 815.0000000000001,
+  "peak": 0.3440741002559662,
+  "type": "energy_burst"
+ },
+ {
+  "start": 815.8,
+  "end": 816.0000000000001,
+  "peak": 0.2018090933561325,
+  "type": "energy_burst"
+ },
+ {
+  "start": 816.7,
+  "end": 817.4000000000001,
+  "peak": 0.21801982820034027,
+  "type": "energy_burst"
+ },
+ {
+  "start": 818.0,
+  "end": 818.3000000000001,
+  "peak": 0.08782250434160233,
+  "type": "energy_burst"
+ },
+ {
+  "start": 826.3,
+  "end": 826.4,
+  "peak": 0.10529354959726334,
+  "type": "energy_burst"
+ },
+ {
+  "start": 827.0,
+  "end": 827.5000000000001,
+  "peak": 0.21814873814582825,
+  "type": "energy_burst"
+ },
+ {
+  "start": 829.3,
+  "end": 829.4,
+  "peak": 0.030088046565651894,
+  "type": "energy_burst"
+ },
+ {
+  "start": 829.9,
+  "end": 830.3000000000001,
+  "peak": 0.12015292048454285,
+  "type": "energy_burst"
+ },
+ {
+  "start": 833.5,
+  "end": 835.4000000000001,
+  "peak": 0.26605460047721863,
+  "type": "energy_burst"
+ },
+ {
+  "start": 835.2,
+  "end": 835.3,
+  "peak": 0.26605460047721863,
+  "pause_len": 2.4,
+  "type": "pause_burst"
+ },
+ {
+  "start": 836.1,
+  "end": 836.9000000000001,
+  "peak": 0.2740399241447449,
+  "type": "energy_burst"
+ },
+ {
+  "start": 840.5,
+  "end": 841.2,
+  "peak": 0.3354310393333435,
+  "type": "energy_burst"
+ },
+ {
+  "start": 845.6,
+  "end": 845.7,
+  "peak": 0.2528386116027832,
+  "type": "energy_burst"
+ },
+ {
+  "start": 846.3,
+  "end": 846.4,
+  "peak": 0.2331426590681076,
+  "type": "energy_burst"
+ },
+ {
+  "start": 850.0,
+  "end": 850.3000000000001,
+  "peak": 0.12451502680778503,
+  "type": "energy_burst"
+ },
+ {
+  "start": 852.4,
+  "end": 852.7,
+  "peak": 0.20094487071037292,
+  "type": "energy_burst"
+ },
+ {
+  "start": 853.8,
+  "end": 854.9000000000001,
+  "peak": 0.29998111724853516,
+  "type": "energy_burst"
+ },
+ {
+  "start": 856.1,
+  "end": 856.3000000000001,
+  "peak": 0.24879677593708038,
+  "type": "energy_burst"
+ },
+ {
+  "start": 858.3,
+  "end": 858.9000000000001,
+  "peak": 0.25470560789108276,
+  "type": "energy_burst"
+ },
+ {
+  "start": 860.0,
+  "end": 860.8000000000001,
+  "peak": 0.18709787726402283,
+  "type": "energy_burst"
+ },
+ {
+  "start": 862.9,
+  "end": 863.9000000000001,
+  "peak": 0.10217924416065216,
+  "type": "energy_burst"
+ },
+ {
+  "start": 864.7,
+  "end": 865.2,
+  "peak": 0.1893824189901352,
+  "type": "energy_burst"
+ },
+ {
+  "start": 867.3,
+  "end": 869.3000000000001,
+  "peak": 0.3050442636013031,
+  "type": "energy_burst"
+ },
+ {
+  "start": 870.7,
+  "end": 870.9000000000001,
+  "peak": 0.2111898809671402,
+  "type": "energy_burst"
+ },
+ {
+  "start": 872.1,
+  "end": 872.8000000000001,
+  "peak": 0.275265634059906,
+  "type": "energy_burst"
+ },
+ {
+  "start": 873.6,
+  "end": 874.2,
+  "peak": 0.27596497535705566,
+  "type": "energy_burst"
+ },
+ {
+  "start": 875.3,
+  "end": 875.8000000000001,
+  "peak": 0.15346895158290863,
+  "type": "energy_burst"
+ },
+ {
+  "start": 876.5,
+  "end": 876.7,
+  "peak": 0.15543828904628754,
+  "type": "energy_burst"
+ },
+ {
+  "start": 880.1,
+  "end": 880.2,
+  "peak": 0.10358729958534241,
+  "type": "energy_burst"
+ },
+ {
+  "start": 884.8,
+  "end": 886.0000000000001,
+  "peak": 0.21633559465408325,
+  "type": "energy_burst"
+ },
+ {
+  "start": 888.0,
+  "end": 888.4000000000001,
+  "peak": 0.08797302097082138,
+  "type": "energy_burst"
+ },
+ {
+  "start": 889.0,
+  "end": 889.3000000000001,
+  "peak": 0.07515985518693924,
+  "type": "energy_burst"
+ },
+ {
+  "start": 890.7,
+  "end": 891.0000000000001,
+  "peak": 0.18000398576259613,
+  "type": "energy_burst"
+ },
+ {
+  "start": 892.0,
+  "end": 893.2,
+  "peak": 0.21868953108787537,
+  "type": "energy_burst"
+ },
+ {
+  "start": 895.1,
+  "end": 895.3000000000001,
+  "peak": 0.02237473614513874,
+  "type": "energy_burst"
+ },
+ {
+  "start": 896.0,
+  "end": 896.3000000000001,
+  "peak": 0.04380018264055252,
+  "type": "energy_burst"
+ },
+ {
+  "start": 897.1,
+  "end": 897.4000000000001,
+  "peak": 0.06533542275428772,
+  "type": "energy_burst"
+ },
+ {
+  "start": 898.0,
+  "end": 898.6,
+  "peak": 0.2675573229789734,
+  "type": "energy_burst"
+ },
+ {
+  "start": 899.6,
+  "end": 899.7,
+  "peak": 0.02470082975924015,
+  "type": "energy_burst"
+ },
+ {
+  "start": 900.3,
+  "end": 901.0000000000001,
+  "peak": 0.11553217470645905,
+  "type": "energy_burst"
+ },
+ {
+  "start": 901.6,
+  "end": 902.1,
+  "peak": 0.07317248731851578,
+  "type": "energy_burst"
+ },
+ {
+  "start": 903.0,
+  "end": 903.4000000000001,
+  "peak": 0.21943598985671997,
+  "type": "energy_burst"
+ },
+ {
+  "start": 904.5,
+  "end": 905.8000000000001,
+  "peak": 0.21555276215076447,
+  "type": "energy_burst"
+ },
+ {
+  "start": 906.4,
+  "end": 906.5,
+  "peak": 0.21072909235954285,
+  "type": "energy_burst"
+ },
+ {
+  "start": 907.4,
+  "end": 908.2,
+  "peak": 0.19080302119255066,
+  "type": "energy_burst"
+ },
+ {
+  "start": 911.0,
+  "end": 913.2,
+  "peak": 0.2753690481185913,
+  "type": "energy_burst"
+ },
+ {
+  "start": 912.8,
+  "end": 912.9,
+  "peak": 0.2753690481185913,
+  "pause_len": 2.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 916.7,
+  "end": 917.3000000000001,
+  "peak": 0.1049073189496994,
+  "type": "energy_burst"
+ },
+ {
+  "start": 920.4,
+  "end": 921.4000000000001,
+  "peak": 0.0576801523566246,
+  "type": "energy_burst"
+ },
+ {
+  "start": 920.6,
+  "end": 920.7,
+  "peak": 0.0576801523566246,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 924.5,
+  "end": 925.9000000000001,
+  "peak": 0.11199137568473816,
+  "type": "energy_burst"
+ },
+ {
+  "start": 926.9,
+  "end": 927.7,
+  "peak": 0.15994605422019958,
+  "type": "energy_burst"
+ },
+ {
+  "start": 931.1,
+  "end": 932.0000000000001,
+  "peak": 0.05492742732167244,
+  "type": "energy_burst"
+ },
+ {
+  "start": 931.6,
+  "end": 931.7,
+  "peak": 0.05492742732167244,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 935.7,
+  "end": 936.7,
+  "peak": 0.0831429660320282,
+  "type": "energy_burst"
+ },
+ {
+  "start": 937.2,
+  "end": 937.3,
+  "peak": 0.09465903043746948,
+  "type": "energy_burst"
+ },
+ {
+  "start": 937.2,
+  "end": 937.3,
+  "peak": 0.09465903043746948,
+  "pause_len": 2.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 938.3,
+  "end": 939.3000000000001,
+  "peak": 0.26026859879493713,
+  "type": "energy_burst"
+ },
+ {
+  "start": 944.4,
+  "end": 944.7,
+  "peak": 0.22633428871631622,
+  "type": "energy_burst"
+ },
+ {
+  "start": 947.3,
+  "end": 947.4,
+  "peak": 0.17875272035598755,
+  "type": "energy_burst"
+ },
+ {
+  "start": 949.3,
+  "end": 950.4000000000001,
+  "peak": 0.08108173310756683,
+  "type": "energy_burst"
+ },
+ {
+  "start": 951.2,
+  "end": 951.6,
+  "peak": 0.19313237071037292,
+  "type": "energy_burst"
+ },
+ {
+  "start": 952.4,
+  "end": 953.5000000000001,
+  "peak": 0.30467021465301514,
+  "type": "energy_burst"
+ },
+ {
+  "start": 954.4,
+  "end": 954.8000000000001,
+  "peak": 0.1785314977169037,
+  "type": "energy_burst"
+ },
+ {
+  "start": 955.5,
+  "end": 956.2,
+  "peak": 0.23718847334384918,
+  "type": "energy_burst"
+ },
+ {
+  "start": 966.2,
+  "end": 966.4000000000001,
+  "peak": 0.19104018807411194,
+  "type": "energy_burst"
+ },
+ {
+  "start": 966.9,
+  "end": 967.2,
+  "peak": 0.2957462966442108,
+  "type": "energy_burst"
+ },
+ {
+  "start": 968.5,
+  "end": 969.3000000000001,
+  "peak": 0.2687004506587982,
+  "type": "energy_burst"
+ },
+ {
+  "start": 969.9,
+  "end": 970.1,
+  "peak": 0.13060663640499115,
+  "type": "energy_burst"
+ },
+ {
+  "start": 975.3,
+  "end": 975.7,
+  "peak": 0.06833832710981369,
+  "type": "energy_burst"
+ },
+ {
+  "start": 976.7,
+  "end": 977.9000000000001,
+  "peak": 0.21425125002861023,
+  "type": "energy_burst"
+ },
+ {
+  "start": 980.7,
+  "end": 980.9000000000001,
+  "peak": 0.06954033672809601,
+  "type": "energy_burst"
+ },
+ {
+  "start": 980.7,
+  "end": 980.8,
+  "peak": 0.06954033672809601,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 982.6,
+  "end": 983.0000000000001,
+  "peak": 0.2788615822792053,
+  "type": "energy_burst"
+ },
+ {
+  "start": 985.5,
+  "end": 986.7,
+  "peak": 0.2435261458158493,
+  "type": "energy_burst"
+ },
+ {
+  "start": 989.7,
+  "end": 989.9000000000001,
+  "peak": 0.06696216017007828,
+  "type": "energy_burst"
+ },
+ {
+  "start": 991.6,
+  "end": 992.3000000000001,
+  "peak": 0.11021321266889572,
+  "type": "energy_burst"
+ },
+ {
+  "start": 992.8,
+  "end": 993.4000000000001,
+  "peak": 0.1925683617591858,
+  "type": "energy_burst"
+ },
+ {
+  "start": 997.5,
+  "end": 997.6,
+  "peak": 0.3455565273761749,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1002.1,
+  "end": 1003.6,
+  "peak": 0.260436087846756,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1002.3,
+  "end": 1002.4,
+  "peak": 0.1383545845746994,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1008.1,
+  "end": 1008.3000000000001,
+  "peak": 0.2756192684173584,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1008.1,
+  "end": 1008.2,
+  "peak": 0.2756192684173584,
+  "pause_len": 3.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1009.2,
+  "end": 1009.7,
+  "peak": 0.23795969784259796,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1010.4,
+  "end": 1011.7,
+  "peak": 0.20525257289409637,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1013.3,
+  "end": 1014.7,
+  "peak": 0.3143904209136963,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1014.1,
+  "end": 1014.2,
+  "peak": 0.3143904209136963,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1017.7,
+  "end": 1017.8,
+  "peak": 0.09587570279836655,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1018.3,
+  "end": 1018.4,
+  "peak": 0.12831559777259827,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1018.9,
+  "end": 1019.6,
+  "peak": 0.23864717781543732,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1022.3,
+  "end": 1024.0,
+  "peak": 0.2241346836090088,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1023.8,
+  "end": 1023.9,
+  "peak": 0.2241346836090088,
+  "pause_len": 2.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1026.5,
+  "end": 1027.0,
+  "peak": 0.08972535282373428,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1028.3,
+  "end": 1029.3,
+  "peak": 0.1739850491285324,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1031.5,
+  "end": 1032.7,
+  "peak": 0.2983029782772064,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1035.7,
+  "end": 1036.3999999999999,
+  "peak": 0.24052631855010986,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1039.3,
+  "end": 1039.5,
+  "peak": 0.1598307192325592,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1040.0,
+  "end": 1040.2,
+  "peak": 0.11187753826379776,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1042.8,
+  "end": 1043.5,
+  "peak": 0.12566113471984863,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1044.3,
+  "end": 1045.2,
+  "peak": 0.15603797137737274,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1044.6,
+  "end": 1044.7,
+  "peak": 0.1522282361984253,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1046.1,
+  "end": 1046.3,
+  "peak": 0.10791357606649399,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1046.9,
+  "end": 1047.3,
+  "peak": 0.1843622773885727,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1049.2,
+  "end": 1050.2,
+  "peak": 0.20905302464962006,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1049.8,
+  "end": 1049.9,
+  "peak": 0.20905302464962006,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1054.4,
+  "end": 1055.2,
+  "peak": 0.20763839781284332,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1057.9,
+  "end": 1058.0,
+  "peak": 0.1760886013507843,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1061.6,
+  "end": 1063.1,
+  "peak": 0.23108747601509094,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1064.4,
+  "end": 1064.5,
+  "peak": 0.27505022287368774,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1065.0,
+  "end": 1065.7,
+  "peak": 0.2765766382217407,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1078.4,
+  "end": 1078.8,
+  "peak": 0.08894059807062149,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1079.8,
+  "end": 1079.9,
+  "peak": 0.020484518259763718,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1081.4,
+  "end": 1082.8,
+  "peak": 0.3279416263103485,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1086.0,
+  "end": 1086.7,
+  "peak": 0.22700761258602142,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1089.0,
+  "end": 1089.8999999999999,
+  "peak": 0.2423608899116516,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1092.9,
+  "end": 1093.8999999999999,
+  "peak": 0.11362933367490768,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1096.0,
+  "end": 1097.6,
+  "peak": 0.3190003037452698,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1097.5,
+  "end": 1097.6,
+  "peak": 0.3190003037452698,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1099.7,
+  "end": 1100.0,
+  "peak": 0.1635143756866455,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1100.7,
+  "end": 1100.8999999999999,
+  "peak": 0.25954392552375793,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1102.3,
+  "end": 1102.4,
+  "peak": 0.15152770280838013,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1104.8,
+  "end": 1106.7,
+  "peak": 0.24672670662403107,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1115.3,
+  "end": 1115.7,
+  "peak": 0.12858229875564575,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1118.7,
+  "end": 1119.8,
+  "peak": 0.1871217042207718,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1127.7,
+  "end": 1128.8,
+  "peak": 0.16431789100170135,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1130.2,
+  "end": 1130.3,
+  "peak": 0.1206420511007309,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1131.3,
+  "end": 1132.8999999999999,
+  "peak": 0.1313658207654953,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1134.7,
+  "end": 1136.6,
+  "peak": 0.18073460459709167,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1139.1,
+  "end": 1139.3999999999999,
+  "peak": 0.26022574305534363,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1139.9,
+  "end": 1140.0,
+  "peak": 0.3314339518547058,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1143.9,
+  "end": 1144.7,
+  "peak": 0.24647417664527893,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1145.3,
+  "end": 1145.5,
+  "peak": 0.11000989377498627,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1147.3,
+  "end": 1149.0,
+  "peak": 0.3337477743625641,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1148.9,
+  "end": 1149.0,
+  "peak": 0.3337477743625641,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1156.0,
+  "end": 1156.1,
+  "peak": 0.05587285757064819,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1157.1,
+  "end": 1157.3,
+  "peak": 0.12557095289230347,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1157.1,
+  "end": 1157.2,
+  "peak": 0.12557095289230347,
+  "pause_len": 2.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1158.0,
+  "end": 1158.8999999999999,
+  "peak": 0.17851758003234863,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1161.7,
+  "end": 1162.7,
+  "peak": 0.046412643045186996,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1162.5,
+  "end": 1162.6,
+  "peak": 0.046412643045186996,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1166.1,
+  "end": 1167.3,
+  "peak": 0.15210647881031036,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1166.2,
+  "end": 1166.3,
+  "peak": 0.06847340613603592,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1168.2,
+  "end": 1168.7,
+  "peak": 0.28337275981903076,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1169.6,
+  "end": 1170.0,
+  "peak": 0.2982010543346405,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1170.5,
+  "end": 1170.6,
+  "peak": 0.022654328495264053,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1171.2,
+  "end": 1172.3999999999999,
+  "peak": 0.3277103006839752,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1182.8,
+  "end": 1184.5,
+  "peak": 0.37032586336135864,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1186.6,
+  "end": 1187.3,
+  "peak": 0.3382152020931244,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1198.6,
+  "end": 1199.8,
+  "peak": 0.2825815975666046,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1198.9,
+  "end": 1199.0,
+  "peak": 0.2825815975666046,
+  "pause_len": 4.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1201.4,
+  "end": 1202.1,
+  "peak": 0.1614869236946106,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1203.1,
+  "end": 1204.1,
+  "peak": 0.2831501364707947,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1207.1,
+  "end": 1208.5,
+  "peak": 0.19273710250854492,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1209.4,
+  "end": 1209.5,
+  "peak": 0.2641775608062744,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1210.2,
+  "end": 1211.0,
+  "peak": 0.16273261606693268,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1212.1,
+  "end": 1212.5,
+  "peak": 0.3085833191871643,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1213.2,
+  "end": 1213.6,
+  "peak": 0.20850494503974915,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1214.7,
+  "end": 1215.3999999999999,
+  "peak": 0.24640467762947083,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1216.3,
+  "end": 1216.6,
+  "peak": 0.20298036932945251,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1220.8,
+  "end": 1221.7,
+  "peak": 0.21204765141010284,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1227.4,
+  "end": 1228.5,
+  "peak": 0.2714707553386688,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1227.8,
+  "end": 1227.9,
+  "peak": 0.2714707553386688,
+  "pause_len": 2.4,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1231.3,
+  "end": 1231.4,
+  "peak": 0.09121111035346985,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1231.9,
+  "end": 1233.2,
+  "peak": 0.36283743381500244,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1237.2,
+  "end": 1238.3,
+  "peak": 0.12643389403820038,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1240.8,
+  "end": 1240.9,
+  "peak": 0.1400962471961975,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1241.4,
+  "end": 1242.2,
+  "peak": 0.08940553665161133,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1243.1,
+  "end": 1243.2,
+  "peak": 0.16968069970607758,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1244.4,
+  "end": 1244.8,
+  "peak": 0.28483444452285767,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1252.4,
+  "end": 1252.5,
+  "peak": 0.021609170362353325,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1253.1,
+  "end": 1254.3,
+  "peak": 0.28753727674484253,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1256.2,
+  "end": 1256.5,
+  "peak": 0.11353641003370285,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1257.3,
+  "end": 1257.8,
+  "peak": 0.10310227423906326,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1258.5,
+  "end": 1258.8,
+  "peak": 0.20212717354297638,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1259.4,
+  "end": 1261.1,
+  "peak": 0.3072972297668457,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1263.1,
+  "end": 1265.7,
+  "peak": 0.3389415740966797,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1269.6,
+  "end": 1269.7,
+  "peak": 0.0916634202003479,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1270.5,
+  "end": 1270.6,
+  "peak": 0.30953532457351685,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1274.2,
+  "end": 1275.4,
+  "peak": 0.2475883513689041,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1276.6,
+  "end": 1276.7,
+  "peak": 0.23531228303909302,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1278.6,
+  "end": 1279.7,
+  "peak": 0.2891491651535034,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1281.9,
+  "end": 1282.0,
+  "peak": 0.23183609545230865,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1283.0,
+  "end": 1284.0,
+  "peak": 0.2708101272583008,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1285.2,
+  "end": 1286.6,
+  "peak": 0.2815988063812256,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1287.8,
+  "end": 1288.8,
+  "peak": 0.25915223360061646,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1289.6,
+  "end": 1290.2,
+  "peak": 0.18615318834781647,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1290.7,
+  "end": 1291.1,
+  "peak": 0.2810576856136322,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1292.4,
+  "end": 1293.8,
+  "peak": 0.29218727350234985,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1295.4,
+  "end": 1295.5,
+  "peak": 0.1450403779745102,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1296.9,
+  "end": 1297.2,
+  "peak": 0.18446440994739532,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1298.0,
+  "end": 1298.2,
+  "peak": 0.3049588203430176,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1299.9,
+  "end": 1300.2,
+  "peak": 0.33032310009002686,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1300.7,
+  "end": 1301.2,
+  "peak": 0.23438017070293427,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1303.1,
+  "end": 1303.6,
+  "peak": 0.18932540714740753,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1304.3,
+  "end": 1304.4,
+  "peak": 0.17315979301929474,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1305.5,
+  "end": 1306.4,
+  "peak": 0.30113476514816284,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1307.0,
+  "end": 1307.2,
+  "peak": 0.35877883434295654,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1313.2,
+  "end": 1313.5,
+  "peak": 0.4128439128398895,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1314.6,
+  "end": 1315.1,
+  "peak": 0.1876155436038971,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1317.4,
+  "end": 1318.2,
+  "peak": 0.2836095988750458,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1318.8,
+  "end": 1319.0,
+  "peak": 0.2175065129995346,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1327.0,
+  "end": 1327.1,
+  "peak": 0.29475605487823486,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1335.5,
+  "end": 1337.1,
+  "peak": 0.2140011489391327,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1345.1,
+  "end": 1345.3,
+  "peak": 0.06456536054611206,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1346.1,
+  "end": 1346.5,
+  "peak": 0.04805978015065193,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1347.1,
+  "end": 1347.6,
+  "peak": 0.1640566885471344,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1351.2,
+  "end": 1351.5,
+  "peak": 0.03562590107321739,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1352.2,
+  "end": 1352.9,
+  "peak": 0.04067584499716759,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1353.7,
+  "end": 1354.5,
+  "peak": 0.043440837413072586,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1355.0,
+  "end": 1355.8,
+  "peak": 0.049431316554546356,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1358.3,
+  "end": 1358.5,
+  "peak": 0.032149333506822586,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1359.5,
+  "end": 1361.7,
+  "peak": 0.13162723183631897,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1362.2,
+  "end": 1362.3,
+  "peak": 0.16539515554904938,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1363.6,
+  "end": 1364.8,
+  "peak": 0.24445079267024994,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1369.4,
+  "end": 1369.5,
+  "peak": 0.25235721468925476,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1379.1,
+  "end": 1379.2,
+  "peak": 0.020603083074092865,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1387.9,
+  "end": 1389.1,
+  "peak": 0.264194130897522,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1394.9,
+  "end": 1395.4,
+  "peak": 0.08453218638896942,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1395.2,
+  "end": 1395.3,
+  "peak": 0.08453218638896942,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1397.2,
+  "end": 1398.4,
+  "peak": 0.09057989716529846,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1397.3,
+  "end": 1397.4,
+  "peak": 0.09057989716529846,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1399.3,
+  "end": 1400.2,
+  "peak": 0.2086922973394394,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1404.7,
+  "end": 1404.8,
+  "peak": 0.05387004092335701,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1405.8,
+  "end": 1405.9,
+  "peak": 0.04887264221906662,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1406.6,
+  "end": 1406.7,
+  "peak": 0.06766800582408905,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1407.6,
+  "end": 1408.1,
+  "peak": 0.04152177274227142,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1408.6,
+  "end": 1408.7,
+  "peak": 0.061921004205942154,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1410.0,
+  "end": 1411.1,
+  "peak": 0.26544949412345886,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1414.7,
+  "end": 1415.0,
+  "peak": 0.25504055619239807,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1415.7,
+  "end": 1415.8,
+  "peak": 0.24790991842746735,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1418.2,
+  "end": 1419.4,
+  "peak": 0.34252652525901794,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1422.4,
+  "end": 1423.2,
+  "peak": 0.27966800332069397,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1425.8,
+  "end": 1426.6,
+  "peak": 0.2992459535598755,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1431.6,
+  "end": 1431.7,
+  "peak": 0.24871942400932312,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1437.7,
+  "end": 1438.8,
+  "peak": 0.3136674165725708,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1441.9,
+  "end": 1442.6,
+  "peak": 0.2599749267101288,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1444.9,
+  "end": 1445.1,
+  "peak": 0.04791884869337082,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1448.5,
+  "end": 1449.5,
+  "peak": 0.2440636157989502,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1449.2,
+  "end": 1449.3,
+  "peak": 0.2440636157989502,
+  "pause_len": 2.4,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1455.6,
+  "end": 1456.4,
+  "peak": 0.3085741102695465,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1461.4,
+  "end": 1463.3,
+  "peak": 0.11337153613567352,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1465.0,
+  "end": 1465.5,
+  "peak": 0.0791105180978775,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1470.3,
+  "end": 1470.5,
+  "peak": 0.06702020764350891,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1471.8,
+  "end": 1472.9,
+  "peak": 0.1788226068019867,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1472.0,
+  "end": 1472.1,
+  "peak": 0.1788226068019867,
+  "pause_len": 2.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1475.2,
+  "end": 1476.4,
+  "peak": 0.2838994264602661,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1479.2,
+  "end": 1480.1,
+  "peak": 0.1682530641555786,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1481.0,
+  "end": 1481.3,
+  "peak": 0.18808482587337494,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1482.4,
+  "end": 1483.6,
+  "peak": 0.09365466982126236,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1491.1,
+  "end": 1492.2,
+  "peak": 0.1531873494386673,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1491.2,
+  "end": 1491.3,
+  "peak": 0.1531873494386673,
+  "pause_len": 3.2,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1495.5,
+  "end": 1496.1,
+  "peak": 0.055658187717199326,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1496.7,
+  "end": 1497.1,
+  "peak": 0.15288595855236053,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1496.8,
+  "end": 1496.9,
+  "peak": 0.15288595855236053,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1499.2,
+  "end": 1501.2,
+  "peak": 0.3189007043838501,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1500.6,
+  "end": 1500.7,
+  "peak": 0.11723361164331436,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1502.0,
+  "end": 1502.3,
+  "peak": 0.1731063574552536,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1503.4,
+  "end": 1503.8,
+  "peak": 0.31955820322036743,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1504.3,
+  "end": 1504.9,
+  "peak": 0.28060197830200195,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1505.9,
+  "end": 1507.0,
+  "peak": 0.3410596251487732,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1509.5,
+  "end": 1509.6,
+  "peak": 0.24828273057937622,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1512.7,
+  "end": 1513.8,
+  "peak": 0.1834212839603424,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1515.4,
+  "end": 1516.2,
+  "peak": 0.328872412443161,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1518.6,
+  "end": 1519.7,
+  "peak": 0.24723346531391144,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1524.1,
+  "end": 1525.2,
+  "peak": 0.25631949305534363,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1527.6,
+  "end": 1528.6,
+  "peak": 0.2893252670764923,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1534.3,
+  "end": 1534.5,
+  "peak": 0.04129992797970772,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1535.3,
+  "end": 1536.4,
+  "peak": 0.2728272080421448,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1535.3,
+  "end": 1535.4,
+  "peak": 0.2728272080421448,
+  "pause_len": 3.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1538.3,
+  "end": 1538.5,
+  "peak": 0.06139367073774338,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1541.2,
+  "end": 1542.3,
+  "peak": 0.14263515174388885,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1543.6,
+  "end": 1544.5,
+  "peak": 0.18827542662620544,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1550.5,
+  "end": 1552.4,
+  "peak": 0.1614985316991806,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1551.4,
+  "end": 1551.5,
+  "peak": 0.1614985316991806,
+  "pause_len": 2.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1554.0,
+  "end": 1554.6,
+  "peak": 0.2181711494922638,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1560.1,
+  "end": 1561.0,
+  "peak": 0.09355249255895615,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1560.2,
+  "end": 1560.3,
+  "peak": 0.09355249255895615,
+  "pause_len": 3.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1563.1,
+  "end": 1564.2,
+  "peak": 0.2752646505832672,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1563.8,
+  "end": 1563.9,
+  "peak": 0.2752646505832672,
+  "pause_len": 2.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1568.4,
+  "end": 1569.2,
+  "peak": 0.1752529740333557,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1569.7,
+  "end": 1569.9,
+  "peak": 0.09222594648599625,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1570.6,
+  "end": 1571.5,
+  "peak": 0.1588873714208603,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1572.4,
+  "end": 1572.5,
+  "peak": 0.204820454120636,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1574.5,
+  "end": 1575.5,
+  "peak": 0.17772047221660614,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1574.6,
+  "end": 1574.7,
+  "peak": 0.17772047221660614,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1579.4,
+  "end": 1579.5,
+  "peak": 0.12594372034072876,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1580.0,
+  "end": 1580.2,
+  "peak": 0.11297482997179031,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1586.7,
+  "end": 1588.0,
+  "peak": 0.08743916451931,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1590.2,
+  "end": 1590.4,
+  "peak": 0.05337826535105705,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1591.1,
+  "end": 1593.2,
+  "peak": 0.18548515439033508,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1594.9,
+  "end": 1595.8,
+  "peak": 0.09449213743209839,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1596.5,
+  "end": 1596.7,
+  "peak": 0.22580893337726593,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1597.9,
+  "end": 1598.2,
+  "peak": 0.13630543649196625,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1598.7,
+  "end": 1598.8,
+  "peak": 0.0636669471859932,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1599.3,
+  "end": 1599.8,
+  "peak": 0.20954349637031555,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1605.8,
+  "end": 1606.1,
+  "peak": 0.04502032324671745,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1607.1,
+  "end": 1607.6,
+  "peak": 0.05109179764986038,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1607.4,
+  "end": 1607.5,
+  "peak": 0.05109179764986038,
+  "pause_len": 4.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1614.1,
+  "end": 1614.4,
+  "peak": 0.20945802330970764,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1614.2,
+  "end": 1614.3,
+  "peak": 0.20945802330970764,
+  "pause_len": 3.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1615.0,
+  "end": 1616.5,
+  "peak": 0.2852318286895752,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1621.2,
+  "end": 1621.3,
+  "peak": 0.22871752083301544,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1622.4,
+  "end": 1622.6,
+  "peak": 0.09373728185892105,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1624.1,
+  "end": 1625.9,
+  "peak": 0.17955979704856873,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1625.8,
+  "end": 1625.9,
+  "peak": 0.17955979704856873,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1629.8,
+  "end": 1630.0,
+  "peak": 0.09420318901538849,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1629.8,
+  "end": 1629.9,
+  "peak": 0.09420318901538849,
+  "pause_len": 2.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1631.0,
+  "end": 1631.4,
+  "peak": 0.3990394175052643,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1632.8,
+  "end": 1634.1,
+  "peak": 0.3418460488319397,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1634.8,
+  "end": 1635.7,
+  "peak": 0.25961995124816895,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1638.2,
+  "end": 1639.8,
+  "peak": 0.24522805213928223,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1642.8,
+  "end": 1642.9,
+  "peak": 0.030170420184731483,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1643.8,
+  "end": 1644.8,
+  "peak": 0.23801007866859436,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1643.9,
+  "end": 1644.0,
+  "peak": 0.23801007866859436,
+  "pause_len": 2.2,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1649.8,
+  "end": 1650.8,
+  "peak": 0.26438871026039124,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1659.4,
+  "end": 1661.0,
+  "peak": 0.11980361491441727,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1660.6,
+  "end": 1660.7,
+  "peak": 0.11980361491441727,
+  "pause_len": 8.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1663.6,
+  "end": 1664.0,
+  "peak": 0.11976347863674164,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1665.1,
+  "end": 1666.1,
+  "peak": 0.25336700677871704,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1665.1,
+  "end": 1665.2,
+  "peak": 0.25336700677871704,
+  "pause_len": 2.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1666.7,
+  "end": 1668.3,
+  "peak": 0.20558500289916992,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1668.9,
+  "end": 1669.1,
+  "peak": 0.1564106047153473,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1669.6,
+  "end": 1671.5,
+  "peak": 0.33606430888175964,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1674.7,
+  "end": 1676.1,
+  "peak": 0.19047242403030396,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1677.1,
+  "end": 1677.2,
+  "peak": 0.20640486478805542,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1683.2,
+  "end": 1684.9,
+  "peak": 0.12994739413261414,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1684.1,
+  "end": 1684.2,
+  "peak": 0.12994739413261414,
+  "pause_len": 5.9,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1685.6,
+  "end": 1686.4,
+  "peak": 0.10214156657457352,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1688.9,
+  "end": 1689.4,
+  "peak": 0.044597234576940536,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1690.4,
+  "end": 1690.7,
+  "peak": 0.10756809264421463,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1691.8,
+  "end": 1692.9,
+  "peak": 0.18570345640182495,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1697.1,
+  "end": 1697.3,
+  "peak": 0.09444930404424667,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1698.2,
+  "end": 1699.2,
+  "peak": 0.3049298822879791,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1705.1,
+  "end": 1705.8,
+  "peak": 0.19663874804973602,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1707.1,
+  "end": 1708.4,
+  "peak": 0.2048002928495407,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1710.0,
+  "end": 1710.4,
+  "peak": 0.05044441670179367,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1711.0,
+  "end": 1712.7,
+  "peak": 0.32974928617477417,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1715.3,
+  "end": 1715.8,
+  "peak": 0.29059651494026184,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1716.3,
+  "end": 1716.8,
+  "peak": 0.3206232190132141,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1719.6,
+  "end": 1719.7,
+  "peak": 0.026866257190704346,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1720.7,
+  "end": 1722.2,
+  "peak": 0.2316596955060959,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1721.4,
+  "end": 1721.5,
+  "peak": 0.1368502974510193,
+  "pause_len": 2.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1723.9,
+  "end": 1724.0,
+  "peak": 0.11680807918310165,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1724.5,
+  "end": 1724.6,
+  "peak": 0.2178780436515808,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1725.3,
+  "end": 1726.3,
+  "peak": 0.3555293679237366,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1728.5,
+  "end": 1728.7,
+  "peak": 0.08969762921333313,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1730.6,
+  "end": 1731.3,
+  "peak": 0.23457618057727814,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1732.6,
+  "end": 1733.2,
+  "peak": 0.22871744632720947,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1733.8,
+  "end": 1734.2,
+  "peak": 0.20784395933151245,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1737.6,
+  "end": 1738.9,
+  "peak": 0.12753431499004364,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1740.2,
+  "end": 1741.0,
+  "peak": 0.04552360251545906,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1742.6,
+  "end": 1742.9,
+  "peak": 0.09771067649126053,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1743.5,
+  "end": 1744.4,
+  "peak": 0.267348974943161,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1750.0,
+  "end": 1750.1,
+  "peak": 0.02506156452000141,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1754.2,
+  "end": 1755.7,
+  "peak": 0.2966155409812927,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1755.6,
+  "end": 1755.7,
+  "peak": 0.2966155409812927,
+  "pause_len": 2.4,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1757.8,
+  "end": 1758.9,
+  "peak": 0.3235468864440918,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1761.4,
+  "end": 1762.6,
+  "peak": 0.30875906348228455,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1771.1,
+  "end": 1771.2,
+  "peak": 0.22997575998306274,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1772.3,
+  "end": 1773.5,
+  "peak": 0.27312135696411133,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1779.2,
+  "end": 1780.1,
+  "peak": 0.2765105068683624,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1785.2,
+  "end": 1785.6,
+  "peak": 0.14218366146087646,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1786.7,
+  "end": 1787.0,
+  "peak": 0.20029963552951813,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1787.6,
+  "end": 1787.9,
+  "peak": 0.17155690491199493,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1788.6,
+  "end": 1788.7,
+  "peak": 0.23163758218288422,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1790.6,
+  "end": 1791.4,
+  "peak": 0.09319118410348892,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1791.1,
+  "end": 1791.2,
+  "peak": 0.09319118410348892,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1792.8,
+  "end": 1792.9,
+  "peak": 0.045457564294338226,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1794.8,
+  "end": 1797.4,
+  "peak": 0.34002619981765747,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1796.3,
+  "end": 1796.4,
+  "peak": 0.2850934565067291,
+  "pause_len": 1.9,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1800.3,
+  "end": 1800.5,
+  "peak": 0.21761538088321686,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1801.2,
+  "end": 1801.5,
+  "peak": 0.1488381326198578,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1806.5,
+  "end": 1807.6,
+  "peak": 0.20798268914222717,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1807.3,
+  "end": 1807.4,
+  "peak": 0.20798268914222717,
+  "pause_len": 2.9,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1818.3,
+  "end": 1819.2,
+  "peak": 0.1302231103181839,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1818.4,
+  "end": 1818.5,
+  "peak": 0.1302231103181839,
+  "pause_len": 5.2,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1820.0,
+  "end": 1820.2,
+  "peak": 0.0944054052233696,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1820.7,
+  "end": 1821.8,
+  "peak": 0.07650081813335419,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1824.5,
+  "end": 1826.0,
+  "peak": 0.07614067941904068,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1825.9,
+  "end": 1826.0,
+  "peak": 0.07614067941904068,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1826.7,
+  "end": 1827.6,
+  "peak": 0.1700323522090912,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1829.8,
+  "end": 1830.9,
+  "peak": 0.1715199500322342,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1833.4,
+  "end": 1833.8,
+  "peak": 0.08347207307815552,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1834.9,
+  "end": 1835.9,
+  "peak": 0.26244038343429565,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1837.1,
+  "end": 1837.8,
+  "peak": 0.2832850217819214,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1838.3,
+  "end": 1838.6,
+  "peak": 0.2763361930847168,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1840.8,
+  "end": 1841.8,
+  "peak": 0.29807382822036743,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1849.1,
+  "end": 1850.2,
+  "peak": 0.12790538370609283,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1857.8,
+  "end": 1857.9,
+  "peak": 0.029621589928865433,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1858.5,
+  "end": 1859.1,
+  "peak": 0.1202004924416542,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1858.5,
+  "end": 1858.6,
+  "peak": 0.1202004924416542,
+  "pause_len": 7.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1860.9,
+  "end": 1862.3,
+  "peak": 0.26516416668891907,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1860.9,
+  "end": 1861.0,
+  "peak": 0.26516416668891907,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1864.6,
+  "end": 1865.2,
+  "peak": 0.2493690699338913,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1870.0,
+  "end": 1870.1,
+  "peak": 0.046731188893318176,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1871.7,
+  "end": 1871.9,
+  "peak": 0.14204426109790802,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1873.2,
+  "end": 1874.3,
+  "peak": 0.2797447741031647,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1873.2,
+  "end": 1873.3,
+  "peak": 0.19950483739376068,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1876.7,
+  "end": 1878.3,
+  "peak": 0.3441629409790039,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1890.4,
+  "end": 1891.3,
+  "peak": 0.23222659528255463,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1891.9,
+  "end": 1892.4,
+  "peak": 0.09380125254392624,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1893.8,
+  "end": 1894.1,
+  "peak": 0.11569463461637497,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1895.0,
+  "end": 1895.1,
+  "peak": 0.06329920142889023,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1896.9,
+  "end": 1897.0,
+  "peak": 0.18122833967208862,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1897.8,
+  "end": 1897.9,
+  "peak": 0.2561831772327423,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1898.6,
+  "end": 1899.7,
+  "peak": 0.24893051385879517,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1902.4,
+  "end": 1902.5,
+  "peak": 0.307264119386673,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1911.0,
+  "end": 1911.3,
+  "peak": 0.10729987174272537,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1911.9,
+  "end": 1913.2,
+  "peak": 0.37597548961639404,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1918.8,
+  "end": 1920.0,
+  "peak": 0.2502363324165344,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1922.5,
+  "end": 1924.1,
+  "peak": 0.2652018666267395,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1929.6,
+  "end": 1931.2,
+  "peak": 0.13715574145317078,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1932.8,
+  "end": 1933.6,
+  "peak": 0.22966286540031433,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1935.3,
+  "end": 1935.8,
+  "peak": 0.17765846848487854,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1936.8,
+  "end": 1936.9,
+  "peak": 0.021520892158150673,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1937.5,
+  "end": 1938.0,
+  "peak": 0.1783522367477417,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1939.2,
+  "end": 1939.4,
+  "peak": 0.08867362141609192,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1939.9,
+  "end": 1940.2,
+  "peak": 0.07028371840715408,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1941.6,
+  "end": 1941.9,
+  "peak": 0.06646750122308731,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1943.7,
+  "end": 1944.6,
+  "peak": 0.21876856684684753,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1946.7,
+  "end": 1946.8,
+  "peak": 0.020164070650935173,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1947.7,
+  "end": 1948.7,
+  "peak": 0.14435896277427673,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1949.3,
+  "end": 1949.6,
+  "peak": 0.30990564823150635,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1950.1,
+  "end": 1950.4,
+  "peak": 0.28640034794807434,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1951.9,
+  "end": 1952.2,
+  "peak": 0.052440352737903595,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1953.6,
+  "end": 1953.8,
+  "peak": 0.028189782053232193,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1954.3,
+  "end": 1955.2,
+  "peak": 0.22021624445915222,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1957.5,
+  "end": 1957.9,
+  "peak": 0.2959524691104889,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1958.5,
+  "end": 1959.1,
+  "peak": 0.23547519743442535,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1960.0,
+  "end": 1960.4,
+  "peak": 0.10429337620735168,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1961.2,
+  "end": 1961.6,
+  "peak": 0.0997144877910614,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1962.4,
+  "end": 1962.6,
+  "peak": 0.18215832114219666,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1966.0,
+  "end": 1967.5,
+  "peak": 0.2540266811847687,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1967.1,
+  "end": 1967.2,
+  "peak": 0.2540266811847687,
+  "pause_len": 3.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 1968.5,
+  "end": 1969.1,
+  "peak": 0.1151818037033081,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1969.8,
+  "end": 1970.1,
+  "peak": 0.08298760652542114,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1971.2,
+  "end": 1971.5,
+  "peak": 0.1614784449338913,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1973.4,
+  "end": 1974.3,
+  "peak": 0.12517161667346954,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1975.5,
+  "end": 1976.2,
+  "peak": 0.07954330742359161,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1977.2,
+  "end": 1977.7,
+  "peak": 0.07181894034147263,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1978.4,
+  "end": 1978.9,
+  "peak": 0.2636876702308655,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1979.5,
+  "end": 1980.3,
+  "peak": 0.21536093950271606,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1988.3,
+  "end": 1989.4,
+  "peak": 0.2752062976360321,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1991.8,
+  "end": 1991.9,
+  "peak": 0.1649530678987503,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1993.4,
+  "end": 1994.5,
+  "peak": 0.13071443140506744,
+  "type": "energy_burst"
+ },
+ {
+  "start": 1995.2,
+  "end": 1996.0,
+  "peak": 0.21368084847927094,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2001.1,
+  "end": 2001.2,
+  "peak": 0.024882229045033455,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2005.1,
+  "end": 2006.4,
+  "peak": 0.26612231135368347,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2006.2,
+  "end": 2006.3,
+  "peak": 0.26612231135368347,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2008.2,
+  "end": 2009.6,
+  "peak": 0.09336002916097641,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2011.3,
+  "end": 2012.2,
+  "peak": 0.15357151627540588,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2012.8,
+  "end": 2012.9,
+  "peak": 0.26223230361938477,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2013.7,
+  "end": 2013.8,
+  "peak": 0.2816801965236664,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2015.1,
+  "end": 2015.2,
+  "peak": 0.25934916734695435,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2017.0,
+  "end": 2017.9,
+  "peak": 0.2350911647081375,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2018.7,
+  "end": 2018.9,
+  "peak": 0.08269751071929932,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2019.4,
+  "end": 2020.0,
+  "peak": 0.21939623355865479,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2021.7,
+  "end": 2022.4,
+  "peak": 0.1380537897348404,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2025.5,
+  "end": 2026.6,
+  "peak": 0.2217545360326767,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2029.8,
+  "end": 2030.7,
+  "peak": 0.10548997670412064,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2030.1,
+  "end": 2030.2,
+  "peak": 0.10548997670412064,
+  "pause_len": 1.9,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2032.1,
+  "end": 2032.6,
+  "peak": 0.0774020105600357,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2033.7,
+  "end": 2033.8,
+  "peak": 0.026097804307937622,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2035.5,
+  "end": 2036.2,
+  "peak": 0.0293242447078228,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2037.1,
+  "end": 2038.1,
+  "peak": 0.3399425148963928,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2038.6,
+  "end": 2039.2,
+  "peak": 0.22213685512542725,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2039.9,
+  "end": 2040.0,
+  "peak": 0.14990265667438507,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2041.3,
+  "end": 2042.5,
+  "peak": 0.2769189774990082,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2052.2,
+  "end": 2052.3,
+  "peak": 0.07581334561109543,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2055.0,
+  "end": 2056.3,
+  "peak": 0.2679187059402466,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2055.7,
+  "end": 2055.8,
+  "peak": 0.2679187059402466,
+  "pause_len": 2.2,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2057.8,
+  "end": 2058.7,
+  "peak": 0.21398286521434784,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2060.7,
+  "end": 2061.4,
+  "peak": 0.1478736400604248,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2062.2,
+  "end": 2064.7,
+  "peak": 0.27712708711624146,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2065.4,
+  "end": 2065.8,
+  "peak": 0.28732138872146606,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2069.7,
+  "end": 2070.5,
+  "peak": 0.29308605194091797,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2071.0,
+  "end": 2071.4,
+  "peak": 0.13986453413963318,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2072.3,
+  "end": 2072.7,
+  "peak": 0.19896502792835236,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2074.8,
+  "end": 2075.4,
+  "peak": 0.17099922895431519,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2076.7,
+  "end": 2076.9,
+  "peak": 0.27077093720436096,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2080.6,
+  "end": 2081.6,
+  "peak": 0.3428804576396942,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2084.4,
+  "end": 2084.5,
+  "peak": 0.2810658812522888,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2086.0,
+  "end": 2086.3,
+  "peak": 0.32399657368659973,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2087.2,
+  "end": 2088.4,
+  "peak": 0.2775568962097168,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2091.1,
+  "end": 2091.5,
+  "peak": 0.05814139172434807,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2093.1,
+  "end": 2093.3,
+  "peak": 0.03925112262368202,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2094.2,
+  "end": 2095.3,
+  "peak": 0.25895190238952637,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2099.1,
+  "end": 2099.3,
+  "peak": 0.15970471501350403,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2099.9,
+  "end": 2101.0,
+  "peak": 0.29245585203170776,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2101.5,
+  "end": 2101.6,
+  "peak": 0.28477004170417786,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2105.0,
+  "end": 2106.0,
+  "peak": 0.2652307152748108,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2110.4,
+  "end": 2111.5,
+  "peak": 0.2806761562824249,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2114.3,
+  "end": 2115.1,
+  "peak": 0.17621225118637085,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2115.8,
+  "end": 2116.5,
+  "peak": 0.20831595361232758,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2119.4,
+  "end": 2119.7,
+  "peak": 0.3312857449054718,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2120.2,
+  "end": 2120.3,
+  "peak": 0.17327940464019775,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2121.6,
+  "end": 2121.7,
+  "peak": 0.12059129774570465,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2123.1,
+  "end": 2124.0,
+  "peak": 0.26178085803985596,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2127.1,
+  "end": 2127.8,
+  "peak": 0.06767390668392181,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2129.5,
+  "end": 2130.4,
+  "peak": 0.10894272476434708,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2133.0,
+  "end": 2134.1,
+  "peak": 0.22723057866096497,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2136.6,
+  "end": 2137.1,
+  "peak": 0.09117458760738373,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2138.9,
+  "end": 2140.0,
+  "peak": 0.16063180565834045,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2139.0,
+  "end": 2139.1,
+  "peak": 0.16063180565834045,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2141.7,
+  "end": 2141.8,
+  "peak": 0.1597946733236313,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2144.8,
+  "end": 2146.1,
+  "peak": 0.2770347595214844,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2149.7,
+  "end": 2149.8,
+  "peak": 0.062336571514606476,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2151.3,
+  "end": 2151.7,
+  "peak": 0.04650776460766792,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2152.3,
+  "end": 2153.2,
+  "peak": 0.23942598700523376,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2158.5,
+  "end": 2159.3,
+  "peak": 0.24076898396015167,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2162.4,
+  "end": 2162.8,
+  "peak": 0.2551555037498474,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2167.2,
+  "end": 2167.3,
+  "peak": 0.19860367476940155,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2172.7,
+  "end": 2173.5,
+  "peak": 0.2379804253578186,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2175.1,
+  "end": 2175.4,
+  "peak": 0.1497393548488617,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2176.0,
+  "end": 2177.0,
+  "peak": 0.31836092472076416,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2183.1,
+  "end": 2184.1,
+  "peak": 0.3926113247871399,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2187.1,
+  "end": 2188.5,
+  "peak": 0.2684434950351715,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2189.1,
+  "end": 2189.3,
+  "peak": 0.38300642371177673,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2191.6,
+  "end": 2192.2,
+  "peak": 0.3141481578350067,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2194.9,
+  "end": 2195.0,
+  "peak": 0.31285980343818665,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2197.0,
+  "end": 2197.1,
+  "peak": 0.2700132727622986,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2204.7,
+  "end": 2205.1,
+  "peak": 0.29644152522087097,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2208.7,
+  "end": 2209.5,
+  "peak": 0.13980485498905182,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2210.3,
+  "end": 2210.5,
+  "peak": 0.10273178666830063,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2211.7,
+  "end": 2211.8,
+  "peak": 0.15587402880191803,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2216.9,
+  "end": 2217.2,
+  "peak": 0.040085162967443466,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2216.9,
+  "end": 2217.0,
+  "peak": 0.040085162967443466,
+  "pause_len": 2.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2217.8,
+  "end": 2217.9,
+  "peak": 0.024960393086075783,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2220.8,
+  "end": 2221.9,
+  "peak": 0.12131139636039734,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2221.0,
+  "end": 2221.1,
+  "peak": 0.12131139636039734,
+  "pause_len": 2.2,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2224.3,
+  "end": 2225.3,
+  "peak": 0.22126872837543488,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2224.4,
+  "end": 2224.5,
+  "peak": 0.22126872837543488,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2230.4,
+  "end": 2231.5,
+  "peak": 0.2786225974559784,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2234.1,
+  "end": 2234.2,
+  "peak": 0.3122773766517639,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2238.4,
+  "end": 2239.0,
+  "peak": 0.23848512768745422,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2239.5,
+  "end": 2239.8,
+  "peak": 0.2268259972333908,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2240.9,
+  "end": 2241.0,
+  "peak": 0.22821161150932312,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2242.3,
+  "end": 2243.0,
+  "peak": 0.22985762357711792,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2243.8,
+  "end": 2243.9,
+  "peak": 0.21430665254592896,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2244.4,
+  "end": 2245.5,
+  "peak": 0.32333627343177795,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2252.4,
+  "end": 2253.4,
+  "peak": 0.19362333416938782,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2255.8,
+  "end": 2257.0,
+  "peak": 0.2129102498292923,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2257.5,
+  "end": 2257.6,
+  "peak": 0.14886312186717987,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2259.3,
+  "end": 2259.8,
+  "peak": 0.11454326659440994,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2261.0,
+  "end": 2262.9,
+  "peak": 0.2872689962387085,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2266.8,
+  "end": 2268.3,
+  "peak": 0.1759783923625946,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2270.2,
+  "end": 2271.7,
+  "peak": 0.17829003930091858,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2277.6,
+  "end": 2278.8,
+  "peak": 0.09760086983442307,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2279.4,
+  "end": 2279.5,
+  "peak": 0.28955012559890747,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2280.2,
+  "end": 2281.1,
+  "peak": 0.34142544865608215,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2281.6,
+  "end": 2281.7,
+  "peak": 0.2017132192850113,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2285.0,
+  "end": 2285.3,
+  "peak": 0.14599250257015228,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2286.3,
+  "end": 2286.4,
+  "peak": 0.20187078416347504,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2288.1,
+  "end": 2289.7,
+  "peak": 0.20725932717323303,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2290.2,
+  "end": 2290.3,
+  "peak": 0.1675553321838379,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2290.9,
+  "end": 2291.5,
+  "peak": 0.27690571546554565,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2296.1,
+  "end": 2296.2,
+  "peak": 0.1928255409002304,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2296.8,
+  "end": 2297.0,
+  "peak": 0.20203951001167297,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2297.7,
+  "end": 2298.0,
+  "peak": 0.33839473128318787,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2301.2,
+  "end": 2301.4,
+  "peak": 0.1795211136341095,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2305.2,
+  "end": 2306.5,
+  "peak": 0.04817717894911766,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2307.5,
+  "end": 2308.1,
+  "peak": 0.15205475687980652,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2308.9,
+  "end": 2310.4,
+  "peak": 0.25233912467956543,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2311.9,
+  "end": 2312.7,
+  "peak": 0.14500455558300018,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2313.3,
+  "end": 2313.6,
+  "peak": 0.1955755054950714,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2316.5,
+  "end": 2316.6,
+  "peak": 0.044754549860954285,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2317.2,
+  "end": 2317.7,
+  "peak": 0.24755220115184784,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2317.6,
+  "end": 2317.7,
+  "peak": 0.24755220115184784,
+  "pause_len": 2.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2318.9,
+  "end": 2320.3,
+  "peak": 0.2549511790275574,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2323.2,
+  "end": 2323.4,
+  "peak": 0.2706698775291443,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2325.8,
+  "end": 2326.2,
+  "peak": 0.16072291135787964,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2327.0,
+  "end": 2327.6,
+  "peak": 0.14449883997440338,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2341.3,
+  "end": 2341.5,
+  "peak": 0.1878315508365631,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2345.7,
+  "end": 2345.8,
+  "peak": 0.26251697540283203,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2348.5,
+  "end": 2348.6,
+  "peak": 0.2045569121837616,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2357.8,
+  "end": 2357.9,
+  "peak": 0.32238438725471497,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2363.8,
+  "end": 2364.8,
+  "peak": 0.3083634376525879,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2364.3,
+  "end": 2364.4,
+  "peak": 0.3083634376525879,
+  "pause_len": 2.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2368.3,
+  "end": 2369.6,
+  "peak": 0.09828304499387741,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2369.4,
+  "end": 2369.5,
+  "peak": 0.09828304499387741,
+  "pause_len": 3.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2371.8,
+  "end": 2372.5,
+  "peak": 0.07456810772418976,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2372.1,
+  "end": 2372.2,
+  "peak": 0.07456810772418976,
+  "pause_len": 2.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2375.0,
+  "end": 2376.0,
+  "peak": 0.32272809743881226,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2376.9,
+  "end": 2377.7,
+  "peak": 0.19376865029335022,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2378.4,
+  "end": 2379.3,
+  "peak": 0.35471388697624207,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2382.1,
+  "end": 2383.3,
+  "peak": 0.16613276302814484,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2385.8,
+  "end": 2386.9,
+  "peak": 0.2491161823272705,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2386.0,
+  "end": 2386.1,
+  "peak": 0.2491161823272705,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2389.4,
+  "end": 2389.8,
+  "peak": 0.2838723957538605,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2395.6,
+  "end": 2397.7,
+  "peak": 0.293254554271698,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2400.4,
+  "end": 2401.1,
+  "peak": 0.12223885953426361,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2405.5,
+  "end": 2406.4,
+  "peak": 0.12347817420959473,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2406.2,
+  "end": 2406.3,
+  "peak": 0.12347817420959473,
+  "pause_len": 2.4,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2408.2,
+  "end": 2409.1,
+  "peak": 0.12827271223068237,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2408.4,
+  "end": 2408.5,
+  "peak": 0.12827271223068237,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2411.1,
+  "end": 2411.3,
+  "peak": 0.03127545863389969,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2413.9,
+  "end": 2415.1,
+  "peak": 0.12071697413921356,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2414.2,
+  "end": 2414.3,
+  "peak": 0.12071697413921356,
+  "pause_len": 2.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2418.1,
+  "end": 2418.3,
+  "peak": 0.11959485709667206,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2420.5,
+  "end": 2420.7,
+  "peak": 0.08839413523674011,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2420.5,
+  "end": 2420.6,
+  "peak": 0.08839413523674011,
+  "pause_len": 2.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2421.5,
+  "end": 2422.7,
+  "peak": 0.08777271211147308,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2424.9,
+  "end": 2425.0,
+  "peak": 0.02521117404103279,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2425.7,
+  "end": 2425.9,
+  "peak": 0.025472495704889297,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2427.8,
+  "end": 2428.0,
+  "peak": 0.028555139899253845,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2429.7,
+  "end": 2430.9,
+  "peak": 0.06028204411268234,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2429.8,
+  "end": 2429.9,
+  "peak": 0.06028204411268234,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2431.4,
+  "end": 2431.5,
+  "peak": 0.05849052593111992,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2432.2,
+  "end": 2432.3,
+  "peak": 0.04701891168951988,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2435.7,
+  "end": 2436.0,
+  "peak": 0.04977256432175636,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2435.8,
+  "end": 2435.9,
+  "peak": 0.04977256432175636,
+  "pause_len": 2.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2441.0,
+  "end": 2442.3,
+  "peak": 0.0840987041592598,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2441.7,
+  "end": 2441.8,
+  "peak": 0.0840987041592598,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2444.1,
+  "end": 2445.2,
+  "peak": 0.09818344563245773,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2447.8,
+  "end": 2449.1,
+  "peak": 0.1663820445537567,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2450.6,
+  "end": 2450.9,
+  "peak": 0.1559232771396637,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2454.1,
+  "end": 2455.3,
+  "peak": 0.11990473419427872,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2457.6,
+  "end": 2458.3,
+  "peak": 0.061595719307661057,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2459.0,
+  "end": 2459.2000000000003,
+  "peak": 0.0680951476097107,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2459.0,
+  "end": 2459.1,
+  "peak": 0.0680951476097107,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2460.0,
+  "end": 2460.9,
+  "peak": 0.219009667634964,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2464.2,
+  "end": 2464.4,
+  "peak": 0.08749788254499435,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2465.0,
+  "end": 2467.3,
+  "peak": 0.11216497421264648,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2467.9,
+  "end": 2468.6,
+  "peak": 0.1094934418797493,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2474.8,
+  "end": 2476.4,
+  "peak": 0.13001812994480133,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2475.0,
+  "end": 2475.1,
+  "peak": 0.13001812994480133,
+  "pause_len": 4.1,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2477.5,
+  "end": 2477.7000000000003,
+  "peak": 0.3549594283103943,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2478.8,
+  "end": 2479.5,
+  "peak": 0.2710077464580536,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2480.0,
+  "end": 2480.3,
+  "peak": 0.32407766580581665,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2481.4,
+  "end": 2481.8,
+  "peak": 0.2715981602668762,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2483.0,
+  "end": 2484.2000000000003,
+  "peak": 0.3030302822589874,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2487.5,
+  "end": 2489.5,
+  "peak": 0.30361616611480713,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2487.7,
+  "end": 2487.8,
+  "peak": 0.24516169726848602,
+  "pause_len": 2.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2492.3,
+  "end": 2492.9,
+  "peak": 0.10866951197385788,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2493.5,
+  "end": 2494.0,
+  "peak": 0.32012680172920227,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2493.7,
+  "end": 2493.8,
+  "peak": 0.27544787526130676,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2495.0,
+  "end": 2496.3,
+  "peak": 0.2866658568382263,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2499.5,
+  "end": 2501.0,
+  "peak": 0.31124648451805115,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2503.9,
+  "end": 2504.7000000000003,
+  "peak": 0.1718837171792984,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2504.4,
+  "end": 2504.5,
+  "peak": 0.1718837171792984,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2506.1,
+  "end": 2507.2000000000003,
+  "peak": 0.11694912612438202,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2508.7,
+  "end": 2509.1,
+  "peak": 0.25007784366607666,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2510.2,
+  "end": 2511.2000000000003,
+  "peak": 0.2790491282939911,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2513.6,
+  "end": 2514.7000000000003,
+  "peak": 0.2588568925857544,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2515.4,
+  "end": 2515.5,
+  "peak": 0.25626248121261597,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2522.3,
+  "end": 2523.5,
+  "peak": 0.36774593591690063,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2530.9,
+  "end": 2532.0,
+  "peak": 0.36358264088630676,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2535.4,
+  "end": 2535.7000000000003,
+  "peak": 0.16793566942214966,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2538.4,
+  "end": 2539.0,
+  "peak": 0.2804945409297943,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2541.1,
+  "end": 2542.1,
+  "peak": 0.11355482786893845,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2543.5,
+  "end": 2544.6,
+  "peak": 0.27180254459381104,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2546.2,
+  "end": 2548.3,
+  "peak": 0.2792779803276062,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2553.6,
+  "end": 2555.1,
+  "peak": 0.21858985722064972,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2554.3,
+  "end": 2554.4,
+  "peak": 0.21858985722064972,
+  "pause_len": 1.8,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2556.3,
+  "end": 2556.4,
+  "peak": 0.13227438926696777,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2559.6,
+  "end": 2560.2000000000003,
+  "peak": 0.04895510897040367,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2562.5,
+  "end": 2563.6,
+  "peak": 0.20315073430538177,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2569.1,
+  "end": 2569.2,
+  "peak": 0.037752069532871246,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2570.8,
+  "end": 2571.4,
+  "peak": 0.18579623103141785,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2572.4,
+  "end": 2574.0,
+  "peak": 0.17688527703285217,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2574.9,
+  "end": 2575.3,
+  "peak": 0.13031922280788422,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2576.1,
+  "end": 2577.0,
+  "peak": 0.10723607987165451,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2578.4,
+  "end": 2579.9,
+  "peak": 0.27323588728904724,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2590.2,
+  "end": 2590.5,
+  "peak": 0.2962198257446289,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2592.0,
+  "end": 2593.7000000000003,
+  "peak": 0.24880467355251312,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2599.4,
+  "end": 2599.9,
+  "peak": 0.21504606306552887,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2601.4,
+  "end": 2601.5,
+  "peak": 0.04668798670172691,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2602.7,
+  "end": 2603.6,
+  "peak": 0.32442909479141235,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2604.4,
+  "end": 2605.2000000000003,
+  "peak": 0.29771557450294495,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2608.4,
+  "end": 2609.1,
+  "peak": 0.17504027485847473,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2608.9,
+  "end": 2609.0,
+  "peak": 0.17504027485847473,
+  "pause_len": 1.9,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2609.7,
+  "end": 2610.1,
+  "peak": 0.1686364710330963,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2611.4,
+  "end": 2612.5,
+  "peak": 0.1578817218542099,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2616.6,
+  "end": 2616.9,
+  "peak": 0.15044324100017548,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2617.9,
+  "end": 2618.0,
+  "peak": 0.023829184472560883,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2618.9,
+  "end": 2619.2000000000003,
+  "peak": 0.10451459884643555,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2624.8,
+  "end": 2626.2000000000003,
+  "peak": 0.2825559079647064,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2630.1,
+  "end": 2631.0,
+  "peak": 0.22135064005851746,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2630.2,
+  "end": 2630.3,
+  "peak": 0.22135064005851746,
+  "pause_len": 2.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2631.6,
+  "end": 2631.7,
+  "peak": 0.07877952605485916,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2634.2,
+  "end": 2634.3,
+  "peak": 0.07573013752698898,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2634.8,
+  "end": 2635.0,
+  "peak": 0.11838147789239883,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2635.5,
+  "end": 2635.7000000000003,
+  "peak": 0.17986124753952026,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2636.8,
+  "end": 2637.7000000000003,
+  "peak": 0.1707269549369812,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2638.5,
+  "end": 2638.7000000000003,
+  "peak": 0.1510297656059265,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2639.4,
+  "end": 2639.7000000000003,
+  "peak": 0.15927168726921082,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2643.2,
+  "end": 2643.5,
+  "peak": 0.22658617794513702,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2647.8,
+  "end": 2647.9,
+  "peak": 0.13104264438152313,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2649.7,
+  "end": 2649.8,
+  "peak": 0.22672171890735626,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2652.9,
+  "end": 2653.2000000000003,
+  "peak": 0.18432191014289856,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2654.5,
+  "end": 2655.6,
+  "peak": 0.2847731113433838,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2658.2,
+  "end": 2658.3,
+  "peak": 0.375813752412796,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2659.0,
+  "end": 2659.5,
+  "peak": 0.29378488659858704,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2662.8,
+  "end": 2663.2000000000003,
+  "peak": 0.36215078830718994,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2664.2,
+  "end": 2664.3,
+  "peak": 0.3098562955856323,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2672.9,
+  "end": 2673.0,
+  "peak": 0.20186695456504822,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2675.8,
+  "end": 2675.9,
+  "peak": 0.16536374390125275,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2677.4,
+  "end": 2677.6,
+  "peak": 0.28906339406967163,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2680.3,
+  "end": 2682.0,
+  "peak": 0.15117374062538147,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2682.5,
+  "end": 2683.1,
+  "peak": 0.164695143699646,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2685.4,
+  "end": 2686.4,
+  "peak": 0.24799582362174988,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2688.4,
+  "end": 2689.0,
+  "peak": 0.17716947197914124,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2690.7,
+  "end": 2691.7000000000003,
+  "peak": 0.18688398599624634,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2692.4,
+  "end": 2692.8,
+  "peak": 0.17175444960594177,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2694.5,
+  "end": 2695.5,
+  "peak": 0.25161972641944885,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2696.4,
+  "end": 2697.2000000000003,
+  "peak": 0.2719988226890564,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2699.8,
+  "end": 2700.9,
+  "peak": 0.23982936143875122,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2699.9,
+  "end": 2700.0,
+  "peak": 0.23982936143875122,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2704.7,
+  "end": 2706.2000000000003,
+  "peak": 0.23595844209194183,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2711.1,
+  "end": 2712.3,
+  "peak": 0.33821335434913635,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2717.1,
+  "end": 2718.9,
+  "peak": 0.3161948025226593,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2725.9,
+  "end": 2726.3,
+  "peak": 0.2270936518907547,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2726.1,
+  "end": 2726.2,
+  "peak": 0.2270936518907547,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2727.5,
+  "end": 2727.9,
+  "peak": 0.10612097382545471,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2728.4,
+  "end": 2729.1,
+  "peak": 0.1782735288143158,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2733.2,
+  "end": 2735.2000000000003,
+  "peak": 0.2415320724248886,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2736.6,
+  "end": 2737.4,
+  "peak": 0.23457491397857666,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2738.3,
+  "end": 2739.2000000000003,
+  "peak": 0.26070091128349304,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2739.8,
+  "end": 2740.1,
+  "peak": 0.27594563364982605,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2745.1,
+  "end": 2746.3,
+  "peak": 0.13060811161994934,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2747.6,
+  "end": 2748.7000000000003,
+  "peak": 0.3118149936199188,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2752.4,
+  "end": 2753.6,
+  "peak": 0.2706412672996521,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2754.4,
+  "end": 2754.5,
+  "peak": 0.17698971927165985,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2755.2,
+  "end": 2755.3,
+  "peak": 0.11182236671447754,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2755.9,
+  "end": 2756.5,
+  "peak": 0.12072305381298065,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2757.4,
+  "end": 2757.7000000000003,
+  "peak": 0.0932144969701767,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2760.5,
+  "end": 2761.5,
+  "peak": 0.16123470664024353,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2760.5,
+  "end": 2760.6,
+  "peak": 0.16123470664024353,
+  "pause_len": 2.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2762.7,
+  "end": 2763.1,
+  "peak": 0.19885870814323425,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2764.0,
+  "end": 2764.4,
+  "peak": 0.20986410975456238,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2765.9,
+  "end": 2767.0,
+  "peak": 0.18632537126541138,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2767.6,
+  "end": 2767.7,
+  "peak": 0.3309987485408783,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2770.0,
+  "end": 2771.2000000000003,
+  "peak": 0.21113087236881256,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2771.5,
+  "end": 2771.6,
+  "peak": 0.23649394512176514,
+  "pause_len": 2.2,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2774.0,
+  "end": 2774.2000000000003,
+  "peak": 0.1880137175321579,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2776.3,
+  "end": 2778.3,
+  "peak": 0.16004571318626404,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2779.1,
+  "end": 2780.3,
+  "peak": 0.14256241917610168,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2780.9,
+  "end": 2781.0,
+  "peak": 0.09440436214208603,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2781.5,
+  "end": 2781.6,
+  "peak": 0.08549489080905914,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2785.3,
+  "end": 2785.4,
+  "peak": 0.288537859916687,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2790.3,
+  "end": 2791.5,
+  "peak": 0.2095063030719757,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2790.4,
+  "end": 2790.5,
+  "peak": 0.2095063030719757,
+  "pause_len": 2.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2792.2,
+  "end": 2793.3,
+  "peak": 0.4294798672199249,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2798.1,
+  "end": 2798.3,
+  "peak": 0.06375997513532639,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2799.3,
+  "end": 2800.5,
+  "peak": 0.2637152075767517,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2802.4,
+  "end": 2803.7000000000003,
+  "peak": 0.3180651366710663,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2807.0,
+  "end": 2808.0,
+  "peak": 0.3069356083869934,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2810.4,
+  "end": 2810.8,
+  "peak": 0.17809432744979858,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2811.6,
+  "end": 2811.7,
+  "peak": 0.1436830759048462,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2819.2,
+  "end": 2820.7000000000003,
+  "peak": 0.294134259223938,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2820.6,
+  "end": 2820.7,
+  "peak": 0.294134259223938,
+  "pause_len": 3.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2826.9,
+  "end": 2827.2000000000003,
+  "peak": 0.2009374052286148,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2832.1,
+  "end": 2832.8,
+  "peak": 0.32301586866378784,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2834.8,
+  "end": 2834.9,
+  "peak": 0.2615842819213867,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2837.0,
+  "end": 2837.9,
+  "peak": 0.3220162093639374,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2840.8,
+  "end": 2841.8,
+  "peak": 0.27702128887176514,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2843.4,
+  "end": 2844.7000000000003,
+  "peak": 0.24888524413108826,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2847.3,
+  "end": 2847.4,
+  "peak": 0.2979006767272949,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2848.0,
+  "end": 2848.4,
+  "peak": 0.24670559167861938,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2849.7,
+  "end": 2851.0,
+  "peak": 0.21081587672233582,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2852.3,
+  "end": 2853.4,
+  "peak": 0.19087831676006317,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2857.4,
+  "end": 2857.8,
+  "peak": 0.227180615067482,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2858.6,
+  "end": 2859.3,
+  "peak": 0.175929993391037,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2862.2,
+  "end": 2863.1,
+  "peak": 0.1121237576007843,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2864.0,
+  "end": 2865.5,
+  "peak": 0.14269259572029114,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2866.1,
+  "end": 2866.7000000000003,
+  "peak": 0.14510206878185272,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2867.2,
+  "end": 2867.7000000000003,
+  "peak": 0.09547851234674454,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2869.1,
+  "end": 2870.5,
+  "peak": 0.2802238464355469,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2872.4,
+  "end": 2872.8,
+  "peak": 0.34030482172966003,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2873.3,
+  "end": 2873.7000000000003,
+  "peak": 0.23495769500732422,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2878.5,
+  "end": 2879.9,
+  "peak": 0.3056415617465973,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2882.5,
+  "end": 2884.1,
+  "peak": 0.17686040699481964,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2885.9,
+  "end": 2886.0,
+  "peak": 0.14262954890727997,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2886.5,
+  "end": 2886.6,
+  "peak": 0.25904762744903564,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2887.6,
+  "end": 2888.8,
+  "peak": 0.26732319593429565,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2890.8,
+  "end": 2892.0,
+  "peak": 0.1505812257528305,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2891.6,
+  "end": 2891.7,
+  "peak": 0.1505812257528305,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2893.7,
+  "end": 2893.8,
+  "peak": 0.10686448216438293,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2898.1,
+  "end": 2899.0,
+  "peak": 0.2290038764476776,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2899.5,
+  "end": 2899.6,
+  "peak": 0.08941201120615005,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2900.7,
+  "end": 2901.9,
+  "peak": 0.2840931713581085,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2905.1,
+  "end": 2906.4,
+  "peak": 0.27654334902763367,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2911.1,
+  "end": 2912.6,
+  "peak": 0.2482047975063324,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2913.1,
+  "end": 2913.2,
+  "peak": 0.16070038080215454,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2917.6,
+  "end": 2918.5,
+  "peak": 0.2826403081417084,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2919.1,
+  "end": 2919.6,
+  "peak": 0.1861211210489273,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2920.3,
+  "end": 2922.0,
+  "peak": 0.21158228814601898,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2923.4,
+  "end": 2924.6,
+  "peak": 0.28670424222946167,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2926.9,
+  "end": 2928.0,
+  "peak": 0.3038105070590973,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2932.7,
+  "end": 2933.0,
+  "peak": 0.3046818971633911,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2934.1,
+  "end": 2935.1,
+  "peak": 0.30422109365463257,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2938.8,
+  "end": 2938.9,
+  "peak": 0.06948062032461166,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2942.0,
+  "end": 2943.0,
+  "peak": 0.1422405242919922,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2942.3,
+  "end": 2942.4,
+  "peak": 0.1422405242919922,
+  "pause_len": 3.0,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2945.2,
+  "end": 2945.7000000000003,
+  "peak": 0.18320100009441376,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2945.2,
+  "end": 2945.3,
+  "peak": 0.18320100009441376,
+  "pause_len": 1.5,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2946.4,
+  "end": 2948.0,
+  "peak": 0.26331961154937744,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2953.5,
+  "end": 2955.0,
+  "peak": 0.2032722383737564,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2957.5,
+  "end": 2958.6,
+  "peak": 0.10574062913656235,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2959.3,
+  "end": 2959.4,
+  "peak": 0.106342613697052,
+  "pause_len": 1.6,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2961.4,
+  "end": 2962.4,
+  "peak": 0.3370632529258728,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2961.7,
+  "end": 2961.8,
+  "peak": 0.3370632529258728,
+  "pause_len": 1.9,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2964.1,
+  "end": 2964.4,
+  "peak": 0.10059773921966553,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2964.9,
+  "end": 2966.5,
+  "peak": 0.22653275728225708,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2965.9,
+  "end": 2966.0,
+  "peak": 0.22653275728225708,
+  "pause_len": 1.7,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2967.8,
+  "end": 2968.8,
+  "peak": 0.2831188142299652,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2973.0,
+  "end": 2974.3,
+  "peak": 0.270995169878006,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2975.6,
+  "end": 2976.8,
+  "peak": 0.24679137766361237,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2978.9,
+  "end": 2979.5,
+  "peak": 0.10472327470779419,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2980.0,
+  "end": 2980.4,
+  "peak": 0.12344524264335632,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2981.8,
+  "end": 2982.4,
+  "peak": 0.23120206594467163,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2983.1,
+  "end": 2983.9,
+  "peak": 0.3147103786468506,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2986.3,
+  "end": 2986.6,
+  "peak": 0.0480925478041172,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2987.2,
+  "end": 2988.1,
+  "peak": 0.3032245337963104,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2987.9,
+  "end": 2988.0,
+  "peak": 0.3032245337963104,
+  "pause_len": 2.3,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2988.6,
+  "end": 2988.7,
+  "peak": 0.06380369514226913,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2990.5,
+  "end": 2991.0,
+  "peak": 0.3109918534755707,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2997.1,
+  "end": 2998.0,
+  "peak": 0.4011017084121704,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2997.4,
+  "end": 2997.5,
+  "peak": 0.4011017084121704,
+  "pause_len": 3.4,
+  "type": "pause_burst"
+ },
+ {
+  "start": 2998.6,
+  "end": 2998.7,
+  "peak": 0.03026723489165306,
+  "type": "energy_burst"
+ },
+ {
+  "start": 2999.2,
+  "end": 3000.8,
+  "peak": 0.41628071665763855,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3002.3,
+  "end": 3002.8,
+  "peak": 0.09515487402677536,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3004.2,
+  "end": 3006.0,
+  "peak": 0.3807876408100128,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3006.7,
+  "end": 3008.0,
+  "peak": 0.4035329818725586,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3014.5,
+  "end": 3014.8,
+  "peak": 0.19918383657932281,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3015.6,
+  "end": 3015.7,
+  "peak": 0.17325645685195923,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3016.5,
+  "end": 3016.9,
+  "peak": 0.3862367570400238,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3020.8,
+  "end": 3021.6,
+  "peak": 0.15041057765483856,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3024.1,
+  "end": 3025.2000000000003,
+  "peak": 0.15316304564476013,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3026.2,
+  "end": 3026.3,
+  "peak": 0.05103803426027298,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3027.1,
+  "end": 3028.5,
+  "peak": 0.14544494450092316,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3029.1,
+  "end": 3029.9,
+  "peak": 0.3672184348106384,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3034.2,
+  "end": 3035.4,
+  "peak": 0.3313707709312439,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3036.3,
+  "end": 3038.1,
+  "peak": 0.2551443576812744,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3040.3,
+  "end": 3041.0,
+  "peak": 0.17155809700489044,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3041.7,
+  "end": 3043.8,
+  "peak": 0.24573592841625214,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3050.3,
+  "end": 3051.8,
+  "peak": 0.2707599401473999,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3056.1,
+  "end": 3057.6,
+  "peak": 0.16891184449195862,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3059.9,
+  "end": 3060.5,
+  "peak": 0.1861349642276764,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3061.7,
+  "end": 3062.8,
+  "peak": 0.1653052717447281,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3063.9,
+  "end": 3064.2000000000003,
+  "peak": 0.30752384662628174,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3065.2,
+  "end": 3066.3,
+  "peak": 0.2808227837085724,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3071.4,
+  "end": 3072.4,
+  "peak": 0.21995675563812256,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3076.9,
+  "end": 3077.0,
+  "peak": 0.1908833384513855,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3083.0,
+  "end": 3083.3,
+  "peak": 0.15323969721794128,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3083.8,
+  "end": 3085.4,
+  "peak": 0.32267192006111145,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3087.9,
+  "end": 3088.6,
+  "peak": 0.19876648485660553,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3089.1,
+  "end": 3089.5,
+  "peak": 0.32462161779403687,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3090.4,
+  "end": 3090.5,
+  "peak": 0.29598718881607056,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3094.0,
+  "end": 3094.6,
+  "peak": 0.13993912935256958,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3095.2,
+  "end": 3095.4,
+  "peak": 0.12983199954032898,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3096.4,
+  "end": 3096.5,
+  "peak": 0.21880218386650085,
+  "type": "energy_burst"
+ },
+ {
+  "start": 3097.7,
+  "end": 3097.8,
+  "peak": 0.34957316517829895,
+  "type": "energy_burst"
+ }
+]

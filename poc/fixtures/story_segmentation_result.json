@@ -1,0 +1,192 @@
+{
+  "chapters": [
+    {
+      "chapter_id": "ch-01",
+      "start_time": "01:55",
+      "end_time": "03:29",
+      "chapter_title": "情感互动与回应质疑",
+      "chapter_summary": "主播回应抽奖质疑，并解释无法帮助生病的粉丝，担心起头后患无穷。",
+      "boundary_reason": "内容从互动答疑转向开箱食物",
+      "event_ids": [
+        "ev-001"
+      ]
+    },
+    {
+      "chapter_id": "ch-02",
+      "start_time": "04:35",
+      "end_time": "29:27",
+      "chapter_title": "美军单兵口粮测评",
+      "chapter_summary": "主播开箱试吃美军口粮，包含饼干、芝士酱、咖啡等，充满搞笑反差与吐槽。",
+      "boundary_reason": "转入口粮主要测评环节",
+      "event_ids": [
+        "ev-002",
+        "ev-003",
+        "ev-004",
+        "ev-005",
+        "ev-006",
+        "ev-007",
+        "ev-008",
+        "ev-009",
+        "ev-010"
+      ]
+    },
+    {
+      "chapter_id": "ch-03",
+      "start_time": "30:57",
+      "end_time": "36:09",
+      "chapter_title": "美军单兵口粮后续与俄罗斯口粮预告",
+      "chapter_summary": "主播继续试吃，赞叹好吃但遭吐槽，随后过渡到俄罗斯口粮的悬念调侃。",
+      "boundary_reason": "从美军口粮转向俄罗斯口粮",
+      "event_ids": [
+        "ev-011",
+        "ev-017",
+        "ev-018",
+        "ev-013"
+      ]
+    },
+    {
+      "chapter_id": "ch-04",
+      "start_time": "37:19",
+      "end_time": "51:05",
+      "chapter_title": "俄罗斯口粮深度测评与健康自嘲",
+      "chapter_summary": "主播测评俄罗斯口粮，从罐头到压缩饼干到米饭，高能吐槽连连，并以自嘲方式结束直播。",
+      "boundary_reason": "主题为俄罗斯口粮测评",
+      "event_ids": [
+        "ev-012",
+        "ev-014",
+        "ev-015",
+        "ev-016"
+      ]
+    }
+  ],
+  "stories": [
+    {
+      "story_id": "st-01",
+      "chapter_id": "ch-01",
+      "start_time": "01:55",
+      "end_time": "03:29",
+      "story_title": "回应抽奖质疑与生病粉丝求助",
+      "story_summary": "主播回应抽奖质疑后，解释无法帮助生病粉丝的原因，担心起头后患无穷，但评论区仍有许多人请求帮助。",
+      "reason": "连续因果：回应质疑引出粉丝求助，解释决策。",
+      "event_ids": [
+        "ev-001"
+      ]
+    },
+    {
+      "story_id": "st-01",
+      "chapter_id": "ch-02",
+      "start_time": "04:35",
+      "end_time": "11:12",
+      "story_title": "开箱初体验：惊讶与好奇",
+      "story_summary": "主播拆开美军单兵口粮，因分量小且陌生而惊讶，随后发现奶精不知为何物，过程充满好奇与笑点。",
+      "reason": "围绕开箱和初识口粮的连续活动。",
+      "event_ids": [
+        "ev-002",
+        "ev-003"
+      ]
+    },
+    {
+      "story_id": "st-02",
+      "chapter_id": "ch-02",
+      "start_time": "12:13",
+      "end_time": "13:31",
+      "story_title": "饼干试吃：从嫌弃到好评",
+      "story_summary": "主播试吃美军口粮饼干，从初始嫌弃像纸壳，到尝后觉得挺好吃，形成鲜明反差。",
+      "reason": "针对饼干试吃的单一因果链。",
+      "event_ids": [
+        "ev-004"
+      ]
+    },
+    {
+      "story_id": "st-03",
+      "chapter_id": "ch-02",
+      "start_time": "16:53",
+      "end_time": "17:06",
+      "story_title": "切达芝士抹酱的辣咸反差",
+      "story_summary": "主播试吃切达芝士抹酱，原以为普通奶酪，结果超辣超咸，表情反应强烈。",
+      "reason": "围绕单一食品试吃的反应。",
+      "event_ids": [
+        "ev-005"
+      ]
+    },
+    {
+      "story_id": "st-04",
+      "chapter_id": "ch-02",
+      "start_time": "21:49",
+      "end_time": "29:27",
+      "story_title": "咖啡测评：吐槽与豪饮",
+      "story_summary": "主播对比美军咖啡与花小龙，吐槽颗粒状、难融，误把防腐剂当配料，最后硬喝两杯强调不浪费。",
+      "reason": "围绕咖啡从开袋到喝掉的连续过程。",
+      "event_ids": [
+        "ev-006",
+        "ev-007",
+        "ev-008",
+        "ev-009",
+        "ev-010"
+      ]
+    },
+    {
+      "story_id": "st-01",
+      "chapter_id": "ch-03",
+      "start_time": "30:57",
+      "end_time": "34:29",
+      "story_title": "主播试吃单兵口粮引发误会并发现可疑物品",
+      "story_summary": "主播试吃口粮时因吃法引误会，被吐槽忘本，后误认国产罐头为外国货，又发现俄军口粮中有疑似窝的物体，引发好奇。",
+      "reason": "连续围绕口粮的试吃与检查，包括误会、确认和发现过程",
+      "event_ids": [
+        "ev-011",
+        "ev-017",
+        "ev-018"
+      ]
+    },
+    {
+      "story_id": "st-02",
+      "chapter_id": "ch-03",
+      "start_time": "35:48",
+      "end_time": "36:09",
+      "story_title": "主播不识俄语标签翻车",
+      "story_summary": "主播承认不认识俄语，之前慌乱装懂搞笑猜测罐头标签，观众见他翻车觉得有趣。",
+      "reason": "紧接前面对俄语罐头的猜测，形成因果链",
+      "event_ids": [
+        "ev-013"
+      ]
+    },
+    {
+      "story_id": "st-01",
+      "chapter_id": "ch-04",
+      "start_time": "37:19",
+      "end_time": "39:41",
+      "story_title": "超长保质期罐头试吃",
+      "story_summary": "主播发现超长保质期罐头，开罐后嫌弃牛肉像猫罐头，玩梗吐槽。",
+      "reason": "围绕同一对象罐头进行连续试吃和吐槽。",
+      "event_ids": [
+        "ev-012"
+      ]
+    },
+    {
+      "story_id": "st-02",
+      "chapter_id": "ch-04",
+      "start_time": "41:50",
+      "end_time": "43:30",
+      "story_title": "压缩饼干试吃吐槽",
+      "story_summary": "主播试吃压缩饼干，嫌弃难吃像墙皮，形容变形。",
+      "reason": "针对压缩饼干的单一活动。",
+      "event_ids": [
+        "ev-014"
+      ]
+    },
+    {
+      "story_id": "st-03",
+      "chapter_id": "ch-04",
+      "start_time": "48:06",
+      "end_time": "51:05",
+      "story_title": "罐头米饭与高油脂食品试吃",
+      "story_summary": "主播评价硬米饭像蛋白质，加热引发微波炉炸裂，后自嘲高血脂仍狂吃牛腩等高油食物。",
+      "reason": "连续试吃多种罐头食品并引发健康话题。",
+      "event_ids": [
+        "ev-015",
+        "ev-016"
+      ]
+    }
+  ]
+}

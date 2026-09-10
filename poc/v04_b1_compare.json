@@ -1,0 +1,153 @@
+{
+  "b1": {
+    "stats": {
+      "total": 18,
+      "single_source": 9,
+      "single_pct": 50,
+      "small_28s": 4,
+      "long_60s": 8,
+      "duration_range": [
+        13,
+        269
+      ]
+    },
+    "grade_dist": {
+      "A": 1,
+      "B": 11,
+      "C": 3,
+      "D": 3
+    },
+    "top_events": [
+      {
+        "event_id": "ev-005",
+        "grade": "A",
+        "score": 80.0,
+        "start_time": "16:53",
+        "end_time": "17:06",
+        "duration": 13,
+        "title": "主播说‘好辣呀’及后续‘好咸的’的表情反应，约在16:55-17:03。",
+        "source_count": 1
+      },
+      {
+        "event_id": "ev-016",
+        "grade": "B",
+        "score": 78.5,
+        "start_time": "49:38",
+        "end_time": "51:05",
+        "duration": 87,
+        "title": "主播自曝高血脂脂肪肝后继续大口吃油，形成幽默反差（约50:12）。",
+        "source_count": 4
+      },
+      {
+        "event_id": "ev-002",
+        "grade": "B",
+        "score": 77.5,
+        "start_time": "04:35",
+        "end_time": "09:04",
+        "duration": 269,
+        "title": "主播拆开包装惊呼“我的妈呀，这么点啊，就一餐”，时间约06:50。",
+        "source_count": 6
+      },
+      {
+        "event_id": "ev-012",
+        "grade": "B",
+        "score": 77.5,
+        "start_time": "37:19",
+        "end_time": "39:41",
+        "duration": 142,
+        "title": "37:32 主播直呼一四年罐头能干，奠定荒诞基调，或39:36嫌弃牛肉像猫罐头成",
+        "source_count": 3
+      },
+      {
+        "event_id": "ev-009",
+        "grade": "B",
+        "score": 76.5,
+        "start_time": "25:35",
+        "end_time": "26:15",
+        "duration": 40,
+        "title": "差点把防腐剂当咖啡配料？",
+        "source_count": 1
+      }
+    ],
+    "cost_yuan": 0.4622
+  },
+  "v04": {
+    "stats": {
+      "total": 18,
+      "single_source": 11,
+      "single_pct": 61,
+      "small_28s": 7,
+      "long_60s": 7,
+      "duration_range": [
+        7,
+        521
+      ]
+    },
+    "grade_dist": {
+      "A": 1,
+      "B": 7,
+      "C": 6,
+      "D": 4
+    },
+    "top_events": [
+      {
+        "event_id": "ev-017",
+        "grade": "A",
+        "score": 81.5,
+        "start_time": "48:24",
+        "end_time": "50:19",
+        "duration": 115,
+        "title": "49:49 主播惊呼‘老弟们，微波炸了，大米饭的微波炸干净了’。",
+        "source_count": 3
+      },
+      {
+        "event_id": "ev-012",
+        "grade": "B",
+        "score": 78.5,
+        "start_time": "21:25",
+        "end_time": "30:06",
+        "duration": 521,
+        "title": "25:51 主播误把配料表'哪一斤'当成防腐剂，吓得狂问豆包。",
+        "source_count": 7
+      },
+      {
+        "event_id": "ev-009",
+        "grade": "B",
+        "score": 78.0,
+        "start_time": "16:53",
+        "end_time": "17:38",
+        "duration": 45,
+        "title": "主播狂喊别吐别吐别浪费（17:34-17:36）",
+        "source_count": 2
+      },
+      {
+        "event_id": "ev-015",
+        "grade": "B",
+        "score": 76.5,
+        "start_time": "42:48",
+        "end_time": "43:24",
+        "duration": 36,
+        "title": "把饼干味形容成学校墙皮，43:13-43:24",
+        "source_count": 1
+      },
+      {
+        "event_id": "ev-005",
+        "grade": "B",
+        "score": 76.0,
+        "start_time": "04:05",
+        "end_time": "11:13",
+        "duration": 428,
+        "title": "饼干硬得像钻头（07:49-07:59），夸张比喻制造笑点。",
+        "source_count": 7
+      }
+    ],
+    "cost_yuan": 0.4291
+  },
+  "delta": {
+    "event_count": 0,
+    "small_28s_change": 3,
+    "long_60s_change": -1,
+    "single_pct_change": 11,
+    "cost_delta": -0.0331
+  }
+}
