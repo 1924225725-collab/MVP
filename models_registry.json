@@ -1,0 +1,71 @@
+{
+  "manifest_version": 1,
+  "comment": "本地 ASR 模型清单。模型本体不随安装包分发，首次使用时按需下载到用户数据目录（models/）。新增模型只需在这里加一条。",
+  "models": [
+    {
+      "id": "faster-whisper-tiny",
+      "kind": "asr-local",
+      "engine": "faster-whisper",
+      "name": "Tiny（最小最快）",
+      "description": "速度最快、占用最小，识别准确率较低，适合快速试跑。",
+      "recommended": false,
+      "size_hint": "约 75 MB",
+      "repo_id": "Systran/faster-whisper-tiny",
+      "revision": "main",
+      "base_url": "https://huggingface.co/Systran/faster-whisper-tiny/resolve/main",
+      "files": ["config.json", "model.bin", "tokenizer.json", "vocabulary.txt"],
+      "primary_file": "model.bin",
+      "min_primary_bytes": 30000000,
+      "sha256": ""
+    },
+    {
+      "id": "faster-whisper-base",
+      "kind": "asr-local",
+      "engine": "faster-whisper",
+      "name": "Base（轻量）",
+      "description": "比 tiny 准一些，资源占用仍然很低。",
+      "recommended": false,
+      "size_hint": "约 145 MB",
+      "repo_id": "Systran/faster-whisper-base",
+      "revision": "main",
+      "base_url": "https://huggingface.co/Systran/faster-whisper-base/resolve/main",
+      "files": ["config.json", "model.bin", "tokenizer.json", "vocabulary.txt"],
+      "primary_file": "model.bin",
+      "min_primary_bytes": 60000000,
+      "sha256": ""
+    },
+    {
+      "id": "faster-whisper-small",
+      "kind": "asr-local",
+      "engine": "faster-whisper",
+      "name": "Small（推荐）",
+      "description": "准确率与速度的平衡点，中文直播场景默认使用。",
+      "recommended": true,
+      "default": true,
+      "size_hint": "约 464 MB",
+      "repo_id": "Systran/faster-whisper-small",
+      "revision": "536b0662742c02347bc0e980a01041f333bce120",
+      "base_url": "https://huggingface.co/Systran/faster-whisper-small/resolve/536b0662742c02347bc0e980a01041f333bce120",
+      "files": ["config.json", "model.bin", "tokenizer.json", "vocabulary.txt"],
+      "primary_file": "model.bin",
+      "min_primary_bytes": 400000000,
+      "sha256": ""
+    },
+    {
+      "id": "faster-whisper-medium",
+      "kind": "asr-local",
+      "engine": "faster-whisper",
+      "name": "Medium（更准）",
+      "description": "准确率更高，下载与识别都明显更慢，建议 CPU 较好的机器使用。",
+      "recommended": false,
+      "size_hint": "约 1.5 GB",
+      "repo_id": "Systran/faster-whisper-medium",
+      "revision": "main",
+      "base_url": "https://huggingface.co/Systran/faster-whisper-medium/resolve/main",
+      "files": ["config.json", "model.bin", "tokenizer.json", "vocabulary.txt"],
+      "primary_file": "model.bin",
+      "min_primary_bytes": 1000000000,
+      "sha256": ""
+    }
+  ]
+}

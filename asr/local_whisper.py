@@ -56,7 +56,11 @@ class LocalWhisperRecognizer(BaseRecognizer):
 
     name = "本地Whisper"
 
-    def __init__(self, model_size="small"):
+    def __init__(self, model_size="small", model_path=None):
+        """model_size —— 模型规格名（tiny/base/small/medium）
+        model_path —— **本地模型文件夹**（V0.5 桌面版：工作区 models/<id>/）。
+                      给了它就直接从这个文件夹加载，完全不联网、也不查 HuggingFace 缓存。
+        """
         # 加载模型这件事比较重（要读几百 MB 进内存），
         # 所以放在创建识别器的时候做，只做一次，之后反复用。
         try:
@@ -68,9 +72,36 @@ class LocalWhisperRecognizer(BaseRecognizer):
                 f"{e}\n安装：.\\.venv\\Scripts\\python -m pip install faster-whisper",
             )
 
-        print(f"正在加载本地模型（{model_size}）……首次运行会先下载模型文件，请耐心等待")
-        self.model = self._load_model(WhisperModel, model_size)
         self.model_size = model_size
+        self.model_path = str(model_path) if model_path else ""
+        if self.model_path:
+            from pathlib import Path as _P
+            if not _P(self.model_path).is_dir():
+                raise ProcessError(
+                    STAGE_MODEL_MISSING,
+                    f"本地模型目录不存在：{self.model_path}",
+                    "请在「模型管理」里重新安装该模型。",
+                )
+            print(f"正在加载本地模型（{self.model_path}）……")
+            # 直接用本地目录：不给 repo id，就不会有任何远程查询
+            self.model = self._load_from_dir(WhisperModel, self.model_path)
+        else:
+            print(f"正在加载本地模型（{model_size}）……首次运行会先下载模型文件，请耐心等待")
+            self.model = self._load_model(WhisperModel, model_size)
+
+    @staticmethod
+    def _load_from_dir(WhisperModel, model_dir: str):
+        """从明确的本地目录加载（桌面版走这条路，彻底离线）。"""
+        try:
+            model = WhisperModel(model_dir, device="cpu", compute_type="int8")
+            print("本地模型已就绪（从本地目录加载）")
+            return model
+        except Exception as e:
+            raise ProcessError(
+                STAGE_MODEL_LOAD,
+                f"本地模型加载失败：{type(e).__name__}",
+                traceback.format_exc() + f"\n\n模型目录：{model_dir}",
+            )
 
     @staticmethod
     def _load_model(WhisperModel, model_size: str):
