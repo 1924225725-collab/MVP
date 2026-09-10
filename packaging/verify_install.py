@@ -130,6 +130,27 @@ def main():
         return report()
     check("2 程序启动并正常退出（退出码 0）", rc == 0, f"退出码 {rc}")
 
+    # ---- 真正跑一次语音识别（关键：只 import 得进来不算数） ----
+    # 打包漏文件时（典型：faster_whisper 的 VAD 模型 silero_vad.onnx），
+    # 导入、构造识别器、探测 ffmpeg 全都正常，只有真跑一次识别才会炸。
+    # 这件事在别的盘符装一遍才会暴露，所以必须进自动验收。
+    media = ROOT / "_test_media" / "normal.mp4"
+    if media.exists():
+        print("[2b] 用装好的程序真跑一次本地语音识别（约 10~60 秒）…")
+        ws_videos = workspace / "videos"
+        ws_videos.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(media, ws_videos / media.name)
+        env["LIVE_CLIPPER_SMOKE_TRANSCRIBE"] = str(ws_videos / media.name)
+        # 第二次启动（带上要识别的文件）
+        try:
+            p2 = subprocess.run([str(exe)], env=env, cwd=str(install_dir),
+                                capture_output=True, text=True, timeout=300,
+                                encoding="utf-8", errors="replace")
+            check("2b 识别流程能跑完（进程正常退出）", p2.returncode == 0,
+                  f"退出码 {p2.returncode}")
+        except subprocess.TimeoutExpired:
+            check("2b 识别流程能跑完（进程正常退出）", False, "超时 300 秒")
+
     smoke = workspace / "logs" / "desktop_smoke.json"
     check("2 自检报告已生成", smoke.exists(), str(smoke))
     if not smoke.exists():
@@ -192,6 +213,31 @@ def main():
     check("8 四个页签齐全", len(tabs) == 4, str(tabs))
     check("8 窗口标题正确", "AI 直播切片助手" in str(info.get("window", "")),
           str(info.get("window")))
+
+    # ---- 9. 真跑一次语音识别的结果 ----
+    tr = info.get("smoke_transcribe")
+    if tr is None:
+        print("[9] 没做识别自检（缺 _test_media/normal.mp4），跳过")
+    else:
+        ok = bool(tr.get("ok"))
+        stage = str(tr.get("stage", ""))
+        err = str(tr.get("error", ""))
+        missing_file = ("nosuchfile" in err.lower() or "silero" in err.lower()
+                        or "onnx" in err.lower())
+        check("9 识别**没有**因为缺程序文件而失败",
+              not missing_file, f"stage={stage}\n         {err}\n{tr.get('detail','')[:400]}")
+        if ok:
+            check("9 真的识别出内容了", int(tr.get("lines") or 0) > 0,
+                  f"lines={tr.get('lines')} segments={tr.get('segments')}")
+            print(f"        └ {tr.get('lines')} 句 / {tr.get('segments')} 段")
+        elif stage == "model_missing":
+            check("9 本机没有模型（干净机器的正常表现，不算失败）", True,
+                  "提示：首次使用需先一键安装模型")
+            print("        └ 本机无模型缓存，未验证推理（装了模型才会真跑）")
+        else:
+            check("9 识别成功或仅因缺模型而跳过",
+                  stage in ("model_missing", "model_load"),
+                  f"stage={stage}：{err}")
 
     return report(tmp_root)
 

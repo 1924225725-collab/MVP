@@ -37,6 +37,27 @@ for extra in ("TUTORIAL.md", "README.md"):
     if p.exists():
         datas.append((str(p), "."))
 
+# ---------------- 关键：faster-whisper 的 VAD 模型（**不是 .py**） ----------------
+#
+# faster_whisper/assets/silero_vad_v6.onnx 是"人声检测"模型，
+# 识别时会默认加载（vad_filter=True）。它是包里唯一的非 .py 数据文件，
+# 只做 collect_submodules 收不到 —— 打包后就会报
+# `NoSuchFile: Load model ... silero_vad_v6.onnx failed`。
+# 这个坑只在**装到别的盘、真跑一次识别**时才暴露，开发态永远是好的。
+try:
+    import faster_whisper
+    _fw_assets = Path(faster_whisper.__file__).resolve().parent / "assets"
+    if _fw_assets.is_dir():
+        for _f in sorted(_fw_assets.rglob("*")):
+            if _f.is_file() and not _f.name.endswith((".pyc", ".pyo")):
+                datas.append((str(_f), "faster_whisper/assets"))
+        print(f"[spec] 已收进 faster_whisper/assets："
+              f"{[p.name for p in _fw_assets.iterdir() if p.is_file()]}")
+    else:
+        print(f"[spec] 警告：没找到 {_fw_assets}")
+except Exception as e:                                              # noqa: BLE001
+    print(f"[spec] faster_whisper assets 收集失败：{e}")
+
 # ---------------- 二进制库 ----------------
 
 binaries = []

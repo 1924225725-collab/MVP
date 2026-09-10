@@ -167,10 +167,21 @@ class LocalWhisperRecognizer(BaseRecognizer):
         except ProcessError:
             raise
         except Exception as e:
+            detail = traceback.format_exc()
+            low = f"{type(e).__name__}: {e}".lower()
+            # 程序自带组件缺失（典型：打包漏了 faster_whisper/assets/silero_vad.onnx）。
+            # 这**不是**"推理失败"——视频和模型都没问题，是程序没装全，
+            # 得让用户知道该重装，而不是对着"推理失败"干瞪眼。
+            if any(k in low for k in ("nosuchfile", "onnx", "silero", "assets")):
+                raise ProcessError(
+                    STAGE_DEPENDENCY,
+                    "程序组件不完整：缺少人声检测模型（silero 人声检测），建议重新安装本程序",
+                    detail + "\n\n提示：这是安装/打包缺文件，不是视频或模型的问题。",
+                )
             raise ProcessError(
                 STAGE_ASR_INFERENCE,
                 f"语音识别推理失败：{type(e).__name__}: {e}",
-                traceback.format_exc(),
+                detail,
             )
 
         # 顺手把检测到的语言信息存起来，main.py 可以拿去显示

@@ -97,17 +97,68 @@ def main() -> int:
 
     win.show()
 
-    # 打包自检：设了 LIVE_CLIPPER_SMOKE=1 就在离屏模式跑 2 秒，
+    # 打包自检：设了 LIVE_CLIPPER_SMOKE=1 就在离屏模式跑一下，
     # 把"冻结环境到底能不能用"写进日志（打包后没控制台，只能落文件）。
     if os.environ.get("LIVE_CLIPPER_SMOKE"):
         _write_smoke_report(win)
-        QTimer.singleShot(2000, app.quit)
+        # 再真跑一次语音识别（可选，给验收用）：
+        #   只 import 得进来不算数 —— faster_whisper 的 VAD 模型文件漏打包时，
+        #   导入和构造都正常，只有真跑一次才会炸。
+        media = os.environ.get("LIVE_CLIPPER_SMOKE_TRANSCRIBE", "").strip()
+        if media and os.path.exists(media):
+            _run_smoke_transcribe(media)
+        QTimer.singleShot(600, app.quit)
         return app.exec()
 
     # 首次使用：本地模型没装就提醒一次（不挡路，用户可以选择稍后）
     QTimer.singleShot(600, lambda: _check_model_on_startup(win, QMessageBox))
 
     return app.exec()
+
+
+def _run_smoke_transcribe(media: str):
+    """自检时真跑一次本地语音识别，结果追加进同一个报告。
+
+    这一步是**验收的关键**：打包漏文件时（比如 faster_whisper 的 VAD 模型
+    silero_vad.onnx），import 和构造识别器都不会报错，只有真跑才炸。
+    """
+    import json
+    import traceback
+
+    import app_paths
+
+    report_path = app_paths.logs_dir() / "desktop_smoke.json"
+    try:
+        base = json.loads(report_path.read_text(encoding="utf-8"))
+    except Exception:                                               # noqa: BLE001
+        base = {}
+
+    entry = {"media": media}
+    try:
+        from desktop.services.tasks import transcribe_video
+        res = transcribe_video(media)
+        entry.update({
+            "ok": True,
+            "lines": res.get("lines"),
+            "segments": res.get("segments"),
+            "duration": res.get("duration"),
+        })
+    except Exception as e:                                          # noqa: BLE001
+        stage = getattr(e, "stage", "")
+        entry.update({
+            "ok": False,
+            "stage": stage,
+            "error": f"{type(e).__name__}: {e}",
+            "detail": (getattr(e, "detail", "") or "")[-1500:],
+            "traceback": traceback.format_exc()[-1500:],
+        })
+
+    base["smoke_transcribe"] = entry
+    try:
+        report_path.write_text(json.dumps(base, ensure_ascii=False, indent=2),
+                               encoding="utf-8")
+    except Exception:                                               # noqa: BLE001
+        pass
 
 
 def _write_smoke_report(win):

@@ -365,6 +365,11 @@ class MainWindow(QMainWindow):
 
     def _show_error(self, err):
         title, desc, action = error_ui(getattr(err, "stage", ""))
+        # 分类文案讲"该怎么做"，具体 message 讲"到底哪儿坏了"——两个都给用户看，
+        # 否则只会看到一句"缺少依赖组件"，不知道缺的到底是什么。
+        msg = str(getattr(err, "message", "") or "")
+        if msg and msg not in desc:
+            desc = f"{desc}\n\n具体原因：{msg}"
         box = QMessageBox(self)
         box.setWindowTitle(title)
         box.setIcon(QMessageBox.Warning)
