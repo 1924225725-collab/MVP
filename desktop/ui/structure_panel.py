@@ -101,7 +101,8 @@ class StructurePanel(QWidget):
         hl = QHBoxLayout(head)
         hl.setContentsMargins(0, 0, 0, 0)
         hl.setSpacing(8)
-        hl.addWidget(W.strong(f"Chapter {idx:02d}　{W.soften(ch.get('title') or '')}", size=13))
+        hl.addWidget(W.strong(f"Chapter {idx:02d}　{W.soften(ch.get('title') or '')}",
+                              size=13, wrap=False))
         score_lb = W.muted(
             f"{ch.get('start_time', '')} - {ch.get('end_time', '')}", size=11)
         hl.addWidget(score_lb)
@@ -143,7 +144,8 @@ class StructurePanel(QWidget):
 
         top = QHBoxLayout()
         top.setSpacing(8)
-        top.addWidget(W.strong(f"Story {tag}　{W.soften(st.get('title') or '')}", size=12))
+        top.addWidget(W.strong(f"Story {tag}　{W.soften(st.get('title') or '')}",
+                               size=12, wrap=False))
         top.addStretch(1)
         if score is not None:
             top.addWidget(W.chip(f"{float(score):.1f} 分", bg=theme.grade_color(grade)))
@@ -180,13 +182,13 @@ class StructurePanel(QWidget):
         dot = QLabel("●")
         dot.setStyleSheet(f"color:{theme.grade_color(grade)}; font-size:10px;")
         top.addWidget(dot)
-        title = W.soften(e.get("title") or "（无标题）")
+        # 标题单独占一列并允许折行：分数/时间各自独立，别挤进标题文字里
+        top.addWidget(W.strong(W.soften(e.get("title") or "（无标题）"), size=12), 1)
         score = e.get("score")
-        label = f"{title}　{float(score):.1f} 分" if score is not None else title
-        top.addWidget(W.strong(label, size=12))
+        if score is not None:
+            top.addWidget(W.muted(f"{float(score):.1f} 分", size=11))
         if e.get("recommended"):
             top.addWidget(W.tagged_chip("⭐ 推荐", theme.ACCENT))
-        top.addStretch(1)
         top.addWidget(W.muted(_tr(e), size=11))
         lay.addLayout(top)
 

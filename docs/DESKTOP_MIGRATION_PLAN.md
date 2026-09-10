@@ -172,7 +172,27 @@ Service Layer（desktop/services/）
 
 ---
 
-## 七、桌面版不做的事（明确边界）
+## 七、界面预览（用真实结果渲染）
+
+截图见 `docs/screenshots/`，由 `packaging/make_screenshots.py` 生成 ——
+数据来自**同一场 51 分钟直播的真实分析结果**（`poc/v04_result.json` 的高光 +
+`structures/测试视频2.json` 的 Chapter/Story），不是编的样例：
+
+| 文件 | 内容 |
+|---|---|
+| `01_推荐剪辑.png` | 推荐卡片：档位 / 分数 / 时间区间 / 建议时长 / 摘要 / 为什么值得剪 / 风险 / 五维构成 / 所属 Chapter→Story / clip_id / 👍👎 |
+| `02_推荐剪辑_全部卡片.png` | 全部候选长图（13 条） |
+| `03_直播内容结构.png` | Video → Chapter 列表（默认折叠，各带分数与 Story/事件数） |
+| `04_内容结构_展开长图.png` | 展开后的 Chapter → Story → Event 三级 |
+| `05_视频信息.png` | 视频/项目信息、文字稿信息、分析概览 |
+| `06_开发者视图.png` | 路径布局 / ASR 引擎与模型状态 / 元信息 / 成本 / 日志 / 完整 JSON |
+
+重新生成：`.\\.venv\\Scripts\\python packaging\\make_screenshots.py`
+（截图里中文能正常显示需要 `QT_QPA_FONTDIR=C:/Windows/Fonts`，离屏渲染时 Qt 找不到系统字体）
+
+---
+
+## 八、桌面版不做的事（明确边界）
 
 - 不改任何分析算法与阈值
 - 不接入云端 ASR 具体服务（只留接口）

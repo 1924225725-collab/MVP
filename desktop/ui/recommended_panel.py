@@ -8,6 +8,8 @@
 #   grade 只在卡片左侧用颜色条表示，文案统一过 soften()。
 # ============================================================
 
+import re
+
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QComboBox, QHBoxLayout, QLabel, QProgressBar, QPushButton, QScrollArea,
@@ -20,12 +22,14 @@ from desktop.ui import widgets as W
 
 _FEEDBACK_REASONS = list(getattr(config, "FEEDBACK_REASONS",
                                  ["太普通", "很好笑", "缺上下文", "剪辑点不对", "标题不准", "其他"]))
+# 内部英文键 → 中文短名（结果里通常已经是中文标签，这里只做兜底）
 _DIMS_LABEL = {
-    "hook": "开头抓人力",
-    "contrast": "反差冲突",
-    "persona": "主播特色",
-    "standalone": "独立观看性",
-    "completeness": "内容完整度",
+    "hook": "三秒吸引力",
+    "contrast": "反差/意外",
+    "persona": "人物表现力",
+    "personality": "人物表现力",
+    "standalone": "独立成片",
+    "completeness": "事件完整度",
 }
 
 
@@ -42,8 +46,9 @@ class RecommendedPanel(QWidget):
 
         bar = QHBoxLayout()
         self.summary = W.strong("", size=14)
-        bar.addWidget(self.summary)
-        bar.addStretch(1)
+        self.summary.setMinimumWidth(200)
+        # 占满剩余宽度（否则长句会被压成窄条来回折行）
+        bar.addWidget(self.summary, 1)
         self.filter_box = QComboBox()
         self.filter_box.addItems(["只看推荐", "全部候选", "只看被拒"])
         self.filter_box.currentTextChanged.connect(lambda _=None: self._render())
@@ -96,11 +101,17 @@ class RecommendedPanel(QWidget):
         highlights = list(a.get("highlights") or [])
         rejected = list(a.get("rejected") or [])
         recs = [h for h in highlights if h.get("recommended")]
+        # 旧版结果可能还没有「推荐标记」这个字段（D-041 之前）。
+        # 这时候不能假装"本场没有推荐"，要如实说清楚是数据旧了。
+        has_flag = any("recommended" in h for h in highlights)
 
         mode = self.filter_box.currentText()
         if mode == "只看推荐":
             items = recs or highlights
-            if not recs and highlights:
+            if not has_flag:
+                self.summary.setText(
+                    f"这份结果来自旧版本（还没有「推荐标记」），下方是全部候选 {len(highlights)} 条")
+            elif not recs and highlights:
                 self.summary.setText(
                     f"本场没有进入推荐名单的片段（下方列出的是全部候选，共 {len(highlights)} 条）")
             else:
@@ -272,22 +283,41 @@ def _wrap(text: str) -> QLabel:
 
 
 def _dims_block(dims: dict) -> QWidget:
+    """五维评分构成。
+
+    【为什么不做键名硬编码】真实结果里的 dims 键是**中文可读标签**，
+    形如 `三秒吸引力（权重30%）`（见 analysis/_entry_dims），
+    而内部键是 `hook / contrast / ...`。这里两种都吃，认不出来就照原样显示，
+    绝不因为键名对不上就整块不显示（之前就是这个毛病：只剩标题、没有条）。
+    """
+    rows = []
+    for key, val in (dims or {}).items():
+        if isinstance(val, dict):
+            val = val.get("score")
+        try:
+            v = float(val)
+        except (TypeError, ValueError):
+            continue
+        label = str(key)
+        weight = ""
+        m = re.search(r"（权重\s*(\d+)%）", label)
+        if m:
+            weight = f"{m.group(1)}%"
+            label = label[:m.start()].strip()
+        label = _DIMS_LABEL.get(str(key), _DIMS_LABEL.get(label, label))
+        rows.append((label, v, weight))
+
     w = QWidget()
     lay = QVBoxLayout(w)
     lay.setContentsMargins(0, 4, 0, 0)
     lay.setSpacing(2)
+    if not rows:
+        return w
     lay.addWidget(W.muted("评分构成", size=11))
-    for key, label in _DIMS_LABEL.items():
-        v = dims.get(key)
-        if isinstance(v, dict):                 # 兼容嵌套写法
-            v = v.get("score")
-        try:
-            v = float(v)
-        except (TypeError, ValueError):
-            continue
+    for label, v, weight in rows:
         row = QHBoxLayout()
-        txt = QLabel(label)
-        txt.setFixedWidth(96)
+        txt = QLabel(label + (f"　{weight}" if weight else ""))
+        txt.setFixedWidth(148)
         txt.setStyleSheet(f"color:{theme.TEXT_SUB}; font-size:11px;")
         row.addWidget(txt)
         pb = QProgressBar()
@@ -296,7 +326,7 @@ def _dims_block(dims: dict) -> QWidget:
         pb.setTextVisible(False)
         pb.setFixedHeight(8)
         row.addWidget(pb, 1)
-        row.addWidget(W.muted(f"{v:.1f}", size=11))
+        row.addWidget(W.muted(f"{v:g}", size=11))
         lay.addLayout(row)
     return w
 
