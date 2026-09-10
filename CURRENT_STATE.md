@@ -1,18 +1,49 @@
 # CURRENT_STATE — 项目当前状态（读这个文件，不要重新审计）
 
-更新时间：2026-09-11 01:20 ｜ 版本：**V0.4.5（修复本地 ASR 错误处理链路 + 模型离线加载）**
+更新时间：2026-09-11 02:00 ｜ 版本：**V0.5.0 桌面版（进行中，阶段 1~8 完成）** ／ 上一个稳定版 **V0.4.5**
 
 ## 运行方式
 - 环境：`./.venv/Scripts/python`（Windows，venv 在 live_clipper/.venv）
-- 网页版：`./.venv/Scripts/streamlit run ui.py`（8501）；或双击 `start_webui.bat`
+- **🖥️ 桌面版（新）**：`./.venv/Scripts/python desktop_app.py`
+  - 打包产物：`dist/AILiveClipper/AILiveClipper.exe`（onedir，410 MB，含 ffmpeg / ctranslate2 / onnxruntime / av / Qt）
+  - 安装包：`dist_setup/AI直播切片助手_Setup.exe`（由 `./.venv/Scripts/python build_desktop.py` 构建）
+  - 打包自检：`LIVE_CLIPPER_SMOKE=1 QT_QPA_PLATFORM=offscreen ./.venv/Scripts/python desktop_app.py`
+    → 结果写 `logs/desktop_smoke.json`
+- 网页版（保留）：`./.venv/Scripts/streamlit run ui.py`（8501）；或双击 `start_webui.bat`
+- 命令行（保留）：`main.py`（ASR）、`analyze_v2.py`（AI 分析）
 - 真实 API 分析（**需用户明确要求才跑**）：
   `./.venv/Scripts/python analyze_v2.py --transcript "transcripts/测试视频2.txt" --type 娱乐聊天 --mode 精细 --quantity 候选池`
-- 测试：`.venv/Scripts/python test_v040_step{1,2,3,4,5,6,7}.py` + `test_ui_selftest.py` + `test_v045_asr_errors.py`
-  （当前全过：23/21/24/17/11/24/20 + UI 15/15 + ASR 18/18）
-- 交接文档：**`docs/HANDOVER_20260910.md`（新窗口先读它）**
+- 测试：
+  - 桌面版：`test_desktop_smoke.py`（52 项，离线）
+  - 回归：`test_v040_step{1,2,3,4,5,6,7}.py` + `test_ui_selftest.py` + `test_v045_asr_errors.py`
+    （当前全过：23/21/24/17/11/24/20 + UI 15/15 + ASR 18/18）
+- 交接文档：**`docs/HANDOVER_20260910.md`**；桌面版迁移计划：**`docs/DESKTOP_MIGRATION_PLAN.md`**
 
 ## 主干流程（V0.4 目标架构）
 ASR → **Chapter**(大环节) → **Story**(连续活动) → Event Discovery → 本地聚类 → Event Understanding → Event Completion → Review/排序 → **推荐剪辑筛选** → 最终 Highlight
+
+## V0.5.0 状态（2026-09-11）—— Windows 独立桌面版，阶段 1~8 完成
+**目标**：下载一个 `Setup.exe` → 双击装好 → 桌面快捷方式双击即用。不需要 Python / 命令行 / 浏览器。
+**核心算法一行不改**，只换外壳与数据落点。
+
+- **路径分离**（D-047）：`app_paths.py` 是唯一路径入口。程序目录（只读）与用户数据目录（可写，
+  `%LOCALAPPDATA%\AILiveClipper`）彻底分开；开发态行为与改造前**逐项一致**。模型**绝不放在安装目录**。
+- **服务层**（`desktop/services/`，UI 只跟它打交道）：
+  - `project_store.py`：**每个视频 = 一个独立项目**（`projects/<ID>/project.json`，原子写，读时校验 project_id）
+    → 跨视频串场在结构上不可能发生（延续 V0.4.4 的要求）
+  - `tasks.py`：只做编排与包装，直接调 `pipeline.process_video` / `analysis.analyze_transcript_v2`
+  - `settings_store.py`：设置存工作区；钥匙镜像到 `api_key.txt`，三端一致
+  - `model_manager.py`：Model Registry 的检测 / 一键安装 / 断点续传 / 深度校验 / 沿用本机缓存 / 卸载
+- **ASR 抽象**（D-048）：`asr/provider.py` + `asr/registry.py`。业务层不再依赖 faster-whisper；
+  云端与两遍引擎**只留接口**。`model_path` 给定时直读模型目录 → **完全离线**。
+- **模型不分发**（D-049）：`models_registry.json` 集中管理下载地址 / 文件 / 版本 / 校验；
+  首次运行检测并引导一键安装。
+- **新界面**（PySide6）：⭐推荐剪辑 / 🧭直播内容结构（Chapter 可折叠 → Story → Event）/ 📺视频信息 / 🔧开发者视图；
+  展示层继续不露 S/A/B/C/D 字母（D-044）；错误提示沿用 D-046 分层并多给「点哪个按钮能修好」。
+  耗时任务在后台线程，界面不假死。
+- **测试**：`test_desktop_smoke.py` **52/52**（含「切项目后旧内容一个都不剩」「被改坏 project_id 的项目读不出来」）；
+  回归 step1~7 + UI 自测 + ASR 分层全过。
+- **剩余**：阶段 9 安装包（构建中）、阶段 10 安装后实机验收 14 项。
 
 ## V0.4.5 状态（2026-09-11）—— 本地 ASR 错误处理链路已修
 - **问题**：网页版对**任何**视频都提示「视频处理失败，请换一个文件试试」，正常视频也被当成"视频损坏"。

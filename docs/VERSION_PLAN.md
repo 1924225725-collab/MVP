@@ -173,6 +173,33 @@ v1.0  商业版本
 - **开发者可见**：完整 traceback + 原始错误 + 控制台输出（不再被吞）
 - 测试：test_v045_asr_errors **18/18**（7 种情况 stage 互不相同）+ 真实 6 分钟视频 41 句成功识别（详见 D-046）
 
+## v0.5.0 —— Windows 独立桌面版（产品化）🔨 进行中（2026-09-11 起）
+
+**目标**：从"网页版"变成**下载一个 Setup.exe、双击装好、桌面快捷方式双击即用**的独立 Windows 软件。
+不需要 Python / VS Code / 命令行 / 浏览器。技术栈 PySide6（Qt）+ PyInstaller + 自带安装程序。
+
+**十阶段计划**（每阶段结束项目都必须仍然可运行，详见 `DESKTOP_MIGRATION_PLAN.md`）
+
+| 阶段 | 内容 | 状态 |
+|---|---|---|
+| 1 | 仓库审查与迁移边界 | ✅ |
+| 2 | 桌面应用骨架 | ✅ |
+| 3 | 接入现有分析核心（`desktop/services/`） | ✅ |
+| 4 | 新 UI：视频信息 / ⭐推荐剪辑 / 🧭内容结构 / 🔧开发者 | ✅ |
+| 5 | 本地 ASR 接入（走 Provider，不直连 faster-whisper） | ✅ |
+| 6 | 模型检测 + 一键安装 | ✅ |
+| 7 | Model Registry / Manifest | ✅ |
+| 8 | ASR Provider 抽象层 | ✅ |
+| 9 | Windows 安装包（Setup.exe + 卸载） | 🔨 |
+| 10 | 全量回归 + 安装后实机验收（14 项） | ⬜ |
+
+**已完成部分的关键结论**
+- 路径分离（D-047）：程序目录只读、用户数据在 `%LOCALAPPDATA%\AILiveClipper`；开发态行为与改造前逐项一致
+- 每个视频 = 一个独立项目（`projects/<id>/project.json`），**结构上杜绝跨视频串场**（延续 V0.4.4 的要求）
+- ASR Provider 抽象（D-048）：业务层不再依赖 faster-whisper，云端引擎已留好接口
+- 模型不随安装包分发（D-049）：Model Registry 统一管理下载地址/文件/校验，首次运行一键安装
+- 自测：`test_desktop_smoke.py` **52/52**；step1~7 + UI 自测 + ASR 分层测试全过
+
 ## v0.5 —— 云端部署
 
 - 用户本地完成视频读取 + ASR，云端只处理 AI 分析（不上传视频，控制成本，见 D-013）

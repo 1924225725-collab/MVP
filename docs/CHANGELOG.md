@@ -5,6 +5,61 @@
 
 ---
 
+## v0.5.0（2026-09-11，**进行中**：产品化为 Windows 独立桌面软件）
+
+> 目标：**下载一个 Setup.exe，双击装好，桌面快捷方式双击即用** —— 不需要 Python、不需要命令行、不需要浏览器。
+> 核心分析算法（Chapter / Story / Event / Highlight / 评分 / 推荐）**一行不改**，只换"外壳"与"数据落点"。
+
+### 阶段一～八 已完成（骨架 + 服务层 + 界面 + 模型管理 + ASR 抽象）
+
+- **新增（路径层）**：
+  - `app_paths.py`：唯一的路径解析入口。程序目录（只读）与用户数据目录（可写）彻底分开；
+    优先级 = `LIVE_CLIPPER_HOME` 环境变量 → 打包态 `%LOCALAPPDATA%\AILiveClipper` → 开发态项目根。
+    首次运行建目录 + 释放模板文件（存在就跳过）。详见 **D-047**
+- **新增（服务层 `desktop/services/`，界面只跟它打交道）**：
+  - `project_store.py`：**每个视频一份独立项目**（`projects/<项目ID>/project.json`）。
+    状态机 created/transcribed/analyzed/failed，原子写（`.tmp` → `replace`），
+    读时校验 `project_id` —— **从一个视频的结果串到另一个视频在结构上不可能发生**（延续 V0.4.4 要求）
+  - `tasks.py`：`probe_video` / `import_video` / `transcribe_video` / `analyze_transcript` / `wrap_error`。
+    **只做编排与包装**，直接调用原有 `pipeline.process_video` 与 `analysis.analyze_transcript_v2`
+  - `model_manager.py`：Model Registry 的读、检测、下载安装（进度/断点续传/校验/卸载/沿用缓存）。详见 **D-049**
+  - `settings_store.py`：用户设置（钥匙 / 直播类型 / 分析模式 / 数量模式 / 语音识别引擎），
+    钥匙同时镜像到 `api_key.txt`，命令行与网页版行为一致
+- **新增（ASR 抽象）**：
+  - `asr/provider.py`：`AsrProvider` 约定 + `FasterWhisperProvider`（本地，`model_path` 直读目录 → 完全离线）
+    + `CloudAsrProvider` / `TwoPassProvider`（**只预留接口**）
+  - `asr/registry.py`：`build_provider(id)` / `list_providers()` / `DEFAULT_PROVIDER_ID`。详见 **D-048**
+  - `asr/local_whisper.py`：新增 `model_path` 参数（`_load_from_dir`，不问 HuggingFace）
+- **新增（界面 `desktop/ui/`，PySide6）**：
+  - `main_window.py`：左侧项目列表 + 右侧四页签（⭐推荐剪辑 / 🧭直播内容结构 / 📺视频信息 / 🔧开发者视图）；
+    耗时任务走后台线程（`desktop/workers.py`），界面不假死
+  - `recommended_panel.py`：推荐卡片（排名 / 档位 / 分数 / 时间区间 / 建议时长 / 摘要 / 为什么值得剪 /
+    风险 / 五维构成 / 所属 Chapter→Story / clip_id / 👍👎 反馈），支持「只看推荐 / 全部候选 / 只看被拒」
+  - `structure_panel.py`：Video → Chapter（可折叠）→ Story（标题/时间/评分/档位/理由/推荐数）→ Event
+  - `project_panel.py`：视频与项目信息、文字稿信息、分析概览
+  - `developer_panel.py`：路径布局 / ASR 引擎与模型状态 / 元信息 / 成本 / 运行日志 / 完整结果 JSON（可复制）
+  - `error_text.py`：沿用 D-046 分层思路的**桌面版**文案，并多给一步「点哪个按钮能修好」
+  - `theme.py` / `widgets.py`：样式与共用控件（**展示层继续不露 S/A/B/C/D 字母**，D-044）
+- **新增（入口 / 构建）**：
+  - `desktop_app.py`：桌面版入口（工作区初始化 → 高 DPI → 主题 → 主窗口 → 首次运行模型检测）；
+    支持 `LIVE_CLIPPER_SMOKE=1` 离屏自检（打包后没控制台，自检结果落 `logs/desktop_smoke.json`）
+  - `models_registry.json`：Model Registry（tiny / base / **small 默认** / medium）
+  - `packaging/`：`live_clipper.spec`（主程序 onedir）、`uninstaller.spec` + `uninstaller.py`、
+    `setup.spec` + `setup_app.py` + `shortcuts.py`（安装程序，单文件 Setup.exe）
+  - `build_desktop.py`：一键构建（卸载程序 → 主程序 → 合并 → LZMA 载荷 → Setup.exe）
+  - `test_desktop_smoke.py`：桌面骨架自测（**52/52**，离线，不联网、不跑 ASR、不调 AI）
+
+- **修改**：
+  - `pipeline.py` / `analysis/{feedback,dictionary,event_scanner,deepseek_client,chapter_story}.py` / `ui.py`：
+    路径改为问 `app_paths`（**开发态行为逐项一致**，不做算法改动）
+- **未改动（硬约束）**：`analysis/` 的提示词、评分体系、Chapter/Story/Event 逻辑、推荐筛选、聚类与分批复审；
+  `ui.py` 网页版功能；`main.py` 命令行入口
+
+- **测试结果**：`test_desktop_smoke.py` **52/52**；回归 step1~7 = 23/21/24/17/11/24/20 全过；
+  `test_ui_selftest.py` 15/15；`test_v045_asr_errors.py` 18/18
+
+---
+
 ## v0.4.5（2026-09-11，修复本地 ASR 错误处理链路：分层提示 + 模型离线加载）
 
 - **新增**：

@@ -381,3 +381,67 @@ v0.4 核心目标一句话：**让 AI 从寻找片段，升级为理解完整事
 - UI 自测 15/15；step1~6 回归全过
 
 **未动**：ASR 架构与阶段划分、Chapter/Story/Event/Highlight/Recommendation、评分体系。
+
+## 2026-09-11  V0.5.0 桌面版（阶段 1~8：路径分离 + 服务层 + UI 骨架 + 模型管理 + ASR 抽象）
+
+**需求（用户原话要点）**：把网页版正式产品化为一个独立 Windows 桌面软件 ——
+下载一个 Setup.exe、双击装好、桌面快捷方式双击即用；不需要 Python / VS Code / 命令行 / Streamlit。
+界面围绕「理解这场直播」+「找出值得剪的内容」重做（视频信息 / ⭐推荐剪辑 / 🧭内容结构 / 🔧开发者）。
+**每个界面数据必须来自当前视频的分析结果**，绝不出现 51 分钟固定样例、固定 Chapter 01~04、跨视频污染。
+**保护核心逻辑**：Chapter / Story / Event / Highlight / Recommendation / 评分体系一行不改。
+
+**阶段 1：仓库审查与迁移边界（`docs/DESKTOP_MIGRATION_PLAN.md`）**
+- 结论：`analysis/` 可**零改造复用**；唯一必须最小改造的是「路径从哪来」；
+  `ui.py` / `main.py` 保留（网页版与命令行照旧能用）。
+
+**阶段 2~3：路径分离 + 服务层**
+1. 新增 `app_paths.py`：唯一路径入口。程序目录（只读）与用户数据目录（可写）分开；
+   优先级 = `LIVE_CLIPPER_HOME` → 打包态 `%LOCALAPPDATA%\AILiveClipper` → 开发态项目根（**行为与改造前逐项一致**）。
+   首次运行 `ensure_workspace()` 建目录 + 释放模板文件（存在就跳过，绝不覆盖用户数据）。见 D-047
+2. `pipeline.py` / `analysis/{feedback,dictionary,event_scanner,deepseek_client,chapter_story}.py` / `ui.py`
+   的路径常量改为问 `app_paths`（**只改路径来源，不改算法**）
+3. `desktop/services/project_store.py`：**每个视频 = 一个独立项目**
+   （`projects/<项目ID>/project.json`，状态机 created/transcribed/analyzed/failed，
+   原子写 `.tmp` → `replace`，读时校验 `project_id`）——**结构上杜绝跨视频串场**
+4. `desktop/services/tasks.py`：`probe_video` / `import_video` / `transcribe_video` / `analyze_transcript`。
+   只做编排与包装，直接调原有 `pipeline.process_video` 与 `analysis.analyze_transcript_v2`
+5. `desktop/services/settings_store.py`：设置存工作区 `settings.json`；钥匙同时镜像 `api_key.txt`
+   （命令行 / 网页版 / 桌面版三者一致）
+
+**阶段 4：新 UI（PySide6）**
+- `desktop/ui/main_window.py`：左侧项目列表 + 右侧四页签；耗时任务走 `desktop/workers.py` 后台线程
+- 四个面板：`recommended_panel`（推荐卡片 + 五维构成 + 所属 Chapter→Story + 👍👎 反馈）、
+  `structure_panel`（Video → Chapter 可折叠 → Story → Event）、`project_panel`、`developer_panel`
+- 展示层继续**不露 S/A/B/C/D 字母**（D-044）；`desktop/ui/error_text.py` 沿用 D-046 分层思路并多给「点哪个按钮能修好」
+
+**阶段 5~8：模型管理 + ASR 抽象**
+- `models_registry.json`：Model Registry（tiny / base / **small 默认** / medium），
+  字段含版本 `revision`、下载地址 `base_url`、文件清单、大小下限、`sha256`。见 D-049
+- `desktop/services/model_manager.py`：检测（工作区优先 → 回退 HF 缓存）/ 一键安装（流式 + `.part` 断点续传 +
+  失败分类）/ 深度校验 / **沿用本机已有模型** / 手动指定文件夹 / 卸载（只删工作区副本）
+- `asr/provider.py` + `asr/registry.py`：`AsrProvider` 抽象 + `FasterWhisperProvider`（`model_path` 直读目录 → 完全离线）
+  + 云端/两遍引擎**只留接口**。见 D-048
+- `asr/local_whisper.py`：新增 `model_path` 参数（`_load_from_dir`，完全不问 HuggingFace）
+
+**入口与自检**
+- `desktop_app.py`：工作区初始化 → 高 DPI → 主题 → 主窗口 → 首次运行模型检测；
+  `LIVE_CLIPPER_SMOKE=1` 时离屏自检并把结果写 `logs/desktop_smoke.json`（打包后没控制台，只能落文件）
+- 新增 `test_desktop_smoke.py`（52 项，离线，不联网 / 不跑 ASR / 不调 AI）
+
+**测试结果**
+- `test_desktop_smoke.py` **52/52**：四页签齐全 / 空态正确 / 数据绑定（条数、Chapter 标题、时长、成本、project_id）/
+  **切项目后旧内容一个都不剩** / 被改坏 `project_id` 的项目读不出来且列表自动跳过 / 10 种错误文案互不相同 /
+  等级字母不外露 / 设置持久化 / 模型清单 schema 与错误分支
+- 回归：step1~7 = **23/21/24/17/11/24/20** 全过；`test_ui_selftest.py` 15/15；`test_v045_asr_errors.py` 18/18
+- 打包后实机自检：`dist/AILiveClipper/AILiveClipper.exe`（410 MB，含 ffmpeg / ctranslate2 / onnxruntime / av / Qt 插件）
+
+**未动**：`analysis/` 的提示词与算法、评分体系、Chapter/Story/Event 逻辑、推荐筛选、聚类与分批复审；
+`ui.py` 网页版功能；`main.py` 命令行入口。
+
+**踩过的坑（留给后续）**
+1. 切面板时只 `deleteLater()` 不 `setParent(None)` → 旧控件还在窗口树里，`findChildren` 仍能捞到上一个项目的内容
+   （「防串场」测试当场抓出来了）
+2. `TaskWorker.succeeded` 回主线程时线程尚未完全退出，若在回调里立刻发起下一个任务会被 `isRunning()` 拦住 →
+   回调前先 `self.worker = None`
+3. PyInstaller 跑第二次时会在 workpath 里批量删缓存文件，遇到文件保护会失败 → 构建前先自己整目录清理
+4. 安装包载荷用 LZMA 压缩（410 MB → 约 200 MB），否则「一个 Setup.exe」会大得离谱

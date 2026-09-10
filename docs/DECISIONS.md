@@ -469,3 +469,59 @@ AI_HANDOVER.md 是接手必读；每版本必须更新；禁止推翻 DECISIONS.
 **影响面**：新增 `errors.py`、`test_v045_asr_errors.py`；改 `pipeline.py`、`asr/local_whisper.py`、`asr/__init__.py`、`ui.py`、`main.py`、`.gitignore`。
 
 **验证**：test_v045_asr_errors.py **18/18**（7 种情况 stage 互不相同，界面文案互不重复且旧统一提示已移除）；真实 6 分钟视频 **41 句 / 85s** 成功走完本地 ASR（模型「离线加载」）；UI 自测 15/15；step1~6 回归全过。
+
+## D-047 桌面版必须把「程序目录」与「用户数据目录」彻底分开（V0.5，2026-09-11）
+
+**背景**：迁移审查发现，全项目路径以前都从「项目根目录」推（各模块自己写 `BASE_DIR = __file__/..`）。一次性产品化成 Windows 桌面软件后这条假设会直接崩：
+- 程序装在 `Program Files` **不可写**，且升级/覆盖安装会清掉一切
+- 用户视频、文字稿、分析结果、模型动辄几个 GB，**不能**放在安装目录里
+
+**决策**：
+1. 新增 **`app_paths.py`** 作为**唯一**的路径解析入口，业务模块只问它要目录，不再自己拼路径。
+2. 解析优先级（关键：**开发态行为与改造前完全一致**）：
+   - 设了环境变量 `LIVE_CLIPPER_HOME` → 用它
+   - 打包运行（`sys.frozen`）→ `%LOCALAPPDATA%\AILiveClipper`
+   - 其他（开发态 / 跑测试 / 跑网页版）→ 项目根目录
+3. 目录布局（程序与数据分开）：
+   ```
+   程序目录（只读）        ：整个 exe + _internal（含 models_registry.json、模板）
+   用户数据目录（可写）    ：api_key.txt / custom_dictionary.json / user_lexicon.txt
+                             videos/ audio/ transcripts/ structures/ projects/
+                             models/ logs/ temp/ settings.json
+   ```
+4. 模型目录**绝不放在安装目录**：`<用户数据目录>/models/`。
+5. 首次运行 `ensure_workspace()` 建目录 + 从程序目录释放模板文件（**存在就跳过，绝不覆盖用户数据**）。
+
+**边界**：只改「路径从哪来」，**不改任何算法、不改文件格式、不改目录名**（开发态布局不变，老用户数据原地可用）。
+
+**影响面**：新增 `app_paths.py`；改 `pipeline.py`、`analysis/feedback.py`、`analysis/dictionary.py`、`analysis/event_scanner.py`、`analysis/deepseek_client.py`、`analysis/chapter_story.py`、`ui.py`（各模块的 `BASE_DIR` / `KEY_FILE` / `cache_dir` 改为问 `app_paths`）。
+
+**验证**：改造后开发态路径与改造前**逐项一致**；step1~7 + UI 自测 + ASR 分层测试全过。
+
+## D-048 ASR 必须走 Provider 抽象，业务层不许直接依赖 faster-whisper（V0.5，2026-09-11）
+
+**背景**：用户明确要求「Chapter / Story / Event / Highlight 不应该直接依赖 faster-whisper」，未来要能接云端 ASR。迁移审查确认：`pipeline.get_recognizer()` 把 faster-whisper 写死在主流程里，`ui.py` 直接 `import asr`，业务层拿不到「换引擎」的机会。
+
+**决策**：
+1. 新增 `asr/provider.py`：`AsrProvider` 约定（`id / name / kind / is_available() / prepare() / release() / transcribe(audio_path)`），能力边界**只有一条**：「音频文件 → [Segment]」。Provider **不碰** Chapter/Story/Event/Highlight/评分/推荐。
+   - `FasterWhisperProvider`（本期真正实现；`model_path` 给了就直接用该目录 → **完全离线**，否则退回 `model_size` + HF 缓存，兼容网页版/命令行老路径）
+   - `CloudAsrProvider` / `TwoPassProvider`：**只预留接口**，不接具体服务，`transcribe()` 抛带 stage 的 `ProcessError`
+2. 新增 `asr/registry.py`：`build_provider(id, **kw)` / `list_providers()` / `DEFAULT_PROVIDER_ID`。新增引擎 = 写一个子类 + 注册一行，别处不用改。
+3. `LocalWhisperRecognizer` 增加 `model_path` 参数（走 `_load_from_dir`，直接读文件夹，**完全不问 HuggingFace**），配合 D-047 的模型目录。
+4. 所有 ASR 失败一律抛 `errors.ProcessError`（沿用 D-046 的 stage 语义），**不用新一套错误类型**。
+
+**边界**：现有 `pipeline.process_video()` 的流程与 `asr.create_recognizer()` 老入口**都保留**（网页版与命令行行为不变）；Provider 是**新增的一条路**，不是替换。
+
+## D-049 模型不随安装包分发；用 Model Registry 统一管理下载与校验（V0.5，2026-09-11）
+
+**背景**：faster-whisper small 的 `model.bin` 就有 ~464 MB。塞进安装包会让「下载一个 Setup.exe」变成下载几个 GB，而且用户可能想换 tiny/medium。
+
+**决策**：
+1. **安装包不含任何模型**。首次运行时检测；缺失则界面引导「一键安装」（进度 / 失败提示 / 可重试 / 断点续传 / 完整性校验）。
+2. 新增 **`models_registry.json`（Model Registry / Manifest）**：每个模型一条，字段 = `id / kind / engine / name / description / recommended / default / size_hint / repo_id / revision（版本）/ base_url（下载地址）/ files / primary_file / min_primary_bytes（大小下限校验）/ sha256（清单写死的校验值，可留空）`。
+   - 下载地址、文件清单、校验规则**集中在这一个文件里**，不散落在业务代码
+   - 支持**工作区覆盖**（用户数据目录放了同名清单就用它）→ 日后可热更新清单，不用重装程序
+3. 新增 `desktop/services/model_manager.py`（`ModelManager`）：`list_status()` / `resolve_local()`（工作区优先 → 回退本机 HuggingFace 缓存）/ `install()`（流式下载 + `.part` 断点续传 + 写盘失败分类型报错）/ `verify(deep=True)`（文件齐全 + 主文件大小下限 + sha256）/ `adopt_from_hf_cache()`（**用户以前跑过网页版，模型已在缓存里 → 直接登记，不重复下载**）/ `copy_into_workspace()`（离线兜底：用户手动指定文件夹）/ `remove()`（**只删工作区副本，绝不动 HF 缓存和用户原文件夹**）。
+4. 模型错误沿用 `ProcessError` 的 `model_missing` / `model_load` 两个 stage，界面据此分别给出「去安装」/「去校验」的动作按钮。
+
+**边界**：`model_manager` **不认识** faster-whisper（引擎细节留给 D-048 的 Provider）；**不自动删**用户任何已有文件。
