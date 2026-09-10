@@ -51,3 +51,24 @@ api_key.txt
 # 系统杂项
 Thumbs.db
 .DS_Store
+
+# ---------------- V0.5 桌面版 ----------------
+
+# 打包产物（几百 MB，装机时现打；不要进仓库）
+build/
+dist/
+dist_setup/
+packaging/build/
+*.spec.bak
+
+# 打包日志
+build_*.log
+
+# 桌面版运行数据（用户数据目录在开发态 = 项目根，不进仓库）
+projects/
+models/
+logs/
+settings.json
+desktop_smoke_report.txt
+desktop_install_report.txt
+desktop_crash.log

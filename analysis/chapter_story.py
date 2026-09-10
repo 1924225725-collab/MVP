@@ -25,6 +25,7 @@ import re
 from datetime import datetime
 from pathlib import Path
 
+import app_paths
 import config
 
 from .chunker import format_time
@@ -44,10 +45,17 @@ _DURATION_TOLERANCE = 2
 # ============================================================
 
 def cache_dir() -> Path:
-    """结构缓存目录（相对项目根目录，可用 config.STORY_CONTEXT['cache_dir'] 改）。"""
+    """结构缓存目录（相对路径以「工作区根目录」为基准，可用 config 覆盖）。
+
+    V0.5：开发态工作区 = 项目根目录（行为不变）；桌面版 = %LOCALAPPDATA%\\AILiveClipper。
+    若 config 里给的是绝对路径（测试常用），直接用它。
+    """
     cfg = getattr(config, "STORY_CONTEXT", None) or {}
     name = cfg.get("cache_dir") or "structures"
-    return Path(__file__).resolve().parent.parent / name
+    p = Path(name)
+    if p.is_absolute():
+        return p
+    return app_paths.workspace_root() / p
 
 
 def cache_path_for(transcript_path) -> Path:

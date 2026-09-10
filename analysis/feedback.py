@@ -17,8 +17,10 @@ import json
 from datetime import datetime
 from pathlib import Path
 
-# 项目根目录（本文件在 analysis/ 里，往上两级）
-BASE_DIR = Path(__file__).resolve().parent.parent
+# V0.5：工作区根目录（开发态 = 项目根；桌面版 = %LOCALAPPDATA%\AILiveClipper）
+import app_paths
+
+BASE_DIR = app_paths.workspace_root()
 
 
 def feedback_path():

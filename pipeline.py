@@ -22,6 +22,7 @@ import subprocess
 import traceback
 from pathlib import Path
 
+import app_paths
 from errors import (
     ProcessError,
     STAGE_ASR_EMPTY,
@@ -34,11 +35,13 @@ from errors import (
     STAGE_NO_AUDIO,
 )
 
-# ---------- 项目文件夹（都以本文件位置为准） ----------
-BASE_DIR = Path(__file__).parent
-VIDEO_DIR = BASE_DIR / "videos"
-AUDIO_DIR = BASE_DIR / "audio"
-TRANSCRIPT_DIR = BASE_DIR / "transcripts"
+# ---------- 项目文件夹 ----------
+# V0.5：路径统一由 app_paths 解析（程序目录 / 用户数据目录分离）
+#   开发态 = 项目根目录（与改造前完全一致）；桌面版 = %LOCALAPPDATA%\AILiveClipper
+BASE_DIR = app_paths.program_root()
+VIDEO_DIR = app_paths.videos_dir()
+AUDIO_DIR = app_paths.audio_dir()
+TRANSCRIPT_DIR = app_paths.transcripts_dir()
 
 
 # ---------- 工具函数 ----------
@@ -310,10 +313,13 @@ def get_recognizer():
 
 # ---------- 一条龙 ----------
 
-def process_video(video_path, progress=None):
+def process_video(video_path, progress=None, recognizer=None):
     """完整处理一个视频：可读性检查 → 音轨检测 → 提取音频 → 语音识别 → 存文字稿。
 
-    progress 是可选的进度汇报函数 progress(阶段名)，界面可以拿它显示进度条。
+    progress   —— 可选的进度汇报函数 progress(阶段名)，界面可以拿它显示进度条。
+    recognizer —— 可选的识别器实例（桌面版会传入指定模型的识别器；
+                  不传则按 config 现场造一个）。
+
     成功返回 dict：{"video", "audio", "segments", "transcript", "dictionary_hits"}
 
     V0.4.5：失败**不再返回 None**，而是抛 ProcessError（带 stage），
@@ -331,7 +337,7 @@ def process_video(video_path, progress=None):
 
     if progress:
         progress("语音识别")
-    segments = transcribe_audio(audio_path)
+    segments = transcribe_audio(audio_path, recognizer)
 
     if not segments:
         raise ProcessError(

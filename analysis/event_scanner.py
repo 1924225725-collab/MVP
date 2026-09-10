@@ -18,7 +18,10 @@ from pathlib import Path
 import config
 from .transcript_parser import total_duration
 
-BASE_DIR = Path(__file__).parent.parent   # live_clipper 项目根目录
+# V0.5：工作区根目录（开发态 = 项目根；桌面版 = %LOCALAPPDATA%\AILiveClipper）
+import app_paths
+
+BASE_DIR = app_paths.workspace_root()
 
 
 # ---------------- 词库 ----------------

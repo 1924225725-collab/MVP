@@ -16,8 +16,10 @@ import json
 import re
 from pathlib import Path
 
-# 项目根目录（本文件在 analysis/ 里，往上两级）
-BASE_DIR = Path(__file__).resolve().parent.parent
+# V0.5：工作区根目录（开发态 = 项目根；桌面版 = %LOCALAPPDATA%\AILiveClipper）
+import app_paths
+
+BASE_DIR = app_paths.workspace_root()
 
 # 词库默认分类（用户可以自己加分类，代码不限定死）
 DEFAULT_CATEGORIES = ["主播名字", "游戏名称", "品牌", "网络热词", "其他"]

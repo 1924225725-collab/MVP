@@ -20,7 +20,10 @@ import config
 API_URL = "https://api.deepseek.com/chat/completions"
 
 # 钥匙文件（网页版保存的钥匙放这里；此文件已被 .gitignore 排除，不会上传）
-KEY_FILE = Path(__file__).resolve().parent.parent / "api_key.txt"
+# V0.5：钥匙文件在工作区根目录（开发态 = 项目根）
+import app_paths
+
+KEY_FILE = app_paths.api_key_file()
 
 
 def get_api_key():

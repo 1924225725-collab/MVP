@@ -66,8 +66,10 @@ st.set_page_config(page_title="AI 直播切片助手", page_icon="🎬", layout=
 st.title("🎬 AI 直播切片助手")
 st.caption("直播录像 → 语音识别 → AI 理解内容结构 → 挑出值得剪的高光片段")
 
-# 钥匙文件位置（和 analysis/deepseek_client.py 里约定的是同一个）
-KEY_FILE = Path(__file__).parent / "api_key.txt"
+# 钥匙文件位置（V0.5：统一由 app_paths 解析；开发态 = 项目根 build api_key.txt）
+import app_paths  # noqa: E402
+
+KEY_FILE = app_paths.api_key_file()
 
 # ---------- 评级 / 推荐文案（V0.4.3：界面不露 S/A/B/C/D 字母，D-044） ----------
 # 内部 grade 仍是 S/A/B/C/D；展示层用 config.GRADE_UI 模糊成「高光内容 / 有看点」两档，
