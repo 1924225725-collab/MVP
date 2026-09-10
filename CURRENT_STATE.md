@@ -14,7 +14,8 @@
 - 真实 API 分析（**需用户明确要求才跑**）：
   `./.venv/Scripts/python analyze_v2.py --transcript "transcripts/测试视频2.txt" --type 娱乐聊天 --mode 精细 --quantity 候选池`
 - 测试：
-  - 桌面版：`test_desktop_smoke.py`（52 项，离线）
+  - 桌面版：`test_desktop_smoke.py`（52 项，离线）；`test_desktop_e2e.py`（24 项，真跑本地 ASR）
+  - 安装包：`packaging/verify_install.py`（30 项，模拟安装 + 装好的 exe 实机启动）
   - 回归：`test_v040_step{1,2,3,4,5,6,7}.py` + `test_ui_selftest.py` + `test_v045_asr_errors.py`
     （当前全过：23/21/24/17/11/24/20 + UI 15/15 + ASR 18/18）
 - 交接文档：**`docs/HANDOVER_20260910.md`**；桌面版迁移计划：**`docs/DESKTOP_MIGRATION_PLAN.md`**
@@ -43,7 +44,12 @@ ASR → **Chapter**(大环节) → **Story**(连续活动) → Event Discovery �
   耗时任务在后台线程，界面不假死。
 - **测试**：`test_desktop_smoke.py` **52/52**（含「切项目后旧内容一个都不剩」「被改坏 project_id 的项目读不出来」）；
   回归 step1~7 + UI 自测 + ASR 分层全过。
-- **剩余**：阶段 9 安装包（构建中）、阶段 10 安装后实机验收 14 项。
+- **安装包实测**：`packaging/verify_install.py` **30/30**（安装程序自检 + 模拟安装 + 装好的 exe 实机启动：
+  冻结态 / 目录分离 / 内置 ffmpeg / 四页签 / 引擎可用 / 模型清单 / 程序目录无 models/）。
+- **界面截图**：`docs/screenshots/`（6 张，用同一场 51 分钟直播的真实结果渲染）。
+- **剩余**：阶段 10 里需要人工过一遍的（自动化做不了）：
+  □ 双击 Setup.exe 走完安装流程　□ 桌面/开始菜单快捷方式　□ 「应用和功能」里卸载
+  □ 卸载时数据的保留/删除分支　□ 首次运行无模型时的一键安装（需联网）　□ 真实视频全流程分析
 
 ## V0.4.5 状态（2026-09-11）—— 本地 ASR 错误处理链路已修
 - **问题**：网页版对**任何**视频都提示「视频处理失败，请换一个文件试试」，正常视频也被当成"视频损坏"。

@@ -71,4 +71,5 @@ logs/
 settings.json
 desktop_smoke_report.txt
 desktop_install_report.txt
+desktop_e2e_report.txt
 desktop_crash.log

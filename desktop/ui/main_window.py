@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (
 )
 
 import app_paths
+from errors import ProcessError, STAGE_MEDIA_UNREADABLE, STAGE_NO_AUDIO
 from desktop import APP_TITLE, APP_VERSION, theme
 from desktop.services import ProjectStore, SettingsStore
 from desktop.services.tasks import (
@@ -399,6 +400,22 @@ class MainWindow(QMainWindow):
                        status="检查视频…")
 
     def _after_probe(self, path, info):
+        # 探测阶段就能看出问题的话**立刻说**，别让用户填完设置才开始跑才发现
+        # 「这个视频根本没有声音」（V0.4.5 / D-046 的分层原则延续到这里）。
+        if not info.get("has_audio"):
+            self._show_error(ProcessError(
+                STAGE_NO_AUDIO,
+                f"未检测到音轨：{info.get('name') or path}",
+                f"文件：{info.get('path') or path}\n"
+                f"视频能正常打开，但里面没有声音轨道（常见于无声录屏、或音轨被剥离的文件）。"))
+            return
+        if not info.get("readable"):
+            self._show_error(ProcessError(
+                STAGE_MEDIA_UNREADABLE,
+                f"媒体文件无法读取：{info.get('name') or path}",
+                f"文件：{info.get('path') or path}"))
+            return
+
         dlg = AnalysisOptionsDialog(info, self.settings.load(), self)
         if dlg.exec() != AnalysisOptionsDialog.Accepted:
             return
@@ -515,7 +532,6 @@ class MainWindow(QMainWindow):
             chunks = chunker.build_chunks(buckets, segs)
             max_cand = 3
             try:
-                import config
                 max_cand = config.TOKEN_MODES[opts["token_mode"]]["max_candidates_per_chunk"]
             except Exception:
                 pass

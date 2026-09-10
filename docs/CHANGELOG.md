@@ -48,6 +48,10 @@
     `setup.spec` + `setup_app.py` + `shortcuts.py`（安装程序，单文件 Setup.exe）
   - `build_desktop.py`：一键构建（卸载程序 → 主程序 → 合并 → LZMA 载荷 → Setup.exe）
   - `test_desktop_smoke.py`：桌面骨架自测（**52/52**，离线，不联网、不跑 ASR、不调 AI）
+  - `test_desktop_e2e.py`：桌面版端到端实测（**24/24**，真跑本地 ASR：探测 → 导入 → 出稿 →
+    项目落盘 → 界面绑定 → 两项目互不污染 → 四种错误仍分层）
+  - `packaging/verify_install.py`：**30/30**（安装程序自检 + 模拟安装 + 装好的 exe 实机启动）
+  - `packaging/make_screenshots.py` + `docs/screenshots/`：用**同一场 51 分钟真实结果**渲染的六张界面图
 
 - **修改**：
   - `pipeline.py` / `analysis/{feedback,dictionary,event_scanner,deepseek_client,chapter_story}.py` / `ui.py`：
@@ -55,7 +59,8 @@
 - **未改动（硬约束）**：`analysis/` 的提示词、评分体系、Chapter/Story/Event 逻辑、推荐筛选、聚类与分批复审；
   `ui.py` 网页版功能；`main.py` 命令行入口
 
-- **测试结果**：`test_desktop_smoke.py` **52/52**；回归 step1~7 = 23/21/24/17/11/24/20 全过；
+- **测试结果**：`test_desktop_smoke.py` **52/52**；`test_desktop_e2e.py` **24/24**（真跑本地 ASR）；
+  `packaging/verify_install.py` **30/30**；回归 step1~7 = 23/21/24/17/11/24/20 全过；
   `test_ui_selftest.py` 15/15；`test_v045_asr_errors.py` 18/18
 
 ---
