@@ -5,7 +5,36 @@
 
 ---
 
-## v0.5.0（2026-09-11，**进行中**：产品化为 Windows 独立桌面软件）
+## v0.5.1（2026-09-11，修打包漏文件：装到别的盘后语音识别必崩）
+
+- **现象（用户装机实测，装在 D:////AILiveClipper）**：点识别就报「语音识别推理失败」，
+  原始报错是 `onnxruntime NoSuchFile: Load model from
+  .../_internal/faster_whisper/assets/silero_vad_v6.onnx failed`
+- **根因**：`faster_whisper/assets/silero_vad_v6.onnx`（1.2 MB，人声检测模型）
+  是这个包里**唯一的非 .py 文件**。打包配置只做了 `collect_submodules`（只收 .py），
+  数据文件一个都没收 → **开发态永远正常**（读的是 venv 里的源文件），
+  只有装到别的盘、真跑一次识别才炸。
+- **修复**：
+  - `packaging/live_clipper.spec`：显式收集 `faster_whisper/assets` 下所有文件
+    （构建时会打印 `[spec] 已收进 faster_whisper/assets：['silero_vad_v6.onnx']`）
+  - `asr/local_whisper.py`：这类"程序自带组件缺失"（NoSuchFile / onnx / silero）
+    不再笼统归到「推理失败」，改判为 `dependency` 阶段，
+    文案直说"程序组件不完整，建议重新安装"——**不是视频或模型的问题**
+  - `desktop/ui/main_window.py`：错误弹窗除分类文案外也带上 `ProcessError.message`
+    （以前只显示"缺少依赖组件"，看不出缺的到底是什么）
+- **补上验收盲区（这次真正的教训）**：
+  - `desktop_app.py`：自检时可设 `LIVE_CLIPPER_SMOKE_TRANSCRIBE=<视频>`，
+    让装好的程序**真跑一次本地识别**，结果写进 `logs/desktop_smoke.json`
+  - `packaging/verify_install.py`：新增该步骤的断言。
+    之前只验"能 import / 能构造识别器 / 能找到 ffmpeg"——
+    **这三样在漏文件时全都正常**，所以漏网。现在必须真跑一次才算过。
+- **测试结果**：`verify_install` **33/33**（含「真的识别出内容了」）；
+  `test_desktop_smoke` 52/52；`test_desktop_e2e` 24/24；回归 step7 20/20、UI 15/15、v045 18/18
+- **交付**：`dist_setup/AI直播切片助手_Setup.exe`（138 MB）
+
+---
+
+## v0.5.0（2026-09-11，**完成**：产品化为 Windows 独立桌面软件）
 
 > 目标：**下载一个 Setup.exe，双击装好，桌面快捷方式双击即用** —— 不需要 Python、不需要命令行、不需要浏览器。
 > 核心分析算法（Chapter / Story / Event / Highlight / 评分 / 推荐）**一行不改**，只换"外壳"与"数据落点"。

@@ -467,3 +467,61 @@ v0.4 核心目标一句话：**让 AI 从寻找片段，升级为理解完整事
   改用**文字稿路径**做指纹才可靠。
 - 探测（`probe_video`）的设计是**如实报告**（返回 readable / has_audio）而**不抛错**；
   真正分层抛错的是 `transcribe_video`。测试断言要打在正确的那一层。
+
+## 2026-09-11  V0.5.1（用户装机实测暴露：打包漏了 VAD 人声检测模型）
+
+**用户报的现象**：装在 `D:\AILiveClipper`，点识别就报「语音识别推理失败」，
+traceback 是 `onnxruntime.capi...NoSuchFile: Load model from
+D:\AILiveClipper\_internal\faster_whisper\assets\silero_vad_v6.onnx failed`。
+
+**根因**：`faster_whisper/assets/silero_vad_v6.onnx`（1.2 MB）是 faster_whisper 包里
+**唯一的非 .py 文件**。打包 spec 只做了 `collect_submodules("faster_whisper")`（只收 .py），
+数据文件一个都没收进去。
+
+**为什么开发态从来不炸**：开发态读的是 venv 里的源文件目录，assets 天然就在旁边；
+打包后代码进 PYZ，数据文件没被收集 → 运行时按包相对路径去找就找不到了。
+**这类问题只在"装到别的盘 + 真跑一次识别"时暴露。**
+
+**修复**
+1. spec 显式收集 `faster_whisper/assets` 下所有文件（构建时打印确认）
+2. `asr/local_whisper.py`：NoSuchFile / onnx / silero 类异常改判 `dependency` 阶段，
+   文案直说"程序组件不完整，建议重新安装本程序"——不再是含糊的"推理失败"
+3. `main_window._show_error`：弹窗同时展示分类文案与 `ProcessError.message`
+
+**补上的验收盲区（这才是真正的教训）**
+之前 `verify_install` 只验：能 import / 能构造识别器 / 能找到 ffmpeg / 四页签在。
+**漏文件时这四样全都正常**，所以 30/30 也照样漏网。现在：
+- `desktop_app.py` 支持 `LIVE_CLIPPER_SMOKE_TRANSCRIBE=<视频>`，装好的程序真跑一次识别
+- `verify_install.py` 增加断言：干净机器允许 `model_missing`，但**绝不允许因缺文件而失败**
+- 结果：33/33，其中「真的识别出内容了」证明整条链路在打包环境里跑通
+
+**一句话记住**：**打包验收只验"能导入"是不够的，必须真跑一次主流程。**
+
+## 2026-09-11  V0.5.1（用户装机实测暴露：打包漏了 VAD 人声检测模型）
+
+**用户报的现象**：装在 `D:\AILiveClipper`，点识别就报「语音识别推理失败」，
+traceback 是 `onnxruntime.capi...NoSuchFile: Load model from
+D:\AILiveClipper\_internal\faster_whisper\assets\silero_vad_v6.onnx failed`。
+
+**根因**：`faster_whisper/assets/silero_vad_v6.onnx`（1.2 MB）是 faster_whisper 包里
+**唯一的非 .py 文件**。打包 spec 只做了 `collect_submodules("faster_whisper")`（只收 .py），
+数据文件一个都没收进去。
+
+**为什么开发态从来不炸**：开发态读的是 venv 里的源文件目录，assets 天然就在旁边；
+打包后代码进 PYZ，数据文件没被收集 → 运行时按包相对路径去找就找不到了。
+**这类问题只在"装到别的盘 + 真跑一次识别"时暴露。**
+
+**修复**
+1. spec 显式收集 `faster_whisper/assets` 下所有文件（构建时打印确认）
+2. `asr/local_whisper.py`：NoSuchFile / onnx / silero 类异常改判 `dependency` 阶段，
+   文案直说"程序组件不完整，建议重新安装本程序"——不再是含糊的"推理失败"
+3. `main_window._show_error`：弹窗同时展示分类文案与 `ProcessError.message`
+
+**补上的验收盲区（这才是真正的教训）**
+之前 `verify_install` 只验：能 import / 能构造识别器 / 能找到 ffmpeg / 四页签在。
+**漏文件时这四样全都正常**，所以 30/30 也照样漏网。现在：
+- `desktop_app.py` 支持 `LIVE_CLIPPER_SMOKE_TRANSCRIBE=<视频>`，装好的程序真跑一次识别
+- `verify_install.py` 增加断言：干净机器允许 `model_missing`，但**绝不允许因缺文件而失败**
+- 结果：33/33，其中「真的识别出内容了」证明整条链路在打包环境里跑通
+
+**一句话记住**：**打包验收只验"能导入"是不够的，必须真跑一次主流程。**
