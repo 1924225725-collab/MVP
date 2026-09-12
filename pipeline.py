@@ -23,6 +23,7 @@ import traceback
 from pathlib import Path
 
 import app_paths
+import stages
 from errors import (
     ProcessError,
     STAGE_ASR_EMPTY,
@@ -165,6 +166,19 @@ def _raw_tail(raw, n=8):
     return "\n".join(lines[-n:])
 
 
+def media_duration_seconds(media_info) -> float:
+    """把 probe_media() 探到的 '00:51:40.13' 换算成秒（算不出来返回 0）。
+
+    V0.5.2：语音识别的真实百分比要用它当分母（已处理时间 / 总时长）。
+    """
+    raw = (media_info or {}).get("duration") or ""
+    m = re.match(r"(\d+):(\d+):(\d+(?:\.\d+)?)", str(raw))
+    if not m:
+        return 0.0
+    h, mi, s = m.groups()
+    return int(h) * 3600 + int(mi) * 60 + float(s)
+
+
 # ---------- 流水线各环节 ----------
 
 def extract_audio(video_path, media_info=None):
@@ -226,11 +240,14 @@ def extract_audio(video_path, media_info=None):
     )
 
 
-def transcribe_audio(audio_path, recognizer=None):
+def transcribe_audio(audio_path, recognizer=None, progress=None, duration=None):
     """第 5~7 步：加载识别引擎 → 语音识别：音频 → [Segment, ...] 列表。
 
-    recognizer 可以从外面传进来（比如网页版只加载一次模型反复用），
-    不传就现场造一个（读 config.py 的配置）。
+    recognizer —— 可以从外面传进来（比如网页版只加载一次模型反复用），
+                  不传就现场造一个（读 config.py 的配置）。
+    progress   —— V0.5.2：直接透传给识别器，让它上报**真实进度**
+                  （已处理音频时间 / 总时长）。
+    duration   —— 音频总时长（秒），优先用调用方从视频探到的时长当分母。
     失败抛 ProcessError（模型未装 / 模型加载失败 / 推理失败分别归类）。
     """
     if recognizer is None:
@@ -244,7 +261,11 @@ def transcribe_audio(audio_path, recognizer=None):
                                traceback.format_exc())
 
     try:
-        return recognizer.transcribe(audio_path)   # 不管哪个引擎，都是同一句调用
+        # 不同引擎的 transcribe 签名可能不同（预留的云端引擎还没实现进度），
+        # 这里按能力调用，绝不让"多传一个参数"把识别搞挂。
+        return recognizer.transcribe(audio_path, progress=progress, duration=duration)
+    except TypeError:
+        return recognizer.transcribe(audio_path)
     except ProcessError:
         raise
     except Exception as e:
@@ -316,7 +337,10 @@ def get_recognizer():
 def process_video(video_path, progress=None, recognizer=None):
     """完整处理一个视频：可读性检查 → 音轨检测 → 提取音频 → 语音识别 → 存文字稿。
 
-    progress   —— 可选的进度汇报函数 progress(阶段名)，界面可以拿它显示进度条。
+    progress   —— 可选的进度回调。V0.5.2 起传**结构化事件**（见 stages.py）：
+                    进度事件 = {stage, title, percent, detail, index, total_steps}
+                  percent 是真实算出来的（语音识别 = 已处理音频时间 / 总时长）。
+                  兼容老的 `progress("阶段名")` 单字符串回调（会自动降级）。
     recognizer —— 可选的识别器实例（桌面版会传入指定模型的识别器；
                   不传则按 config 现场造一个）。
 
@@ -325,19 +349,25 @@ def process_video(video_path, progress=None, recognizer=None):
     V0.4.5：失败**不再返回 None**，而是抛 ProcessError（带 stage），
     让界面能按「损坏 / 没音轨 / 模型没装 / 模型加载失败 / 提取失败 / 推理失败」分别提示。
     """
+    # 已经是 ProgressSink 就直接沿用（否则会套两层，事件被内层当成"阶段名"吞掉）
+    report = (progress if isinstance(progress, stages.ProgressSink)
+              else stages.ProgressSink(progress))
+
     video_path = check_video_readable(video_path)
 
-    if progress:
-        progress("检测视频 / 音轨")
+    report(stages.STAGE_VIDEO_READ, None, "正在检查视频文件…")
     info = probe_media(video_path)
+    duration = media_duration_seconds(info)
 
-    if progress:
-        progress("提取音频")
+    report(stages.STAGE_AUDIO_EXTRACT, None,
+           f"正在提取音频…（时长 {stages.fmt_clock(duration)}）" if duration
+           else "正在提取音频…")
     audio_path = extract_audio(video_path, media_info=info)
 
-    if progress:
-        progress("语音识别")
-    segments = transcribe_audio(audio_path, recognizer)
+    # VAD 检测 + 语音识别由识别器内部上报真实进度
+    report(stages.STAGE_VAD, None, "正在检测哪里有人说话…")
+    segments = transcribe_audio(audio_path, recognizer,
+                                progress=report, duration=duration)
 
     if not segments:
         raise ProcessError(
@@ -347,15 +377,20 @@ def process_video(video_path, progress=None, recognizer=None):
             "（可能是纯静音 / 纯 BGM / 纯环境音）。",
         )
 
+    report(stages.STAGE_FINALIZE, None,
+           f"正在整理文字稿…（共 {len(segments)} 句）")
     # v0.4：识别完先按自定义词库纠一遍错字（人名/游戏名/品牌/热词），
     # 再存成文字稿——这样 transcripts/ 里的稿子一开始就是干净的
     dict_hits = apply_dictionary(segments)
 
     transcript_path = save_transcript(video_path.name, segments)
+    report(stages.STAGE_ASR, 100.0,
+           f"共 {len(segments)} 句，已存文字稿", force=True)
     return {
         "video": video_path.name,
         "audio": audio_path,
         "segments": segments,
         "transcript": transcript_path,
         "dictionary_hits": dict_hits,   # 词库改了几处（界面可以显示"已纠正 N 处"）
+        "duration_seconds": duration,
     }

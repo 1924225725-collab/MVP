@@ -21,10 +21,14 @@ class TaskWorker(QThread):
     """把一个耗时函数放到后台跑。
 
     fn(progress=...) -> 任意结果
-      progress(str) 用来更新界面上的进度文字（跨线程发射信号是安全的）。
+      progress 会收到 **结构化进度事件**（见 stages.py）：
+        {"stage": "asr", "title": "语音识别", "percent": 45.2,
+         "detail": "23:10 / 51:00　已识别 312 句", "index": 4, "total_steps": 6}
+      percent 为 None 表示这个阶段算不出百分比（界面显示"进行中"而不是编一个数）。
+      跨线程发射信号是安全的，Qt 会自动排队到主线程。
     """
 
-    progressChanged = Signal(str)
+    progressChanged = Signal(object)
     succeeded = Signal(object)
     failed = Signal(object)
 

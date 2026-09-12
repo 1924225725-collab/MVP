@@ -7,6 +7,12 @@
 # 本层**只做编排与包装**，不改任何分析算法：
 #   视频 → 文字稿   → pipeline.process_video（含 D-046 分层错误）
 #   文字稿 → 分析结果 → analysis.analyze_transcript_v2
+#
+# 【V0.5.2 进度上报】
+#   两个任务都对外发**结构化进度事件**（见 stages.py）：
+#     transcribe_video   → 读取视频 / 提取音频 / VAD 检测 / 语音识别（真百分比）
+#     analyze_transcript → AI 分析（海选与复审有真百分比）/ 生成结果
+#   进度回调可以直接是 stages.ProgressSink（会被原样沿用，不会重复包装）。
 # ============================================================
 
 import contextlib
@@ -15,6 +21,7 @@ import re
 import traceback
 from pathlib import Path
 
+import stages
 from errors import ProcessError
 
 
@@ -32,6 +39,17 @@ def _fmt_duration(ffmpeg_duration: str) -> str:
     return f"{total_min:02d}:{s:02d}"
 
 
+def _make_report(progress):
+    """把外部进度回调包成 ProgressSink。
+
+    已经是 Sink 就直接沿用（避免 pipeline → recognizer 一路重复包装、层层节流）。
+    """
+    if isinstance(progress, stages.ProgressSink):
+        return progress
+    # 桌面版的回调一律按结构化事件处理（Qt 信号 emit 也吃 dict）
+    return stages.ProgressSink(progress, structured=True)
+
+
 def probe_video(video_path) -> dict:
     """探测视频（时长 / 是否有音轨 / 是否可读）。失败抛 ProcessError。"""
     import pipeline
@@ -45,6 +63,7 @@ def probe_video(video_path) -> dict:
         "has_audio": info["has_audio"],
         "duration": _fmt_duration(info.get("duration", "")),
         "duration_raw": info.get("duration", ""),
+        "duration_seconds": pipeline.media_duration_seconds(info),
     }
 
 
@@ -92,28 +111,75 @@ def count_lines(path) -> int:
         return 0
 
 
+# ---------------- 流式日志（一边打印一边喂给进度） ----------------
+
+class _LineTee(io.TextIOBase):
+    """像 StringIO 一样收集输出，同时把每一行**实时**交给回调。
+
+    用途：在不改 analysis/ 一行代码的前提下拿到 AI 分析的实时进度。
+    以前是等整个分析跑完才一次性取回全部日志，中间那几分钟界面没有任何信息。
+    """
+
+    def __init__(self, on_line=None):
+        self._chunks = []
+        self._pending = ""
+        self._on_line = on_line
+
+    def write(self, s):                                  # noqa: D102
+        if not isinstance(s, str):
+            s = str(s)
+        self._chunks.append(s)
+        if self._on_line:
+            self._pending += s
+            while True:
+                idx = self._pending.find("\n")
+                if idx < 0:
+                    break
+                line, self._pending = self._pending[:idx], self._pending[idx + 1:]
+                try:
+                    self._on_line(line.rstrip("\r"))
+                except Exception:                        # noqa: BLE001
+                    pass
+        return len(s)
+
+    def flush(self):                                     # noqa: D102
+        pass
+
+    def isatty(self):                                    # noqa: D102
+        return False
+
+    def getvalue(self) -> str:
+        return "".join(self._chunks)
+
+
 # ---------------- 任务 1：视频 → 文字稿（本地 ASR） ----------------
 
 def transcribe_video(video_path, progress=None) -> dict:
     """导入的视频 → 文字稿。
 
-    progress(stage:str) 可选，用来更新界面进度文字。
+    progress —— 结构化进度回调（可选）。
+                上报阶段：读取视频 → 提取音频 → VAD 检测 → 语音识别（真百分比）。
     失败抛 ProcessError（stage 见 errors.py，界面据此分层提示）。
     返回 {"transcript", "lines", "segments", "duration", "log"}
     """
     import pipeline
 
+    report = _make_report(progress)
+
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
-        result = pipeline.process_video(Path(video_path), progress=progress)
+        result = pipeline.process_video(Path(video_path), progress=report)
 
     transcript = Path(result["transcript"])
-    duration = probe_video(video_path).get("duration", "") or transcript_duration(transcript)
+    duration = (stages.fmt_clock(result.get("duration_seconds") or 0)
+                or probe_video(video_path).get("duration", "")
+                or transcript_duration(transcript))
     return {
         "transcript": str(transcript),
         "lines": count_lines(transcript),
         "segments": len(result["segments"]),
         "duration": duration,
+        "duration_seconds": result.get("duration_seconds") or 0,
         "dictionary_hits": result.get("dictionary_hits", 0),
         "log": buf.getvalue(),
     }
@@ -126,15 +192,19 @@ def analyze_transcript(transcript_path, live_type=None, token_mode=None,
     """文字稿 → 完整分析结果（Chapter / Story / Event / Highlight / 推荐）。
 
     **直接调用原有 analyze_transcript_v2，算法一行不改。**
+    progress —— 结构化进度回调（可选）。AI 阶段按分析过程实时推进
+                （海选 / 复审有真实批次百分比；其余是里程碑 + 文字说明）。
     返回原始结果 dict，另加 "_log" 字段（界面日志用）。
     """
     from analysis import analyze_transcript_v2
+    from desktop.services.ai_progress import AiProgressTracker
 
-    if progress:
-        progress("AI 海选 → 质检 → 事件聚合 → 复审 → 内容结构")
+    report = _make_report(progress)
+    tracker = AiProgressTracker(report)
+    report(stages.STAGE_AI, 0.0, "正在用 AI 理解这场直播…", force=True)
 
-    buf = io.StringIO()
-    with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
+    tee = _LineTee(on_line=tracker.feed)
+    with contextlib.redirect_stdout(tee), contextlib.redirect_stderr(tee):
         result = analyze_transcript_v2(
             transcript_path,
             live_type=live_type,
@@ -143,7 +213,10 @@ def analyze_transcript(transcript_path, live_type=None, token_mode=None,
             custom_count=custom_count,
             verbose=True,
         )
-    result["_log"] = buf.getvalue()
+    tracker.finish()
+
+    report(stages.STAGE_FINALIZE, None, "正在整理结果…", force=True)
+    result["_log"] = tee.getvalue()
     return result
 
 

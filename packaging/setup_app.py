@@ -16,10 +16,13 @@
 
 import json
 import os
+import queue
 import shutil
 import subprocess
 import sys
 import tempfile
+import threading
+import time
 import tkinter as tk
 import zipfile
 from datetime import datetime
@@ -27,12 +30,29 @@ from tkinter import filedialog, messagebox, ttk
 
 APP_NAME = "AI直播切片助手"
 APP_ID = "AILiveClipper"
-APP_VERSION = "0.5.0"
+APP_VERSION = "0.5.2"
 APP_EXE = "AILiveClipper.exe"
 PUBLISHER = "AI 直播切片助手"
 REG_PATH = rf"Software\Microsoft\Windows\CurrentVersion\Uninstall\{APP_ID}"
 
 PAYLOAD_DIR_NAME = "AILiveClipper"          # payload.zip 解压后的顶层目录名
+
+# 安装日志：先写到临时目录（安装目录还不存在），装完再复制一份到安装目录
+LOG_TEMP_PATH = os.path.join(tempfile.gettempdir(), f"{APP_ID}_setup.log")
+
+
+def log(msg: str):
+    """写一行安装日志。
+
+    V0.5.2：加上这个是为了定位"第一次安装偶尔卡住"这类问题——
+    以前装失败/装一半卡住，用户和开发者都拿不到任何线索。
+    """
+    line = f"[{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}"
+    try:
+        with open(LOG_TEMP_PATH, "a", encoding="utf-8") as f:
+            f.write(line + "\n")
+    except OSError:
+        pass
 
 
 def _meipass() -> str:
@@ -115,18 +135,22 @@ def make_shortcuts(install_dir: str, desktop: bool, start_menu: bool) -> dict:
 # ---------------- 解压（带进度） ----------------
 
 def extract_payload(target: str, on_progress):
-    """把 payload.zip 解到 target。on_progress(done, total, name)。"""
+    """把 payload.zip 解到 target。on_progress(done, total, name)。
+
+    ⚠️ **必须放在后台线程里跑**：载荷有 12 万+ 个文件、一百多 MB，
+    在主线程里解压会让窗口十几秒不刷新，Windows 直接标记"未响应"。
+    （V0.5.2 修的就是这个"首次安装偶尔卡死"）
+    """
     src = payload_zip()
     if not os.path.exists(src):
         raise FileNotFoundError(f"安装载荷缺失：{src}")
     os.makedirs(target, exist_ok=True)
     with zipfile.ZipFile(src) as z:
-        names = z.namelist()
-        total = len(names)
-        for i, name in enumerate(names, 1):
-            z.extract(name, target)
-            if i % 5 == 0 or i == total:
-                on_progress(i, total, os.path.basename(name))
+        infos = [i for i in z.infolist() if not i.is_dir()]
+        total = len(infos)
+        for i, info in enumerate(infos, 1):
+            z.extract(info, target)
+            on_progress(i, total, os.path.basename(info.filename))
     return target
 
 
@@ -137,6 +161,57 @@ def flatten_if_wrapped(target: str):
         for item in os.listdir(inner):
             shutil.move(os.path.join(inner, item), os.path.join(target, item))
         os.rmdir(inner)
+
+
+def run_install(target: str, desktop: bool = True, start_menu: bool = True,
+                on_progress=None, on_step=None) -> dict:
+    """完整安装流程（纯逻辑，不碰任何界面）。
+
+    界面模式（后台线程）和 --silent 静默模式都调它，保证两条路的安装结果一致。
+
+    返回 {"shortcuts": {...}, "size_kb": int, "install_dir": str}
+    """
+    def step(text):
+        if on_step:
+            on_step(text)
+
+    t0 = time.time()
+    step("正在解压程序文件…")
+    extract_payload(target, on_progress or (lambda d, t, n: None))
+    log(f"解压完成，用时 {time.time() - t0:.1f} 秒")
+    flatten_if_wrapped(target)
+
+    step("正在创建快捷方式…")
+    t1 = time.time()
+    sc = make_shortcuts(target, desktop, start_menu)
+    log(f"快捷方式：{sc}（用时 {time.time() - t1:.1f} 秒）")
+
+    step("正在注册到「应用和功能」…")
+    t2 = time.time()
+    size_kb = _dir_size_kb(target)          # 遍历上万个文件，必须在后台线程
+    write_registry(target, size_kb)
+    log(f"注册表写入完成，目录 {size_kb} KB（用时 {time.time() - t2:.1f} 秒）")
+
+    # 安装信息（程序里的开发者视图会读它）
+    try:
+        with open(os.path.join(target, "install_info.json"), "w",
+                  encoding="utf-8") as f:
+            json.dump({
+                "app": APP_NAME, "app_id": APP_ID, "version": APP_VERSION,
+                "installed_at": datetime.now().isoformat(timespec="seconds"),
+                "install_dir": target,
+                "shortcuts": {k: list(v) for k, v in sc.items()},
+            }, f, ensure_ascii=False, indent=2)
+    except OSError as e:
+        log(f"写 install_info.json 失败（不影响使用）：{e}")
+
+    # 把安装日志复制一份到安装目录，方便用户反馈问题时直接发过来
+    try:
+        shutil.copy2(LOG_TEMP_PATH, os.path.join(target, "setup.log"))
+    except OSError:
+        pass
+
+    return {"shortcuts": sc, "size_kb": size_kb, "install_dir": target}
 
 
 # ---------------- 界面 ----------------
@@ -239,46 +314,75 @@ class Setup(tk.Tk):
                                text="", anchor="w")
         self.detail.pack(anchor="w", fill="x", padx=22)
 
-    # ---- 实际安装 ----
+    # ---- 实际安装（V0.5.2：全部在后台线程跑，主线程只刷界面） ----
+
     def _install(self, target):
+        """启动后台安装线程，自己只负责轮询进度、刷新界面。
+
+        【为什么这么做】以前解压、统计目录大小、调 PowerShell 建快捷方式
+        全在主线程里，加起来十几秒界面完全不动 —— Windows 会显示
+        「未响应」，用户以为装死了。现在主线程只做一件事：每 60 毫秒看一眼
+        队列里有没有新进度。
+        """
+        self._q = queue.Queue()
+        self._t_start = time.time()
+        log("=" * 60)
+        log(f"开始安装 {APP_NAME} {APP_VERSION} → {target}")
+        log(f"载荷：{payload_zip()}（{os.path.getsize(payload_zip())/1024/1024:.1f} MB）")
+        log(f"桌面快捷方式={self.with_desktop.get()}　开始菜单={self.with_start.get()}")
+        threading.Thread(target=self._install_worker, args=(target,),
+                         daemon=True).start()
+        self._poll_queue()
+
+    def _install_worker(self, target):
+        """后台线程：干所有重活，只往队列里丢消息，绝不碰任何控件。"""
         try:
             def on_progress(done, total, name):
-                self.bar["maximum"] = total
-                self.bar["value"] = done
-                self.detail.config(text=f"{done}/{total}　{name}")
-                self.update_idletasks()
+                self._q.put(("progress", (done, total, name)))
 
-            self.step_label.config(text="正在解压程序文件…")
-            extract_payload(target, on_progress)
-            flatten_if_wrapped(target)
+            def on_step(text):
+                log(text)
+                self._q.put(("step", text))
 
-            self.step_label.config(text="正在创建快捷方式…")
-            self.update_idletasks()
-            sc = make_shortcuts(target, self.with_desktop.get(), self.with_start.get())
-
-            self.step_label.config(text="正在注册到「应用和功能」…")
-            self.update_idletasks()
-            size_kb = _dir_size_kb(target)
-            write_registry(target, size_kb)
-
-            # 安装信息（程序里的开发者视图会读它）
-            try:
-                with open(os.path.join(target, "install_info.json"), "w",
-                          encoding="utf-8") as f:
-                    json.dump({
-                        "app": APP_NAME, "app_id": APP_ID, "version": APP_VERSION,
-                        "installed_at": datetime.now().isoformat(timespec="seconds"),
-                        "install_dir": target,
-                        "shortcuts": {k: list(v) for k, v in sc.items()},
-                    }, f, ensure_ascii=False, indent=2)
-            except OSError:
-                pass
-
-            self._build_done(target, sc)
+            res = run_install(target, self.with_desktop.get(), self.with_start.get(),
+                              on_progress=on_progress, on_step=on_step)
+            log(f"安装成功，总用时 {time.time() - self._t_start:.1f} 秒")
+            self._q.put(("done", (target, res["shortcuts"])))
         except Exception as e:                                     # noqa: BLE001
-            messagebox.showerror("安装失败", f"{type(e).__name__}: {e}\n\n"
-                                            f"目标目录：{target}")
-            self.destroy()
+            import traceback
+            log(f"安装失败：{type(e).__name__}: {e}\n{traceback.format_exc()}")
+            self._q.put(("error", (e, target)))
+
+    def _poll_queue(self):
+        """主线程：每 60ms 看一次队列，刷新界面。"""
+        busy = True
+        try:
+            while True:
+                kind, payload = self._q.get_nowait()
+                if kind == "progress":
+                    done, total, name = payload
+                    if self.bar["maximum"] != total:
+                        self.bar["maximum"] = total
+                    self.bar["value"] = done
+                    self.detail.config(text=f"{done}/{total}　{name}")
+                elif kind == "step":
+                    self.step_label.config(text=payload)
+                elif kind == "done":
+                    busy = False
+                    target, sc = payload
+                    self._build_done(target, sc)
+                elif kind == "error":
+                    busy = False
+                    e, target = payload
+                    messagebox.showerror(
+                        "安装失败",
+                        f"{type(e).__name__}: {e}\n\n目标目录：{target}\n\n"
+                        f"安装日志：{LOG_TEMP_PATH}")
+                    self.destroy()
+        except queue.Empty:
+            pass
+        if busy:
+            self.after(60, self._poll_queue)
 
     # ---- 第 3 屏 ----
     def _build_done(self, target, sc):
@@ -382,7 +486,38 @@ def _setup_selftest() -> int:
     return 0 if ok else 1
 
 
+def _silent_install() -> int:
+    """无界面安装（供自动化验收用，任务 5 的全流程测试靠它）。
+
+    用法：
+        AILiveClipper_Setup.exe --silent [--dir=D:\\xxx]
+                               [--no-desktop] [--no-startmenu]
+    退出码 0 = 成功。
+    """
+    target = ""
+    for a in sys.argv[1:]:
+        if a.startswith("--dir="):
+            target = a.split("=", 1)[1].strip().strip('"')
+    target = target or default_install_dir()
+    desktop = "--no-desktop" not in sys.argv
+    start_menu = "--no-startmenu" not in sys.argv
+    log(f"静默安装开始：dir={target} desktop={desktop} startmenu={start_menu}")
+    try:
+        res = run_install(target, desktop, start_menu,
+                          on_step=lambda t: log(f"[步骤] {t}"))
+    except Exception as e:                                         # noqa: BLE001
+        import traceback
+        log(f"静默安装失败：{type(e).__name__}: {e}\n{traceback.format_exc()}")
+        print(f"FAIL\t{type(e).__name__}: {e}")
+        return 1
+    log(f"静默安装成功：{target}（{res['size_kb']} KB）")
+    print(f"OK\t{target}\t{res['size_kb']}")
+    return 0
+
+
 if __name__ == "__main__":
     if "--selftest" in sys.argv:
         sys.exit(_setup_selftest())
+    if "--silent" in sys.argv:
+        sys.exit(_silent_install())
     Setup().mainloop()

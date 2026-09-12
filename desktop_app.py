@@ -54,10 +54,42 @@ def _crash_log(exc_text: str):
     return log
 
 
+def _startup_log(msg: str):
+    """启动日志（V0.5.2）。
+
+    打包后没有控制台，启动慢/卡死时用户和开发者都拿不到线索，
+    所以把关键节点和耗时写进 工作区/logs/desktop_startup.log。
+    """
+    try:
+        import datetime
+
+        import app_paths
+        path = app_paths.logs_dir() / "desktop_startup.log"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        # 日志超过 512KB 就从头来，别无限长
+        try:
+            if path.exists() and path.stat().st_size > 512 * 1024:
+                path.unlink()
+        except OSError:
+            pass
+        with open(path, "a", encoding="utf-8") as f:
+            f.write(f"[{datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}] {msg}\n")
+    except Exception:                                               # noqa: BLE001
+        pass
+
+
 def main() -> int:
+    import time
+    t_start = time.time()
+
     import app_paths
 
     app_paths.ensure_workspace()
+    _startup_log("=" * 50)
+    _startup_log(f"启动 AI直播切片助手　frozen={bool(getattr(sys, 'frozen', False))}")
+    _startup_log(f"程序目录：{app_paths.program_root()}")
+    _startup_log(f"用户数据：{app_paths.workspace_root()}")
+    _startup_log(f"工作区就绪（{time.time() - t_start:.2f}s）")
 
     try:
         from PySide6.QtCore import Qt, QTimer
@@ -65,6 +97,7 @@ def main() -> int:
         from PySide6.QtWidgets import QApplication, QMessageBox
     except ImportError as e:
         _crash_log(f"PySide6 导入失败：{e}\n{traceback.format_exc()}")
+        _startup_log(f"PySide6 导入失败：{e}")
         return 2
 
     # 高 DPI：Qt6 默认已经开启缩放，这里只把缩放取整策略定下来，
@@ -82,6 +115,7 @@ def main() -> int:
     app.setApplicationName(app_paths.APP_DISPLAY_NAME)
     app.setOrganizationName(app_paths.APP_NAME)
     app.setFont(QFont("Microsoft YaHei UI", 9))
+    _startup_log(f"Qt 应用创建完成（{time.time() - t_start:.2f}s）")
 
     from desktop import theme
     app.setStyleSheet(theme.QSS)
@@ -91,11 +125,14 @@ def main() -> int:
         win = MainWindow()
     except Exception as e:
         log = _crash_log(f"界面初始化失败：{e}\n{traceback.format_exc()}")
+        _startup_log(f"主窗口构建失败：{e}")
         QMessageBox.critical(None, "启动失败",
                              f"程序启动失败：\n{e}\n\n日志已写入：\n{log}")
         return 3
+    _startup_log(f"主窗口构建完成（{time.time() - t_start:.2f}s）")
 
     win.show()
+    _startup_log(f"窗口已显示（{time.time() - t_start:.2f}s），进入事件循环")
 
     # 打包自检：设了 LIVE_CLIPPER_SMOKE=1 就在离屏模式跑一下，
     # 把"冻结环境到底能不能用"写进日志（打包后没控制台，只能落文件）。
@@ -110,8 +147,10 @@ def main() -> int:
         QTimer.singleShot(600, app.quit)
         return app.exec()
 
-    # 首次使用：本地模型没装就提醒一次（不挡路，用户可以选择稍后）
-    QTimer.singleShot(600, lambda: _check_model_on_startup(win, QMessageBox))
+    # 开机环境自检（V0.5.2）：
+    #   界面**先显示出来**，检查放后台线程跑 —— 绝不让用户在启动时看到"无响应"。
+    #   检查完只在真有问题时才弹窗（见 main_window.run_selfcheck 的 startup 分支）。
+    QTimer.singleShot(600, lambda: win.run_selfcheck(startup=True))
 
     return app.exec()
 
@@ -207,6 +246,17 @@ def _write_smoke_report(win):
         info["analysis_import"] = f"失败：{type(e).__name__}: {e}"
 
     try:
+        from desktop.services import selfcheck as _sc
+        _items = _sc.run_all()
+        info["selfcheck"] = {
+            "summary": _sc.summarize(_items),
+            "items": [{"key": i.key, "name": i.name, "status": i.status,
+                       "category": i.category, "detail": i.detail} for i in _items],
+        }
+    except Exception as e:                                          # noqa: BLE001
+        info["selfcheck"] = f"失败：{type(e).__name__}: {e}"
+
+    try:
         out = app_paths.logs_dir() / "desktop_smoke.json"
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -215,24 +265,12 @@ def _write_smoke_report(win):
 
 
 def _check_model_on_startup(win, QMessageBox):
-    try:
-        from desktop.services.model_manager import ModelManager
-        from desktop.services.settings_store import SettingsStore
+    """（已由开机环境自检取代，保留这个函数仅为兼容旧调用。）
 
-        settings = SettingsStore().load()
-        mgr = ModelManager()
-        model_id = settings.get("asr_model_id") or mgr.default_model_id()
-        if not model_id or mgr.is_installed(model_id):
-            return
-        ans = QMessageBox.question(
-            win, "还差一个语音识别模型",
-            "本机还没有语音识别模型（第一次使用需要装一次，约几百 MB，之后完全离线）。\n\n"
-            f"准备好了吗？现在打开「模型管理」下载：{model_id}\n"
-            "（如果以前跑过网页版，模型可能已经在缓存里，点「使用本机已有模型」即可）")
-        if ans == QMessageBox.Yes:
-            win.open_models()
-    except Exception:
-        pass
+    现在启动流程走 win.run_selfcheck(startup=True)：
+    自检在后台线程跑，把模型、组件、权限一次查完，有问题才弹窗。
+    """
+    return None
 
 
 if __name__ == "__main__":

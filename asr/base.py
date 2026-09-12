@@ -30,6 +30,16 @@ class BaseRecognizer:
 
     name = "base"  # 识别器的名字，用来在屏幕上显示
 
-    def transcribe(self, audio_path):
-        """音频文件路径 → [Segment, Segment, ...]（按时间排序）"""
+    def transcribe(self, audio_path, progress=None, duration=None):
+        """音频文件路径 → [Segment, Segment, ...]（按时间排序）
+
+        progress —— 可选（V0.5.2）。识别器边跑边上报**真实进度**：
+                    progress(stages.STAGE_ASR, 45.2, "23:10 / 51:00　已识别 312 句")
+                    分子 = 当前这句话在音频里的结束时间，分母 = duration。
+                    不要在这里编假百分比；算不出进度就传 percent=None。
+        duration —— 可选。音频总时长（秒），拿它当进度分母。
+
+        实现进度上报时，直接用传进来的 progress 对象调用即可
+        （它是 stages.ProgressSink，自带节流与旧回调兼容）。
+        """
         raise NotImplementedError("这个识别器还没实现，子类必须重写这个方法")

@@ -145,25 +145,71 @@ class LocalWhisperRecognizer(BaseRecognizer):
                   "可以联网后重跑一次自动下载，或按上面的目录手动放入模型。",
             )
 
-    def transcribe(self, audio_path):
-        """音频文件 → [Segment, ...]，遵守 base.py 里定的公约。"""
-        # vad_filter=True：先用"人声检测"跳过没人说话的片段（比如片头静音），
-        # 能明显减少胡言乱语和识别时间
+    def transcribe(self, audio_path, progress=None, duration=None):
+        """音频文件 → [Segment, ...]，遵守 base.py 里定的公约。
+
+        V0.5.2 —— **真实进度**：
+          faster-whisper 每吐出一句话，都带着这句话在音频里的结束时间。
+          拿它当分子、音频总时长当分母，就是真真正正的处理进度：
+              45%  ←  23:10 / 51:00
+          不是假动画，用户看到的百分比和实际处理到哪一秒完全对得上。
+
+          两个阶段分开报：
+            VAD 人声检测 —— 这一步算不出进度（要扫完整段音频才知道谁在说话），
+                            只报"进行中"，绝不编百分比；
+            语音识别     —— 有真实百分比。
+        """
+        import stages
+
+        def _rep(stage, pct=None, detail="", force=False):
+            if progress is not None:
+                progress(stage, pct, detail, force=force)
+
+        _rep(stages.STAGE_VAD, None, "正在检测哪里有人说话…")
         try:
+            # vad_filter=True：先用"人声检测"跳过没人说话的片段（比如片头静音），
+            # 能明显减少胡言乱语和识别时间
             segments_iter, info = self.model.transcribe(
                 str(audio_path),
                 language="zh",        # 提前告诉模型是中文，省去开头几秒的语言猜测
                 vad_filter=True,
             )
 
+            # 分母：优先用调用方从视频探到的总时长，退而求其次用音频自己的时长
+            total = 0.0
+            for src in (duration, getattr(info, "duration", None),
+                        getattr(info, "duration_after_vad", None)):
+                try:
+                    val = float(src or 0)
+                except (TypeError, ValueError):
+                    val = 0.0
+                if val > 0:
+                    total = val
+                    break
+
             # 把模型吐出的原始片段，逐条翻译成我们的统一格式 Segment
             # 注意：faster-whisper 是惰性生成器，真正的推理发生在循环里，
             # 所以 try 必须包住整个循环，否则推理错误会漏出去变成"未知错误"。
             results = []
+            started = False
             for seg in segments_iter:
                 text = seg.text.strip()      # 去掉句首句尾多余空格
                 if text:                     # 跳过空句子
                     results.append(Segment(start=seg.start, end=seg.end, text=text))
+                if not started:
+                    # 第一句出来 = VAD 已经跑完、正式进入识别
+                    started = True
+                    _rep(stages.STAGE_ASR, 0.0, "已开始识别…", force=True)
+                if total > 0:
+                    done = min(float(seg.end or 0), total)
+                    pct = done / total * 100.0
+                    _rep(stages.STAGE_ASR, min(pct, 99.5),
+                         f"{stages.fmt_clock(done)} / {stages.fmt_clock(total)}"
+                         f"　已识别 {len(results)} 句")
+                else:
+                    # 时长未知（极少见）：如实说不知道进度，不编百分比
+                    _rep(stages.STAGE_ASR, None,
+                         f"已识别 {len(results)} 句（时长未知，无法计算百分比）")
         except ProcessError:
             raise
         except Exception as e:
@@ -186,4 +232,5 @@ class LocalWhisperRecognizer(BaseRecognizer):
 
         # 顺手把检测到的语言信息存起来，main.py 可以拿去显示
         self.detected_language = info.language
+        _rep(stages.STAGE_ASR, 100.0, f"共 {len(results)} 句", force=True)
         return results

@@ -18,13 +18,14 @@ import traceback
 from PySide6.QtCore import Qt
 from PySide6.QtWidgets import (
     QFileDialog, QHBoxLayout, QLabel, QListWidget, QListWidgetItem, QMainWindow,
-    QMessageBox, QProgressBar, QPushButton, QTabWidget, QVBoxLayout, QWidget,
+    QMessageBox, QPushButton, QTabWidget, QVBoxLayout, QWidget,
 )
 
 import app_paths
 from errors import ProcessError, STAGE_MEDIA_UNREADABLE, STAGE_NO_AUDIO
 from desktop import APP_TITLE, APP_VERSION, theme
 from desktop.services import ProjectStore, SettingsStore
+from desktop.services import selfcheck as selfcheck_mod
 from desktop.services.tasks import (
     analyze_transcript, probe_video, transcribe_video, wrap_error,
 )
@@ -32,6 +33,7 @@ from desktop.ui import widgets as W
 from desktop.ui.dialogs import AnalysisOptionsDialog, ModelManagerDialog, SettingsDialog
 from desktop.ui.developer_panel import DeveloperPanel
 from desktop.ui.error_text import error_ui
+from desktop.ui.progress_view import ProgressView
 from desktop.ui.project_panel import ProjectPanel
 from desktop.ui.recommended_panel import RecommendedPanel
 from desktop.ui.structure_panel import StructurePanel
@@ -59,9 +61,17 @@ class MainWindow(QMainWindow):
         self.project = None            # 当前项目 dict
         self.worker = None             # 当前后台任务
         self.analysis_log = ""         # 本次运行的日志（只在内存，不写进 project.json）
+        self._selfcheck_worker = None  # 环境自检（独立线程，不占用 worker）
+        self._project_loader = None    # 启动时异步读项目列表
+        self._project_load_token = None  # 异步结果的"有效期"标记（防过期覆盖）
 
         self._build_ui()
-        self.refresh_projects()
+        # 先把各面板置成"空"态，别让启动瞬间留下一片空白
+        self._render_current()
+        # V0.5.2：项目列表**异步加载**。
+        # 以前是在构造函数里同步读完所有 project.json —— 项目一多（每个文件里
+        # 还存着完整分析结果），启动就会白屏几秒，看起来像卡死。
+        self._load_projects_async()
 
     # ============================================================
     # 界面搭建
@@ -170,9 +180,8 @@ class MainWindow(QMainWindow):
         self.video_meta.setObjectName("VideoMeta")
         tl.addWidget(self.video_meta)
 
-        self.progress = QProgressBar()
-        self.progress.setVisible(False)
-        self.progress.setRange(0, 0)
+        # V0.5.2：进度区（六个阶段的路线图 + 真实百分比 + 细节）
+        self.progress = ProgressView()
         tl.addWidget(self.progress)
 
         lay.addWidget(top)
@@ -195,17 +204,131 @@ class MainWindow(QMainWindow):
         self.tabs.addTab(self.panel_developer, "🔧  开发者视图")
         bl.addWidget(self.tabs, 1)
         lay.addWidget(body, 1)
+        self.panel_developer.check_btn.clicked.connect(
+            lambda: self.run_selfcheck(focus=True))
         return area
+
+    # ============================================================
+    # 环境自检（任务 3）
+    # ============================================================
+
+    def run_selfcheck(self, focus: bool = False, startup: bool = False):
+        """在**后台线程**跑一遍环境自检，界面不阻塞。
+
+        startup=True 时是开机自检：只把结论摆出来，
+        真有问题才弹窗提醒（不给用户添堵）。
+        """
+        if self._selfcheck_worker is not None and self._selfcheck_worker.isRunning():
+            return
+        self.panel_developer.check_btn.setEnabled(False)
+        self.panel_developer.set_selfcheck("正在检查运行环境…")
+
+        model_id = self.settings.load().get("asr_model_id") or ""
+
+        def job(progress=None):
+            return selfcheck_mod.run_all(model_id=model_id)
+
+        w = TaskWorker(job, self)
+        w.succeeded.connect(lambda items: self._on_selfcheck_done(items, focus, startup))
+        w.failed.connect(lambda e: self._on_selfcheck_failed(e))
+        self._selfcheck_worker = w
+        w.start()
+
+    def _on_selfcheck_done(self, items, focus: bool, startup: bool):
+        self.panel_developer.check_btn.setEnabled(True)
+        self._selfcheck_worker = None
+        text = selfcheck_mod.report_text(items)
+        self.panel_developer.set_selfcheck(text, focus=focus)
+        self.panel_developer.append_log("[自检]\n" + text)
+
+        summary = selfcheck_mod.summarize(items)
+        if not startup:
+            return
+        if summary["blocking"]:
+            # 有阻塞项：说清楚是哪一类问题、该怎么办
+            self._show_selfcheck_problems(summary, blocking=True)
+        elif any(p.get("category") == selfcheck_mod.CAT_MODEL
+                 for p in summary["problems"]):
+            # 只是没装模型 → 温和提醒，别吓人
+            self._show_selfcheck_problems(summary, blocking=False)
+
+    def _on_selfcheck_failed(self, exc):
+        self.panel_developer.check_btn.setEnabled(True)
+        self._selfcheck_worker = None
+        self.panel_developer.set_selfcheck(
+            f"自检失败：{type(exc).__name__}: {exc}")
+
+    def _show_selfcheck_problems(self, summary: dict, blocking: bool):
+        lines = []
+        for p in summary["problems"]:
+            cat = selfcheck_mod.CATEGORY_TITLES.get(p.get("category", ""), "")
+            lines.append(f"【{cat}】{p['name']}")
+            if p.get("fix"):
+                lines.append(f"　　→ {p['fix']}")
+        body = "\n".join(lines) or summary["headline"]
+
+        box = QMessageBox(self)
+        box.setWindowTitle("环境检查发现问题" if blocking else "还差一步")
+        box.setIcon(QMessageBox.Warning if blocking else QMessageBox.Information)
+        box.setText(("程序运行环境有问题，可能无法正常识别：\n\n" if blocking
+                     else "程序可以正常使用，但有些功能暂时不可用：\n\n") + body)
+        box.setDetailedText(self.panel_developer.selfcheck_text())
+        if any(p.get("category") == selfcheck_mod.CAT_MODEL
+               for p in summary["problems"]):
+            box.addButton("打开模型管理", QMessageBox.AcceptRole)
+        box.addButton("打开自检报告", QMessageBox.ActionRole)
+        box.addButton("知道了", QMessageBox.RejectRole)
+        box.exec()
+        # 无论点了哪个，都把自检报告摊开给用户看
+        self.tabs.setCurrentWidget(self.panel_developer)
+        self.panel_developer.tabs.setCurrentWidget(self.panel_developer.check_tab)
 
     # ============================================================
     # 项目列表
     # ============================================================
 
     def refresh_projects(self, keep_id: str = None):
+        """刷新项目列表（界面线程同步读）。
+
+        启动时走的是 `_load_projects_async`（后台读），别处（比如分析完成）
+        调这个即可 —— 那时界面本来就在等结果。
+        """
+        # 作废可能还在跑的异步加载：否则它读完的旧数据会把这次刷新覆盖掉
+        self._project_load_token = None
+        self._fill_project_list(self.store.list(), keep_id)
+
+    def _load_projects_async(self):
+        """启动时在后台线程读项目列表。"""
+        placeholder = QListWidgetItem("正在加载项目…")
+        placeholder.setFlags(Qt.NoItemFlags)
+        self.project_list.addItem(placeholder)
+
+        token = object()
+        self._project_load_token = token
+        w = TaskWorker(lambda progress=None: self.store.list(), self)
+        self._project_loader = w
+        w.succeeded.connect(lambda rows: self._on_projects_loaded(rows, token))
+        w.failed.connect(self._on_projects_failed)
+        w.start()
+
+    def _on_projects_loaded(self, rows, token):
+        self._project_loader = None
+        # 期间如果已经被同步刷新取代（比如刚分析完就调了 refresh_projects），
+        # 就丢弃这份过期的结果 —— 否则列表会倒退。
+        if token is not getattr(self, "_project_load_token", None):
+            return
+        self._project_load_token = None
+        self._fill_project_list(rows)
+
+    def _on_projects_failed(self, exc):
+        self._project_loader = None
+        self.project_list.clear()
+        self.panel_developer.append_log(f"[项目列表] 读取失败：{exc}")
+
+    def _fill_project_list(self, rows, keep_id: str = None):
         keep_id = keep_id or (self.project or {}).get("project_id")
         self.project_list.blockSignals(True)
         self.project_list.clear()
-        rows = self.store.list()
         for r in rows:
             label = (f"{r['video_name']}\n"
                      f"{r['duration'] or '—'}　·　"
@@ -321,29 +444,37 @@ class MainWindow(QMainWindow):
         self.worker.failed.connect(lambda e: self._on_task_fail(e, on_fail))
         self.worker.start()
 
-    def _on_progress(self, msg: str):
-        self.progress.setFormat(f"{msg}  %p%")
-        self.panel_developer.append_log(f"[进度] {msg}")
+    def _on_progress(self, ev):
+        """收到后台任务发来的进度事件（结构化 dict，见 stages.py）。"""
+        self.progress.update_event(ev)
+        if isinstance(ev, dict):
+            pct = ev.get("percent")
+            pct_txt = f"{pct:.0f}%" if isinstance(pct, (int, float)) else "—"
+            self.panel_developer.append_log(
+                f"[进度] {ev.get('title', '')} {pct_txt}　{ev.get('detail', '')}")
+        else:
+            self.panel_developer.append_log(f"[进度] {ev}")
 
     def _on_task_done(self, result, on_done):
-        self._set_progress(False)
         # 先把 worker 收掉再执行回调：回调里可能立刻发起下一个任务
         # （识别完成 → 马上开始分析），不能因为"上一个线程还没完全退出"被拦住。
         self.worker = None
         self._update_buttons()
         if not on_done:
+            self._set_progress(False)
             return
         try:
             on_done(result)
         except BaseException:
             tb = traceback.format_exc()
             self.panel_developer.append_log(f"[回调异常]\n{tb}")
+            self._set_progress(False)
             QMessageBox.warning(self, "处理结果时出错",
                                 "任务本身跑完了，但结果处理时出错。\n"
                                 "详细信息见「开发者视图 → 运行日志」。")
 
     def _on_task_fail(self, exc, on_fail):
-        self._set_progress(False)
+        self.progress.fail("处理中断")
         err = wrap_error(exc)
         self.panel_developer.append_log(
             f"[错误] stage={err.stage}\n{err.message}\n{err.detail}")
@@ -359,21 +490,27 @@ class MainWindow(QMainWindow):
             self._show_error(err)
 
     def _set_progress(self, on: bool, text: str = ""):
-        self.progress.setVisible(on)
-        self.progress.setRange(0, 0)
-        self.progress.setFormat(text or "处理中…")
+        if on:
+            self.progress.start()
+        else:
+            self.progress.reset()
 
     def _show_error(self, err):
         title, desc, action = error_ui(getattr(err, "stage", ""))
+        # 问题分类（任务 3）：让用户一眼看出这是"视频的问题""程序组件的问题"
+        # 还是"模型/权限的问题"——四类问题的解决办法完全不同。
+        cat = selfcheck_mod.category_of_stage(getattr(err, "stage", ""))
+        cat_title = selfcheck_mod.CATEGORY_TITLES.get(cat, "")
         # 分类文案讲"该怎么做"，具体 message 讲"到底哪儿坏了"——两个都给用户看，
         # 否则只会看到一句"缺少依赖组件"，不知道缺的到底是什么。
         msg = str(getattr(err, "message", "") or "")
+        body = f"【{cat_title}】{title}\n\n{desc}"
         if msg and msg not in desc:
-            desc = f"{desc}\n\n具体原因：{msg}"
+            body += f"\n\n具体原因：{msg}"
         box = QMessageBox(self)
-        box.setWindowTitle(title)
+        box.setWindowTitle(f"{cat_title}：{title}" if cat_title else title)
         box.setIcon(QMessageBox.Warning)
-        box.setText(f"{title}\n\n{desc}")
+        box.setText(body)
         if getattr(err, "detail", ""):
             box.setDetailedText(err.detail)
         if action == "models":
@@ -554,6 +691,7 @@ class MainWindow(QMainWindow):
         self.project = proj
         self.refresh_projects(keep_id=proj["project_id"])
         self._render_current()
+        self.progress.finish("分析完成")
 
         recs = [h for h in (result.get("highlights") or []) if h.get("recommended")]
         cost = (result.get("cost") or {}).get("cost_yuan", 0)
@@ -593,6 +731,7 @@ class MainWindow(QMainWindow):
         self.project = proj
         self.refresh_projects(keep_id=proj["project_id"])
         self._render_current()
+        self.progress.finish(f"识别完成（{res['lines']} 句）")
         QMessageBox.information(self, "识别完成",
                                 f"共 {res['lines']} 句。可以点「开始分析」了。")
 

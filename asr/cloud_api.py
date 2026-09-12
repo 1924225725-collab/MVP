@@ -19,7 +19,12 @@ class CloudApiRecognizer(BaseRecognizer):
         self.api_key = api_key
         self.provider = provider
 
-    def transcribe(self, audio_path):
+    def transcribe(self, audio_path, progress=None, duration=None):
+        """音频文件路径 → [Segment, ...]
+
+        progress / duration —— V0.5.2 新增的进度上报入口（见 base.py 的说明）。
+        云端引擎**预留接口**：接通后按服务端返回的进度调用 progress 即可。
+        """
         # 以后实现：把音频上传/发给云端，收回结果，
         # 转成和本地一模一样的 [Segment, ...] 格式返回
         raise NotImplementedError("以后实现：云端 API 识别")

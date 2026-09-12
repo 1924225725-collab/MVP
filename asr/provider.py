@@ -103,9 +103,9 @@ class FasterWhisperProvider(AsrProvider):
         )
         return self._recognizer
 
-    def transcribe(self, audio_path):
+    def transcribe(self, audio_path, progress=None, duration=None):
         rec = self.prepare()
-        return rec.transcribe(audio_path)
+        return rec.transcribe(audio_path, progress=progress, duration=duration)
 
     def info(self) -> dict:
         d = super().info()

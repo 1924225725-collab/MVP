@@ -27,6 +27,8 @@ STAGE_MODEL_MISSING = "model_missing"        # 本地模型未安装（缓存里
 STAGE_MODEL_LOAD = "model_load"              # 模型加载失败
 STAGE_ASR_INFERENCE = "asr_inference"        # ASR 推理失败
 STAGE_ASR_EMPTY = "asr_empty"                # 识别跑通但没内容（静音/无人声）
+STAGE_PERMISSION = "permission"              # 文件/目录没权限（写不进去、删不掉）
+STAGE_CONFIG = "config"                      # 配置或参数写错了
 STAGE_UNKNOWN = "unknown"                    # 未归类
 
 

@@ -35,6 +35,9 @@ class DeveloperPanel(QWidget):
         bar = QHBoxLayout()
         bar.addWidget(W.strong("开发者视图", size=14))
         bar.addStretch(1)
+        self.check_btn = QPushButton("重新自检")
+        self.check_btn.setToolTip("重新检查 FFmpeg / 识别组件 / 人声检测模型 / 模型 / 配置 / 权限")
+        bar.addWidget(self.check_btn)
         copy_btn = QPushButton("复制结果 JSON")
         copy_btn.clicked.connect(self._copy_json)
         bar.addWidget(copy_btn)
@@ -46,14 +49,28 @@ class DeveloperPanel(QWidget):
         self.tabs = QTabWidget()
         root.addWidget(self.tabs, 1)
 
+        # 环境自检放第一个：出问题时这一页最有用
+        self.check_tab = _text_tab("环境自检")
         self.env_tab = _text_tab("环境")
         self.meta_tab = _text_tab("元信息")
         self.log_tab = _text_tab("运行日志")
         self.json_tab = _text_tab("完整结果")
+        self.tabs.addTab(self.check_tab, "环境自检")
         self.tabs.addTab(self.env_tab, "环境 / 路径")
         self.tabs.addTab(self.meta_tab, "元信息 / 成本")
         self.tabs.addTab(self.log_tab, "运行日志")
         self.tabs.addTab(self.json_tab, "完整结果 JSON")
+
+    # ---------------- 环境自检 ----------------
+
+    def set_selfcheck(self, text: str, focus: bool = False):
+        """显示环境自检报告（text 由 selfcheck.report_text 生成）。"""
+        self.check_tab.setPlainText(text or "（还没跑过自检）")
+        if focus:
+            self.tabs.setCurrentWidget(self.check_tab)
+
+    def selfcheck_text(self) -> str:
+        return self.check_tab.toPlainText()
 
     # ---------------- 对外 ----------------
 
