@@ -154,6 +154,48 @@ class _LineTee(io.TextIOBase):
 
 # ---------------- 任务 1：视频 → 文字稿（本地 ASR） ----------------
 
+# 桌面版识别器缓存：模型加载要几秒~几十秒，一次会话内复用。
+# key = (model_id, 模型目录)，模型管理里换模型后 key 变化 → 自动重建。
+# ⚠️ 缓存变量名**不能**与下面的函数同名 —— global 声明后赋值会把函数覆盖掉，
+#    第二次调用就变成 "object is not callable"（实测踩过）。
+_recognizer_cache = None
+_recognizer_key = None
+
+
+def _desktop_recognizer():
+    """优先用「模型管理」安装/选择的本地模型目录（完全离线）。
+
+    V0.5.3 修复的一个真实 bug：以前识别走 pipeline 默认路径 —— 它只认
+    HuggingFace 缓存，模型管理里**下载成功的模型根本用不上**。干净机器上
+    表现为「本地没有这个模型 → 自动下载 → 网络不通 → 失败」，而模型明明
+    就躺在工作区里。现在识别和下载走同一条路。
+    """
+    global _recognizer_cache, _recognizer_key
+    try:
+        from desktop.services.model_manager import ModelManager
+        from desktop.services.settings_store import SettingsStore
+
+        mgr = ModelManager()
+        model_id = (SettingsStore().load().get("asr_model_id")
+                    or mgr.default_model_id())
+        if not model_id:
+            return None
+        path, source = mgr.resolve_local(model_id)
+        if not path:
+            return None              # 没装模型：回退默认路径（也许 HF 缓存里有）
+        key = (model_id, str(path))
+        if key == _recognizer_key and _recognizer_cache is not None:
+            return _recognizer_cache
+        from asr.provider import FasterWhisperProvider
+        rec = FasterWhisperProvider(model_path=str(path))
+        _recognizer_cache, _recognizer_key = rec, key
+        print(f"语音识别模型：{model_id}（{source}）")
+        return rec
+    except Exception as e:           # noqa: BLE001 — 任何失败都回退，绝不连累识别
+        print(f"模型管理路径不可用（{type(e).__name__}: {e}），回退默认识别路径")
+        return None
+
+
 def transcribe_video(video_path, progress=None) -> dict:
     """导入的视频 → 文字稿。
 
@@ -168,7 +210,8 @@ def transcribe_video(video_path, progress=None) -> dict:
 
     buf = io.StringIO()
     with contextlib.redirect_stdout(buf), contextlib.redirect_stderr(buf):
-        result = pipeline.process_video(Path(video_path), progress=report)
+        result = pipeline.process_video(Path(video_path), progress=report,
+                                        recognizer=_desktop_recognizer())
 
     transcript = Path(result["transcript"])
     duration = (stages.fmt_clock(result.get("duration_seconds") or 0)

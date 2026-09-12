@@ -421,21 +421,41 @@ def run_uninstall(install_path: str, purge_data: bool, on_step=None,
 
 
 def result_text(r: dict) -> str:
-    """把结果整理成人话。"""
+    """把结果整理成普通人能看懂的话（细节都进日志，不在这里堆路径）。"""
     lines = []
     if r.get("warning"):
-        lines.append("⚠ " + r["warning"])
+        lines.append("⚠ " + r["warning"].split("\n")[0])
+        lines.append("")
+
     if r["files"][0]:
-        lines.append("✔ 程序文件已删除")
+        lines.append("✔ 程序文件已全部删除")
     elif r.get("late_cleanup"):
-        lines.append("✔ 程序文件已删除（有个别文件被占用，已交给系统后台收尾）")
+        lines.append("✔ 程序文件正在后台自动删除")
+        lines.append("   （个别文件刚被占用，系统几秒内会自动删完，不用管）")
     else:
-        lines.append(f"✘ 程序文件有残留：{r['files'][1]}")
-    lines.append(("✔ " if r["shortcuts"][0] else "! ") + "快捷方式：" + r["shortcuts"][1])
-    lines.append(("✔ " if r["registry"][0] else "✘ ")
-                 + "应用列表：" + r["registry"][1])
+        lines.append("✘ 部分程序文件没删掉（可能被杀毒软件或别的程序占用）")
+        lines.append("   可重启电脑后再手动删除安装目录；具体清单见日志")
+
+    if r["shortcuts"][0]:
+        lines.append("✔ 桌面与开始菜单快捷方式已清理")
+    else:
+        lines.append("! 部分快捷方式没删掉，可手动删除（不影响任何功能）")
+
+    lines.append("✔ 已从「应用和功能」列表移除" if r["registry"][0]
+                 else "✘ 「应用和功能」移除失败：" + str(r["registry"][1]))
+
     if r["data"]:
-        lines.append(("✔ " if r["data"][0] else "! ") + "用户数据：" + r["data"][1])
+        if r["data"][0] and "保留" in r["data"][1]:
+            lines.append("✔ 你的项目数据已保留（视频 / 文字稿 / 分析结果 / 模型）")
+            lines.append("   位置：" + workspace_dir())
+        elif r["data"][0]:
+            lines.append("✔ 用户数据已按你的选择删除")
+        else:
+            lines.append("! 部分用户数据没删掉（文件夹可能正被占用）")
+            lines.append("   重启电脑后再手动删除即可；位置：" + workspace_dir())
+
+    lines.append("")
+    lines.append("详细日志：" + LOG_PATH)
     return "\n".join(lines)
 
 
