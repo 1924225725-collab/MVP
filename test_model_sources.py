@@ -163,9 +163,70 @@ def main():
 
     srv.shutdown()
 
-    # ---------------- 4.（可选）真连一次镜像 ----------------
+    # ---------------- 4. 桌面 UI 的进度桥（真实调用方式） ----------------
+    # 这里抓过一个很隐蔽的坑：dialogs 里写的是 `bridge.emit(...)`（不指定信号名），
+    # PySide6 对自定义信号**不会自动路由**，直接 TypeError ——
+    # 也就是说「一键安装模型」只要进度回调第一次触发就会崩。
+    # 网络通的时候它才会暴露，所以以前一直没被发现。
+    print("\n[4] 桌面 UI 进度桥（按 dialogs 的真实调用方式）…")
+    os.environ.setdefault("QT_QPA_PLATFORM", "offscreen")
+    os.environ["LIVE_CLIPPER_HOME"] = tempfile.mkdtemp(prefix="lc_src_qt_")
+    import importlib as _il
+    _il.reload(app_paths)
+    app_paths.ensure_workspace()
+    try:
+        from PySide6.QtWidgets import QApplication, QWidget
+        from PySide6.QtCore import Signal
+        app = QApplication.instance() or QApplication([])
+
+        class _Bridge(QWidget):                 # 与 dialogs._ProgressBridge 相同
+            tick = Signal(int, int, str, str)
+
+        bridge = _Bridge()
+        got = []
+        bridge.tick.connect(lambda *a: got.append(a))
+
+        srv2 = _FakeHub(files)
+        threading.Thread(target=srv2.serve_forever, daemon=True).start()
+        manifest2 = tmp / "models_registry_qt.json"
+        manifest2.write_text(json.dumps({
+            "manifest_version": 1,
+            "models": [{
+                "id": "qt-model", "kind": "asr-local", "engine": "faster-whisper",
+                "name": "Qt测试", "repo_id": "r/t", "revision": "main",
+                "base_url": f"http://127.0.0.1:{srv2.port}/repo/resolve/main",
+                "files": list(files), "primary_file": "model.bin",
+                "min_primary_bytes": 1024, "sha256": "",
+            }],
+        }, ensure_ascii=False), encoding="utf-8")
+        mgr3 = ModelManager(registry_path=str(manifest2),
+                            models_root=str(tmp / "models_qt"),
+                            hf_cache_dirs=[])
+
+        def qt_cb(done, total, fname, phase):
+            # 与 dialogs._install 修复后的写法一致：**必须带信号名**
+            bridge.tick.emit(done, total, fname, phase)
+
+        res = mgr3.install("qt-model", progress=qt_cb)
+        check("4 Qt 信号做进度回调，全链路不报错", res.get("already") is False, str(res))
+        check("4 进度事件通过桥送达界面", len(got) >= 1, f"收到 {len(got)} 条")
+    except Exception as e:                                     # noqa: BLE001
+        check("4 Qt 信号做进度回调，全链路不报错", False,
+              f"{type(e).__name__}: {getattr(e, 'message', e)}")
+
+    # 静态防回归：dialogs 里绝不允许再出现"不指定信号名的 emit"
+    try:
+        src = (HERE / "desktop" / "ui" / "dialogs.py").read_text(encoding="utf-8")
+        bad = [ln.strip() for ln in src.splitlines()
+               if "progress_changed.emit(" in ln
+               and not ln.strip().startswith("#")]
+        check("4 dialogs 不再有不带信号名的 emit（防回归）", not bad, str(bad[:2]))
+    except OSError as e:
+        check("4 dialogs 不再有不带信号名的 emit（防回归）", False, str(e))
+
+    # ---------------- 5.（可选）真连一次镜像 ----------------
     if "--net" in sys.argv:
-        print("\n[4] 真连镜像下载（约 75 MB）…")
+        print("\n[5] 真连镜像下载（约 75 MB）…")
         os.environ["LIVE_CLIPPER_HOME"] = tempfile.mkdtemp(prefix="lc_net_")
         import importlib as _il
         _il.reload(app_paths)
@@ -175,13 +236,13 @@ def main():
             res = MM().install("faster-whisper-tiny")
             check("4 镜像真实下载成功", res.get("already") is False, str(res))
             ok, msg = MM().verify("faster-whisper-tiny")
-            check("4 下载后校验通过", ok, msg)
+            check("5 下载后校验通过", ok, msg)
         except Exception as e:                                 # noqa: BLE001
             check("4 镜像真实下载成功", False,
                   f"{type(e).__name__}: {getattr(e, 'message', e)}\n"
                   f"{getattr(e, 'detail', '')[:300]}")
     else:
-        print("\n[4] 跳过真实下载（加 --net 可真连镜像验证一次）")
+        print("\n[5] 跳过真实下载（加 --net 可真连镜像验证一次）")
 
     return report()
 

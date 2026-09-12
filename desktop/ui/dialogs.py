@@ -369,8 +369,12 @@ class ModelManagerDialog(QDialog):
 
         def job(progress=None):
             def cb(done, total, fname, phase):
-                # cb 在子线程里跑，这里只发信号不碰控件
-                self.progress_changed.emit(done, total, fname, phase)
+                # cb 在子线程里跑，这里只发信号不碰控件。
+                # ⚠️ 必须写 `progress_changed.tick.emit(...)`（显式指定信号名）：
+                #    PySide6 里 `progress_changed.emit(...)` 不指定信号名时
+                #    不会路由到自定义信号，会直接 TypeError —— 这个坑让
+                #    「一键安装模型」在进度回调第一次触发时就崩掉。
+                self.progress_changed.tick.emit(done, total, fname, phase)
             return self._mgr.install(model_id, progress=cb)
 
         self.progress_changed = _ProgressBridge()
