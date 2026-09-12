@@ -20,12 +20,53 @@
 import hashlib
 import json
 import os
+import re
 import shutil
 import time
 from pathlib import Path
 
 import app_paths
 from errors import STAGE_MODEL_MISSING, STAGE_MODEL_LOAD, ProcessError
+
+# 下载源：**镜像优先**。
+# 直连 huggingface.co 在国内网络大概率超时（用户实测 ConnectTimeout），
+# hf-mirror.com 是路径完全兼容的反向镜像，实测 0.7 秒可达。
+# 官方地址仍然保留在兜底列表里（万一镜像挂了还能走官方）。
+DEFAULT_MIRRORS = ["https://hf-mirror.com"]
+
+
+class _DownloadFail(Exception):
+    """单个下载源失败（用于自动换源重试，不直接抛给用户）。"""
+
+    def __init__(self, message, detail=""):
+        self.message = message
+        self.detail = detail
+        super().__init__(message)
+
+
+def _split_origin_path(base_url: str):
+    """'https://huggingface.co/Systran/xx/resolve/main' → (origin, '/Systran/xx/resolve/main')"""
+    m = re.match(r"^(https?://[^/]+)(/.*)$", str(base_url).strip())
+    if m:
+        return m.group(1), m.group(2)
+    return str(base_url).rstrip("/"), ""
+
+
+def _source_urls(model: dict) -> list:
+    """把清单里的 base_url 展开成「镜像优先、官方兜底」的候选下载源列表。"""
+    base = str(model.get("base_url") or "").strip()
+    if not base:
+        return []
+    origin, path = _split_origin_path(base)
+    urls = []
+    mirrors = list(model.get("mirrors") or []) or list(DEFAULT_MIRRORS)
+    for m in mirrors:
+        u = str(m).rstrip("/") + path
+        if u not in urls:
+            urls.append(u)
+    if base.rstrip("/") not in urls:
+        urls.append(base.rstrip("/"))
+    return urls
 
 _REGISTRY_NAME = "models_registry.json"
 
@@ -262,11 +303,66 @@ class ModelManager:
         target.mkdir(parents=True, exist_ok=True)
 
         files = list(model.get("files") or [])
-        base_url = model.get("base_url") or ""
-        if not base_url:
+        sources = _source_urls(model)
+        if not sources:
             raise ModelError(STAGE_MODEL_MISSING,
                              f"模型 {model_id} 的清单里没有下载地址",
                              "请在 models_registry.json 里补 base_url")
+
+        # **多源回退**：镜像优先，官方兜底。
+        # 直连 HuggingFace 在很多网络下不通（用户实测 ConnectTimeout），
+        # 单源一旦失败整个安装就完了 —— 所以每个源都试一遍，全失败才报错。
+        total_done = 0
+        attempts = []
+        used_source = ""
+        for si, src in enumerate(sources, 1):
+            try:
+                total_done = self._download_from(
+                    src, files, target, progress, is_cancelled, si, len(sources))
+            except ModelError:
+                raise                      # 用户取消 / 写盘失败：换源解决不了
+            except _DownloadFail as e:
+                attempts.append(f"源 {si}（{src}）→ {e.message}")
+                continue                   # 换下一个源（.part 保留，可继续续传）
+            used_source = src
+            break
+        else:
+            raise ModelError(
+                STAGE_MODEL_MISSING,
+                f"模型 {model_id} 所有下载源都失败了",
+                "\n".join(attempts)
+                + f"\n\n可以稍后重试；或手动下载上面地址里的文件放到：{target}"
+                + "\n（镜像地址通常国内可达；官方地址可能需要代理）")
+
+        ok, msg = self.verify(model_id)
+        if not ok:
+            raise ModelError(STAGE_MODEL_LOAD, f"模型下载后校验未通过：{msg}",
+                             f"目录：{target}")
+
+        primary = model.get("primary_file")
+        digest = self._sha256(target / primary) if primary and (target / primary).exists() else ""
+        self.marker_of(model_id).write_text(json.dumps({
+            "model_id": model_id,
+            "source": "download",
+            "source_url": used_source,
+            "installed_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "verified_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "size_bytes": total_done,
+            "sha256": {primary: digest} if digest else {},
+        }, ensure_ascii=False, indent=2), encoding="utf-8")
+
+        return {"path": str(target), "source": "workspace",
+                "downloaded_bytes": total_done, "already": False}
+
+    def _download_from(self, base_url: str, files: list, target: Path,
+                       progress, is_cancelled, source_index: int,
+                       source_total: int) -> int:
+        """从**单一源**把模型文件全部下完。网络/HTTP 问题抛 _DownloadFail（可换源重试）。
+
+        用户取消（ModelError("cancelled")）与写盘失败（ModelError）直接上抛 ——
+        换个下载源解决不了这两种问题。
+        """
+        import requests            # install() 里已确认可用，这里复用同一份
 
         total_done = 0
         for idx, fname in enumerate(files):
@@ -278,17 +374,16 @@ class ModelManager:
             done = part.stat().st_size if part.exists() else 0
 
             headers = {"Range": f"bytes={done}-"} if done else {}
+            # 连接超时收紧到 10 秒：连不上的源早点放弃、早点换下一个
             try:
-                resp = requests.get(url, stream=True, timeout=(15, 120), headers=headers)
+                resp = requests.get(url, stream=True, timeout=(10, 120),
+                                    headers=headers)
             except Exception as e:
-                raise ModelError(STAGE_MODEL_MISSING,
-                                 f"下载失败（网络不通）：{fname}",
-                                 f"{type(e).__name__}: {e}\n地址：{url}")
+                raise _DownloadFail(f"{fname}（{type(e).__name__}）",
+                                    f"{type(e).__name__}: {e}\n地址：{url}")
             if resp.status_code not in (200, 206):
-                raise ModelError(STAGE_MODEL_MISSING,
-                                 f"下载失败（HTTP {resp.status_code}）：{fname}",
-                                 f"地址：{url}\n提示：当前网络可能访问不了 HuggingFace，"
-                                 f"可重试或手动把模型文件放到 {target}")
+                raise _DownloadFail(f"{fname}（HTTP {resp.status_code}）",
+                                    f"地址：{url}")
             if resp.status_code == 200:
                 done = 0                      # 服务器不支持断点续传，从头来
                 part.unlink(missing_ok=True)
@@ -311,8 +406,9 @@ class ModelManager:
                         done += len(chunk)
                         total_done += len(chunk)
                         if progress:
-                            progress(done, file_total, fname,
-                                     f"下载 {idx + 1}/{len(files)}")
+                            phase = (f"下载 {idx + 1}/{len(files)}"
+                                     f"　·　源 {source_index}/{source_total}")
+                            progress(done, file_total, fname, phase)
             except ModelError:
                 raise
             except Exception as e:
@@ -320,25 +416,7 @@ class ModelManager:
                                  f"写入模型文件失败：{fname}",
                                  f"{type(e).__name__}: {e}\n目标：{target}")
             part.replace(dst)
-
-        ok, msg = self.verify(model_id)
-        if not ok:
-            raise ModelError(STAGE_MODEL_LOAD, f"模型下载后校验未通过：{msg}",
-                             f"目录：{target}")
-
-        primary = model.get("primary_file")
-        digest = self._sha256(target / primary) if primary and (target / primary).exists() else ""
-        self.marker_of(model_id).write_text(json.dumps({
-            "model_id": model_id,
-            "source": "download",
-            "installed_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-            "verified_at": time.strftime("%Y-%m-%dT%H:%M:%S"),
-            "size_bytes": total_done,
-            "sha256": {primary: digest} if digest else {},
-        }, ensure_ascii=False, indent=2), encoding="utf-8")
-
-        return {"path": str(target), "source": "workspace",
-                "downloaded_bytes": total_done, "already": False}
+        return total_done
 
     def adopt_from_hf_cache(self, model_id: str) -> dict:
         """把已有的 HuggingFace 缓存登记为「已安装」（不重复下载）。
