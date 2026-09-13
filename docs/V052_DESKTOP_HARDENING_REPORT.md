@@ -17,7 +17,7 @@
 | `desktop/services/selfcheck.py` | 环境自检（6 项检查 + 四类问题归类 + 解决建议） |
 | `test_desktop_progress.py` | 进度系统验收（34 项，含"百分比是真的"这条硬验证） |
 | `packaging/test_install_uninstall.py` | 安装 / 使用 / 卸载全流程验收（35 项） |
-| `docs/V051_DESKTOP_HARDENING_REPORT.md` | 本报告 |
+| `docs/V052_DESKTOP_HARDENING_REPORT.md` | 本报告 |
 
 ### 修改（14 个）
 

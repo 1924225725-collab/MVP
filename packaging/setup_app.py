@@ -30,7 +30,7 @@ from tkinter import filedialog, messagebox, ttk
 
 APP_NAME = "AI直播切片助手"
 APP_ID = "AILiveClipper"
-APP_VERSION = "0.5.2"
+APP_VERSION = "0.5.3"
 APP_EXE = "AILiveClipper.exe"
 PUBLISHER = "AI 直播切片助手"
 REG_PATH = rf"Software\Microsoft\Windows\CurrentVersion\Uninstall\{APP_ID}"
@@ -155,12 +155,25 @@ def extract_payload(target: str, on_progress):
 
 
 def flatten_if_wrapped(target: str):
-    """如果解压出来外面多套了一层 AILiveClipper/，把它提上来。"""
+    """把载荷顶层 AILiveClipper/ 合并到安装目录。
+
+    首次安装时目标目录为空；升级或修复安装时目标目录已经存在主程序。
+    两种情况都必须展开顶层目录，否则重复安装会留下
+    ``<target>/AILiveClipper/...`` 的嵌套副本，且仍运行旧的顶层 exe。
+    """
     inner = os.path.join(target, PAYLOAD_DIR_NAME)
-    if os.path.isdir(inner) and not os.path.exists(os.path.join(target, APP_EXE)):
-        for item in os.listdir(inner):
-            shutil.move(os.path.join(inner, item), os.path.join(target, item))
-        os.rmdir(inner)
+    if not os.path.isdir(inner):
+        return
+    for source_root, _dirs, files in os.walk(inner):
+        relative = os.path.relpath(source_root, inner)
+        destination_root = (
+            target if relative == "." else os.path.join(target, relative))
+        os.makedirs(destination_root, exist_ok=True)
+        for name in files:
+            source = os.path.join(source_root, name)
+            destination = os.path.join(destination_root, name)
+            os.replace(source, destination)
+    shutil.rmtree(inner)
 
 
 def run_install(target: str, desktop: bool = True, start_menu: bool = True,

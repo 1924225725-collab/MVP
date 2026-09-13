@@ -1,0 +1,80 @@
+# requirements.txt —— AI 直播切片助手 · 运行时依赖
+# 适用项目开发基线：v0.5.3
+#
+# 版本来源：当前 .venv 的实际安装版本（pip list --format=freeze 导出），
+# 已与代码中的真实 import 逐条核对，非推测。
+#
+# 安装：
+#   python -m venv .venv
+#   .venv\Scripts\activate
+#   pip install -r requirements.txt
+#
+# 说明：
+#   - 已在 Python 3.14.7 (Windows x64) 验证通过。
+#   - 仅列直接依赖；其传递依赖由 pip 自动解析（如需完全可复现，见文末“锁版本”一节）。
+#   - 开发/打包等非运行时依赖见 requirements-dev.txt。
+
+# ---------------- ASR 语音识别 ----------------
+faster-whisper==1.2.1          # Whisper 推理（asr/ 使用）
+ctranslate2==4.8.2             # faster-whisper 的推理后端
+onnxruntime==1.29.0            # VAD / 模型推理运行时
+tokenizers==0.23.2             # faster-whisper 的文本分词
+huggingface-hub==1.30.0        # 模型下载（模型管理功能）
+
+# ---------------- 媒体处理 ----------------
+imageio-ffmpeg==0.6.0          # 内置 ffmpeg 二进制，音视频抽取/切片（不依赖系统 ffmpeg）
+av==18.1.0                     # PyAV，容器与编解码
+
+# ---------------- 桌面界面 ----------------
+# 注意：本项目实际安装的是 PySide6_Essentials（非完整版 PySide6），
+# 开源协议更宽松，且满足当前所有 UI 需求。若要改用完整版，请同步调整。
+PySide6_Essentials==6.11.2     # Qt6 桌面界面（desktop_app.py / desktop/）
+shiboken6==6.11.2              # PySide6 的必要绑定层
+
+# ---------------- 数据处理 ----------------
+numpy==2.5.3                   # 数值计算
+pandas==3.0.5                  # 结果表格与导出
+
+# ---------------- 网络请求 ----------------
+requests==2.34.2               # DeepSeek API 调用（analysis/）
+
+# ---------------- 阿里云（可选功能）----------------
+# 仅当启用「阿里云音频理解」相关能力时需要；不启用可注释掉。
+oss2==2.19.1                   # 对象存储上传（poc/ 音频评测用）
+aliyun-python-sdk-core==2.16.1 # oss2 依赖
+aliyun-python-sdk-kms==2.16.5  # 凭据加密
+pycryptodome==3.23.0           # 加密原语
+crcmod==1.7                    # OSS 校验
+
+# ---------------- 网页版（可选功能）----------------
+# 仅当使用 start_webui.bat / Streamlit 网页版时需要；桌面版不需要。
+streamlit==1.63.0              # 网页版界面
+altair==6.2.2                  # streamlit 图表依赖
+pyarrow==25.0.1                # streamlit 数据表依赖
+pillow==12.3.0                 # 图像处理
+uvicorn==0.52.4                # streamlit 底层服务
+starlette==1.6.0               # uvicorn 依赖
+
+# ---------------- 工具库 ----------------
+PyYAML==6.0.3                  # 配置文件读写
+tqdm==4.70.0                   # 进度条
+typing-extensions==4.16.0      # 类型标注兼容
+
+# ================================================================
+# 锁版本（完全可复现环境，可选）
+# ================================================================
+# 上面是“宽松锁定”（保证直接依赖版本一致，传递依赖由 pip 解析）。
+# 如需逐字节复现当前环境，执行：
+#   pip freeze > requirements.lock.txt
+# 然后用该 lock 文件安装。注意 lock 文件包含全部传递依赖，体积较大，
+# 换平台（如 Linux）可能不适用。
+
+# ================================================================
+# 已知注意事项
+# ================================================================
+# 1. Python 版本：本项目在 3.14.7 上运行。faster-whisper / ctranslate2
+#    对 Python 版本较敏感，低于 3.10 或高于 3.14 可能无预编译 wheel。
+# 2. 无需系统 ffmpeg：imageio-ffmpeg 自带二进制，首次调用会自动下载到缓存。
+# 3. 模型文件不打进仓库：首次运行会从 HuggingFace 下载 Whisper 模型到
+#    用户数据目录（开发态为项目根 models/）。离线环境请预先拷贝。
+# 4. 虚拟环境不提交：.venv / .venv-* 已在 .gitignore 中忽略。

@@ -1,0 +1,26 @@
+{
+  "_readme": [
+    "人工标注（转录自 speaker_ground_truth_000_090.txt，2026-09-12 由用户填写）。",
+    "AI 仅做格式转换：未修改、未补全、未优化任何人工标签；原文标注原样保留。",
+    "speaker 为数组 = 人工标注里该时间段写出了多个说话人（两人共现）。"
+  ],
+  "_ai_transcription_notes": [
+    "原文段2/段3/段5 的 speaker 一栏均写了 'human_spk_01  human_spk_02' 两个名字 → 如实转录为两人的共现数组，无 sub-turn 边界。",
+    "段5 原文行尾多一个 '是' 字 → 按模板问题是'和段2是同一个人吗'的回答理解，原词保留在 _note。",
+    "总人数 = 2（原文：总人数 2）。"
+  ],
+  "_source": {
+    "file": "fixtures/clip_51min_000_090.wav",
+    "origin": "videos/测试视频2.mp4 0-90s @16k mono pcm_s16le",
+    "duration_ms": 90000
+  },
+  "_filled_by": "human (2026-09-12)",
+  "labels": [
+    {"start_ms": 0, "end_ms": 2110, "speaker": "bgm", "_note": "开头：BGM/静音？（人工：bgm）"},
+    {"start_ms": 2110, "end_ms": 32130, "speaker": ["human_spk_01", "human_spk_02"], "_note": "模型 spk-01；人工：两人"},
+    {"start_ms": 32130, "end_ms": 47140, "speaker": ["human_spk_01", "human_spk_02"], "_note": "模型 spk-00；人工：两人（关键段）"},
+    {"start_ms": 47140, "end_ms": 52050, "speaker": "bgm", "_note": "间隙（人工：bgm）"},
+    {"start_ms": 52050, "end_ms": 89980, "speaker": ["human_spk_01", "human_spk_02"], "_note": "模型 spk-01；人工：两人；原文含'是'（同段2同一对人的回答）"}
+  ],
+  "total_human_speakers": 2
+}

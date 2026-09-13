@@ -8,8 +8,19 @@
 #   structure_panel.py   🧭 直播内容结构（Video → Chapter → Story）
 #   developer_panel.py   🔧 开发者 / 调试
 #   main_window.py       主窗口（左项目列表 + 右内容区）
+#   brand_reveal.py      P0 品牌启动覆盖层（Qt Quick / QML）
+#   system_initialization.py  P1 首次启动初始化卡片页
+#   welcome_setup.py     P1 五步首次使用体验
+#   window_chrome.py     无边框窗口控制
+#   shell_parts.py       三栏外壳占位组件
 # ============================================================
 
 from .main_window import MainWindow
+from .brand_reveal import BrandReveal
+from .system_initialization import SystemInitializationPage
+from .welcome_setup import WelcomeSetupPage
 
-__all__ = ["MainWindow"]
+__all__ = [
+    "MainWindow", "BrandReveal", "SystemInitializationPage",
+    "WelcomeSetupPage",
+]

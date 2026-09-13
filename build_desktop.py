@@ -41,6 +41,51 @@ def log(msg):
     print(f"\n=== {msg} ===", flush=True)
 
 
+def _prepare_tk_environment(env: dict) -> dict:
+    """Expose Python 3.14's zipped Tcl/Tk libraries to PyInstaller.
+
+    Python 3.14 for Windows ships Tcl/Tk 9 standard libraries as zip files.
+    PyInstaller 6.22 does not yet discover that layout automatically and would
+    silently exclude tkinter from the setup and uninstaller executables.
+    """
+    tcl_root = Path(sys.base_prefix) / "tcl"
+    tcl_zip = next(iter(sorted(tcl_root.glob("libtcl*.zip"))), None)
+    tk_zip = next(iter(sorted(tcl_root.glob("libtk*.zip"))), None)
+    if not tcl_zip or not tk_zip:
+        return env
+
+    runtime_root = BUILD / "tcl_runtime"
+    tcl_library = runtime_root / "tcl_library"
+    tk_library = runtime_root / "tk_library"
+    if not (tcl_library / "init.tcl").exists():
+        shutil.rmtree(runtime_root, ignore_errors=True)
+        runtime_root.mkdir(parents=True, exist_ok=True)
+        with zipfile.ZipFile(tcl_zip) as archive:
+            archive.extractall(runtime_root)
+        with zipfile.ZipFile(tk_zip) as archive:
+            archive.extractall(runtime_root)
+
+    env["TCL_LIBRARY"] = str(tcl_library)
+    env["TK_LIBRARY"] = str(tk_library)
+    return env
+
+
+def _clean_build_environment():
+    """Remove host-only native runtime paths before PyInstaller analysis."""
+    env = dict(os.environ)
+    clean_path = []
+    for entry in env.get("PATH", "").split(os.pathsep):
+        normalized = entry.replace("/", "\\").lower()
+        foreign_native = (
+            "\\codex-runtimes\\" in normalized
+            and "\\dependencies\\native\\" in normalized
+        )
+        if not foreign_native:
+            clean_path.append(entry)
+    env["PATH"] = os.pathsep.join(clean_path)
+    return _prepare_tk_environment(env)
+
+
 def run_pyinstaller(spec: Path, distpath: Path, workpath: Path):
     # 先清掉这个 spec 自己的缓存目录：PyInstaller 收尾时会逐个文件删，
     # 遇到杀软/同步盘/文件保护常常失败（构建就断在半路）。整目录删一次最稳。
@@ -51,7 +96,11 @@ def run_pyinstaller(spec: Path, distpath: Path, workpath: Path):
     cmd = [PY, "-m", "PyInstaller", "--noconfirm", "--distpath", str(distpath),
            "--workpath", str(workpath), str(spec)]
     print(" ".join(cmd), flush=True)
-    p = subprocess.run(cmd, cwd=str(ROOT))
+    p = subprocess.run(
+        cmd,
+        cwd=str(ROOT),
+        env=_clean_build_environment(),
+    )
     if p.returncode != 0:
         raise SystemExit(f"[构建失败] {spec.name}（退出码 {p.returncode}）")
 

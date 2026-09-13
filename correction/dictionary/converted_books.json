@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "source_file": "书本.txt",
+    "source_path": "D:\\Agent\\ai切片助手\\live_clipper\\correction\\dictionary\\raw\\书本.txt",
+    "category": "book",
+    "converter": "correction/converter.py",
+    "generated_at": "2026-09-13 01:22:13",
+    "updated_at": "2026-09-13",
+    "entry_count": 0,
+    "alias_count": 0,
+    "duplicate_lines_merged": 0,
+    "note": "原始词库未做任何修改；本文件为程序使用的生成物。"
+  },
+  "entries": []
+}

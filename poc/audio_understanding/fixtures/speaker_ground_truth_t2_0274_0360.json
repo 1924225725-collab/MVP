@@ -1,0 +1,173 @@
+{
+  "_readme": [
+    "人工 GT（正式版）。标注方法 = AAA 标注法：内容文字里插 ≥3 个 A = 说话人切换点；",
+    "说话人身份由人工在 turn sheet 逐行填写（2026-09-12）。",
+    "est_* 时间为估算值；边界精校时（如需计算边界误差指标）需人工精听复核。"
+  ],
+  "_source": {
+    "file": "fixtures/benchmark_t2_0274_0360.wav",
+    "duration_ms": 85640
+  },
+  "_filled_by": "human (AAA 标注法 + turn sheet, 2026-09-12)",
+  "annotation_method": "AAA(≥3个A=切换点) + turn sheet 逐行填数字",
+  "total_human_speakers": 2,
+  "labels": [
+    {
+      "idx": 1,
+      "speaker": "human_spk_01",
+      "text": "这一个哎呦我操了这不给人吃死啊这里全是老铁们全是吃饱饭的我说实话这啥呀你们没看过那种王博主测评单兵作",
+      "est_start_ms": 0,
+      "est_end_ms": 15000,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 2,
+      "speaker": "human_spk_01",
+      "text": "那种应急的那种得吃饭粉的啊微波炉我都微波上了末世了马上末试了老铁不是那个我玩六十秒玩魔怔了啊末试了六",
+      "est_start_ms": 15000,
+      "est_end_ms": 26900,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 3,
+      "speaker": "human_spk_01",
+      "text": "今玩得劲儿得劲儿啥呀这玩意儿说实话不说难吃吧但是咋的吃着难受啊",
+      "est_start_ms": 30100,
+      "est_end_ms": 38400,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 4,
+      "speaker": "human_spk_02",
+      "text": "这玩意应急用的",
+      "est_start_ms": 39200,
+      "est_end_ms": 41100,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 5,
+      "speaker": "human_spk_01",
+      "text": "应急用的能好吃到哪儿去老",
+      "est_start_ms": 41900,
+      "est_end_ms": 45100,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 6,
+      "speaker": "human_spk_01",
+      "text": "我看这是哪个来我看一下子来我来问问豆包这是哪个咋这么轻这老轻了这个这是这是哪儿的呀这是七个小矮人吗这",
+      "est_start_ms": 45100,
+      "est_end_ms": 55400,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 7,
+      "speaker": "human_spk_01",
+      "text": "来问问豆包这是什么问问豆包完后豆包怎么回答我我这是哪个的这不知道哪个的呀",
+      "est_start_ms": 59500,
+      "est_end_ms": 65200,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 8,
+      "speaker": "human_spk_01",
+      "text": "哎呀这是这是",
+      "est_start_ms": 66600,
+      "est_end_ms": 68300,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 9,
+      "speaker": "human_spk_01",
+      "text": "嗯",
+      "est_start_ms": 68300,
+      "est_end_ms": 68800,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 10,
+      "speaker": "human_spk_01",
+      "text": "嗯这是美军单兵野战军粮",
+      "est_start_ms": 68800,
+      "est_end_ms": 72300,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 11,
+      "speaker": "human_spk_01",
+      "text": "哦老铁们",
+      "est_start_ms": 72300,
+      "est_end_ms": 73500,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 12,
+      "speaker": "human_spk_01",
+      "text": "这是美军单兵野战军粮这个事这个",
+      "est_start_ms": 74000,
+      "est_end_ms": 77700,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 13,
+      "speaker": "human_spk_01",
+      "text": "哎呦我的妈吃的这么不好吗感觉这么轻薄呢这么轻便呢",
+      "est_start_ms": 77700,
+      "est_end_ms": 81200,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 14,
+      "speaker": "human_spk_02",
+      "text": "这个是不是就一餐呢",
+      "est_start_ms": 81200,
+      "est_end_ms": 82600,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 15,
+      "speaker": "human_spk_01",
+      "text": "不沉呢",
+      "est_start_ms": 83000,
+      "est_end_ms": 83500,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 16,
+      "speaker": "human_spk_02",
+      "text": "一般是三餐这可能就一餐",
+      "est_start_ms": 83900,
+      "est_end_ms": 85600,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    }
+  ],
+  "_ai_reference": {
+    "_note": "模型预测，仅供对照",
+    "predicted_runs": [
+      {
+        "spk": 0,
+        "start_ms": 0,
+        "end_ms": 85620,
+        "text_hint": "这一个哎呦我操了这不给人吃死啊这里全是老铁们全是吃饱饭的我说实话这啥呀你们没看过那种王博主测评单兵作战口粮吗就是那种各国"
+      }
+    ],
+    "predicted_switch_points_ms": []
+  },
+  "_unresolved": []
+}

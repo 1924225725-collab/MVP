@@ -48,7 +48,7 @@
 - 📦 打包时必须随程序带上（PyInstaller 会把 imageio_ffmpeg 的二进制一起收进 `_internal/`）
 
 ### 1.6 模型（**当前硬依赖开发机缓存**）
-- 位置：`C:\Users\admin\.cache\huggingface\hub\models--Systran--faster-whisper-small`
+- 位置：`%USERPROFILE%\.cache\huggingface\hub\models--Systran--faster-whisper-small`
 - ⚠️ 用户机器上不存在 → 必须支持检测 + 一键安装
 - 📋 **阶段 6/7 处理**：Model Registry + 下载安装（进度/失败/重试/完整性校验）
 

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 150">
+  <defs>
+    <filter id="soft" x="-20%" y="-30%" width="140%" height="170%">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <text x="248" y="92" text-anchor="middle"
+        fill="#FFFFFF" opacity=".16" filter="url(#soft)"
+        font-family="STXingkai,FZShuTi,STKaiti,KaiTi" font-size="76"
+        font-style="italic" transform="rotate(-4 248 76)">夜雨声烦</text>
+  <text x="248" y="92" text-anchor="middle"
+        fill="#F5F5F7"
+        font-family="STXingkai,FZShuTi,STKaiti,KaiTi" font-size="76"
+        font-style="italic" transform="rotate(-4 248 76)">夜雨声烦</text>
+  <path d="M92 112 C194 126 324 121 429 92 C382 115 332 129 286 132"
+        fill="none" stroke="#F5F5F7" stroke-width="3.2"
+        stroke-linecap="round" opacity=".9"/>
+  <path d="M428 92 L462 73" fill="none" stroke="#F5F5F7"
+        stroke-width="1.8" stroke-linecap="round" opacity=".7"/>
+  <path d="M454 57 L459 43 L464 57 L478 62 L464 67 L459 81 L454 67 L440 62 Z"
+        fill="#FFFFFF" opacity=".88"/>
+</svg>

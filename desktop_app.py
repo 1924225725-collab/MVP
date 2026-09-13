@@ -147,10 +147,14 @@ def main() -> int:
         QTimer.singleShot(600, app.quit)
         return app.exec()
 
-    # 开机环境自检（V0.5.2）：
-    #   界面**先显示出来**，检查放后台线程跑 —— 绝不让用户在启动时看到"无响应"。
-    #   检查完只在真有问题时才弹窗（见 main_window.run_selfcheck 的 startup 分支）。
-    QTimer.singleShot(600, lambda: win.run_selfcheck(startup=True))
+    # Brand Reveal 结束后进入 P1 启动路由：新用户显示初始化卡片，
+    # 已配置用户保持原有后台自检并直接进入主界面。
+    def start_flow_after_reveal():
+        QTimer.singleShot(180, win.start_startup_flow)
+
+    win.brand_entered.connect(start_flow_after_reveal)
+    if getattr(win, "_brand_ready", False):
+        start_flow_after_reveal()
 
     return app.exec()
 

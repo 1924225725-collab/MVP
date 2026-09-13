@@ -1,0 +1,206 @@
+{
+  "_readme": [
+    "人工 GT（正式版）。标注方法 = AAA 标注法：内容文字里插 ≥3 个 A = 说话人切换点；",
+    "说话人身份由人工在 turn sheet 逐行填写（2026-09-12）。",
+    "est_* 时间为估算值；边界精校时（如需计算边界误差指标）需人工精听复核。"
+  ],
+  "_source": {
+    "file": "fixtures/benchmark_t2_2630_2685.wav",
+    "duration_ms": 54730
+  },
+  "_filled_by": "human (AAA 标注法 + turn sheet, 2026-09-12)",
+  "annotation_method": "AAA(≥3个A=切换点) + turn sheet 逐行填数字",
+  "total_human_speakers": 3,
+  "labels": [
+    {
+      "idx": 1,
+      "speaker": "human_spk_01",
+      "text": "饼干没有一个好吃的",
+      "est_start_ms": 0,
+      "est_end_ms": 1800,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 2,
+      "speaker": "human_spk_02",
+      "text": "咱现在吃的饼干是不是有放糖放太多了这个咋这个味儿呢",
+      "est_start_ms": 2500,
+      "est_end_ms": 7600,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 3,
+      "speaker": "human_spk_01",
+      "text": "不是啊就",
+      "est_start_ms": 8200,
+      "est_end_ms": 9000,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 4,
+      "speaker": "human_spk_02",
+      "text": "这咱乖会吃会下去呗太",
+      "est_start_ms": 9700,
+      "est_end_ms": 11700,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 5,
+      "speaker": "human_spk_01",
+      "text": "破了这饼干了拿一边拿一边",
+      "est_start_ms": 12300,
+      "est_end_ms": 14800,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 6,
+      "speaker": "human_spk_01",
+      "text": "关屏们点点关注啊还多少粉丝了哎我操好起来了四三四四了没点关注屏友点关注啊感谢大伙支持",
+      "est_start_ms": 15000,
+      "est_end_ms": 24500,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 7,
+      "speaker": "human_spk_02",
+      "text": "啊这里没有饮料吗",
+      "est_start_ms": 25200,
+      "est_end_ms": 27000,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 8,
+      "speaker": "human_spk_03",
+      "text": "我知道刚才那是啥了",
+      "est_start_ms": 27700,
+      "est_end_ms": 29581,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 9,
+      "speaker": "human_spk_01",
+      "text": "热吗",
+      "est_start_ms": 29581,
+      "est_end_ms": 30000,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": "人工续行拆分"
+    },
+    {
+      "idx": 10,
+      "speaker": "human_spk_01",
+      "text": "端起来",
+      "est_start_ms": 30000,
+      "est_end_ms": 30700,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 11,
+      "speaker": "human_spk_02",
+      "text": "自己吃是不是",
+      "est_start_ms": 31400,
+      "est_end_ms": 32700,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 12,
+      "speaker": "human_spk_01",
+      "text": "端起来端起来刚才啊老铁们感谢利友圆点刷的宝箱封神老铁们刚才那两个黄的是油是油腻了啊是油老铁们那个是油等",
+      "est_start_ms": 33400,
+      "est_end_ms": 45000,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 13,
+      "speaker": "human_spk_02",
+      "text": "下行不行",
+      "est_start_ms": 45000,
+      "est_end_ms": 45600,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 14,
+      "speaker": "human_spk_01",
+      "text": "摸呗",
+      "est_start_ms": 46100,
+      "est_end_ms": 46400,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 15,
+      "speaker": "human_spk_02",
+      "text": "我摸一下我看现在现在到到咱不是土豆泥呀到咱国内呗",
+      "est_start_ms": 46900,
+      "est_end_ms": 50700,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 16,
+      "speaker": "human_spk_03",
+      "text": "到了到了",
+      "est_start_ms": 51200,
+      "est_end_ms": 51800,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    },
+    {
+      "idx": 17,
+      "speaker": "human_spk_01",
+      "text": "哥到一半只能吃了你别别别那啥了",
+      "est_start_ms": 52300,
+      "est_end_ms": 54700,
+      "time_precision": "估算（按 AAA 字符位置线性插值，未经精听校时）",
+      "_note": ""
+    }
+  ],
+  "_ai_reference": {
+    "_note": "模型预测，仅供对照",
+    "predicted_runs": [
+      {
+        "spk": 1,
+        "start_ms": 0,
+        "end_ms": 15010,
+        "text_hint": "饼干没有一个好吃的咱现在吃的饼干是不是有放糖放太多了这个咋这个味儿呢不是啊就这咱乖会吃会下去呗太破了这饼干了拿一边拿一边"
+      },
+      {
+        "spk": 2,
+        "start_ms": 15010,
+        "end_ms": 30020,
+        "text_hint": "关屏们点点关注啊还多少粉丝了哎我操好起来了四三四四了没点关注屏友点关注啊感谢大伙支持啊这里没有饮料吗我知道刚才那是啥了热"
+      },
+      {
+        "spk": 0,
+        "start_ms": 30020,
+        "end_ms": 45030,
+        "text_hint": "端起来自己吃是不是端起来端起来刚才啊老铁们感谢利友圆点刷的宝箱封神老铁们刚才那两个黄的是油是油腻了啊是油老铁们那个是油等"
+      },
+      {
+        "spk": 1,
+        "start_ms": 45030,
+        "end_ms": 54710,
+        "text_hint": "下行不行摸呗我摸一下我看现在现在到到咱不是土豆泥呀到咱国内呗到了到了哥到一半只能吃了你别别别那啥了"
+      }
+    ],
+    "predicted_switch_points_ms": [
+      15010,
+      30020,
+      45030
+    ]
+  },
+  "_unresolved": [
+    "「就AAAA这」打了 4 个 A，按 1 次切换处理，人工未另作说明"
+  ]
+}

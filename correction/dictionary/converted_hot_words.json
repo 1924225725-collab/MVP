@@ -1,0 +1,1696 @@
+{
+  "meta": {
+    "source_file": "热词库.txt",
+    "source_path": "D:\\Agent\\ai切片助手\\live_clipper\\correction\\dictionary\\raw\\热词库.txt",
+    "category": "hotword",
+    "converter": "correction/converter.py",
+    "generated_at": "2026-09-13 01:22:13",
+    "updated_at": "2026-09-13",
+    "entry_count": 92,
+    "alias_count": 393,
+    "duplicate_lines_merged": 28,
+    "note": "原始词库未做任何修改；本文件为程序使用的生成物。"
+  },
+  "entries": [
+    {
+      "canonical": "那咋了",
+      "aliases": [
+        "那咋拉",
+        "那咋啦",
+        "那咋咧",
+        "纳咋了",
+        "哪咋了"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "那咋拉、那咋啦、那咋咧、纳咋了、哪咋了",
+      "source": "热词库.txt:341",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "包××的",
+      "aliases": [
+        "包的",
+        "包赢的",
+        "包好的",
+        "包行的",
+        "包OK的",
+        "包没问题的"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "包的、包赢的、包好的、包行的、包OK的、包没问题的",
+      "source": "热词库.txt:342",
+      "updated_at": "2026-09-13",
+      "is_pattern": true
+    },
+    {
+      "canonical": "古希腊掌管××的神",
+      "aliases": [
+        "古希腊掌管XX的神",
+        "古希腊掌管叉叉的神",
+        "古希腊长管XX的神"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "古希腊掌管XX的神、古希腊掌管叉叉的神、古希腊长管XX的神",
+      "source": "热词库.txt:343",
+      "updated_at": "2026-09-13",
+      "is_pattern": true
+    },
+    {
+      "canonical": "接",
+      "aliases": [
+        "接好运",
+        "接上岸",
+        "接offer",
+        "接暴富",
+        "接桃花",
+        "接接接"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "接好运、接上岸、接offer、接暴富、接桃花、接接接",
+      "source": "热词库.txt:344",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "反向内卷",
+      "aliases": [
+        "反向内绢",
+        "反像内卷",
+        "反向内倦",
+        "反向内眷"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "反向内绢、反像内卷、反向内倦、反向内眷",
+      "source": "热词库.txt:345",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "游",
+      "aliases": [
+        "游一下",
+        "游学",
+        "悠游",
+        "游哉",
+        "游啊游"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "游一下、游学、悠游、游哉、游啊游",
+      "source": "热词库.txt:346",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "技能五子棋",
+      "aliases": [
+        "技能五子期",
+        "技能五子齐",
+        "技呢五子棋",
+        "技能五子骑"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "技能五子期、技能五子齐、技呢五子棋、技能五子骑",
+      "source": "热词库.txt:347",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "老登电影",
+      "aliases": [
+        "老登电映",
+        "老灯电影",
+        "老登殿影",
+        "老蹬电影"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "老登电映、老灯电影、老登殿影、老蹬电影",
+      "source": "热词库.txt:348",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "回！答！我！",
+      "aliases": [
+        "回我",
+        "回答我啊",
+        "回答窝"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "回答我、回我、回答我啊、回！答！我、回答窝",
+      "source": "热词库.txt:349",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "信××还是信我是秦始皇",
+      "aliases": [
+        "信XX还是信我是秦始黄",
+        "信我是秦始皇",
+        "信我秦始皇",
+        "信我秦世皇"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "信XX还是信我是秦始黄、信我是秦始皇、信我秦始皇、信我秦世皇",
+      "source": "热词库.txt:350",
+      "updated_at": "2026-09-13",
+      "is_pattern": true
+    },
+    {
+      "canonical": "丝瓜汤",
+      "aliases": [
+        "丝瓜烫",
+        "丝瓜糖",
+        "思瓜汤",
+        "丝瓜淌",
+        "丝瓜躺"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "丝瓜烫、丝瓜糖、思瓜汤、丝瓜淌、丝瓜躺",
+      "source": "热词库.txt:351",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "纯过日子人",
+      "aliases": [
+        "纯过日紫人",
+        "纯过日只人",
+        "纯过日字人",
+        "纯过日子仁"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "纯过日紫人、纯过日只人、纯过日字人、纯过日子仁",
+      "source": "热词库.txt:352",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "咕咕嘎嘎",
+      "aliases": [
+        "咕咕嘎噶",
+        "咕咕尬尬",
+        "菇菇嘎嘎",
+        "咕咕嘎嘎嘎"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "咕咕嘎噶、咕咕尬尬、菇菇嘎嘎、咕咕嘎嘎嘎、goo goo ga ga",
+      "source": "热词库.txt:353",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "胆子真是肥嘟嘟的啊",
+      "aliases": [
+        "胆子真是肥嘟嘟的",
+        "胆子肥嘟嘟",
+        "胆子真是肥都都的啊",
+        "胆子真是肥督督的啊"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "胆子真是肥嘟嘟的、胆子肥嘟嘟、胆子真是肥都都的啊、胆子真是肥督督的啊",
+      "source": "热词库.txt:354",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "萝卜纸巾猫",
+      "aliases": [
+        "萝卜纸巾喵",
+        "萝卜纸金猫",
+        "罗卜纸巾猫",
+        "萝卜纸斤猫"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "萝卜纸巾喵、萝卜纸金猫、罗卜纸巾猫、萝卜纸斤猫",
+      "source": "热词库.txt:355",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "野生狗奶",
+      "aliases": [
+        "野牲狗奶",
+        "野生狗耐",
+        "野升狗奶",
+        "野生狗乃"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "野牲狗奶、野生狗耐、野升狗奶、野生狗乃",
+      "source": "热词库.txt:356",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "致敬",
+      "aliases": [
+        "致镜",
+        "致警",
+        "志敬",
+        "至敬",
+        "致竟"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "致镜、致警、志敬、至敬、致竟",
+      "source": "热词库.txt:357",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "杭州六小龙",
+      "aliases": [
+        "杭州六小笼",
+        "杭州6小龙",
+        "杭州六小隆",
+        "杭州陆小龙"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "杭州六小笼、杭州6小龙、杭州六小隆、杭州陆小龙",
+      "source": "热词库.txt:358",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "拉布布",
+      "aliases": [
+        "拉不不",
+        "拉布卜",
+        "啦布布",
+        "拉部部",
+        "Labubu"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "拉不不、拉布卜、啦布布、拉部部、Labubu",
+      "source": "热词库.txt:359",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "轻体",
+      "aliases": [
+        "轻提",
+        "轻梯",
+        "青体",
+        "清体",
+        "倾体"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "轻提、轻梯、青体、清体、倾体",
+      "source": "热词库.txt:360",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "对等关税",
+      "aliases": [
+        "对等关睡",
+        "对等关岁",
+        "对等关水",
+        "对等官税"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "对等关睡、对等关岁、对等关水、对等官税",
+      "source": "热词库.txt:361",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "跨境支付通",
+      "aliases": [
+        "跨境支付同",
+        "跨境支付桶",
+        "跨境支付铜",
+        "跨境支付统"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "跨境支付同、跨境支付桶、跨境支付铜、跨境支付统",
+      "source": "热词库.txt:362",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "新大众文艺",
+      "aliases": [
+        "新大从文艺",
+        "新大重文艺",
+        "新大众文亿",
+        "新大众闻艺"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "新大从文艺、新大重文艺、新大众文亿、新大众闻艺",
+      "source": "热词库.txt:363",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "现代化人民城市",
+      "aliases": [
+        "现代化人民成市",
+        "现代化人民城世",
+        "现代话人民城市",
+        "现代化人明城市"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "现代化人民成市、现代化人民城世、现代话人民城市、现代化人明城市",
+      "source": "热词库.txt:364",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "妈妈我上电视了",
+      "aliases": [
+        "妈妈我上电视啦",
+        "妈妈我上电视喽",
+        "麻麻我上电视了",
+        "妈妈我上电视勒"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "妈妈我上电视啦、妈妈我上电视喽、麻麻我上电视了、妈妈我上电视勒",
+      "source": "热词库.txt:365",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "竟然人",
+      "aliases": [
+        "竟然仁",
+        "竟燃人",
+        "静然人",
+        "竟染人"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "竟然仁、竟燃人、静然人、竟染人",
+      "source": "热词库.txt:366",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "居然人",
+      "aliases": [
+        "居然仁",
+        "居燃人",
+        "巨然人",
+        "俱然人"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "居然仁、居燃人、巨然人、俱然人",
+      "source": "热词库.txt:367",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "邪修",
+      "aliases": [
+        "斜修",
+        "鞋修",
+        "协修",
+        "写修",
+        "谢修"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "斜修、鞋修、协修、写修、谢修",
+      "source": "热词库.txt:368",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "高雅人士",
+      "aliases": [
+        "高牙人士",
+        "高鸭人士",
+        "高雅人土",
+        "高亚人士"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "高牙人士、高鸭人士、高雅人土、高亚人士",
+      "source": "热词库.txt:369",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "误闯天家",
+      "aliases": [
+        "误创天家",
+        "误闯田家",
+        "误闯添家",
+        "雾闯天家"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "误创天家、误闯田家、误闯添家、雾闯天家",
+      "source": "热词库.txt:370",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "当个事儿办",
+      "aliases": [
+        "当个事办",
+        "当个事二办",
+        "当个事儿半",
+        "当个事办呗"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "当个事办、当个事二办、当个事儿半、当个事办呗",
+      "source": "热词库.txt:371",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "拼好×",
+      "aliases": [
+        "拼好饭",
+        "拼好歌",
+        "拼好剧",
+        "拼好房",
+        "拼好一切"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "拼好饭、拼好歌、拼好剧、拼好房、拼好一切",
+      "source": "热词库.txt:372",
+      "updated_at": "2026-09-13",
+      "is_pattern": true
+    },
+    {
+      "canonical": "魔丸&灵珠",
+      "aliases": [
+        "魔玩&灵珠",
+        "魔丸和灵珠",
+        "魔完&灵珠",
+        "魔丸&零珠"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "魔玩&灵珠、魔丸和灵珠、魔完&灵珠、魔丸&零珠",
+      "source": "热词库.txt:373",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "做完你的做你的",
+      "aliases": [
+        "作完你的作你的",
+        "做完尼的做尼的",
+        "做完你的在做你的"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "作完你的作你的、做完尼的做尼的、做完你的在做你的",
+      "source": "热词库.txt:374",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "从从容容、游刃有余，匆匆忙忙、连滚带爬",
+      "aliases": [
+        "从从荣荣",
+        "游刃有鱼",
+        "匆匆忙忙",
+        "连滚带怕",
+        "从从蓉蓉游刃有鱼"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "从从荣荣、游刃有鱼，匆匆忙忙、连滚带怕、从从蓉蓉游刃有鱼",
+      "source": "热词库.txt:375",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "千百次练习只为这一刻",
+      "aliases": [
+        "千百次练喜只为这一刻",
+        "千百次练习只为这一克",
+        "千百次联系只为这一刻"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "千百次练喜只为这一刻、千百次练习只为这一克、千百次联系只为这一刻",
+      "source": "热词库.txt:376",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "如何呢又能怎",
+      "aliases": [
+        "如何尼又能怎",
+        "如何呢又怎能",
+        "如何泥又能怎",
+        "如何呢有能怎"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "如何尼又能怎、如何呢又怎能、如何泥又能怎、如何呢有能怎",
+      "source": "热词库.txt:377",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "最棒的小羊",
+      "aliases": [
+        "最棒的小洋",
+        "最棒的小阳",
+        "最棒的小杨",
+        "最棒的小样"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "最棒的小洋、最棒的小阳、最棒的小杨、最棒的小样",
+      "source": "热词库.txt:378",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "高能量的一天",
+      "aliases": [
+        "高能亮的一天",
+        "高能辆的一天",
+        "高能量滴一天"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "高能亮的一天、高能辆的一天、高能量滴一天、高能量的一天",
+      "source": "热词库.txt:379",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "活人感",
+      "aliases": [
+        "活人敢",
+        "活仁感",
+        "活人赶",
+        "活人杆"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "活人敢、活仁感、活人赶、活人杆、活人感",
+      "source": "热词库.txt:380",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "韧",
+      "aliases": [],
+      "category": "hotword",
+      "priority": 1,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "任、认、刃、仁、忍",
+      "source": "热词库.txt:381",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "深度求索",
+      "aliases": [
+        "DeepSeek",
+        "Deep",
+        "Seek",
+        "地普西克",
+        "迪普西克",
+        "深度求锁"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "DeepSeek、Deep Seek、地普西克、迪普西克、深度求锁",
+      "source": "热词库.txt:382",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "苏超",
+      "aliases": [
+        "苏抄",
+        "苏朝",
+        "苏潮",
+        "苏巢",
+        "苏炒"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "苏抄、苏朝、苏潮、苏巢、苏炒",
+      "source": "热词库.txt:383",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "赛博对账",
+      "aliases": [
+        "赛博对帐",
+        "赛博对仗",
+        "赛博对张",
+        "赛博对章"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "赛博对帐、赛博对仗、赛博对张、赛博对章",
+      "source": "热词库.txt:384",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "数字游民",
+      "aliases": [
+        "数子游民",
+        "数字游名",
+        "数字尤民",
+        "数字游明",
+        "数字由民"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "数子游民、数字游名、数字尤民、数字游明、数字由民",
+      "source": "热词库.txt:385",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "谷子",
+      "aliases": [
+        "谷紫",
+        "骨子",
+        "古子",
+        "股子",
+        "谷滋"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "谷紫、骨子、古子、股子、谷滋",
+      "source": "热词库.txt:386",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "预制××",
+      "aliases": [
+        "预制菜",
+        "预制人",
+        "预制朋友圈",
+        "预制笑",
+        "预制人生"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "预制菜、预制人、预制朋友圈、预制笑、预制人生",
+      "source": "热词库.txt:387",
+      "updated_at": "2026-09-13",
+      "is_pattern": true
+    },
+    {
+      "canonical": "票根经济",
+      "aliases": [
+        "票跟经济",
+        "飘根经济",
+        "票根经计",
+        "票根京济"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "票跟经济、飘根经济、票根经计、票根京济",
+      "source": "热词库.txt:388",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "育儿补贴",
+      "aliases": [
+        "育耳补贴",
+        "玉儿补贴",
+        "育儿补帖",
+        "育儿补铁",
+        "育児补贴"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "育耳补贴、玉儿补贴、育儿补帖、育儿补铁、育児补贴",
+      "source": "热词库.txt:389",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "网络生态治理",
+      "aliases": [
+        "网络生太治理",
+        "网络生态治里",
+        "网络生态制理",
+        "网络生太治里"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "网络生太治理、网络生态治里、网络生态制理、网络生太治里",
+      "source": "热词库.txt:390",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "科学素养",
+      "aliases": [
+        "科学素样",
+        "科学速养",
+        "科学素痒",
+        "科学诉养",
+        "科学素仰"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "科学素样、科学速养、科学素痒、科学诉养、科学素仰",
+      "source": "热词库.txt:391",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "人形机器人",
+      "aliases": [
+        "人型机器人",
+        "人行机器人",
+        "人形机械人",
+        "人形机器仁",
+        "人形机气人"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "人型机器人、人行机器人、人形机械人、人形机器仁、人形机气人",
+      "source": "热词库.txt:392",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "具身智能",
+      "aliases": [
+        "具身之能",
+        "俱身智能",
+        "具深智能",
+        "具身智嫩",
+        "具身知能"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "具身之能、俱身智能、具深智能、具身智嫩、具身知能",
+      "source": "热词库.txt:393",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "十五五规划",
+      "aliases": [
+        "十五五规化",
+        "十五五鬼话",
+        "十五五规画",
+        "十五五桂划"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "十五五规化、十五五鬼话、十五五规画、十五五桂划",
+      "source": "热词库.txt:394",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "九三阅兵",
+      "aliases": [
+        "九三越兵",
+        "九三悦兵",
+        "九三未兵",
+        "九三月兵",
+        "九三阅冰"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "九三越兵、九三悦兵、九三未兵、九三月兵、九三阅冰",
+      "source": "热词库.txt:395",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "全球治理倡议",
+      "aliases": [
+        "全球治里倡议",
+        "全球治理倡义",
+        "全球制理倡议",
+        "全球治里唱议"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "全球治里倡议、全球治理倡义、全球制理倡议、全球治里唱议",
+      "source": "热词库.txt:396",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "背手负鼠",
+      "aliases": [
+        "背手付鼠",
+        "背手腹鼠",
+        "背手复鼠",
+        "背手负属",
+        "背手负署"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "背手付鼠、背手腹鼠、背手复鼠、背手负属、背手负署",
+      "source": "热词库.txt:397",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "哭哭马",
+      "aliases": [
+        "哭哭吗",
+        "哭哭妈",
+        "哭哭麻",
+        "哭哭玛",
+        "哭哭嘛"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "哭哭吗、哭哭妈、哭哭麻、哭哭玛、哭哭嘛",
+      "source": "热词库.txt:398",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "养龙虾",
+      "aliases": [
+        "养龙瞎",
+        "养聋虾",
+        "养拢虾",
+        "养笼虾"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "养龙瞎、养聋虾、养拢虾、养龙虾、养笼虾",
+      "source": "热词库.txt:399",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "爱你老己",
+      "aliases": [
+        "爱你老几",
+        "爱你老记",
+        "爱你老纪",
+        "爱你老急"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "爱你老几、爱你老记、爱你老纪、爱你老急、爱你老己",
+      "source": "热词库.txt:400",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "老来得己",
+      "aliases": [
+        "老来得几",
+        "老来得记",
+        "老来得纪",
+        "老来得急"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "老来得几、老来得记、老来得纪、老来得急、老来得己",
+      "source": "热词库.txt:401",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "前额叶友好",
+      "aliases": [
+        "前额业友好",
+        "前鹅叶友好",
+        "前额叶友浩",
+        "前额叶有浩"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "前额业友好、前鹅叶友好、前额叶友浩、前额叶有浩",
+      "source": "热词库.txt:402",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "人生奥德赛时期",
+      "aliases": [
+        "人生奥得赛时期",
+        "人生奥德塞时期",
+        "人生奥得塞时期",
+        "人生奥德赛时其"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "人生奥得赛时期、人生奥德塞时期、人生奥得塞时期、人生奥德赛时其",
+      "source": "热词库.txt:403",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "素颜巴黎",
+      "aliases": [
+        "素言巴黎",
+        "素研巴黎",
+        "速颜巴黎",
+        "素颜巴梨",
+        "素颜巴里"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "素言巴黎、素研巴黎、速颜巴黎、素颜巴梨、素颜巴里",
+      "source": "热词库.txt:404",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "我见识到自己的厉害了",
+      "aliases": [
+        "我见识到自己的历害了",
+        "我见识到自己的厉爱了",
+        "我见识到自己的历爱了"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "我见识到自己的历害了、我见识到自己的厉爱了、我见识到自己的历爱了",
+      "source": "热词库.txt:405",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "雪山救狐狸",
+      "aliases": [
+        "雪上救狐狸",
+        "雪山就狐狸",
+        "雪山九狐狸",
+        "雪山救胡丽",
+        "雪山救狐里"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "雪上救狐狸、雪山就狐狸、雪山九狐狸、雪山救胡丽、雪山救狐里",
+      "source": "热词库.txt:406",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "夯爆了",
+      "aliases": [
+        "夯暴了",
+        "夯抱了",
+        "夯煲了",
+        "夯报了",
+        "夯爆勒"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "夯暴了、夯抱了、夯煲了、夯报了、夯爆勒",
+      "source": "热词库.txt:407",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "我要验牌",
+      "aliases": [
+        "我要验排",
+        "我要验派",
+        "我要眼牌",
+        "我要验牌儿"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "我要验排、我要验派、我要眼牌、我要验牌儿",
+      "source": "热词库.txt:408",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "牌没有问题",
+      "aliases": [
+        "牌没有问提",
+        "牌没有文题",
+        "牌没有吻题"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "牌没有问提、牌没有文题、牌没有吻题、牌没有问题",
+      "source": "热词库.txt:409",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "我是真人",
+      "aliases": [
+        "我是镇人",
+        "我是珍人",
+        "我是真仁",
+        "我是针人"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "我是镇人、我是珍人、我是真仁、我是针人、我是真人",
+      "source": "热词库.txt:410",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "抽象力",
+      "aliases": [
+        "抽像力",
+        "抽象利",
+        "抽相力",
+        "丑象力",
+        "抽象立"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "抽像力、抽象利、抽相力、丑象力、抽象立",
+      "source": "热词库.txt:411",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "痛文化",
+      "aliases": [
+        "疼文化",
+        "通文化",
+        "同文化",
+        "痛文花",
+        "痛文华"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "疼文化、通文化、同文化、痛文花、痛文华",
+      "source": "热词库.txt:412",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "主体性",
+      "aliases": [
+        "主提性",
+        "主题性",
+        "主梯性",
+        "主休性",
+        "主体系"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "主提性、主题性、主梯性、主休性、主体系",
+      "source": "热词库.txt:413",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "边界感",
+      "aliases": [
+        "边介感",
+        "编界感",
+        "变界感",
+        "边戒感",
+        "边界敢"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "边介感、编界感、变界感、边戒感、边界敢",
+      "source": "热词库.txt:414",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "反精致",
+      "aliases": [
+        "反精至",
+        "反京致",
+        "反精志",
+        "反经致"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "反精至、反京致、反精志、反经致、反精致",
+      "source": "热词库.txt:415",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "AI人格",
+      "aliases": [
+        "AI人各",
+        "AI人阁",
+        "I人格",
+        "爱人格",
+        "AI人隔"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "AI人各、AI人阁、A I人格、爱人格、AI人隔",
+      "source": "热词库.txt:416",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "柔软力",
+      "aliases": [
+        "柔暖力",
+        "揉软力",
+        "柔阮力",
+        "柔远力",
+        "柔软利"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "柔暖力、揉软力、柔阮力、柔远力、柔软利",
+      "source": "热词库.txt:417",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大湾鸡",
+      "aliases": [
+        "大弯鸡",
+        "大湾基",
+        "大湾机",
+        "大湾击",
+        "大弯机"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "大弯鸡、大湾基、大湾机、大湾击、大弯机",
+      "source": "热词库.txt:418",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "Color Walk",
+      "aliases": [
+        "卡拉Walk",
+        "卡乐Walk",
+        "Color",
+        "沃克",
+        "卡拉沃克",
+        "walk"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "卡拉Walk、卡乐Walk、Color 沃克、卡拉沃克、color walk",
+      "source": "热词库.txt:419",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "钓鱼佬拍照法",
+      "aliases": [
+        "钓鱼老拍照法",
+        "钓鱼佬拍昭法",
+        "钓鱼佬拍找法",
+        "钓鱼老拍昭法"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "钓鱼老拍照法、钓鱼佬拍昭法、钓鱼佬拍找法、钓鱼老拍昭法",
+      "source": "热词库.txt:420",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "亲友垃圾互寄",
+      "aliases": [
+        "亲友拉基互寄",
+        "亲友辣鸡互寄",
+        "亲友垃圾互记"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "亲友拉基互寄、亲友辣鸡互寄、亲友垃圾互记、亲友垃圾互寄",
+      "source": "热词库.txt:421",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "手搓一切",
+      "aliases": [
+        "手搓一彻",
+        "手搓一且",
+        "手搓一窃",
+        "手搓一茄",
+        "手搓一惬"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "手搓一彻、手搓一且、手搓一窃、手搓一茄、手搓一惬",
+      "source": "热词库.txt:422",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大脑降噪",
+      "aliases": [
+        "大脑降造",
+        "大脑降躁",
+        "大脑降灶"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "大脑降造、大脑降躁、大脑降灶、大脑降噪",
+      "source": "热词库.txt:423",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "反精致人生",
+      "aliases": [
+        "反精至人生",
+        "反京致人生",
+        "反精志人生"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "反精至人生、反京致人生、反精志人生、反精致人生",
+      "source": "热词库.txt:424",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "低电量人生",
+      "aliases": [
+        "低电亮人生",
+        "低电凉人生",
+        "低电辆人生"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "低电亮人生、低电凉人生、低电辆人生、低电量人生",
+      "source": "热词库.txt:425",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "人生缓冲期",
+      "aliases": [
+        "人生缓充期",
+        "人生缓充其",
+        "人生缓冲其"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "人生缓充期、人生缓冲期、人生缓充其、人生缓冲其",
+      "source": "热词库.txt:426",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "重启人生",
+      "aliases": [
+        "重起人生",
+        "崇启人生",
+        "重汽人生",
+        "重启人声",
+        "重启仁生"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "重起人生、崇启人生、重汽人生、重启人声、重启仁生",
+      "source": "热词库.txt:427",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "真正的少女心事",
+      "aliases": [
+        "真正的少女人心事",
+        "真正的少女星事",
+        "真正的少女新事"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "真正的少女人心事、真正的少女星事、真正的少女新事、真正的少女心事",
+      "source": "热词库.txt:428",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "梁圣",
+      "aliases": [
+        "梁胜",
+        "梁盛",
+        "梁剩",
+        "凉圣",
+        "梁晟"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "梁胜、梁盛、梁剩、凉圣、梁晟",
+      "source": "热词库.txt:429",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "梁性循环",
+      "aliases": [
+        "良性循环",
+        "凉性循环",
+        "梁姓循环",
+        "梁性寻环",
+        "梁性循还"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "良性循环、凉性循环、梁姓循环、梁性寻环、梁性循还",
+      "source": "热词库.txt:430",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "超级猛男",
+      "aliases": [
+        "超级蒙男",
+        "超级萌男",
+        "超级锰男",
+        "超级梦男",
+        "超级猛南"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "超级蒙男、超级萌男、超级锰男、超级梦男、超级猛南",
+      "source": "热词库.txt:431",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "斩杀线理论",
+      "aliases": [
+        "斩杀线里论",
+        "斩杀线理伦",
+        "斩杀线立论"
+      ],
+      "category": "hotword",
+      "priority": 2,
+      "context_tags": [
+        "hotword"
+      ],
+      "description": "斩杀线里论、斩杀线理伦、斩杀线立论、斩杀线理论",
+      "source": "热词库.txt:432",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    }
+  ]
+}

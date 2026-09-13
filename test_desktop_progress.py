@@ -196,6 +196,7 @@ def main():
     # ---------------- 6. 界面组件 ----------------
     from PySide6.QtWidgets import QApplication
     app = QApplication.instance() or QApplication([])
+    from desktop import theme
     from desktop.ui.progress_view import ProgressView
     pv = ProgressView()
     pv.start()
@@ -208,8 +209,8 @@ def main():
           f"{pv.bar.value()}/{pv.bar.maximum()}")
     check("6 详情行显示已处理时间", "23:10 / 51:00" in pv.detail.text(), pv.detail.text())
     check("6 当前阶段被高亮、之前的阶段标成已完成",
-          "3b7ddd" in pv._stage_labels[stages.STAGE_ASR].styleSheet()
-          and "2f9e63" in pv._stage_labels[stages.STAGE_VAD].styleSheet(),
+          theme.ACCENT.lstrip("#") in pv._stage_labels[stages.STAGE_ASR].styleSheet()
+          and theme.OK_COLOR.lstrip("#") in pv._stage_labels[stages.STAGE_VAD].styleSheet(),
           pv._stage_labels[stages.STAGE_ASR].styleSheet())
     pv.update_event(stages.make_event(stages.STAGE_VAD, None, "正在检测哪里有人说话…"))
     check("6 无百分比的阶段不显示数字、进度条回到不确定模式",

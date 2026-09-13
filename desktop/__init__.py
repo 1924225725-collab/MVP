@@ -10,5 +10,5 @@
 # 入口：项目根目录的 desktop_app.py
 # ============================================================
 
-APP_TITLE = "AI 直播切片助手"
-APP_VERSION = "0.5.2"
+APP_TITLE = "AI Live Clipper"
+APP_VERSION = "0.5.3"

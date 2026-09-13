@@ -1,0 +1,3862 @@
+{
+  "meta": {
+    "source_file": "影视作品名.txt",
+    "source_path": "D:\\Agent\\ai切片助手\\live_clipper\\correction\\dictionary\\raw\\影视作品名.txt",
+    "category": "movie",
+    "converter": "correction/converter.py",
+    "generated_at": "2026-09-13 01:22:13",
+    "updated_at": "2026-09-13",
+    "entry_count": 250,
+    "alias_count": 196,
+    "duplicate_lines_merged": 0,
+    "note": "原始词库未做任何修改；本文件为程序使用的生成物。"
+  },
+  "entries": [
+    {
+      "canonical": "月鳞奇迹",
+      "aliases": [
+        "月麟奇迹",
+        "月0奇迹"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：鳞→麟，纪→记；谐音外号：月0奇迹",
+      "source": "影视作品名.txt:1",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "捕风追影",
+      "aliases": [
+        "捕风捉影"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：捕风捉影",
+      "source": "影视作品名.txt:2",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "挽救计划",
+      "aliases": [
+        "拯救计划"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：拯救计划",
+      "source": "影视作品名.txt:3",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "玉茗茶骨",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：剧名绕口易读错",
+      "source": "影视作品名.txt:4",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "如懿传",
+      "aliases": [
+        "大如传"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo",
+        "nickname"
+      ],
+      "description": "叫错：懿易读错；外号：大如传",
+      "source": "影视作品名.txt:5",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "芈月传",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：芈常读成min",
+      "source": "影视作品名.txt:6",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "天乩之白蛇传说",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：乩常读成zhan/乱；常被叫白蛇传",
+      "source": "影视作品名.txt:7",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "知否知否应是绿肥红瘦",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：剧名绕口",
+      "source": "影视作品名.txt:8",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "榫卯",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：sǔn mǎo常读错",
+      "source": "影视作品名.txt:9",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "琅琊榜",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：琅琊易读错",
+      "source": "影视作品名.txt:10",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "星汉灿烂",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "谐音外号：081、33",
+      "source": "影视作品名.txt:11",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "低智商犯罪",
+      "aliases": [
+        "number one",
+        "number two"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "谐音外号：number one/two；胡建仁→贱人",
+      "source": "影视作品名.txt:12",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "光·渊",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：渊种→冤种",
+      "source": "影视作品名.txt:13",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "很想很想你",
+      "aliases": [
+        "好想好想你"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：好想好想你",
+      "source": "影视作品名.txt:14",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "最美的时光",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "谐音外号：陆励成→粒粒橙",
+      "source": "影视作品名.txt:15",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "甄嬛传",
+      "aliases": [
+        "绿帽传"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：绿帽传；华妃→化肥；安陵容→安小鸟；祺嫔→瓜6",
+      "source": "影视作品名.txt:16",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "妖猫传",
+      "aliases": [
+        "猫妖传"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：猫妖传",
+      "source": "影视作品名.txt:17",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "无问西东",
+      "aliases": [
+        "无问东西"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：无问东西",
+      "source": "影视作品名.txt:18",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "相爱相亲",
+      "aliases": [
+        "相亲相爱"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：相亲相爱",
+      "source": "影视作品名.txt:19",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "天坑鹰猎",
+      "aliases": [
+        "天坑猎鹰"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：天坑猎鹰",
+      "source": "影视作品名.txt:20",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "折腰",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "叫错/打错字：魏劭→魏助/魏刀/魏勋",
+      "source": "影视作品名.txt:21",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "轧戏",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：剧名读音争议",
+      "source": "影视作品名.txt:22",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "小巷人家",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：平台预告打错",
+      "source": "影视作品名.txt:23",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "人生若如初相见",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：剧名长易读错",
+      "source": "影视作品名.txt:24",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "秦时丽人明月心",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：剧名易混淆",
+      "source": "影视作品名.txt:25",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "莽荒纪",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：剧名易读错",
+      "source": "影视作品名.txt:26",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "花谢花飞花满天",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：剧名拗口",
+      "source": "影视作品名.txt:27",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "海棠经雨胭脂透",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：剧名拗口",
+      "source": "影视作品名.txt:28",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "戆夫成龙",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：戆易读错",
+      "source": "影视作品名.txt:29",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "等到烟暖雨收",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：剧名拗口",
+      "source": "影视作品名.txt:30",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "水浒传",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：霹雳火→霹雳虎",
+      "source": "影视作品名.txt:31",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "西游记后传",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：涅槃→涅磐",
+      "source": "影视作品名.txt:32",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "唐砖",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo",
+        "film"
+      ],
+      "description": "打错字：片方将男主演员名错打",
+      "source": "影视作品名.txt:33",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "且试天下",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：玉秋栓→王秋栓",
+      "source": "影视作品名.txt:34",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "Legal High",
+      "aliases": [
+        "李狗嗨"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：李狗嗨",
+      "source": "影视作品名.txt:35",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "Mr. Robot",
+      "aliases": [
+        "美国佬"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：美国佬",
+      "source": "影视作品名.txt:36",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "权力的游戏",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "game"
+      ],
+      "description": "外号：奶德、猫姨、二丫、龙妈、小玫瑰",
+      "source": "影视作品名.txt:37",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "绝命毒师",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：老白、小粉；恶搞：冰与货之歌等",
+      "source": "影视作品名.txt:38",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "神探夏洛克",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：卷福、花生",
+      "source": "影视作品名.txt:39",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "疑犯追踪",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：李四、四叔",
+      "source": "影视作品名.txt:40",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "老友记",
+      "aliases": [
+        "Holden McGroin"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：Holden McGroin",
+      "source": "影视作品名.txt:41",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "实习医生格蕾",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：英文名易读错",
+      "source": "影视作品名.txt:42",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "生活大爆炸",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：谢耳朵；英文名易叫错",
+      "source": "影视作品名.txt:43",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "风中的女王",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：英文名Reign易读错",
+      "source": "影视作品名.txt:44",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大群",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：英文名Legion易读错",
+      "source": "影视作品名.txt:45",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "禁忌",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：英文名Taboo易读错",
+      "source": "影视作品名.txt:46",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "叶问",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：IP Man实为Yip Man",
+      "source": "影视作品名.txt:47",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "三傻大闹宝莱坞",
+      "aliases": [
+        "译名误导"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "译名误导；台译三个傻瓜；港译作死不离3兄弟",
+      "source": "影视作品名.txt:48",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "摔跤吧！爸爸",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译打死不离三父女",
+      "source": "影视作品名.txt:49",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "肖申克的救赎",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译刺激1995；港译月黑高飞",
+      "source": "影视作品名.txt:50",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "伯德小姐",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译不得鸟小姐",
+      "source": "影视作品名.txt:51",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "爱乐之城",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译乐来越爱你；港译星声梦里人",
+      "source": "影视作品名.txt:52",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "寻梦环游记",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译可可夜总会",
+      "source": "影视作品名.txt:53",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "疯狂动物城",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译优兽大都会",
+      "source": "影视作品名.txt:54",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "头脑特工队",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译玩转脑朋友",
+      "source": "影视作品名.txt:55",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "玩具总动员",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译反斗奇兵",
+      "source": "影视作品名.txt:56",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "飞屋环游记",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译冲天救兵",
+      "source": "影视作品名.txt:57",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "机械公敌",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "戏称：我，萝卜",
+      "source": "影视作品名.txt:58",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "羊懼",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "粤语谐音近似粗口",
+      "source": "影视作品名.txt:59",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "杀死比尔",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译标杀令",
+      "source": "影视作品名.txt:60",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "复仇者联盟4",
+      "aliases": [
+        "Yibambe"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "空耳：Yibambe",
+      "source": "影视作品名.txt:61",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "帝国的毁灭",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "空耳：气死偶嘞",
+      "source": "影视作品名.txt:62",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "鬼灭之刃：猗窝座再袭",
+      "aliases": [
+        "狗窝座",
+        "猪离座"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：狗窝座、猪离座",
+      "source": "影视作品名.txt:63",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "八仙",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：汉钟离",
+      "source": "影视作品名.txt:64",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "倒霉特工熊",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "改名：大卫贝肯",
+      "source": "影视作品名.txt:65",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "哆啦A梦：大雄的金银岛",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译预告误译：诺比塔",
+      "source": "影视作品名.txt:66",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "中华一番",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "翻译错误：嘟嘟、及第、十全、阿Q",
+      "source": "影视作品名.txt:67",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "雷洛传",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：吕乐",
+      "source": "影视作品名.txt:68",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "唐伯虎点秋香",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：华胜→花生",
+      "source": "影视作品名.txt:69",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "黑暗荣耀",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：角色名易读错",
+      "source": "影视作品名.txt:70",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "顶楼",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：朱丹泰→猪蛋挞",
+      "source": "影视作品名.txt:71",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "高斯电子公司",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：车哇哇→吉娃娃",
+      "source": "影视作品名.txt:72",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "背着善宰跑",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：角色名易读错",
+      "source": "影视作品名.txt:73",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "浪漫的体质",
+      "aliases": [
+        "Melo体质"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "又名：Melo体质",
+      "source": "影视作品名.txt:74",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "很便宜，千里马超市",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "剧名长易读错",
+      "source": "影视作品名.txt:75",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "机智的医生生活",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "常被简称/叫错",
+      "source": "影视作品名.txt:76",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "请回答1988",
+      "aliases": [
+        "请回答1998"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：请回答1998",
+      "source": "影视作品名.txt:77",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "王国",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "英文名Kingdom易读错",
+      "source": "影视作品名.txt:78",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "鱿鱼游戏",
+      "aliases": [
+        "英文名Squid"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "game"
+      ],
+      "description": "英文名Squid Game易叫错",
+      "source": "影视作品名.txt:79",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "纸钞屋",
+      "aliases": [
+        "英文名Money"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "英文名Money Heist易读错",
+      "source": "影视作品名.txt:80",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "毒枭",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "角色名Pena发音易错",
+      "source": "影视作品名.txt:81",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "犴达罕",
+      "aliases": [
+        "犴读hān"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：犴读hān",
+      "source": "影视作品名.txt:82",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大三儿",
+      "aliases": [
+        "大学三年级"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "误解：大学三年级",
+      "source": "影视作品名.txt:83",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "沉没之岛",
+      "aliases": [
+        "沉没"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "读错：沉没",
+      "source": "影视作品名.txt:84",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "谁是他妈的杰克森·波拉克",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "片名长翻译争议",
+      "source": "影视作品名.txt:85",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "怪兽与葛林戴华德的罪行",
+      "aliases": [
+        "怪兽与格雷的罪行"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：怪兽与格雷的罪行",
+      "source": "影视作品名.txt:86",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "与神同行",
+      "aliases": [
+        "与神同在"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：与神同在",
+      "source": "影视作品名.txt:87",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "摩天大楼",
+      "aliases": [
+        "摩天轮"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：摩天轮/巨石强森",
+      "source": "影视作品名.txt:88",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "死侍",
+      "aliases": [
+        "死特"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：死特",
+      "source": "影视作品名.txt:89",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大师兄",
+      "aliases": [
+        "大学生"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：大学生",
+      "source": "影视作品名.txt:90",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "我想要你记得",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "片名像句子",
+      "source": "影视作品名.txt:91",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "秒速五厘米",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "谐音/含义曲解",
+      "source": "影视作品名.txt:92",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "头文字D",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "含义误解",
+      "source": "影视作品名.txt:93",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "不能说的秘密",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "角色名谐音",
+      "source": "影视作品名.txt:94",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "雨人",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "角色名谐音",
+      "source": "影视作品名.txt:95",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "罗伦佐的油",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "谐音",
+      "source": "影视作品名.txt:96",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "火星叔叔马丁",
+      "aliases": [
+        "Martian"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：Martian",
+      "source": "影视作品名.txt:97",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "海滩之子",
+      "aliases": [
+        "Notch"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "homophone"
+      ],
+      "description": "谐音：Notch",
+      "source": "影视作品名.txt:98",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "波斯语课",
+      "aliases": [
+        "波斯密语"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "港译：波斯密语",
+      "source": "影视作品名.txt:99",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "安娜贝尔回家啰",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译名随意",
+      "source": "影视作品名.txt:100",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "它",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译：牠",
+      "source": "影视作品名.txt:101",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "妈的多重宇宙",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译：妈佛谐音Marvel",
+      "source": "影视作品名.txt:102",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "铁金刚",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "007港译",
+      "source": "影视作品名.txt:103",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "刺激1995",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台译肖申克",
+      "source": "影视作品名.txt:104",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "神鬼XX",
+      "aliases": [
+        "台湾译名套路"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "台湾译名套路",
+      "source": "影视作品名.txt:105",
+      "updated_at": "2026-09-13",
+      "is_pattern": true
+    },
+    {
+      "canonical": "王牌魔鬼威龙终极绝地捍卫",
+      "aliases": [
+        "译名套路"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "译名套路",
+      "source": "影视作品名.txt:106",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "满城尽带黄金甲",
+      "aliases": [
+        "满带金城霍元甲"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "叫错：满带金城霍元甲",
+      "source": "影视作品名.txt:107",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "杰伊比姆",
+      "aliases": [
+        "万岁比姆"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "又名：万岁比姆",
+      "source": "影视作品名.txt:108",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "陈情令",
+      "aliases": [
+        "阿令",
+        "陈情今"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：阿令；打错字：陈情今",
+      "source": "影视作品名.txt:109",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "山河令",
+      "aliases": [
+        "山河今"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：岭；打错字：山河今",
+      "source": "影视作品名.txt:110",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "镇魂",
+      "aliases": [
+        "镇魂女孩",
+        "振魂"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：镇魂女孩；打错字：振魂",
+      "source": "影视作品名.txt:111",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "隐秘的角落",
+      "aliases": [
+        "隐秘的脚落"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：爬山剧；打错字：隐秘的脚落",
+      "source": "影视作品名.txt:112",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "沉默的真相",
+      "aliases": [
+        "沉真",
+        "沉默的真像"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：沉真；打错字：沉默的真像",
+      "source": "影视作品名.txt:113",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "漫长的季节",
+      "aliases": [
+        "漫长",
+        "慢长的季节"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：漫长；打错字：慢长的季节",
+      "source": "影视作品名.txt:114",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "狂飙",
+      "aliases": [
+        "飙子",
+        "狂彪"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：飙子；打错字：狂彪",
+      "source": "影视作品名.txt:115",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "人民的名义",
+      "aliases": [
+        "人民的名意"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：人民的名意",
+      "source": "影视作品名.txt:116",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "都挺好",
+      "aliases": [
+        "都挺不好",
+        "都廷好"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：都挺不好；打错字：都廷好",
+      "source": "影视作品名.txt:117",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "庆余年",
+      "aliases": [
+        "庆国",
+        "庆余午"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：庆国；打错字：庆余午",
+      "source": "影视作品名.txt:118",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "赘婿",
+      "aliases": [
+        "坠婿"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：坠婿",
+      "source": "影视作品名.txt:119",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "苍兰诀",
+      "aliases": [
+        "诀症",
+        "苍兰决"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：诀症；打错字：苍兰决",
+      "source": "影视作品名.txt:120",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "梦华录",
+      "aliases": [
+        "录人",
+        "梦华路"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：录人；打错字：梦华路",
+      "source": "影视作品名.txt:121",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "开端",
+      "aliases": [
+        "开瑞"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：锅姨；打错字：开瑞",
+      "source": "影视作品名.txt:122",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "三体",
+      "aliases": [
+        "三休"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：三休",
+      "source": "影视作品名.txt:123",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "流浪地球",
+      "aliases": [
+        "小破球",
+        "流浪地求"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：小破球；打错字：流浪地求",
+      "source": "影视作品名.txt:124",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "哪吒之魔童降世",
+      "aliases": [
+        "那吒"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：藕饼；打错字：那吒",
+      "source": "影视作品名.txt:125",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "姜子牙",
+      "aliases": [
+        "姜子芽"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：姜子芽",
+      "source": "影视作品名.txt:126",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大圣归来",
+      "aliases": [
+        "大圣归莱"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：大圣归莱",
+      "source": "影视作品名.txt:127",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大鱼海棠",
+      "aliases": [
+        "大鱼海堂"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：大鱼海堂",
+      "source": "影视作品名.txt:128",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "白蛇：缘起",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：白蛇缘起",
+      "source": "影视作品名.txt:129",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "雄狮少年",
+      "aliases": [
+        "雄师少年"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：雄师少年",
+      "source": "影视作品名.txt:130",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "长安三万里",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：长安三万里",
+      "source": "影视作品名.txt:131",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "满江红",
+      "aliases": [
+        "满江虹"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：满江虹",
+      "source": "影视作品名.txt:132",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "热辣滚烫",
+      "aliases": [
+        "热辣滚汤"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：热辣滚汤",
+      "source": "影视作品名.txt:133",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "你好，李焕英",
+      "aliases": [
+        "你好李换英"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：你好李换英",
+      "source": "影视作品名.txt:134",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "战狼",
+      "aliases": [
+        "战狠"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：战狠",
+      "source": "影视作品名.txt:135",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "红海行动",
+      "aliases": [
+        "红海行东"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：红海行东",
+      "source": "影视作品名.txt:136",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "湄公河行动",
+      "aliases": [
+        "眉公河行动"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：眉公河行动",
+      "source": "影视作品名.txt:137",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "唐人街探案",
+      "aliases": [
+        "唐探",
+        "唐人街探安"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：唐探；打错字：唐人街探安",
+      "source": "影视作品名.txt:138",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "误杀",
+      "aliases": [
+        "雾杀"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：雾杀",
+      "source": "影视作品名.txt:139",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "消失的她",
+      "aliases": [
+        "消失的它"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：消失的它",
+      "source": "影视作品名.txt:140",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "孤注一掷",
+      "aliases": [
+        "孤注一郑"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：孤注一郑",
+      "source": "影视作品名.txt:141",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "八角笼中",
+      "aliases": [
+        "八角龙中"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：八角龙中",
+      "source": "影视作品名.txt:142",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "封神第一部",
+      "aliases": [
+        "封神",
+        "封神第1部"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：封神；打错字：封神第1部",
+      "source": "影视作品名.txt:143",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "奥本海默",
+      "aliases": [
+        "奥本海墨"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：奥本海墨",
+      "source": "影视作品名.txt:144",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "芭比",
+      "aliases": [
+        "芭比Q"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：芭比Q",
+      "source": "影视作品名.txt:145",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "沙丘",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：沙丘",
+      "source": "影视作品名.txt:146",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "阿凡达",
+      "aliases": [
+        "阿凡提"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：阿凡提",
+      "source": "影视作品名.txt:147",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "泰坦尼克号",
+      "aliases": [
+        "泰坦尼克豪"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：大船；打错字：泰坦尼克豪",
+      "source": "影视作品名.txt:148",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "星球大战",
+      "aliases": [
+        "星战",
+        "星球大站"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：星战；打错字：星球大站",
+      "source": "影视作品名.txt:149",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "星际穿越",
+      "aliases": [
+        "星际穿跃"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：星际穿跃",
+      "source": "影视作品名.txt:150",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "盗梦空间",
+      "aliases": [
+        "道梦空间"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：道梦空间",
+      "source": "影视作品名.txt:151",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "蝙蝠侠：黑暗骑士",
+      "aliases": [
+        "蝙蝠狭"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：蝙蝠狭",
+      "source": "影视作品名.txt:152",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "蜘蛛侠",
+      "aliases": [
+        "蜘蛛狭"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：蜘蛛狭",
+      "source": "影视作品名.txt:153",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "钢铁侠",
+      "aliases": [
+        "钢铁狭"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：钢铁狭",
+      "source": "影视作品名.txt:154",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "复仇者联盟",
+      "aliases": [
+        "复联",
+        "复仇者联萌"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：复联；打错字：复仇者联萌",
+      "source": "影视作品名.txt:155",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "哈利·波特",
+      "aliases": [
+        "哈利波持"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：哈利波持",
+      "source": "影视作品名.txt:156",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "指环王",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：魔戒",
+      "source": "影视作品名.txt:157",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "霍比特人",
+      "aliases": [
+        "霍比待人"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：霍比待人",
+      "source": "影视作品名.txt:158",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "加勒比海盗",
+      "aliases": [
+        "加勒比海道"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：加勒比海道",
+      "source": "影视作品名.txt:159",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "速度与激情",
+      "aliases": [
+        "速激",
+        "速度与基情"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：速激；打错字：速度与基情",
+      "source": "影视作品名.txt:160",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "变形金刚",
+      "aliases": [
+        "变形金钢"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：变形金钢",
+      "source": "影视作品名.txt:161",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "侏罗纪公园",
+      "aliases": [
+        "朱罗纪公园"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：朱罗纪公园",
+      "source": "影视作品名.txt:162",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "金刚",
+      "aliases": [
+        "金钢"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：金钢",
+      "source": "影视作品名.txt:163",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "哥斯拉",
+      "aliases": [
+        "哥斯啦"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：哥斯啦",
+      "source": "影视作品名.txt:164",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "环太平洋",
+      "aliases": [
+        "环太洋"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：环太洋",
+      "source": "影视作品名.txt:165",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "头号玩家",
+      "aliases": [
+        "头号玩加"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：头号玩加",
+      "source": "影视作品名.txt:166",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "失控玩家",
+      "aliases": [
+        "失控玩加"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：失控玩加",
+      "source": "影视作品名.txt:167",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "心灵奇旅",
+      "aliases": [
+        "心灵奇履"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：心灵奇履",
+      "source": "影视作品名.txt:168",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "白蛇：浮生",
+      "aliases": [
+        "白蛇福生"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：白蛇福生",
+      "source": "影视作品名.txt:169",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "你想活出怎样的人生",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "片名长易被简写",
+      "source": "影视作品名.txt:170",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "千与千寻",
+      "aliases": [
+        "千与千巡",
+        "千寻"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo",
+        "nickname"
+      ],
+      "description": "打错字：千与千巡；外号：千寻",
+      "source": "影视作品名.txt:171",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "龙猫",
+      "aliases": [
+        "龙喵"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：龙喵",
+      "source": "影视作品名.txt:172",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "哈尔的移动城堡",
+      "aliases": [
+        "哈尔的移动宝堡"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：哈尔的移动宝堡",
+      "source": "影视作品名.txt:173",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "幽灵公主",
+      "aliases": [
+        "幽灵公举"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：幽灵公举",
+      "source": "影视作品名.txt:174",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "魔女宅急便",
+      "aliases": [
+        "魔女宅急变"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：魔女宅急变",
+      "source": "影视作品名.txt:175",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "悬崖上的金鱼姬",
+      "aliases": [
+        "金鱼鸡"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：金鱼鸡",
+      "source": "影视作品名.txt:176",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "风之谷",
+      "aliases": [
+        "风之古"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：风之古",
+      "source": "影视作品名.txt:177",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "起风了",
+      "aliases": [
+        "起风啦"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：起风啦",
+      "source": "影视作品名.txt:178",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "萤火虫之墓",
+      "aliases": [
+        "萤火虫之幕"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：萤火虫之幕",
+      "source": "影视作品名.txt:179",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "辉夜姬物语",
+      "aliases": [
+        "辉夜鸡"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：辉夜鸡",
+      "source": "影视作品名.txt:180",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "红辣椒",
+      "aliases": [
+        "红辣焦"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：红辣焦",
+      "source": "影视作品名.txt:181",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "未麻的部屋",
+      "aliases": [],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie"
+      ],
+      "description": "难读：片名易写错",
+      "source": "影视作品名.txt:182",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "千年女优",
+      "aliases": [
+        "千年女忧"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：千年女忧",
+      "source": "影视作品名.txt:183",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "东京教父",
+      "aliases": [
+        "东京教付"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：东京教付",
+      "source": "影视作品名.txt:184",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "攻壳机动队",
+      "aliases": [
+        "攻壳机动对"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：攻壳机动对",
+      "source": "影视作品名.txt:185",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "阿基拉",
+      "aliases": [
+        "阿基啦"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：阿基啦",
+      "source": "影视作品名.txt:186",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "你的名字。",
+      "aliases": [
+        "你的名子"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：你的名子",
+      "source": "影视作品名.txt:187",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "天气之子",
+      "aliases": [
+        "天气之字"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：天气之字",
+      "source": "影视作品名.txt:188",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "言叶之庭",
+      "aliases": [
+        "言语之庭"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：言语之庭",
+      "source": "影视作品名.txt:189",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "铃芽之旅",
+      "aliases": [
+        "铃芽之吕"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：铃芽之吕",
+      "source": "影视作品名.txt:190",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "声之形",
+      "aliases": [
+        "声之型"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：声之型",
+      "source": "影视作品名.txt:191",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "利兹与青鸟",
+      "aliases": [
+        "利兹与青乌"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：利兹与青乌",
+      "source": "影视作品名.txt:192",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "紫罗兰永恒花园",
+      "aliases": [
+        "紫罗兰永桓花园"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：紫罗兰永桓花园",
+      "source": "影视作品名.txt:193",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "咒术回战",
+      "aliases": [
+        "咒术回站"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：咒术回站",
+      "source": "影视作品名.txt:194",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "间谍过家家",
+      "aliases": [
+        "间谍过佳佳"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：间谍过佳佳",
+      "source": "影视作品名.txt:195",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "排球少年",
+      "aliases": [
+        "排球少男"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：排球少男",
+      "source": "影视作品名.txt:196",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "灌篮高手",
+      "aliases": [
+        "灌蓝高手"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：灌蓝高手",
+      "source": "影视作品名.txt:197",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "足球小将",
+      "aliases": [
+        "足球小蒋"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：足球小蒋",
+      "source": "影视作品名.txt:198",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "名侦探柯南",
+      "aliases": [
+        "名侦探柯蓝",
+        "柯南"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo",
+        "nickname"
+      ],
+      "description": "打错字：名侦探柯蓝；外号：柯南",
+      "source": "影视作品名.txt:199",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "海贼王",
+      "aliases": [
+        "航海王",
+        "海贼汪"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：航海王；打错字：海贼汪",
+      "source": "影视作品名.txt:200",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "火影忍者",
+      "aliases": [
+        "火影忍著"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：火影忍著",
+      "source": "影视作品名.txt:201",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "死神",
+      "aliases": [
+        "死伸"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：死伸",
+      "source": "影视作品名.txt:202",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "龙珠",
+      "aliases": [
+        "龙朱"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：龙朱",
+      "source": "影视作品名.txt:203",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "圣斗士星矢",
+      "aliases": [
+        "圣斗士星失"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：圣斗士星失",
+      "source": "影视作品名.txt:204",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "美少女战士",
+      "aliases": [
+        "美少女战土"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：美少女战土",
+      "source": "影视作品名.txt:205",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "数码宝贝",
+      "aliases": [
+        "数码保贝"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：数码保贝",
+      "source": "影视作品名.txt:206",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "精灵宝可梦",
+      "aliases": [
+        "宠物小精灵"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname"
+      ],
+      "description": "外号：宠物小精灵",
+      "source": "影视作品名.txt:207",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "奥特曼",
+      "aliases": [
+        "奥持曼"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：奥持曼",
+      "source": "影视作品名.txt:208",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "假面骑士",
+      "aliases": [
+        "假面骑土"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：假面骑土",
+      "source": "影视作品名.txt:209",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "超级战队",
+      "aliases": [
+        "超级战对"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：超级战对",
+      "source": "影视作品名.txt:210",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "铠甲勇士",
+      "aliases": [
+        "铠甲勇土"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：铠甲勇土",
+      "source": "影视作品名.txt:211",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "巴啦啦小魔仙",
+      "aliases": [
+        "巴拉拉小魔仙"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：巴拉拉小魔仙",
+      "source": "影视作品名.txt:212",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "喜羊羊与灰太狼",
+      "aliases": [
+        "喜洋洋与灰太狼"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：喜洋洋与灰太狼",
+      "source": "影视作品名.txt:213",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "熊出没",
+      "aliases": [
+        "熊出末"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：熊出末",
+      "source": "影视作品名.txt:214",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "猪猪侠",
+      "aliases": [
+        "猪猪狭"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：猪猪狭",
+      "source": "影视作品名.txt:215",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大耳朵图图",
+      "aliases": [
+        "大耳朵涂涂"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：大耳朵涂涂",
+      "source": "影视作品名.txt:216",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大头儿子小头爸爸",
+      "aliases": [
+        "小头巴巴"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：小头巴巴",
+      "source": "影视作品名.txt:217",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "樱桃小丸子",
+      "aliases": [
+        "樱桃小完子"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：樱桃小完子",
+      "source": "影视作品名.txt:218",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "蜡笔小新",
+      "aliases": [
+        "腊笔小新"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：腊笔小新",
+      "source": "影视作品名.txt:219",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "中华小当家",
+      "aliases": [
+        "中华一番",
+        "小当加"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "nickname",
+        "typo"
+      ],
+      "description": "外号：中华一番；打错字：小当加",
+      "source": "影视作品名.txt:220",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "神厨小福贵",
+      "aliases": [
+        "小福桂"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：小福桂",
+      "source": "影视作品名.txt:221",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "虹猫蓝兔七侠传",
+      "aliases": [
+        "七侠转"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：七侠转",
+      "source": "影视作品名.txt:222",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "蓝猫淘气三千问",
+      "aliases": [
+        "三千文"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：三千文",
+      "source": "影视作品名.txt:223",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "围棋少年",
+      "aliases": [
+        "围棋少男"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：围棋少男",
+      "source": "影视作品名.txt:224",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "秦时明月",
+      "aliases": [
+        "秦时明曰"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：秦时明曰",
+      "source": "影视作品名.txt:225",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "画江湖之不良人",
+      "aliases": [
+        "不良仁"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：不良仁",
+      "source": "影视作品名.txt:226",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "斗罗大陆",
+      "aliases": [
+        "斗罗大路"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：斗罗大路",
+      "source": "影视作品名.txt:227",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "斗破苍穹",
+      "aliases": [
+        "斗破苍穷"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：斗破苍穷",
+      "source": "影视作品名.txt:228",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "武动乾坤",
+      "aliases": [
+        "武动乾昆"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：武动乾昆",
+      "source": "影视作品名.txt:229",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "大主宰",
+      "aliases": [
+        "大主栽"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：大主栽",
+      "source": "影视作品名.txt:230",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "完美世界",
+      "aliases": [
+        "完美世介"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：完美世介",
+      "source": "影视作品名.txt:231",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "遮天",
+      "aliases": [
+        "这天"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：这天",
+      "source": "影视作品名.txt:232",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "吞噬星空",
+      "aliases": [
+        "吞食星空"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：吞食星空",
+      "source": "影视作品名.txt:233",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "星辰变",
+      "aliases": [
+        "星辰边"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：星辰边",
+      "source": "影视作品名.txt:234",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "凡人修仙传",
+      "aliases": [
+        "凡人修仙转"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：凡人修仙转",
+      "source": "影视作品名.txt:235",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "仙逆",
+      "aliases": [
+        "仙尼"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：仙尼",
+      "source": "影视作品名.txt:236",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "一念永恒",
+      "aliases": [
+        "一念永桓"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：一念永桓",
+      "source": "影视作品名.txt:237",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "沧元图",
+      "aliases": [
+        "苍元图"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：苍元图",
+      "source": "影视作品名.txt:238",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "神印王座",
+      "aliases": [
+        "神印王坐"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：神印王坐",
+      "source": "影视作品名.txt:239",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "绝世唐门",
+      "aliases": [
+        "绝世堂门"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：绝世堂门",
+      "source": "影视作品名.txt:240",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "龙王传说",
+      "aliases": [
+        "龙王传税"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：龙王传税",
+      "source": "影视作品名.txt:241",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "终极斗罗",
+      "aliases": [
+        "终极斗落"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：终极斗落",
+      "source": "影视作品名.txt:242",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "天官赐福",
+      "aliases": [
+        "天官赐富",
+        "天官"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo",
+        "nickname"
+      ],
+      "description": "打错字：天官赐富；外号：天官",
+      "source": "影视作品名.txt:243",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "魔道祖师",
+      "aliases": [
+        "魔道主师",
+        "魔道"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo",
+        "nickname"
+      ],
+      "description": "打错字：魔道主师；外号：魔道",
+      "source": "影视作品名.txt:244",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "穿书自救指南",
+      "aliases": [
+        "穿书自救指难"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：穿书自救指难",
+      "source": "影视作品名.txt:245",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "残次品",
+      "aliases": [
+        "残次平"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：残次平",
+      "source": "影视作品名.txt:246",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "烈火浇愁",
+      "aliases": [
+        "烈火交愁"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：烈火交愁",
+      "source": "影视作品名.txt:247",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "六爻",
+      "aliases": [
+        "六摇"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：六摇",
+      "source": "影视作品名.txt:248",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "默读",
+      "aliases": [
+        "墨读"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：墨读",
+      "source": "影视作品名.txt:249",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    },
+    {
+      "canonical": "杀破狼",
+      "aliases": [
+        "杀破郎"
+      ],
+      "category": "movie",
+      "priority": 2,
+      "context_tags": [
+        "movie",
+        "typo"
+      ],
+      "description": "打错字：杀破郎",
+      "source": "影视作品名.txt:250",
+      "updated_at": "2026-09-13",
+      "is_pattern": false
+    }
+  ]
+}

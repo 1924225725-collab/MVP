@@ -27,6 +27,12 @@ ROOT = Path(SPECPATH).parent          # packaging/ 的上一级 = 项目根
 datas = [
     (str(ROOT / "models_registry.json"), "."),
 ]
+# P0 品牌启动层：QML 与矢量品牌资产必须保持相对目录结构。
+_ui_dir = ROOT / "desktop" / "ui"
+for _folder in ("qml", "assets"):
+    _source = _ui_dir / _folder
+    if _source.is_dir():
+        datas.append((str(_source), f"desktop/ui/{_folder}"))
 for extra in ("custom_dictionary.json", "user_lexicon.txt"):
     p = ROOT / extra
     if p.exists():
@@ -81,6 +87,8 @@ except Exception as e:                                      # noqa: BLE001
 hiddenimports = [
     "huggingface_hub", "requests", "certifi", "charset_normalizer",
     "idna", "urllib3", "filelock", "tqdm", "regex", "safetensors",
+    "PySide6.QtQml", "PySide6.QtQuick", "PySide6.QtQuickWidgets",
+    "PySide6.QtSvg",
 ]
 for pkg in ("faster_whisper", "ctranslate2", "tokenizers", "imageio_ffmpeg"):
     try:
@@ -94,7 +102,7 @@ excludes = [
     "streamlit", "altair", "pyarrow", "matplotlib", "pandas", "scipy",
     "IPython", "jupyter", "notebook", "pytest", "setuptools._distutils",
     "tkinter", "PySide6.QtWebEngineCore", "PySide6.QtWebEngineWidgets",
-    "PySide6.Qt3DCore", "PySide6.QtQuick", "PySide6.QtQml",
+    "PySide6.Qt3DCore",
     "PySide6.QtMultimedia", "PySide6.QtBluetooth", "PySide6.QtCharts",
     "PySide6.QtDataVisualization", "PySide6.QtNetworkAuth",
 ]
@@ -109,7 +117,7 @@ a = Analysis(
     hiddenimports=hiddenimports,
     hookspath=[],
     hooksconfig={},
-    runtime_hooks=[],
+    runtime_hooks=[str(ROOT / "packaging" / "runtime_release_version.py")],
     excludes=excludes,
     win_no_prefer_redirects=False,
     win_private_assemblies=False,

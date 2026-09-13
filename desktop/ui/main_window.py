@@ -15,10 +15,12 @@
 import os
 import traceback
 
-from PySide6.QtCore import Qt
+from PySide6.QtCore import QEvent, QTimer, Qt, Signal
+from PySide6.QtGui import QColor, QGuiApplication, QIcon
 from PySide6.QtWidgets import (
-    QFileDialog, QHBoxLayout, QLabel, QListWidget, QListWidgetItem, QMainWindow,
-    QMessageBox, QPushButton, QTabWidget, QVBoxLayout, QWidget,
+    QFileDialog, QGraphicsDropShadowEffect, QHBoxLayout, QLabel, QListWidget,
+    QListWidgetItem, QMainWindow, QMessageBox, QPushButton, QTabWidget,
+    QVBoxLayout, QWidget,
 )
 
 import app_paths
@@ -26,10 +28,15 @@ from errors import ProcessError, STAGE_MEDIA_UNREADABLE, STAGE_NO_AUDIO
 from desktop import APP_TITLE, APP_VERSION, theme
 from desktop.services import ProjectStore, SettingsStore
 from desktop.services import selfcheck as selfcheck_mod
+from desktop.services.initialization import (
+    check_api_configuration, detect_startup_state,
+)
+from desktop.services.setup_state import SetupStateStore
 from desktop.services.tasks import (
     analyze_transcript, probe_video, transcribe_video, wrap_error,
 )
 from desktop.ui import widgets as W
+from desktop.ui.brand_reveal import BrandReveal
 from desktop.ui.dialogs import AnalysisOptionsDialog, ModelManagerDialog, SettingsDialog
 from desktop.ui.developer_panel import DeveloperPanel
 from desktop.ui.error_text import error_ui
@@ -37,6 +44,10 @@ from desktop.ui.progress_view import ProgressView
 from desktop.ui.project_panel import ProjectPanel
 from desktop.ui.recommended_panel import RecommendedPanel
 from desktop.ui.structure_panel import StructurePanel
+from desktop.ui.shell_parts import InspectorPlaceholder, StatusStrip
+from desktop.ui.system_initialization import SystemInitializationPage
+from desktop.ui.welcome_setup import WelcomeSetupPage
+from desktop.ui.window_chrome import ResizeHandle, WindowChrome
 from desktop.workers import TaskWorker
 
 _VIDEO_FILTER = "视频文件 (*.mp4 *.mkv *.mov *.flv *.avi *.ts *.m4v *.wmv);;所有文件 (*)"
@@ -50,14 +61,22 @@ _STATE_TEXT = {
 
 
 class MainWindow(QMainWindow):
+    brand_entered = Signal()
+    initialization_continue_requested = Signal(object)
+
     def __init__(self):
         super().__init__()
         self.setWindowTitle(f"{APP_TITLE}  v{APP_VERSION}")
-        self.resize(1280, 840)
+        self.setWindowIcon(QIcon())
+        self.setWindowFlags(Qt.Window | Qt.FramelessWindowHint)
+        self.setAttribute(Qt.WA_TranslucentBackground, True)
+        self.resize(1440, 900)
+        self.setMinimumSize(1180, 720)
 
         app_paths.ensure_workspace()
         self.store = ProjectStore()
         self.settings = SettingsStore()
+        self.setup_state = SetupStateStore()
         self.project = None            # 当前项目 dict
         self.worker = None             # 当前后台任务
         self.analysis_log = ""         # 本次运行的日志（只在内存，不写进 project.json）
@@ -66,6 +85,10 @@ class MainWindow(QMainWindow):
         self._project_load_token = None  # 异步结果的"有效期"标记（防过期覆盖）
 
         self._build_ui()
+        self._install_resize_handles()
+        self._install_brand_reveal()
+        self._install_system_initialization()
+        self._install_welcome_setup()
         # 先把各面板置成"空"态，别让启动瞬间留下一片空白
         self._render_current()
         # V0.5.2：项目列表**异步加载**。
@@ -79,12 +102,242 @@ class MainWindow(QMainWindow):
 
     def _build_ui(self):
         central = QWidget()
-        root = QHBoxLayout(central)
-        root.setContentsMargins(0, 0, 0, 0)
+        central.setObjectName("WindowRoot")
+        root = QVBoxLayout(central)
+        root.setContentsMargins(10, 10, 10, 10)
         root.setSpacing(0)
-        root.addWidget(self._build_sidebar())
-        root.addWidget(self._build_content(), 1)
+        self._outer_layout = root
+
+        surface = QWidget()
+        surface.setObjectName("WindowSurface")
+        self.window_surface = surface
+        surface_layout = QVBoxLayout(surface)
+        surface_layout.setContentsMargins(0, 0, 0, 0)
+        surface_layout.setSpacing(0)
+
+        self.chrome = WindowChrome(self)
+        surface_layout.addWidget(self.chrome)
+
+        body = QWidget()
+        body.setObjectName("ShellBody")
+        body_layout = QHBoxLayout(body)
+        body_layout.setContentsMargins(0, 0, 0, 0)
+        body_layout.setSpacing(0)
+        self.sidebar = self._build_sidebar()
+        self.content_area = self._build_content()
+        self.inspector = InspectorPlaceholder()
+        body_layout.addWidget(self.sidebar)
+        body_layout.addWidget(self.content_area, 1)
+        body_layout.addWidget(self.inspector)
+        surface_layout.addWidget(body, 1)
+
+        self.status_strip = StatusStrip()
+        surface_layout.addWidget(self.status_strip)
+        root.addWidget(surface)
         self.setCentralWidget(central)
+
+        shadow = QGraphicsDropShadowEffect(surface)
+        shadow.setBlurRadius(30)
+        shadow.setOffset(0, 5)
+        shadow.setColor(QColor(0, 0, 0, 190))
+        # Qt offscreen 插件对整窗 graphics effect 的字体栅格化不完整；
+        # 截图/CI 关闭阴影，真实 Windows 窗口仍保留。
+        if QGuiApplication.platformName() != "offscreen":
+            surface.setGraphicsEffect(shadow)
+        else:
+            shadow.setEnabled(False)
+        self._window_shadow = shadow
+
+    def _install_resize_handles(self):
+        """安装八个透明缩放热区，不干扰内部控件。"""
+        edge_specs = (
+            ("left", Qt.LeftEdge, Qt.SizeHorCursor),
+            ("right", Qt.RightEdge, Qt.SizeHorCursor),
+            ("top", Qt.TopEdge, Qt.SizeVerCursor),
+            ("bottom", Qt.BottomEdge, Qt.SizeVerCursor),
+            ("top_left", Qt.TopEdge | Qt.LeftEdge, Qt.SizeFDiagCursor),
+            ("top_right", Qt.TopEdge | Qt.RightEdge, Qt.SizeBDiagCursor),
+            ("bottom_left", Qt.BottomEdge | Qt.LeftEdge, Qt.SizeBDiagCursor),
+            ("bottom_right", Qt.BottomEdge | Qt.RightEdge, Qt.SizeFDiagCursor),
+        )
+        self._resize_handles = {
+            name: ResizeHandle(self, edges, cursor, self)
+            for name, edges, cursor in edge_specs
+        }
+        self._layout_resize_handles()
+
+    def _layout_resize_handles(self):
+        if not hasattr(self, "_resize_handles"):
+            return
+        w, h, edge, corner = self.width(), self.height(), 7, 13
+        rects = {
+            "left": (0, corner, edge, max(0, h - corner * 2)),
+            "right": (w - edge, corner, edge, max(0, h - corner * 2)),
+            "top": (corner, 0, max(0, w - corner * 2), edge),
+            "bottom": (corner, h - edge, max(0, w - corner * 2), edge),
+            "top_left": (0, 0, corner, corner),
+            "top_right": (w - corner, 0, corner, corner),
+            "bottom_left": (0, h - corner, corner, corner),
+            "bottom_right": (w - corner, h - corner, corner, corner),
+        }
+        visible = not self.isMaximized()
+        for name, handle in self._resize_handles.items():
+            handle.setGeometry(*rects[name])
+            handle.setVisible(visible)
+            if visible:
+                handle.raise_()
+
+    def _install_brand_reveal(self):
+        """启动层与主界面同属一个窗口，以便 Logo 连续落入左上角。"""
+        self.brand_reveal = BrandReveal(self.centralWidget())
+        self.brand_reveal.entered.connect(self._on_brand_entered)
+        self.brand_reveal.setGeometry(self.centralWidget().rect())
+        self.brand_reveal.show()
+        self.brand_reveal.raise_()
+
+        # 自动化/打包自检不能等待人工点击，也不应捕获到启动遮罩。
+        if (os.environ.get("LIVE_CLIPPER_SMOKE")
+                or os.environ.get("LIVE_CLIPPER_SKIP_REVEAL")):
+            self.brand_reveal.hide()
+            QTimer.singleShot(0, self._on_brand_entered)
+
+    def _on_brand_entered(self):
+        if getattr(self, "_brand_ready", False):
+            return
+        self._brand_ready = True
+        self.status_strip.set_message("创作空间已就绪")
+        self.chrome.raise_()
+        self.brand_entered.emit()
+
+    def _install_system_initialization(self):
+        """安装 P1 初始化覆盖页；检测前保持隐藏。"""
+        self.initialization_page = SystemInitializationPage(
+            self.centralWidget())
+        self.initialization_page.setGeometry(self.centralWidget().rect())
+        self.initialization_page.continue_requested.connect(
+            self._on_initialization_continue)
+        self.initialization_page.hide()
+        if self.brand_reveal.isVisible():
+            self.brand_reveal.raise_()
+
+    def _install_welcome_setup(self):
+        """安装五步首次使用体验，默认保持隐藏。"""
+        self.welcome_setup = WelcomeSetupPage(self.centralWidget())
+        self.welcome_setup.setGeometry(self.centralWidget().rect())
+        self.welcome_setup.completed.connect(self._on_setup_completed)
+        self.welcome_setup.skipped.connect(self._on_setup_skipped)
+        self.welcome_setup.configure_ai_requested.connect(
+            self._on_setup_configure_ai)
+        self.welcome_setup.hide()
+        if self.brand_reveal.isVisible():
+            self.brand_reveal.raise_()
+
+    def start_startup_flow(self):
+        """Brand Reveal 后按用户状态进入初始化页或现有主界面。"""
+        if getattr(self, "_startup_flow_started", False):
+            return
+        self._startup_flow_started = True
+        decision = detect_startup_state(
+            setup_store=self.setup_state,
+            project_store=self.store,
+        )
+        self.startup_decision = decision
+
+        if decision.needs_setup:
+            self.status_strip.set_message("正在准备创作环境")
+            model_id = self.settings.load().get("asr_model_id") or ""
+            self.initialization_page.setGeometry(self.centralWidget().rect())
+            self.initialization_page.start(model_id=model_id)
+            return
+
+        self.status_strip.set_message("创作空间已就绪")
+        QTimer.singleShot(350, lambda: self.run_selfcheck(startup=True))
+
+    def _on_initialization_continue(self, report):
+        """初始化完成后进入五步首次使用体验。"""
+        self.initialization_page.hide()
+        self.status_strip.set_message("带你认识 AI Live Clipper")
+        self.welcome_setup.setGeometry(self.centralWidget().rect())
+        self.welcome_setup.start(report)
+        self.initialization_continue_requested.emit(report)
+
+    def _on_setup_completed(self, work_mode, summary):
+        try:
+            self.setup_state.mark_completed(work_mode, summary)
+        except OSError:
+            self.welcome_setup.show_save_error()
+            return
+        self._finish_welcome("创作空间已就绪")
+
+    def _on_setup_skipped(self, work_mode, summary):
+        try:
+            self.setup_state.mark_skipped(work_mode, summary)
+        except OSError:
+            self.welcome_setup.show_save_error()
+            return
+        self._finish_welcome("已跳过设置，可以稍后继续完善")
+
+    def _on_setup_configure_ai(self):
+        """高级入口沿用现有设置，向导本身不接触密钥。"""
+        self.open_settings()
+        self.welcome_setup.refresh_ai_service(check_api_configuration())
+        self.welcome_setup.raise_()
+
+    def _finish_welcome(self, message):
+        self.welcome_setup.hide()
+        self.status_strip.set_message(message)
+        self.chrome.raise_()
+
+    def resizeEvent(self, event):
+        super().resizeEvent(event)
+        self._layout_resize_handles()
+        reveal = getattr(self, "brand_reveal", None)
+        initialization = getattr(self, "initialization_page", None)
+        welcome = getattr(self, "welcome_setup", None)
+        if initialization is not None:
+            initialization.setGeometry(self.centralWidget().rect())
+            if initialization.isVisible():
+                initialization.raise_()
+        if welcome is not None:
+            welcome.setGeometry(self.centralWidget().rect())
+            if welcome.isVisible():
+                welcome.raise_()
+        if reveal is not None:
+            reveal.setGeometry(self.centralWidget().rect())
+            if reveal.isVisible():
+                reveal.raise_()
+
+    def showEvent(self, event):
+        super().showEvent(event)
+        reveal = getattr(self, "brand_reveal", None)
+        initialization = getattr(self, "initialization_page", None)
+        welcome = getattr(self, "welcome_setup", None)
+        if initialization is not None:
+            initialization.setGeometry(self.centralWidget().rect())
+            if initialization.isVisible():
+                initialization.raise_()
+        if welcome is not None:
+            welcome.setGeometry(self.centralWidget().rect())
+            if welcome.isVisible():
+                welcome.raise_()
+        if reveal is not None:
+            reveal.setGeometry(self.centralWidget().rect())
+            if reveal.isVisible():
+                reveal.raise_()
+
+    def changeEvent(self, event):
+        super().changeEvent(event)
+        if event.type() == QEvent.WindowStateChange:
+            maximized = self.isMaximized()
+            self._outer_layout.setContentsMargins(
+                0 if maximized else 10,
+                0 if maximized else 10,
+                0 if maximized else 10,
+                0 if maximized else 10,
+            )
+            self._window_shadow.setEnabled(not maximized)
+            self.chrome.sync_state()
+            self._layout_resize_handles()
 
     # ---------- 左侧边栏 ----------
 
@@ -96,10 +349,10 @@ class MainWindow(QMainWindow):
         lay.setContentsMargins(0, 0, 0, 10)
         lay.setSpacing(6)
 
-        title = QLabel(APP_TITLE)
+        title = QLabel("项目空间")
         title.setObjectName("AppTitle")
         lay.addWidget(title)
-        sub = QLabel(f"v{APP_VERSION}　本地识别 · AI 理解内容")
+        sub = QLabel("LOCAL CREATIVE WORKSPACE")
         sub.setObjectName("AppSubtitle")
         lay.addWidget(sub)
 
@@ -768,6 +1021,9 @@ class MainWindow(QMainWindow):
     # ============================================================
 
     def closeEvent(self, event):
+        initialization = getattr(self, "initialization_page", None)
+        if initialization is not None:
+            initialization.shutdown()
         if self._busy():
             if QMessageBox.question(self, "任务还在跑",
                                     "后台任务还没结束，确定要退出吗？"

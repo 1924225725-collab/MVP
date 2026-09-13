@@ -3,7 +3,10 @@ __pycache__/
 *.pyc
 
 # 虚拟环境（体积大，每台电脑自己装）
+# 主环境 + 两个 PoC 环境。显式列出全部，避免以后新增环境被误提交。
 .venv/
+.venv-*/
+.venv_*/
 
 # 媒体文件与生成结果（体积大/含个人数据，不上传）
 videos/*
@@ -40,8 +43,28 @@ poc/*.mp3
 poc/*.npy
 poc/audio_clips/
 
+# poc/ 子实验的运行输出（中间音频可达数十 MB）
+# 注意：只忽略 outputs/，fixtures/ 里的人工标注真值（GT）必须提交，不能忽略！
+poc/**/outputs/
+poc/**/work/
+poc/**/tmp/
+
+# PoC / benchmark 媒体仅用于本机验收，不进入源码仓库。
+# 人工标注的 JSON/TXT 仍然保留并提交。
+poc/**/*.wav
+poc/**/*.mp3
+poc/**/*.mp4
+poc/**/*.mkv
+poc/**/*.mov
+
 # API 钥匙文件（网页版保存的 DeepSeek Key，绝不能上传）
 api_key.txt
+
+# 环境变量文件（火山引擎 / DeepSeek 等密钥，绝不能上传）
+# 只提交 .env.example 作为模板
+.env
+.env.*
+!.env.example
 
 # 但保留文件夹本身（否则 git 不追踪空文件夹）
 !videos/.gitkeep
@@ -51,6 +74,12 @@ api_key.txt
 # 系统杂项
 Thumbs.db
 .DS_Store
+
+# 临时探针脚本（文件头自述“用完即删”的实验文件）
+_exp_*.py
+
+# 临时测试文件（写权限自检等产生的空文件）
+test_write*.txt
 
 # ---------------- V0.5 桌面版 ----------------
 
@@ -68,6 +97,11 @@ build_*.log
 projects/
 models/
 logs/
+# 根 outputs/ 默认是运行产物；仅保留随源码维护的操作手册。
+outputs/*
+!outputs/speaker/
+outputs/speaker/*
+!outputs/speaker/aliyun_RUNBOOK.md
 settings.json
 desktop_smoke_report.txt
 desktop_install_report.txt

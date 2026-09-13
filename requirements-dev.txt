@@ -1,0 +1,59 @@
+# requirements-dev.txt —— 开发 / 测试 / 打包依赖
+# 适用项目开发基线：v0.5.3
+#
+# 用法（本文件已包含 requirements.txt）：
+#   pip install -r requirements-dev.txt
+#
+# 说明：本文件只列“开发期需要、运行时不需要”的包。
+#       运行时依赖请见 requirements.txt。
+#       版本均来自当前 .venv 的实际安装版本（已核实）。
+
+-r requirements.txt
+
+# ---------------- 打包（桌面版安装包）----------------
+# 参与 build_desktop.py / packaging/*.spec 的构建
+pyinstaller==6.22.2              # 打包成单文件/目录可执行程序
+pyinstaller-hooks-contrib==2026.7  # PyInstaller 官方 hooks 补丁集
+pefile==2024.8.26                # PyInstaller 读取 PE 头所需（Windows）
+pywin32-ctypes==0.2.3            # Windows 安装器/快捷方式相关
+
+# ---------------- 打包辅助 ----------------
+altgraph==0.17.5                 # PyInstaller 依赖图分析
+packaging==26.3                  # 版本解析（PyInstaller 依赖）
+
+# ================================================================
+# 测试说明
+# ================================================================
+# 本项目使用 **标准库 unittest**，不依赖 pytest，因此无需额外安装测试框架。
+#
+# 运行全部测试（在 live_clipper/ 目录下）：
+#   python -m unittest discover -p "test_*.py"
+#
+# 运行 correction 模块测试（纯标准库、离线可跑，推荐作为冒烟测试）：
+#   python correction/test_minimal.py        # 24 项
+#   python correction/test_pipeline_step.py  # 15 项
+#
+# 桌面版相关测试：
+#   python test_desktop_smoke.py
+#   python test_desktop_progress.py
+#   python test_desktop_e2e.py
+#
+# 模型来源检查：
+#   python test_model_sources.py
+#
+# ================================================================
+# 代码质量工具（当前未强制使用，按需自行安装）
+# ================================================================
+# 项目目前没有强制的 lint / format 流水线。如需要，可自行安装：
+#   ruff            —— 快速 lint + format（推荐）
+#   mypy            —— 静态类型检查
+#   black           —— 代码格式化
+# 这些包不在当前环境中，也不影响功能与测试，故不锁定版本。
+
+# ================================================================
+# 已知注意事项
+# ================================================================
+# 1. 打包必须在开发机（Windows x64）上执行，产物为 Windows 安装包。
+# 2. 打包体积较大（含 ffmpeg / ctranslate2 / PySide6 运行库），
+#    dist/ 与 dist_setup/ 已在 .gitignore 中忽略。
+# 3. 打包前建议先跑一遍 correction 测试作为冒烟验证。
